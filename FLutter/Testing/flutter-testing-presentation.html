@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Testing - ÜK 335</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .presentation {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 1200px;
+            height: 90vh;
+            padding: 60px;
+            box-sizing: border-box;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            color: #00D7FF;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            color: #00D7FF;
+            margin-bottom: 0.7em;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            color: #64B5F6;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+        
+        p, li {
+            font-size: 1.4em;
+            line-height: 1.6;
+            margin-bottom: 0.8em;
+        }
+        
+        ul {
+            padding-left: 1.5em;
+        }
+        
+        .code-block {
+            background: #263238;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border-left: 4px solid #00D7FF;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #00D7FF 0%, #0091EA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .diagram {
+            background: #263238;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #00D7FF;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        button {
+            background: #00D7FF;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #0091EA;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 215, 255, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 1.2em;
+            color: #64B5F6;
+        }
+        
+        .title-slide {
+            text-align: center;
+        }
+        
+        .title-slide h1 {
+            font-size: 4em;
+            margin-bottom: 0.3em;
+        }
+        
+        .subtitle {
+            font-size: 1.8em;
+            color: #64B5F6;
+            margin-bottom: 2em;
+        }
+        
+        .info {
+            font-size: 1.3em;
+            color: #90A4AE;
+        }
+        
+        .icon {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+        
+        .test-type-card {
+            background: #263238;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 5px solid #00D7FF;
+            transition: transform 0.3s ease;
+        }
+        
+        .test-type-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .warning {
+            background: #FF6B6B;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .success {
+            background: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Titelfolie -->
+        <div class="slide active title-slide">
+            <h1>Testing in Flutter</h1>
+            <p class="subtitle">Mobile-Applikationen professionell testen</p>
+            <div class="icon">🧪</div>
+            <p class="info">ÜK 335 - Mobile App Programmieren</p>
+            <p class="info">2. Lehrjahr</p>
+        </div>
+
+        <!-- Slide 2: Lernziele -->
+        <div class="slide">
+            <h2>Lernziele</h2>
+            <div class="diagram">
+                <h3>Nach dieser Lektion können Sie:</h3>
+            </div>
+            <ul>
+                <li>Mobile-Applikationen gemäss Testplan überprüfen ✓</li>
+                <li>Testergebnisse professionell festhalten 📝</li>
+                <li>Erforderliche Korrekturen identifizieren und vornehmen 🔧</li>
+                <li>Funktionale und nicht-funktionale Anforderungen testen 🎯</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Warum Testing? -->
+        <div class="slide">
+            <h2>Warum ist Testing wichtig?</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Ohne Testing:</h3>
+                    <ul>
+                        <li>🐛 Bugs in Produktion</li>
+                        <li>😤 Unzufriedene Nutzer</li>
+                        <li>💰 Hohe Kosten für Fixes</li>
+                        <li>⭐ Schlechte Bewertungen</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Mit Testing:</h3>
+                    <ul>
+                        <li>✅ Stabile App</li>
+                        <li>😊 Zufriedene Nutzer</li>
+                        <li>💡 Frühe Fehlererkennung</li>
+                        <li>🚀 Schnellere Entwicklung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Test-Pyramide -->
+        <div class="slide">
+            <h2>Die Test-Pyramide in Flutter</h2>
+            <div class="diagram">
+                <div style="width: 0; height: 0; border-left: 200px solid transparent; border-right: 200px solid transparent; border-bottom: 100px solid #4CAF50; margin: 0 auto 10px;"></div>
+                <p style="margin-top: -70px; font-weight: bold;">Unit Tests</p>
+                
+                <div style="width: 0; height: 0; border-left: 150px solid transparent; border-right: 150px solid transparent; border-bottom: 80px solid #2196F3; margin: 20px auto 10px;"></div>
+                <p style="margin-top: -60px; font-weight: bold;">Widget Tests</p>
+                
+                <div style="width: 0; height: 0; border-left: 100px solid transparent; border-right: 100px solid transparent; border-bottom: 60px solid #FF9800; margin: 20px auto 10px;"></div>
+                <p style="margin-top: -45px; font-weight: bold;">Integration Tests</p>
+            </div>
+            <p><strong>Regel:</strong> Viele kleine Tests, wenige grosse Tests!</p>
+        </div>
+
+        <!-- Slide 5: Testarten Übersicht -->
+        <div class="slide">
+            <h2>Testarten in Flutter</h2>
+            <div class="test-type-card">
+                <h3>1. Unit Tests</h3>
+                <p>Testen einzelne Funktionen, Methoden oder Klassen isoliert</p>
+                <p><strong>Beispiel:</strong> Berechnung, Datenvalidierung</p>
+            </div>
+            <div class="test-type-card">
+                <h3>2. Widget Tests</h3>
+                <p>Testen einzelne Widgets und deren Verhalten</p>
+                <p><strong>Beispiel:</strong> Button-Klicks, Textanzeige</p>
+            </div>
+            <div class="test-type-card">
+                <h3>3. Integration Tests</h3>
+                <p>Testen die komplette App oder grosse Teile davon</p>
+                <p><strong>Beispiel:</strong> Login-Flow, Navigation</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Unit Testing -->
+        <div class="slide">
+            <h2>Unit Testing in Flutter</h2>
+            <h3>Was wird getestet?</h3>
+            <ul>
+                <li>Einzelne Funktionen und Methoden</li>
+                <li>Klassen und deren Logik</li>
+                <li>Datenmodelle und Validierung</li>
+            </ul>
+            <div class="code-block">
+<pre>// Beispiel: Funktion zum Testen
+int addNumbers(int a, int b) {
+  return a + b;
+}
+
+// Test
+test('Addition funktioniert korrekt', () {
+  expect(addNumbers(2, 3), equals(5));
+  expect(addNumbers(-1, 1), equals(0));
+});</pre>
+            </div>
+        </div>
+
+        <!-- Slide 7: Widget Testing -->
+        <div class="slide">
+            <h2>Widget Testing</h2>
+            <h3>UI-Komponenten isoliert testen</h3>
+            <div class="code-block">
+<pre>testWidgets('Button zeigt richtigen Text', (tester) async {
+  // Widget erstellen
+  await tester.pumpWidget(
+    MaterialApp(
+      home: ElevatedButton(
+        onPressed: () {},
+        child: Text('Klick mich!'),
+      ),
+    ),
+  );
+  
+  // Überprüfung
+  expect(find.text('Klick mich!'), findsOneWidget);
+});</pre>
+            </div>
+        </div>
+
+        <!-- Slide 8: Integration Testing -->
+        <div class="slide">
+            <h2>Integration Testing</h2>
+            <h3>Die ganze App testen</h3>
+            <ul>
+                <li>Testet komplette User Flows</li>
+                <li>Läuft auf echtem Gerät oder Emulator</li>
+                <li>Simuliert echte Nutzerinteraktionen</li>
+            </ul>
+            <div class="code-block">
+<pre>testWidgets('Login Flow Test', (tester) async {
+  app.main();
+  await tester.pumpAndSettle();
+  
+  // Email eingeben
+  await tester.enterText(find.byKey(Key('email')), 'test@test.ch');
+  // Login Button klicken
+  await tester.tap(find.text('Login'));
+  await tester.pumpAndSettle();
+  
+  // Prüfen ob auf Home Screen
+  expect(find.text('Willkommen!'), findsOneWidget);
+});</pre>
+            </div>
+        </div>
+
+        <!-- Slide 9: Funktionale Anforderungen -->
+        <div class="slide">
+            <h2>Funktionale Anforderungen testen</h2>
+            <h3 class="highlight">Was sind funktionale Anforderungen?</h3>
+            <p>Alles was die App <strong>tun</strong> soll:</p>
+            <ul>
+                <li>✓ Korrekte Berechnungen</li>
+                <li>✓ Daten speichern/laden</li>
+                <li>✓ Navigation zwischen Screens</li>
+                <li>✓ API-Aufrufe</li>
+                <li>✓ Nutzerinteraktionen</li>
+            </ul>
+            <div class="success">
+                <strong>Tipp:</strong> Jede User Story sollte testbar sein!
+            </div>
+        </div>
+
+        <!-- Slide 10: Nicht-funktionale Anforderungen -->
+        <div class="slide">
+            <h2>Nicht-funktionale Anforderungen</h2>
+            <div class="two-column">
+                <div>
+                    <h3>🎯 Performance</h3>
+                    <ul>
+                        <li>Ladezeiten</li>
+                        <li>Reaktionsgeschwindigkeit</li>
+                        <li>Speicherverbrauch</li>
+                    </ul>
+                    
+                    <h3>🔒 Sicherheit</h3>
+                    <ul>
+                        <li>Datenverschlüsselung</li>
+                        <li>Sichere Authentifizierung</li>
+                        <li>Berechtigungen</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🎨 User Experience</h3>
+                    <ul>
+                        <li>Intuitive Bedienung</li>
+                        <li>Konsistentes Design</li>
+                        <li>Barrierefreiheit</li>
+                    </ul>
+                    
+                    <h3>📱 Portabilität</h3>
+                    <ul>
+                        <li>iOS & Android</li>
+                        <li>Verschiedene Bildschirmgrössen</li>
+                        <li>Verschiedene OS-Versionen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Testplan erstellen -->
+        <div class="slide">
+            <h2>Testplan erstellen</h2>
+            <h3>Struktur eines guten Testplans:</h3>
+            <ol>
+                <li><strong>Testziele definieren</strong> - Was soll getestet werden?</li>
+                <li><strong>Testfälle beschreiben</strong> - Konkrete Szenarien</li>
+                <li><strong>Testdaten vorbereiten</strong> - Realistische Daten</li>
+                <li><strong>Erwartete Ergebnisse</strong> - Was soll passieren?</li>
+                <li><strong>Testumgebung</strong> - Geräte, OS-Versionen</li>
+            </ol>
+            <div class="diagram">
+                <p><strong>Beispiel Testfall:</strong></p>
+                <p>ID: TC001 | Feature: Login | Priorität: Hoch</p>
+                <p>Schritte: 1. App öffnen 2. Email eingeben 3. Login klicken</p>
+                <p>Erwartet: Erfolgreicher Login → Home Screen</p>
+            </div>
+        </div>
+
+        <!-- Slide 12: Testergebnisse dokumentieren -->
+        <div class="slide">
+            <h2>Testergebnisse dokumentieren</h2>
+            <h3>Was gehört in die Dokumentation?</h3>
+            <div class="test-type-card">
+                <h3>✅ Bei Success:</h3>
+                <ul>
+                    <li>Test ID und Name</li>
+                    <li>Datum und Tester</li>
+                    <li>Getestete Version</li>
+                    <li>Status: PASSED ✓</li>
+                </ul>
+            </div>
+            <div class="test-type-card" style="border-left-color: #FF6B6B;">
+                <h3>❌ Bei Failure:</h3>
+                <ul>
+                    <li>Fehlerbeschreibung</li>
+                    <li>Screenshots/Videos</li>
+                    <li>Schritte zur Reproduktion</li>
+                    <li>Logs und Fehlermeldungen</li>
+                    <li>Priorität des Bugs</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 13: Testing Best Practices -->
+        <div class="slide">
+            <h2>Testing Best Practices</h2>
+            <div class="warning">
+                <strong>Goldene Regeln:</strong>
+            </div>
+            <ul>
+                <li>🎯 <strong>Teste früh und oft</strong> - nicht erst am Ende!</li>
+                <li>🔄 <strong>Automatisiere wo möglich</strong> - spart Zeit</li>
+                <li>📝 <strong>Klare Testnamen</strong> - was wird getestet?</li>
+                <li>🎲 <strong>Edge Cases testen</strong> - was kann schiefgehen?</li>
+                <li>🚀 <strong>CI/CD einsetzen</strong> - Tests bei jedem Commit</li>
+                <li>👥 <strong>Code Reviews</strong> - auch für Tests!</li>
+            </ul>
+        </div>
+
+        <!-- Slide 14: Tools und Frameworks -->
+        <div class="slide">
+            <h2>Testing Tools in Flutter</h2>
+            <div class="two-column">
+                <div>
+                    <h3>🛠️ Built-in Tools:</h3>
+                    <ul>
+                        <li><strong>flutter test</strong> - Test Runner</li>
+                        <li><strong>flutter drive</strong> - Integration Tests</li>
+                        <li><strong>coverage</strong> - Code Coverage</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>📦 Packages:</h3>
+                    <ul>
+                        <li><strong>mockito</strong> - Mocking</li>
+                        <li><strong>golden_toolkit</strong> - Screenshot Tests</li>
+                        <li><strong>patrol</strong> - Erweiterte Integration Tests</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="code-block">
+<pre># Tests ausführen
+flutter test
+
+# Mit Coverage
+flutter test --coverage
+
+# Integration Tests
+flutter drive --target=test_driver/app.dart</pre>
+            </div>
+        </div>
+
+        <!-- Slide 15: Praktisches Beispiel -->
+        <div class="slide">
+            <h2>Praktisches Beispiel: Login testen</h2>
+            <div class="code-block">
+<pre>class LoginValidator {
+  static bool isValidEmail(String email) {
+    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+  }
+  
+  static bool isValidPassword(String password) {
+    return password.length >= 8;
+  }
+}</pre>
+            </div>
+            <div class="code-block">
+<pre>void main() {
+  group('LoginValidator Tests', () {
+    test('Valide Email wird akzeptiert', () {
+      expect(LoginValidator.isValidEmail('test@example.com'), isTrue);
+    });
+    
+    test('Invalide Email wird abgelehnt', () {
+      expect(LoginValidator.isValidEmail('invalid-email'), isFalse);
+    });
+    
+    test('Password muss mindestens 8 Zeichen haben', () {
+      expect(LoginValidator.isValidPassword('1234567'), isFalse);
+      expect(LoginValidator.isValidPassword('12345678'), isTrue);
+    });
+  });
+}</pre>
+            </div>
+        </div>
+
+        <!-- Slide 16: Debugging und Fehleranalyse -->
+        <div class="slide">
+            <h2>Debugging während des Testings</h2>
+            <h3>Wenn Tests fehlschlagen:</h3>
+            <ol>
+                <li>🔍 <strong>Fehlermeldung genau lesen</strong></li>
+                <li>📍 <strong>Stack Trace analysieren</strong></li>
+                <li>🐛 <strong>debugPrint() einsetzen</strong></li>
+                <li>⏸️ <strong>Breakpoints setzen</strong></li>
+                <li>📸 <strong>Screenshots machen</strong></li>
+            </ol>
+            <div class="code-block">
+<pre>// Debugging in Tests
+testWidgets('Debug Beispiel', (tester) async {
+  await tester.pumpWidget(MyApp());
+  
+  // Debug Output
+  debugPrint('Widget Tree: ${tester.allWidgets}');
+  
+  // Screenshot für Debugging
+  await expectLater(
+    find.byType(MyApp),
+    matchesGoldenFile('screenshots/myapp.png'),
+  );
+});</pre>
+            </div>
+        </div>
+
+        <!-- Slide 17: Continuous Integration -->
+        <div class="slide">
+            <h2>Testing in CI/CD Pipeline</h2>
+            <h3>Automatisierung ist der Schlüssel! 🔑</h3>
+            <div class="diagram">
+                <p>Push Code → Run Tests → Build App → Deploy</p>
+            </div>
+            <h3>Beispiel GitHub Actions:</h3>
+            <div class="code-block">
+<pre>name: Flutter Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter test --coverage</pre>
+            </div>
+        </div>
+
+        <!-- Slide 18: Zusammenfassung -->
+        <div class="slide">
+            <h2>Zusammenfassung</h2>
+            <div class="success">
+                <h3>Das haben wir gelernt:</h3>
+            </div>
+            <ul>
+                <li>✅ Die drei Testarten in Flutter (Unit, Widget, Integration)</li>
+                <li>✅ Funktionale vs. nicht-funktionale Anforderungen</li>
+                <li>✅ Testpläne erstellen und dokumentieren</li>
+                <li>✅ Best Practices für effektives Testing</li>
+                <li>✅ Tools und Automatisierung</li>
+            </ul>
+            <div class="diagram">
+                <h3>Merke: Testing ist keine Last, sondern eine Investition! 💎</h3>
+            </div>
+        </div>
+
+        <!-- Slide 19: Fragen -->
+        <div class="slide title-slide">
+            <h1>Fragen? 🤔</h1>
+            <div class="icon">💬</div>
+            <p class="subtitle">Jetzt ist Zeit für Ihre Fragen!</p>
+            <br>
+            <p class="info">Gleich geht's weiter mit praktischen Übungen...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button id="prevBtn" onclick="changeSlide(-1)">Zurück</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Weiter</button>
+    </div>
+    
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">19</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentSlide > 0) changeSlide(-1);
+            if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) changeSlide(1);
+            if (e.key === ' ') {
+                e.preventDefault();
+                if (currentSlide < totalSlides - 1) changeSlide(1);
+            }
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

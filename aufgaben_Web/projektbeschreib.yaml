@@ -1,0 +1,94 @@
+projekt:
+  titel: "Einführung ins Webmodul"
+  beschreibung: >
+    Lernprojekt für Lernende im 1. Lehrjahr (Informatiker:in EFZ Applikationsentwicklung).
+    Ziel ist es, die Grundlagen von Web entwicklung zu verstehen und anzuwenden. Die Lernenden arbeiten
+    nach dem SOL-3-Prinzip mit selbstständigen, explorativen und kollaborativen Lernformen.
+    Die Lerninhalte werden über eine SharePoint-Seite bereitgestellt, mit YouTube-Videos
+    und zugehörigen Aufgaben, die in Microsoft Teams eingereicht werden.
+
+  zielgruppe: "Lernende im 1. Lehrjahr, Informatiker:in EFZ Applikationsentwicklung"
+  lernplattformen:
+    - SharePoint (Inhalte & Struktur)
+    - YouTube (Videos)
+    - Microsoft Teams (Aufgabenverwaltung & Abgaben)
+
+  Themengebiete:
+    HTML:
+      Grundstruktur einer HTML-Seite:
+        In diesem Einstiegsvideo lernst du, wie eine HTML-Seite aufgebaut ist.
+        Du verstehst die Bedeutung der Grundstruktur (<!DOCTYPE html>, <html>, <head>, <body>) und kannst eine eigene Datei mit diesem Grundgerüst erstellen.
+      Textformatierung:  Video Zeige Überschriften (<h1>–<h6>), Absatz (<p>), Listen (<ul>,<ol>,<li>). Erkläre, wie man Text logisch gliedert.
+      Links und Bilder: Video Demonstriere <a href="URL">Link</a> und <img src="bild.jpg" alt="...">
+      Formulare: Video Kurzer Überblick über Tabellen (<table>) und einfache Formulare (<form>, <input>)
+    CSS:
+      Einbindung von CSS: Video Unterschied von Inline-, Internal- und External-Stylesheets zeigen.
+      Selektoren und Eigenschaften: Video Erkläre Klassenselektor (.klassenname), ID-Selektor (#id) und elementare Selektoren (z.B. p). Demonstriere Formatierungen (Farben, Schriftgrößen)
+      Box-Modell & Layout: Zeige Inhalte mit margin, padding und border. Erkläre Block- vs. Inline-Elemente. 
+      Flexbox/Grid: Grundidee von Flexbox demonstrieren (Container mit flexiblen Items).
+      Responsive Design: Media Query zeigen (@media) für unterschiedliche Bildschirmbreiten. 
+    JavaScript:
+      Einbindung & Basics:  <script>-Tag im HTML, Unterschied <script> im Head vs. Body. Demo von console.log() im Browser
+      Variablen, Datentypen, Kontrollstrukturen:  let/const, einfache Rechenoperationen, if/else demonstrieren.
+      DOM-Manipulation: document.getElementById() oder querySelector, innerText/innerHTML ändern. 
+      Event Handling: addEventListener für Klick- oder Eingabe-Events.
+      Einbinden externer JS-Date: Video: JS in eigene .js-Datei auslagern
+      Ajax/Fetch / asynchrone Calls: Zeige einen fetch()-Aufruf (z.B. gegen eine öffentliche API).
+    Owasp Top 10:
+      Injection A03: Erkläre SQL- bzw. JavaScript-Injektion prinzipiell.
+      XSS Cross-Site Scripting: Zeige Beispiele für XSS-Angriffe.
+      Broken Access Control / Authentifizierung: Kurze Theorie, warum Schwachstellen gefährlich sind.
+    JSON:
+      JSON-Grundlagen: Syntax Objekte , Arrays , Paare Schlüssel: Wert.
+      JSON & JavaScript: JSON.parse und JSON.stringify 
+      JSON in Web-APIs: Beispiel: Web-API liefert JSON z.B. Dummy-API
+    HTTPS:
+      API: Grundlagen: Was ist eine API? Unterschied REST vs. SOAP.
+      HTTPS-Grundlagen: SSL/TLS, Zertifikate, Verschlüsselung.
+      Sicherheit bei APIs: Authentifizierung (API-Keys, OAuth), Rate Limiting.
+    GIT:
+      Grundlagen (Init, Add, Commit): git init, git add ., git commit -m "Nachricht"
+      Branching & Merging: git branch, git checkout, git merge
+      Remote Repositories: git remote add origin URL, git push, git pull
+      Konfliktmanagement: Konflikte erkennen und lösen (Merge-Konflikte)
+      Best Practices: Commit-Nachrichten, .gitignore, Branching-Strategien
+    Node JS:
+      Einführung in Node.js: Was ist Node.js? Vorteile und Anwendungsgebiete.
+      NPM (Paketmanager): npm init, npm install, package.json
+      Einfache Server-Anwendung: Erstelle einen einfachen HTTP-Server mit dem http-Modul.
+      Node mit Express (Überleitung): Einführung in Express.js, einfache Routen erstellen.
+    Database:
+      DB-Grundlagen & Installation: Relationale vs. NoSQL-Datenbanken, Installation von MySQL/MongoDB.
+      CRUD-Operationen: Erkläre Create, Read, Update, Delete mit SQL-Befehlen bzw. MongoDB-Methoden.
+      Integration mit Node/Express: Verbinde eine Node.js-Anwendung mit der Datenbank.
+    ExpressJS:
+      Einführung in Express.js: Was ist Express? Vorteile gegenüber reinem Node.js.
+      Routen & Middleware: Erstelle einfache Routen, erkläre Middleware-Konzepte.
+      RESTful APIs mit Express: Baue eine einfache REST-API (GET, POST, PUT, DELETE).
+      Fehlerbehandlung & Sicherheit: Grundlegende Fehlerbehandlung und Sicherheitsaspekte (z.B. Helmet).
+    REACT:
+      Einführung in React: Was ist React? Komponentenbasierte Architektur.
+      JSX  Komponenten: Erkläre JSX-Syntax, erstelle funktionale Komponenten.
+      State und Props: Unbterschied zwischen State und Props State Management.
+      Event Handling  Lifecycle: Ereignisbehandlung in React, Lifecycle-Methoden z.B. useEffect.
+      Routing mit React Router: Einführung in React Router, einfache Navigation zwischen Seiten.
+
+
+
+  struktur:
+    - Pro Hauptthema gibt es Unterthemen
+    - Pro Unterhema: 1 Video + 4 - 6 Aufgaben mit unterschiedlicher Schwierigkeit
+    - Aufgaben enthalten alle notwendigen Ressourcen um eine neue Aufgabe oder Quiz oder Lernbeschleuniger zu erstellen
+
+  bewertung:
+    typ: "formatives Feedback"
+    system: "Abgabe und Rückmeldung über Microsoft Teams"
+
+  tools:
+    - YouTube
+    - Microsoft Teams
+    - SharePoint
+
+  autor: "Tim Leibacher"
+  version: "1.0"
+  datum: "2025-10-15"

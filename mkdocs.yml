@@ -19,6 +19,3 @@ plugins:
   - search
 
 repo_url: https://github.com/Tim-Leibacher/Teachings
-
-exclude:
-  - "**/node_modules/**"

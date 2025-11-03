@@ -1,0 +1,181 @@
+site_name: BAND Web Development Kurs
+site_description: Aufgaben für den Webentwicklungs-Kurs
+site_author: Tim Leibacher - BAND
+docs_dir: docs
+site_url: https://tim-leibacher.github.io/Teachings/web/
+
+theme:
+  name: material
+  language: de
+  custom_dir: overrides # Für weitere Anpassungen
+
+  # BAND Farbschema
+  palette:
+    # Heller Modus - BAND Blau
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Zu Dunkelmodus wechseln
+
+    # Dunkler Modus - BAND Blau Dunkel
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Zu Hellmodus wechseln
+
+  # BAND Logo und Favicon (optional - später hinzufügen)
+  # logo: assets/band-logo.svg
+  # favicon: assets/favicon.ico
+
+  features:
+    - navigation.instant # Schnelles Laden
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking # URL aktualisiert sich beim Scrollen
+    - navigation.tabs # Tabs für Hauptbereiche
+    - navigation.tabs.sticky # Tabs bleiben sichtbar
+    - navigation.sections # Sections in Sidebar
+    - navigation.expand # Alle Sections ausgeklappt
+    - navigation.path # Breadcrumbs
+    - navigation.indexes # Section index pages
+    - navigation.top # "Back to top" Button
+    - navigation.footer # Prev/Next Links im Footer
+    - toc.follow # TOC folgt beim Scrollen
+    - toc.integrate # TOC in Sidebar integriert
+    - search.highlight # Suchergebnisse highlighten
+    - search.suggest # Suchvorschläge
+    - search.share # Suche teilen
+    - content.code.copy # Copy-Button für Code
+    - content.code.annotate # Code-Annotationen
+    - content.tabs.link # Verknüpfte Tabs
+    - content.tooltips # Tooltips für Abkürzungen
+
+  # Custom CSS für BAND Design
+  extra_css:
+    - stylesheets/band-theme.css
+
+plugins:
+  - search:
+      lang: de
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - tags:
+      tags_file: tags.md
+
+markdown_extensions:
+  # Code Highlighting
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format:
+            !!python/name:pymdownx.superfences.fence_code_format # Tabs für Code-Beispiele
+
+
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+
+  # Admonitions (Info-Boxen)
+  - admonition
+  - pymdownx.details
+
+  # Emojis und Icons
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator:
+        !!python/name:material.extensions.emoji.to_svg # Attribute für Styling
+
+
+  - attr_list
+  - md_in_html
+
+  # Listen und Tasks
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Tabellen
+  - tables
+
+  # Fußnoten
+  - footnotes
+
+  # Typografische Verbesserungen
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+  # Bessere Listen
+  - pymdownx.betterem:
+      smart_enable: all
+
+  # Abkürzungen
+  - abbr
+
+  # Meta
+  - meta
+
+# Storyboards und versteckte Dateien ausschließen
+exclude_docs: |
+  ../storyboards/
+  **/drafts/
+  **/.DS_Store
+
+# Repository Info
+repo_url: https://github.com/Tim-Leibacher/Teachings
+repo_name: Tim-Leibacher/Teachings
+edit_uri: edit/main/web/docs/
+
+# Extra Konfiguration
+extra:
+  # Social Media Links
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Tim-Leibacher
+      name: GitHub
+
+  # Copyright
+  copyright: Copyright &copy; 2024 BAND - Tim Leibacher
+
+# Navigation Structure
+nav:
+  - 🏠 Home: index.md
+  - 📝 HTML:
+      - 01-HTML/index.md
+      - Struktur:
+          - Grundgerüst: 01-HTML/01-Struktur/01-Grundgeruest.md
+          - Erste Inhalte: 01-HTML/01-Struktur/02-Erste-Inhalte.md
+          - Semantik: 01-HTML/01-Struktur/03-Semantik.md
+          - Optional - Accessibility: 01-HTML/01-Struktur/04-Optional-Accessibility.md
+      - Text:
+          - Über mich: 01-HTML/02-Text/01-Ueber-mich.md
+          - Formatierung: 01-HTML/02-Text/02-Formatierung.md
+          - Listen: 01-HTML/02-Text/03-Listen.md
+          - Optional - Typografie: 01-HTML/02-Text/04-Optional-Typografie.md
+      - Links & Bilder:
+          - Navigation: 01-HTML/03-LinksBilder/01-Navigation.md
+          - Bilder: 01-HTML/03-LinksBilder/02-Bilder.md
+          - Projekt Galerie: 01-HTML/03-LinksBilder/03-Projekt-Galerie.md
+          - Optional - Performance: 01-HTML/03-LinksBilder/04-Optional-Performance.md
+  # - 🎨 CSS:
+  #   - 02-CSS/index.md
+  # - ⚡ JavaScript:
+  #   - 03-JavaScript/index.md
+  # - 🏷️ Tags: tags.md

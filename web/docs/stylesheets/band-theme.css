@@ -1,0 +1,478 @@
+/**
+ * BAND Design System für MkDocs Material
+ * Basierend auf offiziellen BAND CD-Richtlinien
+ */
+
+/* ========================================
+   CSS Variablen - BAND Farbpalette
+   ======================================== */
+
+:root {
+  /* BAND Primärfarben - Blau */
+  --band-blue-300: #4E9BCC;
+  --band-blue-700: #376B8C;
+  --band-blue-900: #1F3B4E;
+  
+  /* BAND Primärfarben - Türkis */
+  --band-turquoise-300: #45BA98;
+  --band-turquoise-700: #29786A;
+  --band-turquoise-900: #0C4543;
+  
+  /* BAND Primärfarben - Orange */
+  --band-orange-300: #FEAF51;
+  --band-orange-700: #CD7A15;
+  --band-orange-900: #6D3D03;
+  
+  /* Neutrale Grautöne */
+  --band-gray-100: #F8F8F8;
+  --band-gray-200: #EDEDED;
+  --band-gray-300: #D0D0D0;
+  --band-gray-500: #888888;
+  --band-gray-800: #333333;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+/* ========================================
+   Typografie - Aptos Font
+   ======================================== */
+
+body {
+  font-family: 'Aptos', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Überschriften mit BAND-Farben */
+.md-typeset h1 {
+  color: var(--band-blue-900);
+  font-weight: bold;
+  border-bottom: 3px solid var(--band-blue-300);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.md-typeset h2 {
+  color: var(--band-blue-700);
+  font-weight: bold;
+  border-left: 4px solid var(--band-blue-300);
+  padding-left: 1rem;
+  margin-top: 2rem;
+}
+
+.md-typeset h3 {
+  color: var(--band-blue-700);
+  font-weight: 600;
+}
+
+.md-typeset h4 {
+  color: var(--band-gray-800);
+  font-weight: 600;
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
+
+/* Haupt-Header */
+.md-header {
+  background-color: var(--band-blue-900) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.md-header__title {
+  font-weight: bold;
+  color: white !important;
+}
+
+/* Navigation Tabs */
+.md-tabs {
+  background-color: var(--band-blue-700) !important;
+}
+
+.md-tabs__link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: white !important;
+  background-color: var(--band-blue-300);
+  border-radius: 4px 4px 0 0;
+}
+
+/* Sidebar Navigation */
+.md-nav__item--active > .md-nav__link {
+  color: var(--band-blue-700) !important;
+  font-weight: bold;
+  border-left: 3px solid var(--band-blue-300);
+  padding-left: calc(1rem - 3px);
+}
+
+.md-nav__link:hover {
+  color: var(--band-blue-300) !important;
+}
+
+/* ========================================
+   Content Bereich
+   ======================================== */
+
+/* Code-Blöcke */
+.md-typeset code {
+  background-color: var(--band-gray-100);
+  border: 1px solid var(--band-gray-300);
+  color: var(--band-blue-900);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+.md-typeset pre > code {
+  background-color: var(--band-blue-900);
+  color: #fff;
+}
+
+/* Syntax Highlighting für Code */
+.highlight .hll { background-color: var(--band-orange-300); }
+.highlight .k { color: var(--band-turquoise-300); font-weight: bold; }
+.highlight .s { color: var(--band-orange-300); }
+
+/* ========================================
+   Admonitions (Info-Boxen)
+   ======================================== */
+
+/* Info / Note - Blau */
+.md-typeset .admonition.note,
+.md-typeset .admonition.info {
+  border-left: 4px solid var(--band-blue-700);
+  background-color: rgba(78, 155, 204, 0.1);
+}
+
+.md-typeset .admonition.note > .admonition-title,
+.md-typeset .admonition.info > .admonition-title {
+  background-color: rgba(78, 155, 204, 0.2);
+  color: var(--band-blue-900);
+}
+
+.md-typeset .admonition.note > .admonition-title::before,
+.md-typeset .admonition.info > .admonition-title::before {
+  background-color: var(--band-blue-700);
+}
+
+/* Success / Tip - Türkis */
+.md-typeset .admonition.success,
+.md-typeset .admonition.tip {
+  border-left: 4px solid var(--band-turquoise-700);
+  background-color: rgba(69, 186, 152, 0.1);
+}
+
+.md-typeset .admonition.success > .admonition-title,
+.md-typeset .admonition.tip > .admonition-title {
+  background-color: rgba(69, 186, 152, 0.2);
+  color: var(--band-turquoise-900);
+}
+
+/* Warning - Orange */
+.md-typeset .admonition.warning {
+  border-left: 4px solid var(--band-orange-700);
+  background-color: rgba(254, 175, 81, 0.1);
+}
+
+.md-typeset .admonition.warning > .admonition-title {
+  background-color: rgba(254, 175, 81, 0.2);
+  color: var(--band-orange-900);
+}
+
+/* Danger / Error - Rot (verwendet Orange als Basis) */
+.md-typeset .admonition.danger,
+.md-typeset .admonition.error {
+  border-left: 4px solid var(--band-orange-900);
+  background-color: rgba(109, 61, 3, 0.1);
+}
+
+.md-typeset .admonition.danger > .admonition-title,
+.md-typeset .admonition.error > .admonition-title {
+  background-color: rgba(109, 61, 3, 0.2);
+  color: var(--band-orange-900);
+}
+
+/* ========================================
+   Links
+   ======================================== */
+
+.md-typeset a {
+  color: var(--band-blue-700);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--band-blue-300);
+  border-bottom-color: var(--band-blue-300);
+}
+
+/* ========================================
+   Buttons & Call-to-Actions
+   ======================================== */
+
+.md-button {
+  background-color: var(--band-blue-700);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.md-button:hover {
+  background-color: var(--band-blue-300);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.md-button--primary {
+  background-color: var(--band-blue-700);
+}
+
+.md-button--secondary {
+  background-color: var(--band-turquoise-700);
+}
+
+/* ========================================
+   Tables
+   ======================================== */
+
+.md-typeset table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset table thead {
+  background-color: var(--band-blue-700);
+  color: white;
+}
+
+.md-typeset table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+}
+
+.md-typeset table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--band-gray-300);
+}
+
+.md-typeset table tbody tr:hover {
+  background-color: rgba(78, 155, 204, 0.05);
+}
+
+/* ========================================
+   Badges (für Handlungskompetenzen)
+   ======================================== */
+
+.badge-a { 
+  background-color: var(--band-blue-700); 
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.875rem;
+  display: inline-block;
+  margin: 0.25rem;
+}
+
+.badge-b { background-color: var(--band-turquoise-700); color: white; }
+.badge-c { background-color: var(--band-orange-700); color: white; }
+.badge-d { background-color: var(--band-blue-900); color: white; }
+.badge-e { background-color: var(--band-turquoise-900); color: white; }
+.badge-f { background-color: var(--band-orange-300); color: var(--band-gray-800); }
+.badge-g { background-color: var(--band-blue-300); color: white; }
+.badge-h { background-color: var(--band-turquoise-300); color: white; }
+
+/* ========================================
+   Search
+   ======================================== */
+
+.md-search__input {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.md-search__input:focus {
+  background-color: white;
+  color: var(--band-blue-900);
+  border-color: var(--band-blue-300);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.md-footer {
+  background-color: var(--band-blue-900);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.md-footer-meta {
+  background-color: var(--band-blue-900);
+}
+
+.md-footer__link {
+  color: var(--band-blue-300) !important;
+}
+
+.md-footer__link:hover {
+  color: white !important;
+}
+
+/* ========================================
+   Scrollbar
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--band-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--band-blue-300);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--band-blue-700);
+}
+
+/* ========================================
+   Dark Mode Anpassungen
+   ======================================== */
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--band-blue-900);
+  --md-accent-fg-color: var(--band-blue-300);
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background-color: var(--band-blue-900);
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: var(--band-blue-700);
+}
+
+/* ========================================
+   Responsive Anpassungen
+   ======================================== */
+
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    background-color: var(--band-blue-900);
+    color: white;
+  }
+}
+
+/* ========================================
+   Animationen
+   ======================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.md-content {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Respekt für reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   Custom Components für Markdown
+   ======================================== */
+
+/* Status Indicators */
+.status-planned {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(78, 155, 204, 0.2);
+  border: 2px solid var(--band-blue-700);
+  color: var(--band-blue-700);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.status-in-progress {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(254, 175, 81, 0.2);
+  border: 2px solid var(--band-orange-700);
+  color: var(--band-orange-700);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.status-completed {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(69, 186, 152, 0.2);
+  border: 2px solid var(--band-turquoise-700);
+  color: var(--band-turquoise-700);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Cards für besondere Inhalte */
+.band-card {
+  background: white;
+  border-left: 4px solid var(--band-blue-700);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.band-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.band-card-turquoise {
+  border-left-color: var(--band-turquoise-700);
+}
+
+.band-card-orange {
+  border-left-color: var(--band-orange-700);
+}

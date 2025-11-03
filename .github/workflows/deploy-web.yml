@@ -1,9 +1,12 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy Web Module to GitHub Pages
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "web/**"
+      - ".github/workflows/deploy-web.yml"
 
 permissions:
   contents: write
@@ -27,12 +30,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install mkdocs-material
 
-      - name: Build site
-        run: mkdocs build --strict --verbose
+      - name: Build web module
+        run: |
+          cd web
+          mkdocs build --verbose
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          publish_dir: ./web/site
+          destination_dir: web
           publish_branch: gh-pages

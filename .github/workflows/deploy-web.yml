@@ -1,4 +1,4 @@
-name: Deploy Web Module to GitHub Pages
+name: Deploy Web Module
 
 on:
   push:
@@ -12,30 +12,29 @@ permissions:
   contents: write
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install MkDocs
         run: |
-          python -m pip install --upgrade pip
           pip install mkdocs-material
 
-      - name: Build web module
+      - name: Build
         run: |
           cd web
           mkdocs build --verbose
 
-      - name: Deploy to gh-pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

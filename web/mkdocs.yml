@@ -7,7 +7,6 @@ site_url: https://tim-leibacher.github.io/Teachings/web/
 theme:
   name: material
   language: de
-  custom_dir: overrides # Für weitere Anpassungen
 
   # BAND Farbschema
   palette:

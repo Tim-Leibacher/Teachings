@@ -1,12 +1,55 @@
-/* BAND Design - Minimal */
+/* ========================================
+   BAND Design System - Custom Theme
+   ======================================== */
+
 :root {
+  /* BAND Primärfarben */
   --band-blue: #376B8C;
   --band-blue-light: #4E9BCC;
+  --band-blue-dark: #1F3B4E;
+  --band-turquoise: #29786A;
+  --band-turquoise-light: #45BA98;
+  --band-orange: #CD7A15;
+  --band-orange-light: #FEAF51;
+  
+  /* Grautöne */
+  --band-gray-100: #F8F8F8;
+  --band-gray-300: #D0D0D0;
+  --band-gray-800: #333333;
 }
+
+/* ========================================
+   Material Theme Overrides - BAND Colors
+   ======================================== */
+
+/* Primary Color Override */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--band-blue);
+  --md-primary-fg-color--light: var(--band-blue-light);
+  --md-primary-fg-color--dark: var(--band-blue-dark);
+  --md-accent-fg-color: var(--band-blue-light);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--band-blue-dark);
+  --md-primary-fg-color--light: var(--band-blue);
+  --md-primary-fg-color--dark: var(--band-blue-dark);
+  --md-accent-fg-color: var(--band-blue-light);
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
 
 /* Header */
 .md-header {
   background-color: var(--band-blue) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.md-header__title {
+  color: white !important;
+  font-weight: bold;
 }
 
 /* Tabs */
@@ -14,46 +57,242 @@
   background-color: var(--band-blue-light) !important;
 }
 
-.md-tabs__link--active {
+.md-tabs__link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
   color: white !important;
   font-weight: bold;
 }
 
-/* Navigation */
+/* ========================================
+   Sidebar Navigation
+   ======================================== */
+
+/* Gruppen-Überschriften (HTML Struktur, HTML Text, etc.) */
+.md-nav__item--section > .md-nav__link {
+  font-weight: bold;
+  color: var(--band-blue) !important;
+  font-size: 1.05em;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--band-gray-300);
+}
+
+.md-nav__item--section:first-child > .md-nav__link {
+  border-top: none;
+  margin-top: 0;
+}
+
+/* Aktiver Link */
 .md-nav__item--active > .md-nav__link {
   color: var(--band-blue) !important;
   font-weight: bold;
+  border-left: 3px solid var(--band-blue-light);
+  padding-left: calc(0.6rem - 3px);
 }
+
+/* Hover Effekt */
+.md-nav__link:hover {
+  color: var(--band-blue-light) !important;
+}
+
+/* ========================================
+   Content Bereich
+   ======================================== */
 
 /* Überschriften */
 .md-typeset h1 {
   color: var(--band-blue);
-  border-bottom: 2px solid var(--band-blue-light);
+  border-bottom: 3px solid var(--band-blue-light);
   padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
 }
 
 .md-typeset h2 {
   color: var(--band-blue);
+  border-left: 4px solid var(--band-blue-light);
+  padding-left: 1rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.md-typeset h3 {
+  color: var(--band-blue);
+  font-weight: 600;
+}
+
+.md-typeset h4 {
+  color: var(--band-gray-800);
+  font-weight: 600;
 }
 
 /* Links */
 .md-typeset a {
   color: var(--band-blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .md-typeset a:hover {
   color: var(--band-blue-light);
+  border-bottom-color: var(--band-blue-light);
 }
 
-/* Code */
+/* Code Blocks */
 .md-typeset code {
-  background-color: #f5f5f5;
+  background-color: var(--band-gray-100);
+  border: 1px solid var(--band-gray-300);
+  color: var(--band-blue);
   padding: 0.2em 0.4em;
   border-radius: 3px;
+  font-size: 0.9em;
 }
 
-/* Tabellen */
+.md-typeset pre > code {
+  background-color: var(--band-blue-dark);
+  color: #fff;
+  border: none;
+}
+
+/* ========================================
+   Admonitions (Info-Boxen)
+   ======================================== */
+
+/* Info/Note - Blau */
+.md-typeset .admonition.note,
+.md-typeset .admonition.info {
+  border-left: 4px solid var(--band-blue);
+  background-color: rgba(78, 155, 204, 0.1);
+}
+
+.md-typeset .admonition.note > .admonition-title,
+.md-typeset .admonition.info > .admonition-title {
+  background-color: rgba(78, 155, 204, 0.2);
+  color: var(--band-blue-dark);
+}
+
+/* Success/Tip - Türkis */
+.md-typeset .admonition.success,
+.md-typeset .admonition.tip {
+  border-left: 4px solid var(--band-turquoise);
+  background-color: rgba(69, 186, 152, 0.1);
+}
+
+.md-typeset .admonition.success > .admonition-title,
+.md-typeset .admonition.tip > .admonition-title {
+  background-color: rgba(69, 186, 152, 0.2);
+  color: var(--band-turquoise);
+}
+
+/* Warning - Orange */
+.md-typeset .admonition.warning {
+  border-left: 4px solid var(--band-orange);
+  background-color: rgba(254, 175, 81, 0.1);
+}
+
+.md-typeset .admonition.warning > .admonition-title {
+  background-color: rgba(254, 175, 81, 0.2);
+  color: var(--band-orange);
+}
+
+/* ========================================
+   Tabellen
+   ======================================== */
+
+.md-typeset table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .md-typeset table thead {
   background-color: var(--band-blue);
   color: white;
+}
+
+.md-typeset table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+}
+
+.md-typeset table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--band-gray-300);
+}
+
+.md-typeset table tbody tr:hover {
+  background-color: rgba(78, 155, 204, 0.05);
+}
+
+/* ========================================
+   Search
+   ======================================== */
+
+.md-search__input {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.md-search__input:focus {
+  background-color: white;
+  color: var(--band-blue-dark);
+  border-color: var(--band-blue-light);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.md-footer {
+  background-color: var(--band-blue-dark);
+}
+
+.md-footer-meta {
+  background-color: var(--band-blue-dark);
+}
+
+/* ========================================
+   Scrollbar
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--band-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--band-blue-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--band-blue);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    background-color: var(--band-blue);
+    color: white;
+  }
 }

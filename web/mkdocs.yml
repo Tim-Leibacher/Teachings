@@ -9,18 +9,21 @@ theme:
   language: de
 
   palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
-        name: Dunkelmodus
-    - scheme: slate
-      primary: indigo
-      accent: indigo
+        name: Zu Dunkelmodus wechseln
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
-        name: Hellmodus
+        name: Zu Hellmodus wechseln
 
   features:
     - navigation.instant
@@ -54,18 +57,18 @@ repo_url: https://github.com/Tim-Leibacher/Teachings
 
 nav:
   - HTML:
-      - Struktur:
-          - 01-HTML/01-Struktur/01-Grundgeruest.md
-          - 01-HTML/01-Struktur/02-Erste-Inhalte.md
-          - 01-HTML/01-Struktur/03-Semantik.md
-          - 01-HTML/01-Struktur/04-Optional-Accessibility.md
-      - Text:
-          - 01-HTML/02-Text/01-Ueber-mich.md
-          - 01-HTML/02-Text/02-Formatierung.md
-          - 01-HTML/02-Text/03-Listen.md
-          - 01-HTML/02-Text/04-Optional-Typografie.md
-      - Links & Bilder:
-          - 01-HTML/03-LinksBilder/01-Navigation.md
-          - 01-HTML/03-LinksBilder/02-Bilder.md
-          - 01-HTML/03-LinksBilder/03-Projekt-Galerie.md
-          - 01-HTML/03-LinksBilder/04-Optional-Performance.md
+      - HTML Struktur:
+          - Auftrag 1 - Dein Portfolio-Grundgerüst: 01-HTML/01-Struktur/01-Grundgeruest.md
+          - Auftrag 2 - Willkommen auf deinem Portfolio: 01-HTML/01-Struktur/02-Erste-Inhalte.md
+          - Auftrag 3 - Professionelle Seitenstruktur: 01-HTML/01-Struktur/03-Semantik.md
+          - Auftrag 4 - Barrierefreiheit & SEO: 01-HTML/01-Struktur/04-Optional-Accessibility.md
+      - HTML Text:
+          - Auftrag 1 - "Über mich": 01-HTML/02-Text/01-Ueber-mich.md
+          - Auftrag 2 - Wichtiges hervorheben: 01-HTML/02-Text/02-Formatierung.md
+          - Auftrag 3 - Skills & Interessen: 01-HTML/02-Text/03-Listen.md
+          - Auftrag 4 - Typografie & Textgestaltung: 01-HTML/02-Text/04-Optional-Typografie.md
+      - HTML Links & Bilder:
+          - Auftrag 1 - Navigation: 01-HTML/03-LinksBilder/01-Navigation.md
+          - Auftrag 2 - Bilder einbinden: 01-HTML/03-LinksBilder/02-Bilder.md
+          - Auftrag 3 - Projekt-Galerie: 01-HTML/03-LinksBilder/03-Projekt-Galerie.md
+          - Auftrag 4 - Performance & Bildoptimierung: 01-HTML/03-LinksBilder/04-Optional-Performance.md

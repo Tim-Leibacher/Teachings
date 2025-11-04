@@ -1,9 +1,9 @@
 # Auftrag 3: Projekt-Galerie – Zeige deine (zukünftigen) Projekte
 
-## 🎯 Ziel
+## Ziel
 Du erstellst eine Projekt-Sektion in deinem Portfolio, die zukünftige Projekte aufnehmen kann. Mit Bildern, Beschreibungen und Links entsteht eine professionelle Präsentation.
 
-## 📋 Beschreibung
+## Beschreibung
 
 Jedes Portfolio braucht eine Projekt-Sektion! Auch wenn du noch nicht viele Projekte hast, erstellst du jetzt die Struktur dafür. Du kannst Platzhalter-Projekte oder erste kleine Arbeiten zeigen.
 
@@ -200,7 +200,7 @@ Erstelle für dein Hauptprojekt (dieses Portfolio) eine eigene Seite:
 
 ---
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Eine "Meine Projekte"-Sektion mit `<h2>` existiert
 - [ ] Mindestens 3 Projekt-Karten sind vorhanden
@@ -211,7 +211,7 @@ Erstelle für dein Hauptprojekt (dieses Portfolio) eine eigene Seite:
 - [ ] Alle Links funktionieren (auch wenn auf leere Seiten verwiesen wird)
 - [ ] Optional: Eine Projekt-Detailseite existiert
 
-## 💡 Tipps
+## Tipps
 
 - **Nutze `<article>` für Projekt-Karten** – semantisch korrekt!
 - Halte Projektbeschreibungen kurz und prägnant (max. 3 Sätze)
@@ -219,7 +219,7 @@ Erstelle für dein Hauptprojekt (dieses Portfolio) eine eigene Seite:
 - Screenshots erstellen: `F12` → DevTools → `Ctrl + Shift + P` → "Capture full size screenshot"
 - Platzhalter-Bilder: [Lorem Picsum](https://picsum.photos/) für automatische Bilder
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Warum ist `<article>` für Projekt-Karten besser als nur `<div>`?
 2. Teste: Wie wirkt deine Projekt-Galerie auf einem Smartphone? (Browser verkleinern)
@@ -227,7 +227,7 @@ Erstelle für dein Hauptprojekt (dieses Portfolio) eine eigene Seite:
 4. Überlege: Welche Projekte wirst du in Zukunft hier zeigen?
 5. Inspiziere Portfolio-Seiten von anderen (z.B. auf Dribbble) – wie sind Projekte dort präsentiert?
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 - [MDN: `<article>`](https://developer.mozilla.org/de/docs/Web/HTML/Element/article)
 - [MDN: `<figure>` & `<figcaption>`](https://developer.mozilla.org/de/docs/Web/HTML/Element/figure)

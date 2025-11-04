@@ -1,9 +1,9 @@
 # Auftrag 4 (Optional): Performance & Bildoptimierung – Schneller laden, besser performen
 
-## 🎯 Ziel
+## Ziel
 Du lernst fortgeschrittene Techniken zur Bildoptimierung und verstehst, wie man eine Website performant macht. Diese Skills sind in der professionellen Webentwicklung unverzichtbar!
 
-## 📋 Beschreibung
+## Beschreibung
 
 Eine langsame Website verliert Besucher/innen. Du lernst jetzt, wie du dein Portfolio auf Performance optimierst – besonders die Bilder, die meist die grössten Dateien sind.
 
@@ -235,7 +235,7 @@ MAX GRÖSSEN:
 
 ---
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Lighthouse-Audit durchgeführt (Screenshot gemacht)
 - [ ] Mindestens 3 Bilder sind WebP mit JPG-Fallback
@@ -246,7 +246,7 @@ MAX GRÖSSEN:
 - [ ] Gesamt-Seitengrösse ist unter 1 MB (prüfbar in DevTools → Network)
 - [ ] Eine Performance-Checkliste ist im Code dokumentiert
 
-## 💡 Tipps
+## Tipps
 
 - **Regel:** Bilder sollten nie grösser sein als ihre Anzeigegrösse
 - Nutze Online-Tools für Batch-Konvertierung (mehrere Bilder auf einmal)
@@ -254,7 +254,7 @@ MAX GRÖSSEN:
 - Browser-Cache leeren beim Testen: `Ctrl + Shift + Delete`
 - Mobile testen: DevTools → Toggle Device Toolbar (`Ctrl + Shift + M`)
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Führe einen Lighthouse-Audit durch. Was sind die Top 3 Verbesserungsvorschläge?
 2. Vergleiche: Wie gross ist deine Seite mit Originalbildern vs. optimierten Bildern?
@@ -262,7 +262,7 @@ MAX GRÖSSEN:
 4. Warum sollte man `loading="lazy"` nicht für das Profilbild verwenden?
 5. Recherchiere: Was ist der "Core Web Vitals" Standard von Google?
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 **Bildoptimierung:**
 - [Squoosh](https://squoosh.app) – Bild-Optimizer
@@ -285,7 +285,7 @@ MAX GRÖSSEN:
 
 ---
 
-## 🏆 Bonus-Challenges
+## Bonus-Challenges
 
 **Challenge 1: Performance-Vergleich**
 - Mache einen Lighthouse-Audit VORHER (mit Originalbildern)

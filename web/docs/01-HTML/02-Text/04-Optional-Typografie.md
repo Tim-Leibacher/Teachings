@@ -1,9 +1,9 @@
 # Auftrag 4 (Optional): Typografie & Textgestaltung – Details, die den Unterschied machen
 
-## 🎯 Ziel
+## Ziel
 Du lernst fortgeschrittene HTML-Textelemente kennen und verstehst, wie Details in der Typografie deine Portfolio-Seite professioneller machen.
 
-## 📋 Beschreibung
+## Beschreibung
 
 Professionelle Webseiten nutzen viele Text-Tags, die über `<p>` und `<strong>` hinausgehen. In diesem optionalen Auftrag lernst du die Feinheiten kennen!
 
@@ -159,7 +159,7 @@ Jetzt lerne ich Webentwicklung!</p>
 
 ---
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Mindestens ein `<blockquote>` mit `<cite>` ist eingebaut
 - [ ] Technische Begriffe sind mit `<code>`, `<kbd>` oder `<pre>` ausgezeichnet
@@ -169,7 +169,7 @@ Jetzt lerne ich Webentwicklung!</p>
 - [ ] Die neuen Elemente sind sinnvoll eingesetzt (nicht wahllos)
 - [ ] Beim Hover über `<abbr>` erscheint die Erklärung
 
-## 💡 Tipps
+## Tipps
 
 - **HTML-Entities beachten:** In Code-Beispielen musst du `<` und `>` escapen:
   - `<` wird zu `&lt;`
@@ -179,7 +179,7 @@ Jetzt lerne ich Webentwicklung!</p>
 - Nutze den HTML-Validator, um Fehler zu finden: [validator.w3.org](https://validator.w3.org/)
 - **Profitrick:** Kombiniere Tags sinnvoll: `<strong><code>HTML</code></strong>`
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Was ist der Unterschied zwischen `<blockquote>` und `<q>`? Wann nutzt du was?
 2. Warum sollte man für Code `<code>` statt nur `<span>` verwenden?
@@ -208,7 +208,7 @@ Jetzt lerne ich Webentwicklung!</p>
 - [MDN: Text-Level Semantics](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#text_content)
 - [HTML Living Standard](https://html.spec.whatwg.org/multipage/text-level-semantics.html)
 
-## 🏆 Bonus-Challenge
+## Bonus-Challenge
 
 1. **Erstelle eine "Changelog"-Sektion:**
    - Liste alle Updates deiner Portfolio-Seite auf

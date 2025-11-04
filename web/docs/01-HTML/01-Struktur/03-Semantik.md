@@ -1,9 +1,9 @@
 # Auftrag 3: Professionelle Seitenstruktur – Header, Main & Footer
 
-## 🎯 Ziel
+## Ziel
 Du gliederst deine Portfolio-Seite in semantische Bereiche und bereitest sie für zukünftige Navigation und Inhalte vor.
 
-## 📋 Beschreibung
+## Beschreibung
 
 Professionelle Webseiten haben eine klare Struktur. Du teilst deine Seite jetzt in drei Hauptbereiche:
 
@@ -47,7 +47,7 @@ Der untere Bereich für Kontaktinfos:
 </body>
 ```
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Die Seite ist in drei semantische Bereiche gegliedert: `<header>`, `<main>`, `<footer>`
 - [ ] Der Header enthält deinen Namen als `<h1>` und einen Untertitel
@@ -56,21 +56,21 @@ Der untere Bereich für Kontaktinfos:
 - [ ] Alle Überschriften folgen der logischen Hierarchie (h1 → h2)
 - [ ] Die Seite validiert ohne Fehler (teste mit F12 → Console)
 
-## 💡 Tipps
+## Tipps
 
 - **Warum semantisches HTML?** Browser, Screenreader und Suchmaschinen verstehen deine Struktur besser
 - Nutze die Entwicklertools (F12) und schau dir den "Elements"-Tab an – du siehst die Struktur visuell
 - **Profitrick:** In VS Code kannst du mit `Ctrl+Shift+P` → "Format Document" alles sauber einrücken
 - Achte auf die Überschriften-Hierarchie: Nach `<h1>` kommt `<h2>`, nicht direkt `<h3>`
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Was ist der Unterschied zwischen `<div>` und `<header>`? Warum ist `<header>` besser?
 2. Öffne die Entwicklertools (F12) und schaue dir die Seitenstruktur an. Erkennst du Header, Main und Footer?
 3. Warum sollte es nur eine `<h1>` pro Seite geben?
 4. Teste: Lade deine Seite im privaten/Inkognito-Modus. Funktioniert alles?
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 - [MDN: Semantisches HTML](https://developer.mozilla.org/de/docs/Glossary/Semantics#semantics_in_html)
 - [W3Schools: HTML Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)

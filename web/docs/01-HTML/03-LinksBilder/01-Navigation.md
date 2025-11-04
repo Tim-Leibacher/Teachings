@@ -1,9 +1,9 @@
 # Auftrag 1: Navigation – Verlinke deine Portfolio-Bereiche
 
-## 🎯 Ziel
+## Ziel
 Du erstellst eine funktionierende Navigation für dein Portfolio und lernst verschiedene Link-Arten kennen (intern, extern, E-Mail, Telefon).
 
-## 📋 Beschreibung
+## Beschreibung
 
 Jedes Portfolio braucht eine Navigation! Du erstellst jetzt Links zu deinen verschiedenen Sektionen und fügst externe Kontaktmöglichkeiten hinzu.
 
@@ -150,7 +150,7 @@ Und im `<body>`-Tag ganz oben:
 
 ---
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Eine Navigation mit mindestens 4 internen Links existiert
 - [ ] Alle Anker-Links funktionieren und springen zur richtigen Sektion
@@ -161,7 +161,7 @@ Und im `<body>`-Tag ganz oben:
 - [ ] Ein "Nach oben"-Link existiert und funktioniert
 - [ ] Alle Links sind klar beschriftet (kein "hier klicken")
 
-## 💡 Tipps
+## Tipps
 
 - **Beschreibende Linktexte:** Schreib "GitHub-Profil" statt "Klick hier"
 - **Accessibility:** Screenreader lesen Linktexte vor – sie sollten Sinn ergeben
@@ -169,7 +169,7 @@ Und im `<body>`-Tag ganz oben:
 - **Profitipp:** Nutze das `title`-Attribut für zusätzliche Info beim Hover
 - Teste alle Links – nichts ist peinlicher als ein kaputter Link im Portfolio
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Was ist der Unterschied zwischen `href="#kontakt"` und `href="kontakt.html"`?
 2. Warum ist `target="_blank"` bei externen Links sinnvoll, aber nicht bei internen?
@@ -177,7 +177,7 @@ Und im `<body>`-Tag ganz oben:
 4. Warum sollte man "Klick hier" als Linktext vermeiden? Was wäre besser?
 5. Öffne die DevTools (F12) → Network: Was passiert, wenn du auf einen `#`-Link klickst?
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 - [MDN: `<a>` – Der Anker-Tag](https://developer.mozilla.org/de/docs/Web/HTML/Element/a)
 - [MDN: `<nav>` – Navigation](https://developer.mozilla.org/de/docs/Web/HTML/Element/nav)

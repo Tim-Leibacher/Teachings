@@ -1,9 +1,9 @@
 # Auftrag 3: Skills & Interessen – Strukturieren mit Listen
 
-## 🎯 Ziel
+## Ziel
 Du erstellst übersichtliche Listen für deine Fähigkeiten und Interessen und lernst, wann ungeordnete bzw. geordnete Listen sinnvoll sind.
 
-## 📋 Beschreibung
+## Beschreibung
 
 Listen machen Inhalte scanbar und übersichtlich – perfekt für ein Portfolio! Du fügst jetzt zwei neue Sektionen hinzu.
 
@@ -97,7 +97,7 @@ Erstelle eine verschachtelte Liste für detailliertere Infos:
 </ul>
 ```
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Eine "Meine Skills"-Sektion mit mindestens 3 Kategorien existiert
 - [ ] Jede Kategorie nutzt eine `<ul>` mit mindestens 3-4 Punkten
@@ -107,7 +107,7 @@ Erstelle eine verschachtelte Liste für detailliertere Infos:
 - [ ] Alle Listen sind sauber eingerückt und formatiert
 - [ ] Die Seite bleibt übersichtlich und professionell
 
-## 💡 Tipps
+## Tipps
 
 - **`<ul>` = Unordered List** (Aufzählungspunkte, Bulletpoints)
 - **`<ol>` = Ordered List** (Nummerierte Liste, 1, 2, 3...)
@@ -116,7 +116,7 @@ Erstelle eine verschachtelte Liste für detailliertere Infos:
 - Verschachtelte Listen brauchen saubere Einrückung – nutze `Shift + Alt + F` in VS Code
 - **Mobile-Tipp:** Listen sind auf Smartphones besonders gut lesbar
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Wann würdest du eine `<ul>` und wann eine `<ol>` verwenden? Gib je 2 Beispiele.
 2. Teste: Was passiert, wenn du ein `<li>` ohne `<ul>` oder `<ol>` schreibst?
@@ -124,7 +124,7 @@ Erstelle eine verschachtelte Liste für detailliertere Infos:
 4. Öffne die DevTools (F12): Wie werden verschachtelte Listen im HTML-Baum dargestellt?
 5. Überlege: Welche Listenart würdest du für ein Rezept verwenden? Warum?
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 - [MDN: `<ul>` – Ungeordnete Listen](https://developer.mozilla.org/de/docs/Web/HTML/Element/ul)
 - [MDN: `<ol>` – Geordnete Listen](https://developer.mozilla.org/de/docs/Web/HTML/Element/ol)

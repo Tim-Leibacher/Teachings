@@ -1,9 +1,9 @@
 # Auftrag 1: "Über mich" – Deine Geschichte erzählen
 
-## 🎯 Ziel
+## Ziel
 Du erweiterst dein Portfolio um eine aussagekräftige "Über mich"-Sektion mit logisch strukturierten Überschriften und Texten.
 
-## 📋 Beschreibung
+## Beschreibung
 
 Jedes gute Portfolio braucht eine persönliche "Über mich"-Sektion. Du erzählst deine Geschichte als angehende/r Informatiker/in!
 
@@ -52,7 +52,7 @@ Erweitere den `<main>`-Bereich deiner Portfolio-Seite:
 </main>
 ```
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Die Sektion "Über mich" hat eine `<h2>`-Überschrift
 - [ ] Es gibt drei Unterbereiche mit `<h3>`-Überschriften
@@ -61,7 +61,7 @@ Erweitere den `<main>`-Bereich deiner Portfolio-Seite:
 - [ ] Alle Texte sind persönlich und authentisch geschrieben
 - [ ] Die Inhalte sind fehlerfrei und professionell formuliert
 
-## 💡 Tipps
+## Tipps
 
 - **Überschriften gliedern Inhalte nach Wichtigkeit**, nicht nach Schriftgrösse
 - Schreibe authentisch – das macht dein Portfolio einzigartig
@@ -69,14 +69,14 @@ Erweitere den `<main>`-Bereich deiner Portfolio-Seite:
 - Verwende pro Absatz nur einen Gedanken – das macht Texte lesbarer
 - Achte auf korrekte Rechtschreibung – das ist Teil deiner professionellen Darstellung
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Warum sollte nach einer `<h2>` eine `<h3>` kommen und nicht direkt eine `<h4>`?
 2. Öffne die DevTools (F12) und schaue dir die Überschriften-Hierarchie an. Ist sie logisch?
 3. Was würde passieren, wenn du alle Überschriften als `<h1>` definierst? Probiere es aus und mache es dann wieder rückgängig.
 4. Teste: Wie wirkt deine Seite auf andere? Lass jemanden die Seite lesen und frage nach Feedback.
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 - [MDN: Überschriften `<h1>`-`<h6>`](https://developer.mozilla.org/de/docs/Web/HTML/Element/Heading_Elements)
 - [W3C: Heading Structure Best Practices](https://www.w3.org/WAI/tutorials/page-structure/headings/)

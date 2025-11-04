@@ -1,9 +1,9 @@
 # Auftrag 2: Bilder einbinden – Dein Portfolio wird visuell
 
-## 🎯 Ziel
+## Ziel
 Du fügst ein Profilbild und weitere Bilder in dein Portfolio ein und lernst, wie man Bilder korrekt, barrierefrei und performant einbindet.
 
-## 📋 Beschreibung
+## Beschreibung
 
 Bilder machen dein Portfolio persönlich und professionell! Du lernst jetzt, wie man Bilder richtig einbindet, optimiert und beschreibt.
 
@@ -157,7 +157,7 @@ Bevor du ein Bild hochlädst:
 
 ---
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Ein Profilbild ist im Header eingebunden
 - [ ] Alle Bilder haben aussagekräftige Alt-Texte
@@ -167,7 +167,7 @@ Bevor du ein Bild hochlädst:
 - [ ] Alle Bildpfade funktionieren (keine 404-Fehler)
 - [ ] Optional: Ein Bild ist als Link umgesetzt
 
-## 💡 Tipps
+## Tipps
 
 - **Alt-Texte sind Pflicht!** Sie sind essentiell für Accessibility
 - Relative Pfade verwenden: `images/profil.jpg` (nicht `C:/Users/...`)
@@ -176,7 +176,7 @@ Bevor du ein Bild hochlädst:
 - **Performance:** Bilder sollten max. 100-200 KB sein für schnelle Ladezeiten
 - Nutze `loading="lazy"` für Bilder weiter unten auf der Seite
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Warum ist der Alt-Text so wichtig? Wer profitiert davon?
 2. Teste: Deaktiviere in den DevTools das Laden von Bildern. Ist die Seite noch verständlich?
@@ -184,7 +184,7 @@ Bevor du ein Bild hochlädst:
 4. Vergleiche: Welche Dateigrösse hat dein Originalbild vs. das optimierte Bild?
 5. Recherchiere: Was ist der Unterschied zwischen JPG, PNG und WebP?
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 - [MDN: `<img>` – Bilder einbinden](https://developer.mozilla.org/de/docs/Web/HTML/Element/img)
 - [MDN: `<figure>` und `<figcaption>`](https://developer.mozilla.org/de/docs/Web/HTML/Element/figure)

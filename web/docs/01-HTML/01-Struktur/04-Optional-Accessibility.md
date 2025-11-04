@@ -1,9 +1,9 @@
 # Auftrag 4 (Optional): Barrierefreiheit & SEO – Dein Portfolio für alle zugänglich
 
-## 🎯 Ziel
+## Ziel
 Du machst deine Portfolio-Seite zugänglich für Menschen mit Beeinträchtigungen und optimierst sie für Suchmaschinen. Dieses Wissen ist in der professionellen Webentwicklung unverzichtbar!
 
-## 📋 Beschreibung
+## Beschreibung
 
 ### Teil 1: Meta-Tags für SEO (15 Min)
 
@@ -85,7 +85,7 @@ Falls du Fremdsprachen verwendest:
 <meta name="format-detection" content="telephone=no">
 ```
 
-## ✅ Erfolgskriterien
+## Erfolgskriterien
 
 - [ ] Meta-Description ist vorhanden und beschreibt dein Portfolio in max. 160 Zeichen
 - [ ] ARIA-Landmarks sind korrekt gesetzt (banner, main, contentinfo)
@@ -94,7 +94,7 @@ Falls du Fremdsprachen verwendest:
 - [ ] Mindestens ein Accessibility-Tool wurde verwendet und zeigt keine kritischen Fehler
 - [ ] Die Seite funktioniert mit Tastaturnavigation (Tab-Taste)
 
-## 💡 Tipps
+## Tipps
 
 - **SEO-Tipp:** Die Meta-Description erscheint in Google-Suchergebnissen – schreibe sie ansprechend!
 - **Accessibility ist keine Option:** 15% der Weltbevölkerung leben mit einer Behinderung
@@ -102,7 +102,7 @@ Falls du Fremdsprachen verwendest:
 - **Profiwissen:** ARIA sollte sparsam eingesetzt werden – nutze zuerst semantisches HTML
 - Teste deine Seite mit deaktiviertem CSS – ist sie immer noch verständlich?
 
-## 🤔 Reflexionsfragen
+## Reflexionsfragen
 
 1. Was passiert, wenn jemand deine Seite bei Google teilt? Welcher Text wird angezeigt?
 2. Warum ist ein "Skip Link" wichtig für Tastaturnutzer?
@@ -110,7 +110,7 @@ Falls du Fremdsprachen verwendest:
 4. Was bedeutet "role='banner'" und warum ist das für Screenreader-Nutzer wichtig?
 5. Recherchiere: Was ist der Unterschied zwischen ARIA und semantischem HTML?
 
-## 🔗 Weiterführende Links
+## Weiterführende Links
 
 **SEO:**
 - [Google: SEO Starter Guide](https://developers.google.com/search/docs/beginner/seo-starter-guide)
@@ -127,7 +127,7 @@ Falls du Fremdsprachen verwendest:
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse) (in Chrome DevTools integriert)
 - [Contrast Checker](https://webaim.org/resources/contrastchecker/)
 
-## 🏆 Bonus-Challenge
+## Bonus-Challenge
 
 - Führe einen Lighthouse-Audit durch (F12 → Lighthouse → Generate Report)
 - Versuche, einen Accessibility-Score von mindestens 90/100 zu erreichen

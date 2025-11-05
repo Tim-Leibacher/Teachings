@@ -78,4 +78,17 @@ nav:
           - Auftrag 3 - Feedbackformular: 01-HTML/04-Formulare/03-Feedback-Formular.md
           - Auftrag 4 - Fortgeschritten: 01-HTML/04-Formulare/04-Optional-Fortgeschritten.md
   - CSS:
-      - CSS Grundlagen:
+      - CSS Einbindung:
+          - Auftrag 1 - Erste Styles: 02-CSS/01-Einbindung/01-Erste-Styles.md
+          - Auftrag 2 - Head: 02-CSS/01-Einbindung/02-Head.md
+          - Auftrag 3 - Professionell: 02-CSS/01-Einbindung/03-Professionell.md
+          - Auftrag 4 - Struktur: 02-CSS/01-Einbindung/04-Struktur.md
+      - Selektoren:
+          - Auftrag 1 - Klassenselektor: 02-CSS/02-Selektoren/01-Element-Klassen-Selektoren.md
+          - Auftrag 2 - Box Modell: 02-CSS/02-Selektoren/02-Box-Modell-Abstaende.md
+          - Auftrag 3 - Farben & Schriften: 02-CSS/02-Selektoren/03-Farben-Schriften-Selektoren.md
+      - BoxModell:
+          - Auftrag 1 - Grundlagen: 02-CSS/03-BoxModell/01-Grundlagen.md
+          - Auftrag 2 - BoxSizing: 02-CSS/03-BoxModell/02-BoxSizing-Display.md
+          - Auftrag 3 - Margin: 02-CSS\03-BoxModell\03-MarginCollapsing-Layout.md
+          - Auftrag 4 - Fortgeschritten: 02-CSS/03-BoxModell/04-Optional-Fortgeschritten.md

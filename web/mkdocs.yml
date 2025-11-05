@@ -72,3 +72,10 @@ nav:
           - Auftrag 2 - Bilder einbinden: 01-HTML/03-LinksBilder/02-Bilder.md
           - Auftrag 3 - Projekt-Galerie: 01-HTML/03-LinksBilder/03-Projekt-Galerie.md
           - Auftrag 4 - Performance & Bildoptimierung: 01-HTML/03-LinksBilder/04-Optional-Performance.md
+      - HTML Formulare:
+          - Auftrag 1 - Kontaktformular: 01-HTML/04-Formulare/01-Kontaktformular.md
+          - Auftrag 2 - Anmeldeformular: 01-HTML/04-Formulare/02-Anmeldeformular.md
+          - Auftrag 3 - Feedbackformular: 01-HTML/04-Formulare/03-Feedback-Formular.md
+          - Auftrag 4 - Fortgeschritten: 01-HTML/04-Formulare/04-Optional-Fortgeschritten.md
+  - CSS:
+      - CSS Grundlagen:

@@ -30,17 +30,13 @@ projekt:
       Einbindung & Basics:  <script>-Tag im HTML, Unterschied <script> im Head vs. Body. Demo von console.log() im Browser
       Variablen, Datentypen, Kontrollstrukturen:  let/const, einfache Rechenoperationen, if/else demonstrieren.
       DOM-Manipulation: document.getElementById() oder querySelector, innerText/innerHTML ändern. 
-      Event Handling: addEventListener für Klick- oder Eingabe-Events.
-      Einbinden externer JS-Date: Video: JS in eigene .js-Datei auslagern
-      Ajax/Fetch / asynchrone Calls: Zeige einen fetch()-Aufruf (z.B. gegen eine öffentliche API).
+      Event Handling / Ajax/Fetch / asynchrone Calls: addEventListener für Klick- oder Eingabe-Events. Zeige einen fetch()-Aufruf (z.B. gegen eine öffentliche API).
     Owasp Top 10:
       Injection A03: Erkläre SQL- bzw. JavaScript-Injektion prinzipiell.
       XSS Cross-Site Scripting: Zeige Beispiele für XSS-Angriffe.
       Broken Access Control / Authentifizierung: Kurze Theorie, warum Schwachstellen gefährlich sind.
     JSON:
       JSON-Grundlagen: Syntax Objekte , Arrays , Paare Schlüssel: Wert.
-      JSON & JavaScript: JSON.parse und JSON.stringify 
-      JSON in Web-APIs: Beispiel: Web-API liefert JSON z.B. Dummy-API
     HTTPS:
       API: Grundlagen: Was ist eine API? Unterschied REST vs. SOAP.
       HTTPS-Grundlagen: SSL/TLS, Zertifikate, Verschlüsselung.
@@ -48,23 +44,20 @@ projekt:
     GIT:
       Grundlagen (Init, Add, Commit): git init, git add ., git commit -m "Nachricht"
       Branching & Merging: git branch, git checkout, git merge
-      Remote Repositories: git remote add origin URL, git push, git pull
-      Konfliktmanagement: Konflikte erkennen und lösen (Merge-Konflikte)
-      Best Practices: Commit-Nachrichten, .gitignore, Branching-Strategien
     Node JS:
       Einführung in Node.js: Was ist Node.js? Vorteile und Anwendungsgebiete.
       NPM (Paketmanager): npm init, npm install, package.json
       Einfache Server-Anwendung: Erstelle einen einfachen HTTP-Server mit dem http-Modul.
       Node mit Express (Überleitung): Einführung in Express.js, einfache Routen erstellen.
-    Database:
-      DB-Grundlagen & Installation: Relationale vs. NoSQL-Datenbanken, Installation von MySQL/MongoDB.
-      CRUD-Operationen: Erkläre Create, Read, Update, Delete mit SQL-Befehlen bzw. MongoDB-Methoden.
-      Integration mit Node/Express: Verbinde eine Node.js-Anwendung mit der Datenbank.
     ExpressJS:
       Einführung in Express.js: Was ist Express? Vorteile gegenüber reinem Node.js.
       Routen & Middleware: Erstelle einfache Routen, erkläre Middleware-Konzepte.
       RESTful APIs mit Express: Baue eine einfache REST-API (GET, POST, PUT, DELETE).
       Fehlerbehandlung & Sicherheit: Grundlegende Fehlerbehandlung und Sicherheitsaspekte (z.B. Helmet).
+    Database:
+      DB-Grundlagen & Installation: Relationale vs. NoSQL-Datenbanken, Installation von MySQL/MongoDB.
+      CRUD-Operationen: Erkläre Create, Read, Update, Delete mit SQL-Befehlen bzw. MongoDB-Methoden.
+      Integration mit Node/Express: Verbinde eine Node.js-Anwendung mit der Datenbank.
     REACT:
       Einführung in React: Was ist React? Komponentenbasierte Architektur.
       JSX  Komponenten: Erkläre JSX-Syntax, erstelle funktionale Komponenten.

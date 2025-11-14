@@ -90,5 +90,10 @@ nav:
       - BoxModell:
           - Auftrag 1 - Grundlagen: 02-CSS/03-BoxModell/01-Grundlagen.md
           - Auftrag 2 - BoxSizing: 02-CSS/03-BoxModell/02-BoxSizing-Display.md
-          - Auftrag 3 - Margin: 02-CSS\03-BoxModell\03-MarginCollapsing-Layout.md
+          - Auftrag 3 - Margin: 02-CSS/03-BoxModell/03-MarginCollapsing-Layout.md
           - Auftrag 4 - Fortgeschritten: 02-CSS/03-BoxModell/04-Optional-Fortgeschritten.md
+      - Responsive Design:
+          - Auftrag 1 - Mobile Basis: 04-Responsive/01-Mobile-Basis.md
+          - Auftrag 2 - Tablet: 04-Responsive/02-Tablet-Ansicht.md
+          - Auftrag 3 - Mobile Basis: 04-Responsive/03-Desktop-Ansicht.md
+          - Auftrag 4 - Fortgeschritten: 04-Responsive/04-Optional-Advanced.md

@@ -31,19 +31,14 @@ projekt:
       Variablen, Datentypen, Kontrollstrukturen:  let/const, einfache Rechenoperationen, if/else demonstrieren.
       DOM-Manipulation: document.getElementById() oder querySelector, innerText/innerHTML ändern. 
       Event Handling / Ajax/Fetch / asynchrone Calls: addEventListener für Klick- oder Eingabe-Events. Zeige einen fetch()-Aufruf (z.B. gegen eine öffentliche API).
-    Owasp Top 10:
-      Injection A03: Erkläre SQL- bzw. JavaScript-Injektion prinzipiell.
-      XSS Cross-Site Scripting: Zeige Beispiele für XSS-Angriffe.
-      Broken Access Control / Authentifizierung: Kurze Theorie, warum Schwachstellen gefährlich sind.
-    JSON:
+    Diverses:
+      Top 3 der OWASP : Erkläre was OWASP ist und die Top 3 Sicherheitsrisiken für Webanwendungen.
       JSON-Grundlagen: Syntax Objekte , Arrays , Paare Schlüssel: Wert.
-    HTTPS:
-      API: Grundlagen: Was ist eine API? Unterschied REST vs. SOAP.
+      API Grundlagen: Was ist eine API? Unterschied REST vs. SOAP.. Sicherheitsaspekte
       HTTPS-Grundlagen: SSL/TLS, Zertifikate, Verschlüsselung.
-      Sicherheit bei APIs: Authentifizierung (API-Keys, OAuth), Rate Limiting.
     GIT:
       Grundlagen (Init, Add, Commit): git init, git add ., git commit -m "Nachricht"
-      Branching & Merging: git branch, git checkout, git merge
+      Branching & Merging und sonstiges: git branch, git checkout, git merge
     Node JS:
       Einführung in Node.js: Was ist Node.js? Vorteile und Anwendungsgebiete.
       NPM (Paketmanager): npm init, npm install, package.json

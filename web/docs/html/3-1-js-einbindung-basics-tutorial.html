@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript – Einbindung & Basics</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>JavaScript – Einbindung & Basics</h1>
+            <p>Lerne, wie du JavaScript in deine Website einbindest und erste Schritte machst</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">8-10 Minuten</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Intro & Kontext -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">HTML, CSS und JavaScript – Das Zusammenspiel</h3>
+                        </div>
+                        <p>Bisher haben wir HTML für die Struktur und CSS für das Design verwendet. Jetzt kommt JavaScript ins Spiel – die Programmiersprache, die deine Website lebendig macht.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Die Hausmetapher:</strong><br>
+                            <span class="highlight">HTML</span> = Das Skelett eines Hauses (Wände, Räume, Struktur)<br>
+                            <span class="highlight">CSS</span> = Die Farbe und Dekoration (Design, Layout, Aussehen)<br>
+                            <span class="highlight">JavaScript</span> = Die Elektrik (Licht, Heizung, interaktive Elemente)
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Beispiel: Interaktiver Button</p>
+                            <button type="button" class="btn btn-primary" onclick="this.textContent = this.textContent === 'Klick mich!' ? '✓ Geklickt!' : 'Klick mich!'">Klick mich!</button>
+                            <p class="mt-md"><small>Dieser Button ändert seinen Text beim Klicken – das ist JavaScript in Aktion!</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Das script-Tag – Basics -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Das &lt;script&gt;-Tag – Die Basis</h3>
+                        </div>
+                        <p>JavaScript bindest du mit dem <span class="highlight">&lt;script&gt;</span>-Tag ein. Es gibt zwei Hauptorte: Im <span class="highlight">&lt;head&gt;</span> oder vor dem schliessenden <span class="highlight">&lt;/body&gt;</span>-Tag.</p>
+                        
+                        <div class="code-block">
+<code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;JavaScript Einbindung&lt;/title&gt;
+    
+    &lt;!-- JavaScript im HEAD --&gt;
+    &lt;script&gt;
+        console.log("JavaScript im HEAD geladen!");
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Mein erstes JavaScript&lt;/h1&gt;
+    
+    &lt;!-- JavaScript vor &lt;/body&gt; --&gt;
+    &lt;script&gt;
+        console.log("JavaScript vor &lt;/body&gt; geladen!");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Inline JavaScript:</strong> Code direkt im HTML-Dokument schreiben – ideal für erste Tests und kleine Skripte.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Browser-Konsole öffnen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Die Browser-Konsole – Dein wichtigstes Werkzeug</h3>
+                        </div>
+                        <p>Die Browser-Konsole ist dein wichtigstes Werkzeug beim JavaScript-Entwickeln. Hier siehst du alle JavaScript-Ausgaben, Fehler und Warnungen. Die Konsole ist wie ein Logbuch deiner Website.</p>
+                        
+                        <div class="alert alert-success">
+                            <strong>Konsole öffnen:</strong>
+                            <ul>
+                                <li><strong>Windows/Linux:</strong> F12 oder Strg + Shift + I</li>
+                                <li><strong>Mac:</strong> Cmd + Option + I</li>
+                                <li><strong>Alternative:</strong> Rechtsklick → "Untersuchen" → Tab "Console"</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Probiere es aus:</p>
+                            <p>Öffne jetzt die Konsole (F12) und schaue dir die Ausgaben an!</p>
+                            <script>
+                                console.log("🚀 Wenn du das siehst, funktioniert die Konsole!");
+                                console.log("Willkommen im JavaScript-Tutorial");
+                            </script>
+                            <p class="mt-md"><small>Tipp: Die Konsole zeigt Meldungen in chronologischer Reihenfolge an.</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: console.log() – Dein Debug-Werkzeug -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">console.log() – Dein Debug-Werkzeug</h3>
+                        </div>
+                        <p><span class="highlight">console.log()</span> ist deine wichtigste Funktion beim Programmieren. Du kannst damit Texte, Zahlen oder Variablen ausgeben, um zu prüfen, ob dein Code funktioniert. Das ist wie ein "Echo" – du schickst etwas an die Konsole und siehst sofort das Ergebnis.</p>
+                        
+                        <div class="code-block">
+<code>&lt;script&gt;
+    // Einfacher Text
+    console.log("Hallo JavaScript!");
+    
+    // Zahlen
+    console.log(42);
+    console.log(2024);
+    
+    // Berechnungen
+    console.log(10 + 5);     // 15
+    console.log(20 * 3);     // 60
+    
+    // Mehrere Werte
+    console.log("Mein Name:", "Sarah Müller");
+    console.log("Alter:", 18, "Jahre");
+&lt;/script&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo – Schaue in die Konsole:</p>
+                            <script>
+                                console.log("=== console.log() Demo ===");
+                                console.log("Hallo JavaScript!");
+                                console.log(42);
+                                console.log(2025);
+                                console.log("Rechnung:", 10 + 5);
+                                console.log("Multiplikation:", 20 * 3);
+                                console.log("Mein Name:", "Sarah Müller");
+                                console.log("Alter:", 18, "Jahre");
+                            </script>
+                            <p class="mt-md"><small>Alle diese Ausgaben erscheinen jetzt in deiner Browser-Konsole!</small></p>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Vergiss die Anführungszeichen nicht bei Texten! <span class="highlight">console.log("Text")</span> funktioniert, aber <span class="highlight">console.log(Text)</span> gibt einen Fehler.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Unterschied head vs. vor /body -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Wo soll das &lt;script&gt;-Tag hin?</h3>
+                        </div>
+                        <p>Im <span class="highlight">&lt;head&gt;</span> wird JavaScript geladen, <strong>BEVOR</strong> die Seite sichtbar ist. Das kann zu Problemen führen, wenn dein Code auf HTML-Elemente zugreifen will, die noch nicht existieren.</p>
+                        <p>Vor dem schliessenden <span class="highlight">&lt;/body&gt;</span>-Tag wird JavaScript geladen, <strong>NACHDEM</strong> die ganze Seite geladen ist – das ist meistens die bessere Wahl.</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>❌ Problem: Script im &lt;head&gt;</h4>
+                                <div class="code-block">
+<code>&lt;head&gt;
+    &lt;script&gt;
+        // Element existiert noch nicht!
+        let titel = document.querySelector("h1");
+        console.log(titel); // null
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Dieser Titel existiert erst später&lt;/h1&gt;
+&lt;/body&gt;</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>✅ Lösung: Script vor &lt;/body&gt;</h4>
+                                <div class="code-block">
+<code>&lt;body&gt;
+    &lt;h1&gt;Dieser Titel existiert jetzt&lt;/h1&gt;
+    
+    &lt;script&gt;
+        // Jetzt funktioniert es!
+        let titel = document.querySelector("h1");
+        console.log(titel); // &lt;h1&gt;...&lt;/h1&gt;
+    &lt;/script&gt;
+&lt;/body&gt;</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Best Practice:</strong> Platziere deine <span class="highlight">&lt;script&gt;</span>-Tags immer vor dem schliessenden <span class="highlight">&lt;/body&gt;</span>-Tag, damit alle HTML-Elemente bereits geladen sind.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Test – Schaue in die Konsole:</p>
+                            <h3 id="demo-titel">Dieses Element kann JavaScript finden!</h3>
+                            <script>
+                                // Dieser Code steht nach dem h3-Element
+                                let demoTitel = document.querySelector("#demo-titel");
+                                console.log("=== Element-Zugriff Demo ===");
+                                console.log("Gefundenes Element:", demoTitel);
+                                console.log("Text-Inhalt:", demoTitel.textContent);
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Externe JavaScript-Datei einbinden -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Externe JavaScript-Datei einbinden</h3>
+                        </div>
+                        <p>Professionelle Websites lagern JavaScript in externe Dateien aus – genau wie bei CSS. Das macht den Code übersichtlicher und wiederverwendbar.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Vorteile externer JavaScript-Dateien:</strong>
+                            <ul>
+                                <li>Übersichtlicher und strukturierter Code</li>
+                                <li>Wiederverwendbar auf mehreren Seiten</li>
+                                <li>Einfachere Wartung und Updates</li>
+                                <li>Browser kann die Datei cachen (schnelleres Laden)</li>
+                            </ul>
+                        </div>
+
+                        <h4 class="mt-md">Schritt 1: JavaScript-Datei erstellen</h4>
+                        <div class="code-block">
+<code>// script.js
+
+console.log("Externe JavaScript-Datei geladen!");
+
+// Informationen über die Seite
+console.log("Titel der Seite:", document.title);
+console.log("URL der Seite:", window.location.href);
+
+// Einfache Begrüssung
+let begruessung = "Willkommen auf meiner Portfolio-Seite!";
+console.log(begruessung);</code>
+                        </div>
+
+                        <h4 class="mt-md">Schritt 2: Datei im HTML einbinden</h4>
+                        <div class="code-block">
+<code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Externe JavaScript-Datei&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Portfolio mit externem JavaScript&lt;/h1&gt;
+    
+    &lt;!-- Externe JavaScript-Datei einbinden --&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Dateistruktur:</p>
+                            <div class="code-block">
+<code>projekt/
+├── index.html
+├── styles.css
+└── script.js</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Das <span class="highlight">src</span>-Attribut zeigt den Pfad zur JavaScript-Datei. Achte auf die richtige Pfadangabe (relativ oder absolut)!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Häufige Fehler und Debugging -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Häufige Fehler und Debugging</h3>
+                        </div>
+                        <p>Fehler in JavaScript stoppen oft den gesamten Code – deshalb ist die Konsole so wichtig. Ein roter Text bedeutet: Hier ist etwas schiefgelaufen.</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>Fehler 1: Vergessene Anführungszeichen</h4>
+                                <div class="code-block">
+<code>// ❌ Falsch
+console.log(Hallo);
+
+// ✅ Richtig
+console.log("Hallo");</code>
+                                </div>
+                                <p><small><strong>Fehler:</strong> Uncaught ReferenceError: Hallo is not defined</small></p>
+                            </div>
+                            <div>
+                                <h4>Fehler 2: Vergessene Klammer</h4>
+                                <div class="code-block">
+<code>// ❌ Falsch
+console.log("Test";
+
+// ✅ Richtig
+console.log("Test");</code>
+                                </div>
+                                <p><small><strong>Fehler:</strong> Uncaught SyntaxError: missing ) after argument list</small></p>
+                            </div>
+                        </div>
+
+                        <div class="split-view mt-md">
+                            <div>
+                                <h4>Fehler 3: Falscher Dateiname</h4>
+                                <div class="code-block">
+<code>&lt;!-- ❌ Tippfehler! --&gt;
+&lt;script src="scrip.js"&gt;&lt;/script&gt;
+
+&lt;!-- ✅ Korrekt --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code>
+                                </div>
+                                <p><small><strong>Fehler:</strong> GET http://localhost/scrip.js net::ERR_FILE_NOT_FOUND</small></p>
+                            </div>
+                            <div>
+                                <h4>Fehler 4: Falscher Pfad</h4>
+                                <div class="code-block">
+<code>&lt;!-- ❌ Falscher Ordner --&gt;
+&lt;script src="js/script.js"&gt;&lt;/script&gt;
+
+&lt;!-- ✅ Korrekter Pfad --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code>
+                                </div>
+                                <p><small><strong>Fehler:</strong> 404 Not Found</small></p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Debugging-Tipps:</strong>
+                            <ul>
+                                <li>Öffne immer die Konsole (F12) beim Testen</li>
+                                <li>Rote Meldungen = Fehler gefunden!</li>
+                                <li>Lies die Fehlermeldung genau – sie zeigt oft die Zeile an</li>
+                                <li>Nutze <span class="highlight">console.log()</span> um Variablen zu überprüfen</li>
+                                <li>Teste deinen Code Schritt für Schritt</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Zusammenfassung & Praxis-Tipps -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung & Praxis-Tipps</h3>
+                        </div>
+                        <p>Du hast gelernt, JavaScript mit dem <span class="highlight">&lt;script&gt;</span>-Tag einzubinden – entweder inline im HTML oder als externe Datei. Du weisst jetzt, dass JavaScript vor dem schliessenden <span class="highlight">&lt;/body&gt;</span>-Tag die beste Position ist, und du kannst mit <span class="highlight">console.log()</span> Ausgaben erstellen.</p>
+                        
+                        <div class="alert alert-success">
+                            <strong>✅ Checkliste – Das hast du gelernt:</strong>
+                            <ul>
+                                <li><span class="highlight">&lt;script&gt;</span>-Tag nutzen</li>
+                                <li>Browser-Konsole öffnen (F12)</li>
+                                <li><span class="highlight">console.log()</span> für Ausgaben</li>
+                                <li>Externe .js-Datei einbinden</li>
+                                <li>Script vor <span class="highlight">&lt;/body&gt;</span> platzieren</li>
+                                <li>Fehler in der Konsole lesen</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vollständiges Beispiel – Projekt-Struktur:</p>
+                            <div class="code-block">
+<code>mein-portfolio/
+├── index.html
+├── styles.css
+└── script.js</code>
+                            </div>
+
+                            <h4 class="mt-md">index.html</h4>
+                            <div class="code-block">
+<code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mein Portfolio&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Willkommen&lt;/h1&gt;
+    &lt;p&gt;Dies ist mein Portfolio.&lt;/p&gt;
+    
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+                            </div>
+
+                            <h4 class="mt-md">script.js</h4>
+                            <div class="code-block">
+<code>console.log("Portfolio geladen!");
+console.log("Titel:", document.title);
+
+let begruessung = "Willkommen!";
+console.log(begruessung);</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Nächste Schritte:</strong> Im nächsten Video schauen wir uns Variablen und Datentypen an. Viel Erfolg bei den Aufträgen! 🚀
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Zusammenfassung – JavaScript Einbindung auf einen Blick</h2>
+            <div class="split-view">
+                <div>
+                    <h4>Inline JavaScript:</h4>
+                    <ul>
+                        <li>Code direkt im HTML mit <span class="highlight">&lt;script&gt;</span>-Tag</li>
+                        <li>Gut für kleine Tests und Demos</li>
+                        <li>Kann im <span class="highlight">&lt;head&gt;</span> oder vor <span class="highlight">&lt;/body&gt;</span> stehen</li>
+                    </ul>
+
+                    <h4 class="mt-md">Browser-Konsole:</h4>
+                    <ul>
+                        <li>Öffnen mit F12 oder Rechtsklick → Untersuchen</li>
+                        <li>Zeigt alle <span class="highlight">console.log()</span>-Ausgaben</li>
+                        <li>Zeigt Fehler und Warnungen in rot</li>
+                        <li>Wichtigstes Debug-Werkzeug</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Externe JavaScript-Datei:</h4>
+                    <ul>
+                        <li>Code in separater .js-Datei</li>
+                        <li>Einbinden mit <span class="highlight">&lt;script src="script.js"&gt;</span></li>
+                        <li>Übersichtlicher und wiederverwendbar</li>
+                        <li>Professionelle Vorgehensweise</li>
+                    </ul>
+
+                    <h4 class="mt-md">Best Practices:</h4>
+                    <ul>
+                        <li><span class="highlight">&lt;script&gt;</span> vor <span class="highlight">&lt;/body&gt;</span> platzieren</li>
+                        <li>Externe Dateien nutzen statt Inline-Code</li>
+                        <li>Immer die Konsole öffnen beim Testen</li>
+                        <li>Fehlermeldungen genau lesen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>JavaScript Tutorial – BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ</p>
+    </footer>
+
+</body>
+</html>

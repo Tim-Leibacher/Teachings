@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Tutorial – Einbindung von CSS</title>
+   <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Szene 1: Einführung -->
+        <section class="mt-lg mb-lg">
+            <h1>CSS – Einbindung von CSS</h1>
+            <div class="alert alert-info">
+                <strong>Lernziel:</strong> Die drei Arten der CSS-Einbindung verstehen und anwenden können
+            </div>
+        </section>
+
+        <!-- Szene 1: Was ist CSS? -->
+        <section class="mb-lg">
+            <h2>Was ist CSS?</h2>
+            <p>CSS steht für <strong>Cascading Style Sheets</strong> und ist die Sprache für das Design von Webseiten. Während HTML die Struktur vorgibt, bestimmt CSS das Aussehen – Farben, Schriften, Abstände und Layout.</p>
+            
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h3 class="card-title">Vergleich: Mit und ohne CSS</h3>
+                </div>
+                <p><strong>Links (ohne CSS):</strong> Nur HTML-Struktur – funktional aber ungestylt</p>
+                <p><strong>Rechts (mit CSS):</strong> Professionelles Design mit Farben, Layout und Typografie</p>
+            </div>
+        </section>
+
+        <!-- Szene 2: Die drei Arten -->
+        <section class="mb-lg">
+            <h2>Die drei Arten der CSS-Einbindung</h2>
+            <p>Es gibt drei Möglichkeiten, CSS in HTML einzubinden:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div class="card">
+                    <h4 class="text-primary">1. Inline-Styles</h4>
+                    <p>Direkt im HTML-Element</p>
+                    <span class="badge badge-blue">Im Element</span>
+                </div>
+                <div class="card">
+                    <h4 class="text-secondary">2. Internal-Styles</h4>
+                    <p>Im &lt;head&gt;-Bereich</p>
+                    <span class="badge badge-turquoise">Im &lt;style&gt;-Tag</span>
+                </div>
+                <div class="card">
+                    <h4 class="text-accent">3. External-Styles</h4>
+                    <p>Externe .css-Datei</p>
+                    <span class="badge badge-orange">Separate Datei</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 3: Inline-Styles -->
+        <section class="mb-lg">
+            <h2>1. Inline-Styles – Direkt im Element</h2>
+            <p>Die einfachste Methode sind Inline-Styles. Du schreibst das CSS direkt ins HTML-Element mit dem <code>style</code>-Attribut.</p>
+            
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Code-Beispiel: Inline-Styles</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>&lt;h1 style="color: blue; font-size: 32px;"&gt;Willkommen&lt;/h1&gt;
+&lt;p style="color: gray; font-size: 16px;"&gt;Dies ist ein Absatz.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mt-md">
+                <h4>Vorschau:</h4>
+                <div class="card">
+                    <h1 style="color: blue; font-size: 32px;">Willkommen</h1>
+                    <p style="color: gray; font-size: 16px;">Dies ist ein Absatz.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 4: Inline-Styles Nachteile -->
+        <section class="mb-lg">
+            <h3>Nachteile von Inline-Styles</h3>
+            <div class="alert alert-warning">
+                <p><strong>Problem:</strong> Wenn du 10 Überschriften hast und die Farbe ändern möchtest, musst du jede einzeln anpassen!</p>
+            </div>
+            
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Beispiel: Viele Wiederholungen</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>&lt;h1 style="color: blue; font-size: 32px;"&gt;Überschrift 1&lt;/h1&gt;
+&lt;h1 style="color: blue; font-size: 32px;"&gt;Überschrift 2&lt;/h1&gt;
+&lt;h1 style="color: blue; font-size: 32px;"&gt;Überschrift 3&lt;/h1&gt;
+&lt;!-- Was wenn du die Farbe ändern möchtest? --&gt;
+&lt;!-- Jede Zeile einzeln bearbeiten = fehleranfällig! --&gt;</code></pre>
+            </div>
+
+            <p class="mt-md"><strong>Fazit:</strong> Inline-Styles nur für Ausnahmen nutzen!</p>
+        </section>
+
+        <!-- Szene 5: Internal-Styles -->
+        <section class="mb-lg">
+            <h2>2. Internal-Styles – Im Head-Bereich</h2>
+            <p>Die zweite Methode sind Internal-Styles. Du schreibst dein CSS im <code>&lt;head&gt;</code>-Bereich der HTML-Datei in einem <code>&lt;style&gt;</code>-Tag.</p>
+            
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Code-Beispiel: Internal-Styles</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Portfolio&lt;/title&gt;
+    &lt;style&gt;
+        h1 {
+            color: blue;
+            font-size: 32px;
+        }
+        p {
+            color: gray;
+            font-size: 16px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Willkommen&lt;/h1&gt;
+    &lt;p&gt;Dies ist ein Absatz.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <div class="alert alert-success mt-md">
+                <p><strong>Vorteil:</strong> Alle Überschriften gleichzeitig formatieren – viel effizienter!</p>
+            </div>
+        </section>
+
+        <!-- Szene 6: Internal-Styles Nachteile -->
+        <section class="mb-lg">
+            <h3>Vor- und Nachteile von Internal-Styles</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div class="card bg-light">
+                    <h4 class="text-secondary">✓ Vorteile</h4>
+                    <ul>
+                        <li>Gut für einzelne Seiten</li>
+                        <li>Zentral in einer Datei</li>
+                        <li>Keine zusätzliche Datei nötig</li>
+                    </ul>
+                </div>
+                <div class="card bg-light">
+                    <h4 class="text-accent">✗ Nachteile</h4>
+                    <ul>
+                        <li>Bei mehreren Seiten: CSS-Code muss kopiert werden</li>
+                        <li>Nicht wiederverwendbar</li>
+                        <li>Duplikation = Wartungsproblem</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Problem: Mehrere HTML-Seiten</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>mein-portfolio/
+├── index.html       ← &lt;style&gt;...&lt;/style&gt; im &lt;head&gt;
+├── about.html       ← &lt;style&gt;...&lt;/style&gt; im &lt;head&gt; (Duplikat!)
+└── contact.html     ← &lt;style&gt;...&lt;/style&gt; im &lt;head&gt; (Duplikat!)</code></pre>
+            </div>
+        </section>
+
+        <!-- Szene 7: External-Styles -->
+        <section class="mb-lg">
+            <h2>3. External-Styles – Die professionelle Lösung</h2>
+            <p>Die beste Methode für grössere Projekte sind External-Styles. Du erstellst eine separate CSS-Datei und bindest sie mit dem <code>&lt;link&gt;</code>-Tag ein.</p>
+            
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Dateistruktur</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>mein-portfolio/
+├── index.html
+├── about.html
+└── styles.css      ← Zentrales Stylesheet</code></pre>
+            </div>
+
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Code-Beispiel: index.html</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Portfolio&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Willkommen&lt;/h1&gt;
+    &lt;p&gt;Dies ist ein Absatz.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Code-Beispiel: styles.css</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>h1 {
+    color: blue;
+    font-size: 32px;
+}
+
+p {
+    color: gray;
+    font-size: 16px;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Szene 8: External-Styles Vorteile -->
+        <section class="mb-lg">
+            <h3>Vorteile von External-Styles</h3>
+            
+            <div class="alert alert-success">
+                <h4>Warum External-Styles die beste Wahl sind:</h4>
+                <ul>
+                    <li><strong>Ein zentrales Stylesheet</strong> für alle Seiten</li>
+                    <li><strong>Leichte Wartung:</strong> Änderung in styles.css → alle Seiten aktualisieren sich</li>
+                    <li><strong>Browser-Cache:</strong> CSS wird zwischengespeichert → schnellere Ladezeiten</li>
+                    <li><strong>Professionell:</strong> Fast alle Webseiten nutzen externe Stylesheets</li>
+                </ul>
+            </div>
+
+            <div class="card mt-md bg-light">
+                <h4>Visualisierung: Mehrere Seiten, ein Stylesheet</h4>
+                <pre style="background-color: var(--band-white); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>index.html     ──┐
+about.html     ──┼──→ styles.css (Zentral!)
+contact.html   ──┘
+
+Änderung in styles.css = Alle Seiten erhalten neue Styles!</code></pre>
+            </div>
+        </section>
+
+        <!-- Szene 9: Vergleich & Best Practices -->
+        <section class="mb-lg">
+            <h2>Vergleich & Best Practices</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Vergleichstabelle</h3>
+                </div>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: var(--band-gray-200);">
+                            <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid var(--band-primary);">Methode</th>
+                            <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid var(--band-primary);">Verwendung</th>
+                            <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid var(--band-primary);">Vorteil</th>
+                            <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid var(--band-primary);">Nachteil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);"><strong>Inline</strong></td>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);">Nur für Ausnahmen</td>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);">Schnell für einzelne Elemente</td>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);">Unübersichtlich, nicht wartbar</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);"><strong>Internal</strong></td>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);">Kleine Ein-Seiten-Projekte</td>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);">Zentral in einer Datei</td>
+                            <td style="padding: 0.75rem; border-bottom: 1px solid var(--band-gray-300);">Nicht wiederverwendbar</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem;"><strong>External</strong></td>
+                            <td style="padding: 0.75rem;">Professionelle Webseiten</td>
+                            <td style="padding: 0.75rem;">Wiederverwendbar, wartbar, cachefreundlich</td>
+                            <td style="padding: 0.75rem;">Zusätzliche Datei (minimaler Aufwand)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info mt-md">
+                <p><strong>Faustregel:</strong> Nutze External-Styles für alle professionellen Projekte. Die meiste Zeit wirst du mit externen Stylesheets arbeiten!</p>
+            </div>
+        </section>
+
+        <!-- Szene 10: Praxis-Tipp -->
+        <section class="mb-lg">
+            <h2>Praxis-Tipp & Zusammenfassung</h2>
+            
+            <div class="card gradient-ocean" style="color: var(--band-white);">
+                <h3 style="color: var(--band-white);">💡 Praxis-Tipp: Gut organisierte CSS-Dateien</h3>
+                <p>Beginne mit einer gut organisierten CSS-Datei. Erstelle Kommentare für verschiedene Bereiche wie Navigation, Header, Main-Content. So behältst du auch bei grösseren Projekten den Überblick.</p>
+            </div>
+
+            <div class="card mt-md">
+                <div class="card-header">
+                    <h4 class="card-title">Beispiel: Gut strukturierte styles.css</h4>
+                </div>
+                <pre style="background-color: var(--band-gray-100); padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>/* ==================
+   NAVIGATION
+   ================== */
+nav {
+    background-color: #1F3B4E;
+    padding: 1rem;
+}
+
+/* ==================
+   HEADER
+   ================== */
+header {
+    background-color: #4EB9CC;
+    padding: 2rem;
+}
+
+/* ==================
+   MAIN CONTENT
+   ================== */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ==================
+   FOOTER
+   ================== */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Lernziele -->
+        <section class="mb-lg">
+            <h2>Lernziele – Was du jetzt kannst</h2>
+            
+            <div class="card">
+                <h4>Nach diesem Tutorial kannst du:</h4>
+                <ul style="line-height: 1.8;">
+                    <li>✓ Die drei Arten der CSS-Einbindung benennen und erklären</li>
+                    <li>✓ Inline-Styles mit dem <code>style</code>-Attribut schreiben</li>
+                    <li>✓ Internal-Styles im <code>&lt;head&gt;</code> mit <code>&lt;style&gt;</code> erstellen</li>
+                    <li>✓ Eine externe CSS-Datei erstellen und mit <code>&lt;link&gt;</code> einbinden</li>
+                    <li>✓ Die Vor- und Nachteile jeder Methode verstehen</li>
+                    <li>✓ Entscheiden, welche Methode für dein Projekt am besten ist</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Zusammenfassung -->
+        <section class="mb-lg">
+            <div class="card bg-light">
+                <h3 class="text-primary">Zusammenfassung</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div>
+                        <span class="badge badge-blue">Inline-Styles</span>
+                        <p class="mt-sm">Nur für Ausnahmen</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-turquoise">Internal-Styles</span>
+                        <p class="mt-sm">Für kleine Ein-Seiten-Projekte</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-orange">External-Styles</span>
+                        <p class="mt-sm">Für alle professionellen Webseiten</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="text-center mb-lg">
+            <h3>Viel Erfolg beim Lernen!</h3>
+            <p>Probiere alle drei Methoden aus und experimentiere mit deinen eigenen Styles.</p>
+            <button class="btn btn-primary mt-md">Los geht's mit CSS!</button>
+        </section>
+
+    </div>
+</body>
+</html>

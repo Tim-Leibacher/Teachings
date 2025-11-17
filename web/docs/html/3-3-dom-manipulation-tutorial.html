@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-Manipulation - JavaScript Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>DOM-Manipulation mit JavaScript</h1>
+            <p>Lerne, wie du HTML-Elemente dynamisch mit JavaScript steuerst und änderst</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">12-15 Minuten</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Intro & Motivation -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Intro & Motivation</h3>
+                        </div>
+                        <p>Heute machen wir deine Website interaktiv! Bisher war HTML statisch – der Inhalt ändert sich nie. Mit DOM-Manipulation kann JavaScript jedes Element auf deiner Seite finden und ändern, ohne die Seite neu zu laden.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Das ist die Grundlage für:</strong>
+                            <ul>
+                                <li>Einfache Textänderungen</li>
+                                <li>Dynamische Updates (z.B. Live-Uhrzeiten)</li>
+                                <li>Interaktive Benutzeroberflächen</li>
+                                <li>Komplexe Web-Apps</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vergleich: Statisch vs. Dynamisch</p>
+                            <div class="split-view">
+                                <div>
+                                    <h4>Statisches HTML</h4>
+                                    <p>Inhalt ändert sich nie</p>
+                                </div>
+                                <div>
+                                    <h4>Mit JavaScript</h4>
+                                    <p id="dynamic-demo">Dieser Text wird gleich geändert...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Was ist das DOM? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist das DOM?</h3>
+                        </div>
+                        <p><strong>DOM</strong> steht für <span class="highlight">Document Object Model</span>. Das ist eine Baumstruktur, die dein HTML repräsentiert. Jedes HTML-Element wird zum JavaScript-Objekt.</p>
+                        
+                        <div class="code-block">
+<code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Mein Portfolio&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 id="titel"&gt;Willkommen&lt;/h1&gt;
+    &lt;p class="intro"&gt;Text hier&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>So funktioniert's:</strong><br>
+                            1. Browser lädt HTML<br>
+                            2. Browser erstellt automatisch die DOM-Struktur<br>
+                            3. JavaScript kann über das <span class="highlight">document</span>-Objekt darauf zugreifen<br>
+                            4. IDs und Klassen sind die Zugriffspunkte
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">DOM-Baum-Struktur:</p>
+                            <div class="dom-tree">
+                                <div class="dom-node">document
+                                    <div class="dom-children">
+                                        <div class="dom-node">html
+                                            <div class="dom-children">
+                                                <div class="dom-node">head
+                                                    <div class="dom-children">
+                                                        <div class="dom-node">title</div>
+                                                    </div>
+                                                </div>
+                                                <div class="dom-node">body
+                                                    <div class="dom-children">
+                                                        <div class="dom-node">h1 (id="titel")</div>
+                                                        <div class="dom-node">p (class="intro")</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: HTML-Struktur vorbereiten -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">HTML-Struktur vorbereiten</h3>
+                        </div>
+                        <p>Zuerst bereiten wir unser HTML vor. Jedes Element bekommt eine eindeutige <span class="highlight">ID</span>. Über diese ID kann JavaScript später genau dieses Element finden. Die ID ist wie eine Adresse für JavaScript.</p>
+                        
+                        <div class="code-block">
+<code>&lt;section id="interaktiv"&gt;
+    &lt;h2&gt;Interaktive Demo&lt;/h2&gt;
+    
+    &lt;div class="demo-box"&gt;
+        &lt;h3&gt;Dynamischer Text&lt;/h3&gt;
+        &lt;p id="demo-text"&gt;Dieser Text wird geändert...&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="demo-box"&gt;
+        &lt;h3&gt;Aktuelle Uhrzeit&lt;/h3&gt;
+        &lt;p&gt;Es ist: &lt;span id="aktuelle-zeit"&gt;--:--:--&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Wichtig:</strong> Die IDs <span class="highlight">demo-text</span> und <span class="highlight">aktuelle-zeit</span> sind unsere Anknüpfungspunkte für JavaScript!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Methode 1 - getElementById() -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Methode 1: getElementById()</h3>
+                        </div>
+                        <p>Die erste Methode: <span class="highlight">getElementById()</span> findet ein Element mit einer bestimmten ID. Die Methode gibt ein JavaScript-Objekt zurück, das das HTML-Element repräsentiert.</p>
+                        
+                        <div class="code-block">
+<code>// DOM-Element auswählen
+let demoText = document.getElementById("demo-text");
+console.log("Element gefunden:", demoText);
+
+// Text ändern
+demoText.textContent = "JavaScript hat diesen Text geändert!";</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <div class="demo-interactive">
+                                <p id="demo-text">Dieser Text wird geändert...</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Wichtig:</strong> Mit <span class="highlight">.textContent</span> änderst du nur den Text – kein HTML wird interpretiert.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Methode 2 - querySelector() -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Methode 2: querySelector()</h3>
+                        </div>
+                        <p>Die zweite Methode ist flexibler: <span class="highlight">querySelector()</span> funktioniert mit CSS-Selektoren – genau wie in CSS. Diese Methode ist moderner und wird häufiger genutzt.</p>
+                        
+                        <div class="code-block">
+<code>// Mit querySelector (CSS-Syntax)
+let element = document.querySelector("#demo-text");
+
+// Funktioniert auch mit Klassen
+let boxen = document.querySelectorAll(".demo-box");
+
+// Oder mit Element-Namen
+let alleAbsaetze = document.querySelectorAll("p");</code>
+                        </div>
+
+                        <div class="comparison-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Methode</th>
+                                        <th>Syntax</th>
+                                        <th>Findet</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>getElementById()</td>
+                                        <td>"demo-text"</td>
+                                        <td>1 Element</td>
+                                    </tr>
+                                    <tr>
+                                        <td>querySelector()</td>
+                                        <td>"#demo-text"</td>
+                                        <td>1 Element</td>
+                                    </tr>
+                                    <tr>
+                                        <td>querySelectorAll()</td>
+                                        <td>".demo-box"</td>
+                                        <td>Alle Elemente</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: textContent vs innerHTML -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">textContent vs innerHTML</h3>
+                        </div>
+                        <p>Es gibt zwei Wege, Inhalte zu ändern: <span class="highlight">textContent</span> ändert nur den reinen Text. <span class="highlight">innerHTML</span> kann auch HTML-Code einfügen.</p>
+                        
+                        <div class="code-block">
+<code>// NUR Text (sicher)
+element.textContent = "Willkommen, &lt;strong&gt;Max&lt;/strong&gt;!";
+// Ergebnis: "Willkommen, &lt;strong&gt;Max&lt;/strong&gt;!" (wörtlich)
+
+// Mit HTML (mächtig, aber Risiko)
+element.innerHTML = "Willkommen, &lt;strong&gt;Max&lt;/strong&gt;!";
+// Ergebnis: "Willkommen, Max!" (fett formatiert)</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vergleich:</p>
+                            <div class="split-view">
+                                <div>
+                                    <h4>textContent</h4>
+                                    <p id="text-content-demo">Wird gleich gesetzt...</p>
+                                </div>
+                                <div>
+                                    <h4>innerHTML</h4>
+                                    <p id="inner-html-demo">Wird gleich gesetzt...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>ACHTUNG:</strong> innerHTML mit Benutzereingaben = <strong>XSS-Risiko!</strong><br>
+                            Nutze innerHTML nur, wenn du die Quelle des Inhalts kontrollierst.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Praktisches Beispiel - Uhrzeit -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Praktisches Beispiel: Live-Uhrzeit</h3>
+                        </div>
+                        <p>Jetzt erstellen wir eine Live-Uhrzeit, die automatisch jede Sekunde aktualisiert wird.</p>
+                        
+                        <div class="code-block">
+<code>function zeigeUhrzeit() {
+    let jetzt = new Date();
+    let stunden = jetzt.getHours();
+    let minuten = jetzt.getMinutes();
+    let sekunden = jetzt.getSeconds();
+    
+    // Führende Nullen hinzufügen
+    stunden = stunden < 10 ? "0" + stunden : stunden;
+    minuten = minuten < 10 ? "0" + minuten : minuten;
+    sekunden = sekunden < 10 ? "0" + sekunden : sekunden;
+    
+    let zeitString = `${stunden}:${minuten}:${sekunden}`;
+    
+    let zeitElement = document.getElementById("aktuelle-zeit");
+    zeitElement.textContent = zeitString;
+}
+
+// Sofort ausführen
+zeigeUhrzeit();
+
+// Jede Sekunde wiederholen
+setInterval(zeigeUhrzeit, 1000);</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <div class="clock-display">
+                                <h2>Es ist: <span id="aktuelle-zeit">--:--:--</span></h2>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Timing-Funktionen:</strong><br>
+                            <span class="highlight">setInterval(funktion, millisekunden)</span> – Führt eine Funktion wiederholt aus<br>
+                            <span class="highlight">setTimeout(funktion, millisekunden)</span> – Führt eine Funktion einmalig verzögert aus
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Styles dynamisch ändern -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Styles dynamisch ändern</h3>
+                        </div>
+                        <p>JavaScript kann auch CSS-Styles direkt ändern. Mit <span class="highlight">.style.eigenschaft</span> greifst du auf CSS-Eigenschaften zu.</p>
+                        
+                        <div class="code-block">
+<code>function anpasseFarben() {
+    let jetzt = new Date();
+    let stunde = jetzt.getHours();
+    
+    let body = document.body;
+    
+    if (stunde >= 6 && stunde < 18) {
+        // Tagsüber: hell
+        body.style.backgroundColor = "#f5f5f5";
+        body.style.color = "#1a1a1a";
+    } else {
+        // Nachts: dunkel
+        body.style.backgroundColor = "#1a1a1a";
+        body.style.color = "#f5f5f5";
+    }
+}
+
+anpasseFarben();</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Beispiel: Style-Änderung</p>
+                            <div id="style-demo-box" class="style-demo-element">
+                                Dieser Box wird die Farbe geändert
+                            </div>
+                            <button class="btn btn-primary" onclick="changeStyleDemo()">Farbe ändern</button>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>CSS → JavaScript Umwandlung:</strong><br>
+                            CSS-Eigenschaften mit Minus werden zu camelCase:<br>
+                            <span class="highlight">background-color</span> → <span class="highlight">backgroundColor</span><br>
+                            <span class="highlight">font-size</span> → <span class="highlight">fontSize</span><br>
+                            <span class="highlight">margin-top</span> → <span class="highlight">marginTop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Mehrere Elemente mit querySelectorAll() -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Mehrere Elemente: querySelectorAll()</h3>
+                        </div>
+                        <p>Was, wenn du mehrere Elemente gleichzeitig ändern willst? <span class="highlight">querySelectorAll()</span> gibt eine Liste von Elementen zurück. Mit <span class="highlight">.forEach()</span> gehst du durch alle Elemente.</p>
+                        
+                        <div class="code-block">
+<code>let demoBoxen = document.querySelectorAll(".demo-box");
+
+demoBoxen.forEach(function(box, index) {
+    setTimeout(function() {
+        box.style.opacity = "0";
+        box.style.transition = "opacity 0.5s";
+        box.style.opacity = "1";
+    }, index * 200);  // 200ms pro Box verzögert
+});</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Demo: Mehrere Boxen animieren</p>
+                            <div class="multiple-boxes-demo">
+                                <div class="animate-box">Box 1</div>
+                                <div class="animate-box">Box 2</div>
+                                <div class="animate-box">Box 3</div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="animateBoxes()">Animieren</button>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>forEach-Schleife:</strong> Perfekt für Listen von Elementen!<br>
+                            Parameter: <span class="highlight">element</span> (aktuelles Element) und <span class="highlight">index</span> (Position)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: JavaScript einbinden & testen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">JavaScript einbinden & testen</h3>
+                        </div>
+                        <p>Jetzt müssen wir die JavaScript-Datei noch einbinden. Das <span class="highlight">&lt;script&gt;</span>-Tag muss <strong>vor dem schließenden &lt;/body&gt;-Tag</strong> stehen!</p>
+                        
+                        <div class="code-block">
+<code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Meine Seite&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="demo-text"&gt;Hallo Welt&lt;/h1&gt;
+    
+    &lt;!-- VOR &lt;/body&gt; einfügen --&gt;
+    &lt;script src="dom.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Das Script-Tag muss am Ende stehen, damit das HTML bereits geladen ist. Sonst findet JavaScript die Elemente nicht!
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Testing-Checkliste:</p>
+                            <ul>
+                                <li>✓ Browser-Konsole öffnen (F12)</li>
+                                <li>✓ Keine Fehlermeldungen? → Gut!</li>
+                                <li>✓ Funktioniert die Uhrzeit?</li>
+                                <li>✓ Ändert sich der Text?</li>
+                                <li>✓ Werden Styles angepasst?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: DevTools - DOM inspizieren -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">DevTools: DOM inspizieren</h3>
+                        </div>
+                        <p>Die Browser-DevTools sind dein bester Freund! Im <strong>Elements-Tab</strong> siehst du die Live-DOM-Struktur. Wenn JavaScript Elemente ändert, siehst du das sofort.</p>
+                        
+                        <div class="devtools-guide">
+                            <div class="devtools-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <strong>DevTools öffnen</strong>
+                                    <p>Drücke F12 oder Rechtsklick → "Untersuchen"</p>
+                                </div>
+                            </div>
+                            <div class="devtools-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <strong>Elements-Tab</strong>
+                                    <p>Zeigt die Live-DOM-Struktur</p>
+                                </div>
+                            </div>
+                            <div class="devtools-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <strong>Styles-Panel</strong>
+                                    <p>Rechts: Alle CSS-Eigenschaften (auch von JS gesetzt)</p>
+                                </div>
+                            </div>
+                            <div class="devtools-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <strong>Console-Tab</strong>
+                                    <p>Teste Code live: <code>document.getElementById("demo-text")</code></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Pro-Tipp:</strong> Du kannst in den DevTools direkt experimentieren! Ändere Werte und sieh die Auswirkungen sofort.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 12: Häufige Fehler vermeiden -->
+            <div class="timeline-item">
+                <div class="timeline-marker">12</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Häufige Fehler vermeiden</h3>
+                        </div>
+                        <p>Drei häufige Fehler und wie du sie vermeidest:</p>
+                        
+                        <div class="error-examples">
+                            <div class="error-card">
+                                <div class="error-number">❌ Fehler 1</div>
+                                <h4>Script-Tag im &lt;head&gt;</h4>
+                                <div class="code-block">
+<code>&lt;!-- FALSCH --&gt;
+&lt;head&gt;
+    &lt;script src="dom.js"&gt;&lt;/script&gt;
+&lt;/head&gt;</code>
+                                </div>
+                                <p><strong>Problem:</strong> HTML noch nicht geladen → Element nicht gefunden</p>
+                                <p><strong>Lösung:</strong> Script vor &lt;/body&gt; einfügen</p>
+                            </div>
+
+                            <div class="error-card">
+                                <div class="error-number">❌ Fehler 2</div>
+                                <h4>Tippfehler bei IDs</h4>
+                                <div class="code-block">
+<code>// HTML: id="demo-text"
+let element = document.getElementById("demo-txt");  // ❌ Tippfehler!
+console.log(element);  // null</code>
+                                </div>
+                                <p><strong>Problem:</strong> JavaScript findet das Element nicht → <code>null</code></p>
+                                <p><strong>Lösung:</strong> IDs in HTML und JavaScript genau prüfen</p>
+                            </div>
+
+                            <div class="error-card">
+                                <div class="error-number">❌ Fehler 3</div>
+                                <h4>Script-Tag vergessen</h4>
+                                <div class="code-block">
+<code>&lt;body&gt;
+    &lt;h1 id="titel"&gt;Hallo&lt;/h1&gt;
+    &lt;!-- Kein &lt;script&gt;-Tag! --&gt;
+&lt;/body&gt;</code>
+                                </div>
+                                <p><strong>Problem:</strong> Kein JavaScript läuft → Seite bleibt statisch</p>
+                                <p><strong>Lösung:</strong> Immer Konsole prüfen auf Fehler!</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Debug-Tipp:</strong> Nutze <span class="highlight">console.log()</span> um zu prüfen, ob Elemente gefunden wurden!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 13: Zusammenfassung & Ausblick -->
+            <div class="timeline-item">
+                <div class="timeline-marker">13</div>
+                <div class="timeline-content">
+                    <div class="card gradient-ocean">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung & Ausblick</h3>
+                        </div>
+                        
+                        <div class="summary-mindmap">
+                            <div class="mindmap-center">
+                                <h3>DOM-Manipulation</h3>
+                            </div>
+                            <div class="mindmap-branches">
+                                <div class="mindmap-branch">
+                                    <h4>🔍 Zugriff</h4>
+                                    <ul>
+                                        <li>getElementById()</li>
+                                        <li>querySelector()</li>
+                                        <li>querySelectorAll()</li>
+                                    </ul>
+                                </div>
+                                <div class="mindmap-branch">
+                                    <h4>✏️ Ändern</h4>
+                                    <ul>
+                                        <li>textContent</li>
+                                        <li>innerHTML</li>
+                                        <li>style.eigenschaft</li>
+                                    </ul>
+                                </div>
+                                <div class="mindmap-branch">
+                                    <h4>⏱️ Timing</h4>
+                                    <ul>
+                                        <li>setInterval()</li>
+                                        <li>setTimeout()</li>
+                                        <li>forEach()</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Das hast du gelernt:</strong>
+                            <ul>
+                                <li>✓ Das DOM ist die Brücke zwischen HTML und JavaScript</li>
+                                <li>✓ Elemente finden mit getElementById() und querySelector()</li>
+                                <li>✓ Inhalte ändern mit textContent und innerHTML</li>
+                                <li>✓ Styles dynamisch anpassen mit .style</li>
+                                <li>✓ Automatische Updates mit setInterval()</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Nächster Schritt:</strong> Im nächsten Video schauen wir uns <strong>Event Handling</strong> an – wie Klicks, Tastatureingaben und andere Benutzeraktionen funktionieren. Dann wird's richtig interaktiv! 🚀
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Interaktive Demo-Sektion -->
+        <section id="interaktiv" class="mt-lg mb-lg">
+            <div class="card gradient-sunset">
+                <h2 class="text-center">Live-Demo-Bereich</h2>
+                <p class="text-center">Dieser Bereich wird durch JavaScript gesteuert</p>
+
+                <div class="split-view mt-md">
+                    <div class="demo-box">
+                        <h3>Dynamischer Text</h3>
+                        <p id="live-demo-text">Warte auf JavaScript...</p>
+                        <button class="btn btn-primary" onclick="updateDemoText()">Text ändern</button>
+                    </div>
+                    
+                    <div class="demo-box">
+                        <h3>Aktuelle Uhrzeit</h3>
+                        <div class="clock-display">
+                            <p>Es ist: <span id="live-zeit">--:--:--</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>DOM-Manipulation Tutorial - BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ - JavaScript Grundlagen</p>
+    </footer>
+
+    <!-- JavaScript für die Live-Demos -->
+    <script>
+        // Szene 1: Dynamischer Text Demo
+        setTimeout(function() {
+            let dynamicDemo = document.getElementById("dynamic-demo");
+            if (dynamicDemo) {
+                dynamicDemo.textContent = "✓ Dieser Text wurde dynamisch geändert!";
+                dynamicDemo.style.color = "var(--band-turquoise-700)";
+                dynamicDemo.style.fontWeight = "bold";
+            }
+        }, 2000);
+
+        // Szene 4: Demo-Text ändern
+        setTimeout(function() {
+            let demoText = document.getElementById("demo-text");
+            if (demoText) {
+                demoText.textContent = "JavaScript hat diesen Text geändert!";
+                demoText.style.color = "var(--band-primary)";
+                demoText.style.fontWeight = "bold";
+            }
+        }, 3000);
+
+        // Szene 6: textContent vs innerHTML Demo
+        setTimeout(function() {
+            let textContentDemo = document.getElementById("text-content-demo");
+            let innerHTMLDemo = document.getElementById("inner-html-demo");
+            
+            if (textContentDemo) {
+                textContentDemo.textContent = "Willkommen, <strong>Max</strong>!";
+            }
+            if (innerHTMLDemo) {
+                innerHTMLDemo.innerHTML = "Willkommen, <strong>Max</strong>!";
+            }
+        }, 1000);
+
+        // Szene 7: Live-Uhrzeit
+        function zeigeUhrzeit() {
+            let jetzt = new Date();
+            let stunden = jetzt.getHours();
+            let minuten = jetzt.getMinutes();
+            let sekunden = jetzt.getSeconds();
+            
+            stunden = stunden < 10 ? "0" + stunden : stunden;
+            minuten = minuten < 10 ? "0" + minuten : minuten;
+            sekunden = sekunden < 10 ? "0" + sekunden : sekunden;
+            
+            let zeitString = `${stunden}:${minuten}:${sekunden}`;
+            
+            let zeitElements = [
+                document.getElementById("aktuelle-zeit"),
+                document.getElementById("live-zeit")
+            ];
+            
+            zeitElements.forEach(function(element) {
+                if (element) {
+                    element.textContent = zeitString;
+                }
+            });
+        }
+
+        zeigeUhrzeit();
+        setInterval(zeigeUhrzeit, 1000);
+
+        // Szene 8: Style Demo
+        function changeStyleDemo() {
+            let styleBox = document.getElementById("style-demo-box");
+            if (styleBox) {
+                let colors = [
+                    "var(--band-blue-700)", 
+                    "var(--band-turquoise-700)", 
+                    "var(--band-orange-700)"
+                ];
+                let randomColor = colors[Math.floor(Math.random() * colors.length)];
+                styleBox.style.backgroundColor = randomColor;
+                styleBox.style.color = "var(--band-white)";
+                styleBox.style.transition = "all 0.3s ease";
+            }
+        }
+
+        // Szene 9: Mehrere Boxen animieren
+        function animateBoxes() {
+            let boxes = document.querySelectorAll(".animate-box");
+            boxes.forEach(function(box, index) {
+                setTimeout(function() {
+                    box.style.opacity = "0";
+                    setTimeout(function() {
+                        box.style.transition = "opacity 0.5s";
+                        box.style.opacity = "1";
+                    }, 50);
+                }, index * 300);
+            });
+        }
+
+        // Live-Demo-Bereich
+        function updateDemoText() {
+            let liveDemoText = document.getElementById("live-demo-text");
+            if (liveDemoText) {
+                let texts = [
+                    "Du hast JavaScript erfolgreich verwendet! 🎉",
+                    "DOM-Manipulation in Aktion! ⚡",
+                    "Das ist die Macht von JavaScript! 💪",
+                    "Weiter so! Du lernst schnell! 🚀"
+                ];
+                let randomText = texts[Math.floor(Math.random() * texts.length)];
+                liveDemoText.textContent = randomText;
+                liveDemoText.style.color = "var(--band-turquoise-700)";
+            }
+        }
+
+        // Initial Live-Demo-Text setzen
+        setTimeout(function() {
+            let liveDemoText = document.getElementById("live-demo-text");
+            if (liveDemoText) {
+                liveDemoText.textContent = "JavaScript ist geladen und aktiv!";
+                liveDemoText.style.color = "var(--band-primary)";
+            }
+        }, 500);
+    </script>
+
+</body>
+</html>

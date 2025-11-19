@@ -118,3 +118,14 @@ nav:
           - Auftrag 2 - API Integration: 03-JAVASCRIPT/04-Misc/02-API-Integration-Fetch-Async.md
           - Auftrag 3 - GitHub User Suche: 03-JAVASCRIPT/04-Misc/03-GitHub-User-Suche.md
           - Auftrag 4 - API Dashboard: 03-JAVASCRIPT/04-Misc/04-Optional-API-Dashboard.md
+  - Diverses:
+      - OWASP Top 10:
+          - Auftrag 1 - OWASP Einführun: 04-MISC/01-OWASP/01-OWASP-Kennenlernen.md
+          - Auftrag 2 - Sicherheitslücken: 04-MISC/01-OWASP/02-Sicherheitsluecken-Beheben.md
+          - Auftrag 3 - Portfolio: 04-MISC/01-OWASP/03-Portfolio-Sicherheits-Checkliste.md
+          - Auftrag 4 - Optional: 04-MISC/01-OWASP/04-Optionale-Security-Headers.md
+      - JSON:
+          - Auftrag 1 - Portfolio Daten: 04-MISC/01-JSON/01-JSON-Portfolio-Daten.md
+          - Auftrag 2 - Validierung: 04-MISC/02-JSON/02-JSON-Validieren-Debuggen.md
+          - Auftrag 3 - API Daten: 04-MISC/02-JSON/03-JSON-API-Daten.md
+          - Auftrag 4 - Optional: 04-MISC/02-JSON/04-Optional-JSON-Konfigurationssystem.md

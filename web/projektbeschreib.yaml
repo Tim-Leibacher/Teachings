@@ -49,16 +49,16 @@ projekt:
       Routen & Middleware: Erstelle einfache Routen, erkläre Middleware-Konzepte.
       RESTful APIs mit Express: Baue eine einfache REST-API (GET, POST, PUT, DELETE).
       Fehlerbehandlung & Sicherheit: Grundlegende Fehlerbehandlung und Sicherheitsaspekte (z.B. Helmet).
-    Database:
-      DB-Grundlagen & Installation: Relationale vs. NoSQL-Datenbanken, Installation von MySQL/MongoDB.
-      CRUD-Operationen: Erkläre Create, Read, Update, Delete mit SQL-Befehlen bzw. MongoDB-Methoden.
-      Integration mit Node/Express: Verbinde eine Node.js-Anwendung mit der Datenbank.
     REACT:
       Einführung in React: Was ist React? Komponentenbasierte Architektur.
       JSX  Komponenten: Erkläre JSX-Syntax, erstelle funktionale Komponenten.
       State und Props: Unbterschied zwischen State und Props State Management.
       Event Handling  Lifecycle: Ereignisbehandlung in React, Lifecycle-Methoden z.B. useEffect.
       Routing mit React Router: Einführung in React Router, einfache Navigation zwischen Seiten.
+    Database:
+      DB-Grundlagen & Installation: Relationale vs. NoSQL-Datenbanken, Installation von MySQL/MongoDB.
+      CRUD-Operationen: Erkläre Create, Read, Update, Delete mit SQL-Befehlen bzw. MongoDB-Methoden.
+      Integration mit Node/Express: Verbinde eine Node.js-Anwendung mit der Datenbank.
 
 
 

@@ -9,6 +9,7 @@
 ## INTRO (40 Sekunden)
 
 ### Szene 1: Titel-Animation
+
 **Dauer:** 10 Sekunden  
 **Visuell:** 
 - BAND Design: Blauer Hintergrund mit Türkis-Akzenten

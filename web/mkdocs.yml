@@ -99,22 +99,22 @@ nav:
           - Auftrag 4 - Fortgeschritten: 02-CSS/04-Responsive/04-Optional-Advanced.md
   - Javascript:
       - JS Basics:
-          - Auftrag 1 - Erste Ausgaben: 03-JavaScript/01-Basics/01-Erste-Ausgaben.md
-          - Auftrag 2 - Externe Datei: 03-JavaScript/01-Basics/02-Externe-Datei.md
-          - Auftrag 3 - DOM Manipulation: 03-JavaScript/01-Basics/03-DOM-Manipulation.md
-          - Auftrag 4 - Skill System: 03-JavaScript/01-Basics/04-Optional-Skill-System.md
+          - Auftrag 1 - Erste Ausgaben: 03-JAVASCRIPT/01-Basics/01-Erste-Ausgaben.md
+          - Auftrag 2 - Externe Datei: 03-JAVASCRIPT/01-Basics/02-Externe-Datei.md
+          - Auftrag 3 - DOM Manipulation: 03-JAVASCRIPT/01-Basics/03-DOM-Manipulation.md
+          - Auftrag 4 - Skill System: 03-JAVASCRIPT/01-Basics/04-Optional-Skill-System.md
       - JS Daten:
-          - Auftrag 1 - Persönliche Daten: 03-JavaScript/02-Daten/01-Persoenliche-Daten.md
-          - Auftrag 2 - Intelligente Begrüssung: 03-JavaScript/02-Daten/02-Intelligente-Begruessung.md
-          - Auftrag 3 - Skills Liste: 03-JavaScript/02-Daten/03-Skills-Liste.md
-          - Auftrag 4 - Dashboard: 03-JavaScript/02-Daten/04-Optional-Dashboard.md
+          - Auftrag 1 - Persönliche Daten: 03-JAVASCRIPT/02-Daten/01-Persoenliche-Daten.md
+          - Auftrag 2 - Intelligente Begrüssung: 03-JAVASCRIPT/02-Daten/02-Intelligente-Begruessung.md
+          - Auftrag 3 - Skills Liste: 03-JAVASCRIPT/02-Daten/03-Skills-Liste.md
+          - Auftrag 4 - Dashboard: 03-JAVASCRIPT/02-Daten/04-Optional-Dashboard.md
       - JS DOM:
-          - Auftrag 1 - DOM Manipulation: 03-JavaScript/03-Dom/01-DOM-Manipulation.md
-          - Auftrag 2 - Interaktives Profil: 03-JavaScript/03-Dom/02-Interaktives-Profil.md
-          - Auftrag 3 - Projekt Galerie: 03-JavaScript/03-Dom/03-Projekt-Galerie.md
-          - Auftrag 4 - Theme Switcher: 03-JavaScript/03-Dom/4-Optional-Theme-Switcher.md
+          - Auftrag 1 - DOM Manipulation: 03-JAVASCRIPT/03-Dom/01-DOM-Manipulation.md
+          - Auftrag 2 - Interaktives Profil: 03-JAVASCRIPT/03-Dom/02-Interaktives-Profil.md
+          - Auftrag 3 - Projekt Galerie: 03-JAVASCRIPT/03-Dom/03-Projekt-Galerie.md
+          - Auftrag 4 - Theme Switcher: 03-JAVASCRIPT/03-Dom/4-Optional-Theme-Switcher.md
       - JS Events & Fetch:
-          - Auftrag 1 - Interaktive Portfolio Sektion: 03-JavaScript/04-Misc/01-Interaktive-Portfolio-Sektion.md
-          - Auftrag 2 - API Integration: 03-JavaScript/04-Misc/02-API-Integration-Fetch-Async.md
-          - Auftrag 3 - GitHub User Suche: 03-JavaScript/04-Misc/03-GitHub-User-Suche.md
-          - Auftrag 4 - API Dashboard: 03-JavaScript/04-Misc/04-Optional-API-Dashboard.md
+          - Auftrag 1 - Interaktive Portfolio Sektion: 03-JAVASCRIPT/04-Misc/01-Interaktive-Portfolio-Sektion.md
+          - Auftrag 2 - API Integration: 03-JAVASCRIPT/04-Misc/02-API-Integration-Fetch-Async.md
+          - Auftrag 3 - GitHub User Suche: 03-JAVASCRIPT/04-Misc/03-GitHub-User-Suche.md
+          - Auftrag 4 - API Dashboard: 03-JAVASCRIPT/04-Misc/04-Optional-API-Dashboard.md

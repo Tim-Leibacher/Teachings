@@ -56,7 +56,6 @@ zeigeProfil(userId);
 
 **Frage:** Was ist das Problem mit diesem Code? Welches der Top 3 Sicherheitsrisiken liegt hier vor?
 
----
 
 #### Beispiel 2: Login-Formular
 

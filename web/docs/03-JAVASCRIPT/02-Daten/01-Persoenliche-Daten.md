@@ -10,7 +10,7 @@ Variablen sind wie beschriftete Schubladen – sie speichern Werte, auf die du s
 
 ---
 
-### Teil 1: Grundlegende persönliche Daten (10 Min)
+### Teil 1: Grundlegende persönliche Daten (15 Min)
 
 Erstelle eine neue Datei **`personal-data.js`** in deinem Projektordner und binde sie in deine `index.html` ein:
 
@@ -28,39 +28,46 @@ Erstelle eine neue Datei **`personal-data.js`** in deinem Projektordner und bind
 
 console.log("=== MEIN PROFIL ===\n");
 
-// Name und Identität
-const vorname = "Sarah";
-const nachname = "Müller";
-const geburtsjahr = 2006;
+// TODO 1.1: Erstelle Variablen für deinen Vornamen, Nachnamen und Geburtsjahr
+// Nutze 'const' für Werte, die sich nicht ändern
+// Beispiel: const vorname = "...";
 
-// Kontaktdaten
-let email = "sarah.mueller@example.com";
-let telefon = "+41 79 123 45 67";
+// Deine Lösung hier:
 
-// Berufsinformationen
-const beruf = "Informatikerin EFZ Applikationsentwicklung";
-let lehrjahr = 1;
-const lehrbetrieb = "ACME Technologies AG";
 
-// Ausgabe mit Template Literals
-console.log(`Name: ${vorname} ${nachname}`);
-console.log(`Geburtsjahr: ${geburtsjahr}`);
-console.log(`E-Mail: ${email}`);
-console.log(`Telefon: ${telefon}`);
-console.log(`Beruf: ${beruf}`);
-console.log(`Lehrjahr: ${lehrjahr}`);
-console.log(`Lehrbetrieb: ${lehrbetrieb}`);
+// TODO 1.2: Erstelle Variablen für deine E-Mail und Telefonnummer
+// Nutze 'let' für Werte, die sich ändern können
+
+// Deine Lösung hier:
+
+
+// TODO 1.3: Erstelle Variablen für deinen Beruf, Lehrjahr und Lehrbetrieb
+// Überlege: Welche sollten const sein, welche let?
+
+// Deine Lösung hier:
+
+
+// TODO 1.4: Gib alle Variablen mit Template Literals aus
+// Syntax: console.log(`Text ${variable} mehr Text`);
+// Dokumentation: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals
+
+// Deine Lösung hier:
+
 ```
 
-**Wichtig:**
-- `const` für Werte, die sich nicht ändern (Name, Geburtsjahr)
-- `let` für Werte, die sich ändern können (Lehrjahr, Telefonnummer)
-- Template Literals mit Backticks `` ` `` für formatierte Ausgaben
-- `${}` fügt Variablen in Strings ein
+**Selbstständige Aufgabe:**
+- Recherchiere auf MDN, wie Template Literals funktionieren
+- Überlege bei jeder Variable: const oder let?
+- Teste deine Ausgaben in der Browser-Konsole (F12)
+
+**Hilfreiche Links:**
+- [MDN: let](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/let)
+- [MDN: const](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/const)
+- [MDN: Template Literals](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals)
 
 ---
 
-### Teil 2: Berechnungen mit Variablen (10 Min)
+### Teil 2: Berechnungen mit Variablen (15 Min)
 
 Erweitere `personal-data.js` mit Berechnungen:
 
@@ -69,41 +76,52 @@ Erweitere `personal-data.js` mit Berechnungen:
 
 console.log("\n=== BERECHNUNGEN ===\n");
 
-// Alter berechnen
-const aktuellesJahr = new Date().getFullYear();
-const alter = aktuellesJahr - geburtsjahr;
+// TODO 2.1: Hole das aktuelle Jahr
+// Tipp: Nutze new Date().getFullYear()
+// Dokumentation: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear
 
+const aktuellesJahr = // Deine Lösung hier
+
+
+// TODO 2.2: Berechne dein Alter aus Geburtsjahr und aktuellem Jahr
+// Formel: alter = aktuellesJahr - geburtsjahr
+
+const alter = // Deine Lösung hier
+
+
+// TODO 2.3: Gib aktuelles Jahr und Alter aus
 console.log(`Aktuelles Jahr: ${aktuellesJahr}`);
-console.log(`Mein Alter: ${alter} Jahre`);
+// Deine console.log Ausgabe für Alter hier:
 
-// Lehrjahre
-const lehrzeit = 4;  // 4 Jahre Ausbildung
-const verbleibendeJahre = lehrzeit - lehrjahr;
 
-console.log(`Lehrzeit: ${lehrzeit} Jahre`);
-console.log(`Verbleibende Lehrjahre: ${verbleibendeJahre}`);
+// TODO 2.4: Erstelle eine Variable 'lehrzeit' mit Wert 4 (Jahre)
+// Berechne die verbleibenden Lehrjahre: lehrzeit - lehrjahr
 
-// Lehrabschluss berechnen
-const startJahr = 2025;  // Beispiel
-const abschlussJahr = startJahr + lehrzeit;
+// Deine Lösung hier:
 
-console.log(`Lehrstart: ${startJahr}`);
-console.log(`Lehrabschluss: ${abschlussJahr}`);
 
-// Prozentuale Fortschritt
-const fortschritt = (lehrjahr / lehrzeit) * 100;
+// TODO 2.5: Berechne dein Lehrabschluss-Jahr
+// Wenn du z.B. 2025 gestartet hast und 4 Jahre Lehrzeit hast:
+// abschlussJahr = startJahr + lehrzeit
 
-console.log(`Fortschritt: ${fortschritt}%`);
+// Deine Lösung hier:
+
+
+// TODO 2.6: Berechne deinen prozentualen Fortschritt
+// Formel: (lehrjahr / lehrzeit) * 100
+// Dokumentation Mathematische Operatoren: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators
+
+// Deine Lösung hier:
+
+
+// Gib alle berechneten Werte aus
 ```
 
-**Neue Konzepte:**
-- Mathematische Operationen mit Variablen
-- `new Date().getFullYear()` gibt aktuelles Jahr zurück
-- Prozentrechnung mit JavaScript
+**Lernziel:** Du sollst selbst herausfinden, wie man Berechnungen durchführt und Variablen kombiniert.
 
 ---
 
-### Teil 3: Verschiedene Datentypen (15 Min)
+### Teil 3: Verschiedene Datentypen (20 Min)
 
 Ergänze verschiedene Datentypen und prüfe sie mit `typeof`:
 
@@ -112,104 +130,115 @@ Ergänze verschiedene Datentypen und prüfe sie mit `typeof`:
 
 console.log("\n=== DATENTYPEN ===\n");
 
-// String (Text)
-let stadt = "Bern";
-let postleitzahl = "3000";  // Als String, nicht Number!
+// TODO 3.1: Erstelle String-Variablen für Stadt und Postleitzahl
+// Wichtig: Postleitzahl als String (wegen führenden Nullen!)
 
-// Number (Zahlen)
-let anzahlProjekte = 5;
-let durchschnittsNote = 5.2;
-let temperatur = -3;
+// Deine Lösung hier:
 
-// Boolean (Wahrheitswerte)
-let istVolljährig = alter >= 18;
-let hatFührerschein = false;
-let sprichtEnglisch = true;
 
-// Array (Listen)
-let hobbies = ["Programmieren", "Gaming", "Lesen"];
-let lieblingszahlen = [7, 13, 42];
+// TODO 3.2: Erstelle Number-Variablen
+// - anzahlProjekte (Ganzzahl)
+// - durchschnittsNote (Dezimalzahl)
+// - temperatur (kann auch negativ sein)
 
-// Ausgabe mit Typprüfung
-console.log(`Stadt: ${stadt} (Typ: ${typeof stadt})`);
-console.log(`Postleitzahl: ${postleitzahl} (Typ: ${typeof postleitzahl})`);
-console.log(`Projekte: ${anzahlProjekte} (Typ: ${typeof anzahlProjekte})`);
-console.log(`Note: ${durchschnittsNote} (Typ: ${typeof durchschnittsNote})`);
-console.log(`Volljährig: ${istVolljährig} (Typ: ${typeof istVolljährig})`);
-console.log(`Hobbies: ${hobbies} (Typ: ${typeof hobbies})`);
+// Deine Lösung hier:
 
-// Hinweis: Arrays werden als "object" angezeigt
-console.log(`Ist Array?: ${Array.isArray(hobbies)}`);
+
+// TODO 3.3: Erstelle Boolean-Variablen
+// - istVolljährig: Prüfe ob alter >= 18
+// - hatFührerschein: true oder false
+// - sprichtEnglisch: true oder false
+// Dokumentation Boolean: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+// Deine Lösung hier:
+
+
+// TODO 3.4: Erstelle Arrays (Listen)
+// - hobbies: Array mit mindestens 3 Hobbies als Strings
+// - lieblingszahlen: Array mit mindestens 3 Zahlen
+// Syntax: let arrayName = [wert1, wert2, wert3];
+// Dokumentation Arrays: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+// Deine Lösung hier:
+
+
+// TODO 3.5: Gib alle Variablen MIT ihrem Typ aus
+// Nutze typeof: console.log(`Variable: ${variable} (Typ: ${typeof variable})`);
+// Für Arrays zusätzlich: Array.isArray(variable)
+
+// Deine Lösung hier:
+
 ```
 
-**Erklärungen:**
-- **String:** Text in Anführungszeichen `"..."` oder `'...'`
-- **Number:** Zahlen ohne Anführungszeichen (auch Dezimalzahlen)
-- **Boolean:** `true` oder `false` (ohne Anführungszeichen!)
-- **Array:** Liste von Werten `[wert1, wert2, wert3]`
-- `typeof` zeigt den Datentyp an
+**Recherche-Aufgaben:**
+1. Warum sollte Postleitzahl ein String sein? (Tipp: Was passiert mit 0800 als Number?)
+2. Wie erstellt man ein Array? Schau auf MDN nach!
+3. Warum zeigt `typeof` für Arrays "object"? Wie prüft man richtig auf Arrays?
 
 ---
 
-### Teil 4: Strukturierte Ausgabe (10 Min)
+### Teil 4: Strukturierte Ausgabe (15 Min)
 
 Erstelle eine übersichtliche, formatierte Ausgabe:
 
 ```javascript
 // === STRUKTURIERTE AUSGABE ===
 
-console.log("\n" + "=".repeat(50));
+// TODO 4.1: Erstelle eine Trennlinie mit 50 Gleichheitszeichen
+// Tipp: Nutze "=".repeat(50)
+// Dokumentation: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/repeat
+
+console.log("\n" + /* Deine Lösung */);
 console.log("PORTFOLIO – PERSÖNLICHE DATEN");
-console.log("=".repeat(50) + "\n");
+console.log(/* Trennlinie wiederholen */);
 
-console.log("📋 PERSÖNLICHE INFORMATIONEN");
+// TODO 4.2: Gib deine persönlichen Informationen formatiert aus
+// Nutze Einrückungen mit Leerzeichen für bessere Lesbarkeit
+console.log("\n📋 PERSÖNLICHE INFORMATIONEN");
 console.log("─".repeat(50));
-console.log(`   Name:            ${vorname} ${nachname}`);
-console.log(`   Geburtsjahr:     ${geburtsjahr} (${alter} Jahre alt)`);
-console.log(`   Wohnort:         ${stadt}, Schweiz`);
-console.log("");
+// Deine console.log Ausgaben hier (Name, Geburtsjahr, Alter, Wohnort):
 
-console.log("💼 BERUFLICHES");
+
+// TODO 4.3: Gib berufliche Informationen aus
+console.log("\n💼 BERUFLICHES");
 console.log("─".repeat(50));
-console.log(`   Beruf:           ${beruf}`);
-console.log(`   Lehrjahr:        ${lehrjahr}/${lehrzeit}`);
-console.log(`   Lehrbetrieb:     ${lehrbetrieb}`);
-console.log(`   Fortschritt:     ${fortschritt}%`);
-console.log(`   Abschluss:       ${abschlussJahr}`);
-console.log("");
+// Deine console.log Ausgaben hier (Beruf, Lehrjahr, Lehrbetrieb, Fortschritt, Abschluss):
 
-console.log("📞 KONTAKT");
+
+// TODO 4.4: Gib Kontaktdaten aus
+console.log("\n📞 KONTAKT");
 console.log("─".repeat(50));
-console.log(`   E-Mail:          ${email}`);
-console.log(`   Telefon:         ${telefon}`);
-console.log("");
+// Deine console.log Ausgaben hier:
 
-console.log("🎯 HOBBIES");
+
+// TODO 4.5: Gib Hobbies als nummerierte Liste aus
+// Nutze eine for-Schleife: for (let i = 0; i < hobbies.length; i++)
+// Dokumentation for-Schleife: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/for
+console.log("\n🎯 HOBBIES");
 console.log("─".repeat(50));
-for (let i = 0; i < hobbies.length; i++) {
-    console.log(`   ${i + 1}. ${hobbies[i]}`);
-}
-console.log("");
+// Deine for-Schleife hier:
 
-console.log("✓ STATUS");
+
+// TODO 4.6: Gib Status-Informationen aus mit Ternärem Operator
+// Syntax: bedingung ? "Ja" : "Nein"
+// Dokumentation: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+console.log("\n✓ STATUS");
 console.log("─".repeat(50));
 console.log(`   Volljährig:      ${istVolljährig ? "Ja" : "Nein"}`);
-console.log(`   Führerschein:    ${hatFührerschein ? "Ja" : "Nein"}`);
-console.log(`   Englisch:        ${sprichtEnglisch ? "Ja" : "Nein"}`);
-console.log("");
+// Weitere Status-Ausgaben hier:
 
-console.log("=".repeat(50));
+
+console.log("\n" + "=".repeat(50));
 ```
 
-**Neue Elemente:**
-- `.repeat(n)` wiederholt einen String n-mal
-- `\n` erzeugt Zeilenumbruch
-- Ternärer Operator: `bedingung ? wennWahr : wennFalsch`
-- For-Schleife für Array-Ausgabe
+**Lernziele:**
+- Selbst eine for-Schleife schreiben (mit MDN-Hilfe)
+- Ternären Operator verstehen und anwenden
+- String-Methoden wie `.repeat()` nutzen
 
 ---
 
-### Teil 5: Daten im HTML anzeigen (5 Min)
+### Teil 5: Daten im HTML anzeigen (10 Min)
 
 Füge in deiner `index.html` ein neues `<div>` ein:
 
@@ -227,46 +256,58 @@ Ergänze am Ende von `personal-data.js`:
 ```javascript
 // === IM HTML ANZEIGEN ===
 
-document.getElementById("profil-daten").innerHTML = `
+// TODO 5.1: Erstelle HTML-Content mit Template Literals
+// Nutze innerHTML um den Content ins div#profil-daten einzufügen
+// Dokumentation innerHTML: https://developer.mozilla.org/de/docs/Web/API/Element/innerHTML
+// Dokumentation Array.join(): https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+
+// TODO 5.2: Hole das Element mit getElementById
+const profilContainer = // Deine Lösung hier
+
+
+// TODO 5.3: Erstelle HTML-Content als String
+// Inkludiere: Name, Alter, Beruf, Lehrjahr, Wohnort, Hobbies, E-Mail
+// Tipp: Hobbies mit hobbies.join(", ") als kommagetrennten String ausgeben
+// Tipp: E-Mail als Link mit <a href="mailto:${email}">${email}</a>
+
+profilContainer.innerHTML = `
     <div class="profil-card">
-        <h3>${vorname} ${nachname}</h3>
-        <p><strong>Alter:</strong> ${alter} Jahre</p>
-        <p><strong>Beruf:</strong> ${beruf}</p>
-        <p><strong>Lehrjahr:</strong> ${lehrjahr}/${lehrzeit} (${fortschritt}% abgeschlossen)</p>
-        <p><strong>Wohnort:</strong> ${stadt}, Schweiz</p>
-        <p><strong>Hobbies:</strong> ${hobbies.join(", ")}</p>
-        <p><strong>E-Mail:</strong> <a href="mailto:${email}">${email}</a></p>
+        <!-- Dein HTML-Code hier -->
     </div>
 `;
 ```
 
-**Tipp:** Ergänze später CSS für schöneres Styling der `.profil-card`!
+**Selbstständige Aufgaben:**
+- Recherchiere, wie `getElementById` funktioniert
+- Lerne, wie man Arrays mit `.join()` zu einem String verbindet
+- Verstehe, wie `innerHTML` HTML-Code einfügt
 
 ---
 
 ## Erfolgskriterien
 
-- [ ] `personal-data.js` ist erstellt und eingebunden
-- [ ] Mindestens 8 verschiedene Variablen sind deklariert (Name, Alter, Beruf, etc.)
+- [ ] Alle TODO-Aufgaben sind selbstständig gelöst
+- [ ] Mindestens 8 verschiedene Variablen sind deklariert
 - [ ] `const` wird für unveränderliche Werte genutzt, `let` für veränderliche
-- [ ] Mindestens 3 verschiedene Datentypen werden verwendet (String, Number, Boolean)
+- [ ] Mindestens 3 verschiedene Datentypen werden verwendet
 - [ ] Template Literals mit `${}` werden für formatierte Ausgaben genutzt
-- [ ] Alter wird aus Geburtsjahr berechnet
+- [ ] Alter wird korrekt aus Geburtsjahr berechnet
 - [ ] Prozentuale Fortschrittsberechnung funktioniert
 - [ ] `typeof` wird genutzt, um Datentypen zu prüfen
-- [ ] Strukturierte Konsolenausgabe mit Formatierung (Linien, Emojis)
-- [ ] Daten werden im HTML angezeigt (mit `innerHTML`)
+- [ ] For-Schleife für Hobbies funktioniert
+- [ ] Ternärer Operator wird für Status verwendet
+- [ ] Daten werden im HTML angezeigt
+- [ ] Keine Fehler in der Konsole
 
 ---
 
-## Tipps
+## Tipps für selbstständiges Arbeiten
 
-- **const vs. let:** Nutze `const` immer, wenn sich der Wert nicht ändern soll – das verhindert versehentliche Fehler
-- **Namenskonventionen:** Variablennamen immer mit Kleinbuchstaben beginnen, bei mehreren Wörtern camelCase nutzen: `meineVariable`
-- **Template Literals sind mächtiger:** Sie unterstützen auch mehrzeilige Strings und eingebettete Ausdrücke
-- **typeof für Debugging:** Wenn etwas nicht funktioniert, prüfe mit `typeof`, ob die Variable den erwarteten Typ hat
-- **Kommentare nutzen:** Schreibe Kommentare (`//`) zu deinem Code – du wirst es später schätzen!
-- **Konsole immer offen:** Lass die Browser-Konsole während der Entwicklung geöffnet (F12)
+- **MDN ist dein Freund:** Bei jeder Frage zuerst auf MDN nachschlagen
+- **Konsole nutzen:** Teste einzelne Code-Zeilen direkt in der Browser-Konsole
+- **Kleine Schritte:** Teste nach jedem TODO, ob es funktioniert
+- **Fehler lesen:** Fehlermeldungen in der Konsole genau lesen – sie sagen dir meist, was falsch ist
+- **Kommentare:** Schreibe Kommentare zu deinem Code, um dein Verständnis zu festigen
 
 ---
 
@@ -276,7 +317,7 @@ document.getElementById("profil-daten").innerHTML = `
    *Teste es: Erstelle `const name = "Max"` und versuche dann `name = "Tim"`. Was zeigt die Konsole?*
 
 2. **Warum sollte Postleitzahl als String und nicht als Number gespeichert werden?**  
-   *Tipp: Führende Nullen! Was passiert mit `0800` als Number?*
+   *Teste: Was passiert mit `let plz = 0800;`? Welcher Wert wird gespeichert?*
 
 3. **Was ist der Unterschied zwischen diesen Ausgaben?**
    ```javascript
@@ -289,36 +330,29 @@ document.getElementById("profil-daten").innerHTML = `
    *Ist das korrekt? Recherchiere, warum JavaScript hier ein bekanntes "Bug" hat.*
 
 5. **Erstelle eine Variable `let zahl = "42"`. Was ist ihr Typ?**  
-   *Wie kannst du sie in eine echte Number umwandeln? Tipp: `parseInt()` oder `Number()`*
+   *Wie kannst du sie in eine echte Number umwandeln? Recherchiere `parseInt()` und `Number()`*
 
 ---
 
 ## Weiterführende Links
 
-**JavaScript Grundlagen:**
-- [MDN: let](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/let)
-- [MDN: const](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/const)
+**Pflichtlektüre für TODO-Aufgaben:**
+- [MDN: Variablen](https://developer.mozilla.org/de/docs/Learn/JavaScript/First_steps/Variables)
 - [MDN: Template Literals](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals)
 - [MDN: typeof](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: for-Schleife](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/for)
+- [MDN: Ternärer Operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 
-**Datentypen:**
+**Vertiefung:**
 - [JavaScript.info: Datentypen](https://javascript.info/types)
+- [JavaScript.info: Variables](https://javascript.info/variables)
 - [W3Schools: JS Data Types](https://www.w3schools.com/js/js_datatypes.asp)
-- [MDN: JavaScript Datentypen](https://developer.mozilla.org/de/docs/Web/JavaScript/Data_structures)
 
 **Best Practices:**
 - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
-**Interaktive Übungen:**
-- [freeCodeCamp: JavaScript Basics](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/)
-- [JavaScript.info: Variables](https://javascript.info/variables)
-
-**Videos:**
-- [The Net Ninja: Variables & Data Types](https://www.youtube.com/watch?v=Hrd3SfCCXZw)
-- [Web Dev Simplified: Let vs Const](https://www.youtube.com/watch?v=9WIJQDvt4Us)
-
 ---
 
-**Geschätzte Zeit:** 50 Minuten  
+**Geschätzte Zeit:** 75 Minuten  
 **Nächster Schritt:** In Auftrag 2 nutzt du if-else Verzweigungen, um auf Bedingungen zu reagieren!

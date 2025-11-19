@@ -10,7 +10,7 @@ Schleifen sind das Werkzeug, um Code zu wiederholen, ohne ihn hundertmal zu schr
 
 ---
 
-### Teil 1: Skills-Array und einfache for-Schleife (15 Min)
+### Teil 1: Skills-Array und einfache for-Schleife (20 Min)
 
 Erstelle eine neue Datei **`skills.js`** und binde sie ein:
 
@@ -30,45 +30,55 @@ Erstelle eine neue Datei **`skills.js`** und binde sie ein:
 
 console.log("=== MEINE SKILLS ===\n");
 
-// Skills als Array
-const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Git",
-    "VS Code",
-    "Debugging",
-    "Problemlösung"
-];
+// TODO 1.1: Erstelle ein Array mit mindestens 7 Skills
+// Beispiele: "HTML", "CSS", "JavaScript", "Git", "VS Code", "Debugging", "Problemlösung"
+// Dokumentation Arrays: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-// Anzahl Skills
-console.log(`Ich habe ${skills.length} Skills:`);
+const skills = // Deine Lösung hier: [...]
 
-// Skills mit for-Schleife ausgeben
-for (let i = 0; i < skills.length; i++) {
-    console.log(`${i + 1}. ${skills[i]}`);
-}
+
+// TODO 1.2: Gib die Anzahl der Skills aus
+// Nutze die .length Eigenschaft von Arrays
+// Dokumentation: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/length
+
+console.log(// Deine Lösung: `Ich habe ${...} Skills:`);
+
+
+// TODO 1.3: Erstelle eine for-Schleife, die alle Skills nummeriert ausgibt
+// Format: "1. HTML", "2. CSS", etc.
+// Standard-Muster: for (let i = 0; i < array.length; i++)
+// Dokumentation for-Schleife: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/for
+
+// Deine for-Schleife hier:
+
 
 console.log("\n");
 
-// Alternative: Jeder Skill mit Emoji
-const skillEmoji = "⭐";
 
-for (let i = 0; i < skills.length; i++) {
-    console.log(`${skillEmoji} ${skills[i]}`);
-}
+// TODO 1.4: Erstelle eine zweite for-Schleife mit Emojis
+// Erstelle eine Variable skillEmoji = "⭐"
+// Gib jeden Skill mit dem Emoji aus: "⭐ HTML"
+
+const skillEmoji = // Deine Lösung
+
+// Deine for-Schleife hier:
+
 ```
 
-**Neue Konzepte:**
-- Arrays speichern mehrere Werte: `[wert1, wert2, wert3]`
-- `.length` gibt Anzahl Elemente zurück
-- `for (let i = 0; i < array.length; i++)` ist das Standard-Muster für Arrays
-- `i` ist der Index (0, 1, 2, 3, ...)
-- `array[i]` greift auf Element an Position i zu
+**Lernziele:**
+- Arrays selbst erstellen und verstehen
+- `.length` Eigenschaft nutzen
+- For-Schleife selbst schreiben (wichtigstes Muster!)
+- Array-Zugriff mit Index `array[i]` verstehen
+
+**Wichtige Konzepte zum Recherchieren:**
+- Warum startet `i` bei 0 und nicht bei 1?
+- Was ist ein Array-Index?
+- Wie greife ich auf ein Element zu?
 
 ---
 
-### Teil 2: Skills mit Fortschritt (20 Min)
+### Teil 2: Skills mit Fortschritt (25 Min)
 
 Erweitere die Skills mit Fortschrittsinformationen:
 
@@ -77,60 +87,78 @@ Erweitere die Skills mit Fortschrittsinformationen:
 
 console.log("\n=== SKILLS MIT FORTSCHRITT ===\n");
 
-// Skills mit Fortschritt in Prozent
+// TODO 2.1: Erstelle ein Array von Objekten mit Skills und Fortschritt
+// Jedes Objekt hat: { name: "HTML", level: 85 }
+// Level ist eine Zahl zwischen 0-100 (Prozent)
+// Dokumentation Objekte: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object
+
 const skillsDetailed = [
     { name: "HTML", level: 85 },
-    { name: "CSS", level: 75 },
-    { name: "JavaScript", level: 60 },
-    { name: "Git", level: 50 },
-    { name: "VS Code", level: 70 },
-    { name: "Debugging", level: 55 },
-    { name: "Problemlösung", level: 65 }
+    // Füge hier mindestens 6 weitere Skills hinzu
+    // Deine Lösung hier:
+    
 ];
 
-// Ausgabe mit Level
+
+// TODO 2.2: Durchlaufe alle Skills mit einer for-Schleife
+// Für jeden Skill: Extrahiere name und level in Variablen
+
 for (let i = 0; i < skillsDetailed.length; i++) {
     const skill = skillsDetailed[i];
-    const name = skill.name;
-    const level = skill.level;
+    const name = // Deine Lösung: skill.name
+    const level = // Deine Lösung: skill.level
     
-    // Fortschrittsbalken erstellen
+    
+    // TODO 2.3: Erstelle einen Fortschrittsbalken mit verschachtelter Schleife
+    // Balken hat 10 Zeichen: █ für gefüllt, ░ für leer
+    // Beispiel: Bei 85% → 8.5 ≈ 9 gefüllte Zeichen
+    // Nutze Math.round(level / 10) für Anzahl gefüllte Zeichen
+    // Dokumentation Math.round: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+    
     let balken = "";
-    const balkenLaenge = Math.round(level / 10);  // 100% = 10 Zeichen
+    const balkenLaenge = // Deine Lösung: Math.round(...)
+    
+    
+    // TODO 2.4: Verschachtelte for-Schleife für Balken-Zeichen
+    // Durchlaufe 0 bis 9 (10 Zeichen total)
+    // Wenn Index < balkenLaenge: Füge █ hinzu
+    // Sonst: Füge ░ hinzu
     
     for (let j = 0; j < 10; j++) {
-        if (j < balkenLaenge) {
-            balken += "█";
+        if (/* Deine Bedingung */) {
+            balken += // Deine Lösung
         } else {
-            balken += "░";
+            balken += // Deine Lösung
         }
     }
     
-    console.log(`${name.padEnd(15)} ${balken} ${level}%`);
+    
+    // TODO 2.5: Gib formatierte Ausgabe aus
+    // Nutze .padEnd(15) um Namen auf 15 Zeichen aufzufüllen
+    // Format: "HTML            ████████░░ 85%"
+    // Dokumentation padEnd: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd
+    
+    console.log(// Deine Lösung);
 }
 ```
 
-**Neue Konzepte:**
-- Objekte in Arrays: `[{ key: value }, { key: value }]`
-- Verschachtelte Schleifen: Eine Schleife in einer anderen
-- `Math.round()` rundet auf ganze Zahl
-- `.padEnd(n)` füllt String auf n Zeichen auf
-- Block-Zeichen `█` und `░` für visuelle Balken
+**Lernziele:**
+- Array von Objekten erstellen
+- Verschachtelte Schleifen verstehen und anwenden
+- String-Manipulation mit +=
+- Math.round() für Berechnungen nutzen
 
-**Konsolen-Ausgabe:**
+**Erwartete Konsolen-Ausgabe:**
 ```
 HTML            ████████░░ 85%
 CSS             ███████░░░ 75%
 JavaScript      ██████░░░░ 60%
-Git             █████░░░░░ 50%
-VS Code         ███████░░░ 70%
-Debugging       █████░░░░░ 55%
-Problemlösung   ██████░░░░ 65%
+...
 ```
 
 ---
 
-### Teil 3: Statistiken berechnen (15 Min)
+### Teil 3: Statistiken berechnen (25 Min)
 
 Berechne Durchschnitt und beste/schlechteste Skills:
 
@@ -139,123 +167,171 @@ Berechne Durchschnitt und beste/schlechteste Skills:
 
 console.log("\n=== STATISTIKEN ===\n");
 
-// Durchschnitt berechnen
-let summe = 0;
+// TODO 3.1: Berechne die Summe aller Level
+// Initialisiere summe mit 0
+// Durchlaufe alle Skills und addiere level zur Summe
+// Tipp: summe += skillsDetailed[i].level
 
-for (let i = 0; i < skillsDetailed.length; i++) {
-    summe += skillsDetailed[i].level;
-}
+let summe = // Deine Lösung: 0
 
-const durchschnitt = Math.round(summe / skillsDetailed.length);
+// Deine for-Schleife hier:
 
+
+// TODO 3.2: Berechne den Durchschnitt
+// Formel: summe / anzahl
+// Runde mit Math.round()
+
+const durchschnitt = // Deine Lösung
+
+
+// TODO 3.3: Gib Statistiken aus
 console.log(`Gesamte Skills: ${skillsDetailed.length}`);
-console.log(`Durchschnittliches Level: ${durchschnitt}%`);
+console.log(// Durchschnittliches Level ausgeben);
 
-// Bester Skill finden
-let besterSkill = skillsDetailed[0];
 
+// TODO 3.4: Finde den besten Skill
+// Starte mit erstem Skill: let besterSkill = skillsDetailed[0]
+// Durchlaufe ab Index 1 alle weiteren Skills
+// Wenn ein Skill höheres Level hat: Setze ihn als besterSkill
+// Dokumentation Vergleiche: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Greater_than
+
+let besterSkill = // Deine Lösung
+
+// Deine for-Schleife (ab i = 1):
 for (let i = 1; i < skillsDetailed.length; i++) {
-    if (skillsDetailed[i].level > besterSkill.level) {
-        besterSkill = skillsDetailed[i];
+    if (/* Deine Bedingung: level größer als besterSkill.level? */) {
+        // Deine Lösung
     }
 }
 
 console.log(`\nStärkster Skill: ${besterSkill.name} (${besterSkill.level}%)`);
 
-// Schwächster Skill finden
-let schwachsterSkill = skillsDetailed[0];
 
-for (let i = 1; i < skillsDetailed.length; i++) {
-    if (skillsDetailed[i].level < schwachsterSkill.level) {
-        schwachsterSkill = skillsDetailed[i];
-    }
-}
+// TODO 3.5: Finde den schwächsten Skill
+// Gleiche Logik wie bester Skill, aber mit < Operator
+
+let schwachsterSkill = // Deine Lösung
+
+// Deine for-Schleife hier:
+
 
 console.log(`Entwicklungspotential: ${schwachsterSkill.name} (${schwachsterSkill.level}%)`);
 
-// Skills nach Level kategorisieren
+
+// TODO 3.6: Kategorisiere Skills nach Level
+// Erstelle 3 leere Arrays
+// Expert-Level: level >= 80
+// Fortgeschritten: level >= 60 (aber < 80)
+// Grundlagen: level < 60
+// Dokumentation .push(): https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+
 let expertSkills = [];
 let fortgeschritteneSkills = [];
 let grundSkills = [];
 
+// TODO 3.7: Durchlaufe alle Skills und füge sie in richtige Kategorie ein
 for (let i = 0; i < skillsDetailed.length; i++) {
     const skill = skillsDetailed[i];
     
-    if (skill.level >= 80) {
-        expertSkills.push(skill.name);
-    } else if (skill.level >= 60) {
-        fortgeschritteneSkills.push(skill.name);
+    if (/* Level >= 80 */) {
+        // Füge skill.name zu expertSkills hinzu
+    } else if (/* Level >= 60 */) {
+        // Füge skill.name zu fortgeschritteneSkills hinzu
     } else {
-        grundSkills.push(skill.name);
+        // Füge skill.name zu grundSkills hinzu
     }
 }
 
+
+// TODO 3.8: Gib Kategorien aus
+// Nutze .join(", ") um Array zu String zu verbinden
+// Dokumentation join: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+
 console.log(`\nExpert-Level (≥80%): ${expertSkills.join(", ")}`);
-console.log(`Fortgeschritten (≥60%): ${fortgeschritteneSkills.join(", ")}`);
-console.log(`Grundlagen (< 60%): ${grundSkills.join(", ")}`);
+console.log(// Fortgeschritten);
+console.log(// Grundlagen);
 ```
 
-**Neue Konzepte:**
-- Summe mit Schleife berechnen: `summe += wert`
-- Minimum/Maximum suchen mit Vergleichen in Schleife
-- Neue Arrays mit `.push()` füllen
-- `.join(", ")` verbindet Array-Elemente mit Komma
+**Lernziele:**
+- Summen mit Schleifen berechnen
+- Minimum/Maximum in Arrays finden
+- Arrays dynamisch mit `.push()` füllen
+- `.join()` für String-Konvertierung nutzen
 
 ---
 
-### Teil 4: Lernziele mit while-Schleife (15 Min)
+### Teil 4: Lernziele mit while-Schleife (20 Min)
 
 ```javascript
 // === LERNZIELE ===
 
 console.log("\n=== LERNZIELE ===\n");
 
-// Ziel: Alle Skills auf mindestens 70% bringen
 console.log("Ziel: Alle Skills auf mindestens 70%\n");
 
+// TODO 4.1: Zähle Skills unter 70% und berechne benötigte Stunden
 let anzahlUnter70 = 0;
 let stundenGeschaetzt = 0;
 
+// TODO 4.2: Durchlaufe alle Skills
 for (let i = 0; i < skillsDetailed.length; i++) {
     const skill = skillsDetailed[i];
     
-    if (skill.level < 70) {
-        const differenz = 70 - skill.level;
-        const stundenProProzent = 2;  // 2 Stunden pro 1%
-        const stundenBenoetigt = differenz * stundenProProzent;
+    // TODO 4.3: Prüfe ob level < 70
+    if (/* Deine Bedingung */) {
+        // TODO 4.4: Berechne Differenz zu 70
+        const differenz = // Deine Lösung: 70 - skill.level
+        
+        // TODO 4.5: Berechne benötigte Stunden
+        // Annahme: 2 Stunden pro 1% Fortschritt
+        const stundenProProzent = 2;
+        const stundenBenoetigt = // Deine Lösung
         
         console.log(`${skill.name}: ${skill.level}% → 70% (${differenz}% fehlen, ca. ${stundenBenoetigt}h Übung)`);
         
+        // TODO 4.6: Erhöhe Zähler und Summe
         anzahlUnter70++;
-        stundenGeschaetzt += stundenBenoetigt;
+        stundenGeschaetzt += // Deine Lösung
     }
 }
 
 console.log(`\nGesamt: ${anzahlUnter70} Skills unter 70%`);
 console.log(`Geschätzte Übungszeit: ${stundenGeschaetzt} Stunden`);
 
-// Simuliere Lernfortschritt mit while-Schleife
+
+// TODO 4.7: Simuliere Lernfortschritt mit while-Schleife
+// Dokumentation while: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/while
+
 console.log("\n=== LERNFORTSCHRITT SIMULATION ===\n");
 
-let aktuellerFortschritt = 60;  // JavaScript startet bei 60%
+// Wähle einen Skill der unter 70% ist (z.B. JavaScript bei 60%)
+let aktuellerFortschritt = 60;  // Anpassen an deinen Skill
 let zielFortschritt = 70;
 let wochen = 0;
 const fortschrittProWoche = 2;  // 2% pro Woche
 
-while (aktuellerFortschritt < zielFortschritt) {
-    wochen++;
-    aktuellerFortschritt += fortschrittProWoche;
-    console.log(`Woche ${wochen}: JavaScript-Level: ${aktuellerFortschritt}%`);
-}
+// TODO 4.8: Erstelle while-Schleife
+// Bedingung: Solange aktuellerFortschritt < zielFortschritt
+// In der Schleife:
+// - Erhöhe wochen um 1
+// - Erhöhe aktuellerFortschritt um fortschrittProWoche
+// - Gib Status aus
+
+// Deine while-Schleife hier:
+
 
 console.log(`\n✓ Ziel erreicht nach ${wochen} Wochen!`);
 ```
 
-**Neue Konzepte:**
-- while-Schleife: `while (bedingung) { ... }`
-- Läuft, solange Bedingung wahr ist
-- Wichtig: Variable muss sich ändern, sonst Endlosschleife!
-- Praktisch für Simulationen und unbekannte Anzahl Durchläufe
+**Lernziele:**
+- While-Schleife selbst schreiben
+- Unterschied for vs while verstehen
+- Berechnungen mit Akkumulatoren (summe +=)
+- Wichtig: Variable MUSS sich ändern, sonst Endlosschleife!
+
+**Reflexion:**
+- Warum nutzen wir hier while statt for?
+- Was passiert, wenn fortschrittProWoche = 0?
 
 ---
 
@@ -282,127 +358,103 @@ Am Ende von `skills.js`:
 
 console.log("\n=== HTML-AUSGABE WIRD GENERIERT ===\n");
 
-// Skills-Liste mit Fortschrittsbalken
+// TODO 5.1: Erstelle HTML-String für alle Skills
 let skillsHTML = '<div class="skills-container">';
 
+// TODO 5.2: Durchlaufe alle Skills und erstelle HTML
 for (let i = 0; i < skillsDetailed.length; i++) {
     const skill = skillsDetailed[i];
     
-    // CSS-Klasse basierend auf Level
+    // TODO 5.3: Bestimme CSS-Klasse basierend auf Level
     let levelClass = "";
-    if (skill.level >= 80) {
+    if (/* level >= 80 */) {
         levelClass = "expert";
-    } else if (skill.level >= 60) {
+    } else if (/* level >= 60 */) {
         levelClass = "advanced";
     } else {
         levelClass = "basic";
     }
     
+    
+    // TODO 5.4: Füge HTML für diesen Skill hinzu
+    // Nutze Template Literals und +=
+    // Inkludiere: skill-name, skill-bar (mit width: ${skill.level}%), skill-percent
+    
     skillsHTML += `
         <div class="skill-item ${levelClass}">
-            <div class="skill-name">${skill.name}</div>
-            <div class="skill-bar-container">
-                <div class="skill-bar" style="width: ${skill.level}%"></div>
-            </div>
-            <div class="skill-percent">${skill.level}%</div>
+            <!-- Dein HTML-Code hier -->
+            <!-- Tipp: <div class="skill-bar" style="width: ${skill.level}%"></div> -->
         </div>
     `;
 }
 
 skillsHTML += '</div>';
 
-document.getElementById("skills-liste").innerHTML = skillsHTML;
 
-// Statistiken anzeigen
+// TODO 5.5: Füge HTML ins DOM ein
+// Dokumentation getElementById: https://developer.mozilla.org/de/docs/Web/API/Document/getElementById
+
+// Deine Lösung:
+
+
+
+// TODO 5.6: Erstelle Statistiken-Box
+// Zeige: Anzahl Skills, Durchschnitt, bester Skill, schwächster Skill
+
 const statsHTML = `
     <div class="stats-box">
         <h3>Statistiken</h3>
-        <p><strong>Anzahl Skills:</strong> ${skillsDetailed.length}</p>
-        <p><strong>Durchschnitt:</strong> ${durchschnitt}%</p>
-        <p><strong>Stärkster Skill:</strong> ${besterSkill.name} (${besterSkill.level}%)</p>
-        <p><strong>Entwicklungspotential:</strong> ${schwachsterSkill.name} (${schwachsterSkill.level}%)</p>
+        <!-- Dein HTML-Code hier -->
     </div>
 `;
 
-document.getElementById("skills-stats").innerHTML = statsHTML;
+// Deine Lösung: Füge ins DOM ein
+
 
 console.log("✓ Skills im HTML angezeigt");
 ```
 
-**Optional: CSS für schöne Darstellung** (in `styles.css`):
-
-```css
-.skills-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.skill-item {
-    display: grid;
-    grid-template-columns: 150px 1fr 50px;
-    gap: 1rem;
-    align-items: center;
-}
-
-.skill-bar-container {
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    height: 20px;
-    overflow: hidden;
-}
-
-.skill-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #0066CC, #00C9A7);
-    border-radius: 5px;
-    transition: width 0.5s ease;
-}
-
-.skill-item.expert .skill-bar {
-    background: linear-gradient(90deg, #00C9A7, #00FF88);
-}
-
-.skill-item.advanced .skill-bar {
-    background: linear-gradient(90deg, #0066CC, #00C9A7);
-}
-
-.skill-item.basic .skill-bar {
-    background: linear-gradient(90deg, #FF6B35, #FFA500);
-}
-
-.stats-box {
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-}
-```
+**Selbstständige Aufgaben:**
+- Erstelle eigenes HTML-Design
+- Experimentiere mit verschiedenen Darstellungen
+- Füge zusätzliche Informationen hinzu
 
 ---
 
-### Teil 6: Animierte Skill-Erhöhung (Optional, 10 Min)
+### Teil 6: Animation (Optional, 15 Min)
 
 Füge eine Animation hinzu, die Skills langsam hochzählt:
 
 ```javascript
 // === ANIMIERTE SKILL-ANZEIGE ===
 
+// TODO 6.1: Erstelle Funktion für Animation
+// Dokumentation setInterval: https://developer.mozilla.org/de/docs/Web/API/setInterval
+// Dokumentation setTimeout: https://developer.mozilla.org/de/docs/Web/API/setTimeout
+
 function animiereSkills() {
-    const skillBars = document.querySelectorAll(".skill-bar");
+    // TODO 6.2: Hole alle Skill-Balken
+    // Nutze querySelectorAll(".skill-bar")
+    // Dokumentation: https://developer.mozilla.org/de/docs/Web/API/Document/querySelectorAll
+    
+    const skillBars = // Deine Lösung
+    
+    
+    // TODO 6.3: Durchlaufe alle Balken mit forEach
+    // Dokumentation forEach: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
     
     skillBars.forEach((bar, index) => {
         // Starte bei 0%
         bar.style.width = "0%";
         
-        // Ziel-Breite aus data-Attribut oder berechnen
-        const zielBreite = skillsDetailed[index].level;
+        // TODO 6.4: Hole Ziel-Breite
+        const zielBreite = // skillsDetailed[index].level
         
-        // Animiere mit setInterval
+        // TODO 6.5: Erstelle Animation mit setInterval
         let aktuelleBreite = 0;
-        const schritte = 50;  // Anzahl Schritte
+        const schritte = 50;
         const schrittGroesse = zielBreite / schritte;
-        const interval = 20;  // Millisekunden pro Schritt
+        const interval = 20;  // Millisekunden
         
         const animation = setInterval(() => {
             aktuelleBreite += schrittGroesse;
@@ -417,41 +469,45 @@ function animiereSkills() {
     });
 }
 
-// Animation nach 500ms starten (damit HTML geladen ist)
-setTimeout(animiereSkills, 500);
+// TODO 6.6: Starte Animation nach 500ms
+// Nutze setTimeout
+
+// Deine Lösung:
+
 ```
 
-**Neue Konzepte:**
-- `setInterval()` wiederholt Funktion in Intervallen
-- `clearInterval()` stoppt die Wiederholung
-- `setTimeout()` führt Funktion nach Verzögerung aus
-- `.forEach()` durchläuft alle Elemente einer NodeList
+**Lernziele:**
+- Funktionen erstellen (kommt ausführlich später)
+- setInterval und setTimeout verstehen
+- DOM-Manipulation mit style
 
 ---
 
 ## Erfolgskriterien
 
-- [ ] `skills.js` ist erstellt und eingebunden
-- [ ] Mindestens 5 Skills sind als Array definiert
+- [ ] Alle TODO-Aufgaben sind selbstständig gelöst
+- [ ] Mindestens 7 Skills sind als Array definiert
 - [ ] Skills werden mit for-Schleife in der Konsole ausgegeben
 - [ ] Skills mit Level-Angabe (0-100%) als Objekt-Array
 - [ ] Fortschrittsbalken werden mit verschachtelter Schleife erstellt
 - [ ] Durchschnitt, bester und schwächster Skill werden berechnet
+- [ ] Skills werden nach Kategorien sortiert
 - [ ] While-Schleife simuliert Lernfortschritt
 - [ ] Skills werden im HTML mit Fortschrittsbalken angezeigt
 - [ ] Statistiken werden im HTML ausgegeben
+- [ ] Code ist gut strukturiert und kommentiert
 - [ ] Keine Fehler in der Konsole
 
 ---
 
-## Tipps
+## Tipps für selbstständiges Arbeiten
 
-- **Schleifen-Zähler:** Nutze immer `let i = 0` in for-Schleifen, nicht `var`
-- **Array-Index:** Arrays starten bei 0, nicht bei 1! `array[0]` ist das erste Element
-- **Endlosschleifen vermeiden:** Bei while-Schleifen IMMER prüfen, ob die Variable sich ändert
-- **console.log() in Schleifen:** Zum Debuggen innerhalb der Schleife ausgeben, was passiert
-- **Performance:** Viele Elemente im DOM? Erst kompletten HTML-String bauen, dann einmal `innerHTML` setzen
-- **CSS-Klassen dynamisch:** Nutze Bedingungen, um verschiedene CSS-Klassen zuzuweisen
+- **Schleifen-Muster verstehen:** Das for-Schleifen-Muster `for (let i = 0; i < length; i++)` ist fundamental!
+- **Array-Index:** Immer daran denken: Arrays starten bei 0, nicht bei 1
+- **Endlosschleifen:** Bei while-Schleifen IMMER prüfen, ob sich die Variable ändert
+- **Debugging:** Nutze `console.log(i)` in Schleifen, um zu sehen, was passiert
+- **Performance:** Erst kompletten HTML-String bauen, dann einmal `innerHTML` setzen
+- **Teste schrittweise:** Nach jedem TODO testen!
 
 ---
 
@@ -461,46 +517,44 @@ setTimeout(animiereSkills, 500);
    *Wann würdest du welche nutzen? Gib je 2 Beispiele.*
 
 2. **Was passiert, wenn du `i <= array.length` statt `i < array.length` schreibst?**  
-   *Teste es und erkläre den Fehler. Tipp: `undefined`*
+   *Teste es und erkläre den Fehler. Warum kommt `undefined`?*
 
 3. **Erstelle eine for-Schleife, die nur gerade Zahlen von 0 bis 20 ausgibt.**  
-   *Tipp: Nutze `i += 2` oder `if (i % 2 === 0)`*
+   *Zwei Lösungswege: Nutze `i += 2` oder `if (i % 2 === 0)`*
 
 4. **Warum ist diese while-Schleife gefährlich?**
    ```javascript
    let x = 10;
    while (x > 5) {
        console.log(x);
-       // Fehler: x wird nie verändert!
+       // x wird nie verändert!
    }
    ```
-   *Wie kannst du sie stoppen, ohne den Browser zu schliessen?*
+   *Wie kannst du sie stoppen, ohne den Browser zu schließen?*
 
 5. **Experimentiere: Erstelle eine verschachtelte Schleife für ein Multiplikationstabelle (1x1 bis 10x10).**  
-   *Wie viele Durchläufe macht die äussere, wie viele die innere Schleife?*
+   *Wie viele Durchläufe macht die äußere, wie viele die innere Schleife?*
 
 ---
 
 ## Weiterführende Links
 
-**Schleifen:**
+**Pflichtlektüre für TODO-Aufgaben:**
 - [MDN: for-Schleife](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/for)
 - [MDN: while-Schleife](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/while)
-- [JavaScript.info: Loops](https://javascript.info/while-for)
-
-**Arrays:**
 - [MDN: Array](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [MDN: Array.push()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
+- [MDN: Array.join()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+
+**Vertiefung:**
+- [JavaScript.info: Loops](https://javascript.info/while-for)
 - [JavaScript.info: Arrays](https://javascript.info/array)
-- [W3Schools: JS Arrays](https://www.w3schools.com/js/js_arrays.asp)
+- [JavaScript.info: Array Methods](https://javascript.info/array-methods)
 
 **Array-Methoden:**
 - [MDN: forEach](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 - [MDN: map](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 - [MDN: filter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-
-**Performance:**
-- [JavaScript Loop Performance](https://stackoverflow.com/questions/5349425/whats-the-fastest-way-to-loop-through-an-array-in-javascript)
-- [Best Practices for Loops](https://www.sitepoint.com/premium/books/javascript-best-practice/read/2/k01nwte1)
 
 **Interaktive Übungen:**
 - [freeCodeCamp: Loops](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/)
@@ -508,5 +562,5 @@ setTimeout(animiereSkills, 500);
 
 ---
 
-**Geschätzte Zeit:** 95 Minuten  
-**Nächster Schritt:** Im optionalen Vertiefungsauftrag erstellst du ein interaktives Quiz mit allen erlernten Konzepten!
+**Geschätzte Zeit:** 120 Minuten  
+**Nächster Schritt:** Im optionalen Vertiefungsauftrag erstellst du ein interaktives Dashboard mit allen erlernten Konzepten!

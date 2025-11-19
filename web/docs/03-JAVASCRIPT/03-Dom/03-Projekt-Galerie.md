@@ -12,7 +12,7 @@ Das ist ein typisches Praxisbeispiel für DOM-Manipulation in professionellen We
 
 ---
 
-### Teil 1: HTML-Struktur für Projekt-Galerie (15 Min)
+## Teil 1: HTML-Struktur für Projekt-Galerie (10 Min)
 
 Erstelle eine neue Sektion für deine Projekte:
 
@@ -77,71 +77,58 @@ Erstelle eine neue Sektion für deine Projekte:
 
 ---
 
-### Teil 2: CSS für Projekt-Galerie (10 Min)
+## Teil 2: CSS für Projekt-Galerie (15 Min)
 
-Füge in `styles.css` hinzu:
+**Deine Aufgabe:**
+Erstelle CSS für die Projekt-Galerie mit folgenden Komponenten:
+
+1. **Filter-Leiste** (`.filter-leiste`)
+    - Grid-Layout mit responsive Spalten
+    - Heller Hintergrund, Padding, abgerundete Ecken
+
+2. **Filter-Gruppen** (`.filter-gruppe`)
+    - Flexbox-Layout (vertikal)
+    - Label und Input/Select sauber gestapelt
+
+3. **Projekt-Grid** (`.projekt-grid`)
+    - CSS Grid mit automatischen Spalten (min. 300px)
+    - Responsive Gap zwischen Karten
+
+4. **Projekt-Karte** (`.projekt-karte`)
+    - Weisser Hintergrund, Border, Shadow
+    - Hover-Effekt: Border-Farbe ändern, hochschweben
+    - Transition-Animationen
+
+5. **Status-Badges** (`.projekt-status`)
+    - Verschiedene Farben je nach Status-Klasse
+    - `.status-abgeschlossen` → grün
+    - `.status-in-arbeit` → gelb/orange
+    - `.status-geplant` → blau
+
+6. **Tech-Badges** (`.tech-badge`)
+    - Kleine Pills mit hellblauem Hintergrund
+
+**Wo nachschlagen:**
+- [MDN: CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout)
+- [CSS-Tricks: A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [MDN: CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions)
+- [MDN: transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+
+**Hinweise:**
+- Nutze `grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))` für responsive Grid
+- Hover-Effekt mit `transform: translateY(-5px)`
+- Transitions für smooth animations
+
+<details>
+<summary>💡 CSS-Grundstruktur anzeigen</summary>
 
 ```css
-/* === PROJEKT-GALERIE === */
-#projekt-galerie {
-    padding: 40px 0;
-}
-
 /* Filter-Leiste */
 .filter-leiste {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
-
-.filter-gruppe {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.filter-gruppe label {
-    font-weight: 600;
-    color: #495057;
-    font-size: 0.9em;
-}
-
-.filter-gruppe select,
-.filter-gruppe input {
-    padding: 10px;
-    border: 2px solid #dee2e6;
-    border-radius: 4px;
-    font-size: 1em;
-    transition: border-color 0.2s ease;
-}
-
-.filter-gruppe select:focus,
-.filter-gruppe input:focus {
-    outline: none;
-    border-color: #0066cc;
-}
-
-/* Statistik */
-#projekt-statistik {
-    background: #e7f5ff;
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 4px solid #0066cc;
-    margin-bottom: 30px;
-}
-
-#projekt-statistik p {
-    margin: 0;
-    color: #495057;
-}
-
-#projekt-statistik strong {
-    color: #0066cc;
-    font-size: 1.1em;
+    /* ... weitere Styles */
 }
 
 /* Projekt-Grid */
@@ -149,129 +136,60 @@ Füge in `styles.css` hinzu:
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
-    margin-bottom: 30px;
 }
 
-/* Projekt-Karte */
+/* Projekt-Karte mit Hover */
 .projekt-karte {
-    background: white;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    padding: 20px;
     transition: all 0.3s ease;
-    opacity: 1;
-    transform: scale(1);
 }
 
 .projekt-karte:hover {
-    border-color: #0066cc;
-    box-shadow: 0 8px 16px rgba(0, 102, 204, 0.15);
     transform: translateY(-5px);
-}
-
-.projekt-karte h3 {
-    color: #0066cc;
-    margin-bottom: 10px;
-    font-size: 1.3em;
-}
-
-.projekt-status {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85em;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.status-abgeschlossen {
-    background: #d4edda;
-    color: #155724;
-}
-
-.status-in-arbeit {
-    background: #fff3cd;
-    color: #856404;
-}
-
-.status-geplant {
-    background: #d1ecf1;
-    color: #0c5460;
-}
-
-.projekt-beschreibung {
-    color: #6c757d;
-    margin-bottom: 15px;
-    font-size: 0.95em;
-    line-height: 1.6;
-}
-
-.projekt-technologien {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-.tech-badge {
-    background: #e7f5ff;
-    color: #0066cc;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    font-weight: 500;
-}
-
-.projekt-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #868e96;
-    font-size: 0.9em;
-    padding-top: 15px;
-    border-top: 1px solid #e9ecef;
-}
-
-/* Animation beim Filtern */
-.projekt-karte.ausgeblendet {
-    opacity: 0;
-    transform: scale(0.8);
-    display: none;
-}
-
-.versteckt {
-    display: none;
-}
-
-.meldung {
-    text-align: center;
-    padding: 40px;
-    color: #6c757d;
-    font-size: 1.1em;
+    box-shadow: 0 8px 16px rgba(0, 102, 204, 0.15);
 }
 ```
+</details>
 
 ---
 
-### Teil 3: JavaScript-Datenstruktur (10 Min)
+## Teil 3: JavaScript-Datenstruktur (15 Min)
 
-Erstelle `projekte.js` mit deinen Projekt-Daten:
+Erstelle `projekte.js`.
+
+### Aufgabe 3.1: Projekt-Daten definieren
+
+**Deine Aufgabe:**
+Erstelle ein Array `projekte` mit mindestens 6 Projekt-Objekten. Jedes Projekt sollte haben:
+- `id` (Nummer)
+- `name` (String)
+- `beschreibung` (String)
+- `technologien` (Array von Strings: "html", "css", "javascript", etc.)
+- `status` (String: "abgeschlossen", "in-arbeit", oder "geplant")
+- `startdatum` (String im Format "YYYY-MM-DD")
+- `dauer` (String z.B. "2 Wochen")
+
+**Wo nachschlagen:**
+- [MDN: Array](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [MDN: Objects](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+**Tipp:** Nutze deine echten Lern-Projekte! Z.B.:
+- HTML Grundlagen
+- CSS Layouts
+- JavaScript Basics
+- Portfolio-Website
+- Eigene Projekt-Ideen
+
+<details>
+<summary>💡 Beispiel-Struktur anzeigen</summary>
 
 ```javascript
-// =====================================================
-// PROJEKT-GALERIE
-// =====================================================
-
 console.log("📁 Projekt-Galerie geladen");
-
-// === PROJEKT-DATEN ===
-// Hier definierst du alle deine Projekte
 
 const projekte = [
     {
         id: 1,
         name: "Portfolio-Website",
-        beschreibung: "Meine persönliche Portfolio-Seite mit HTML, CSS und JavaScript. Zeigt meine Fähigkeiten und Projekte.",
+        beschreibung: "Meine persönliche Portfolio-Seite mit HTML, CSS und JavaScript.",
         technologien: ["html", "css", "javascript"],
         status: "in-arbeit",
         startdatum: "2025-01-01",
@@ -280,65 +198,68 @@ const projekte = [
     {
         id: 2,
         name: "HTML Grundlagen",
-        beschreibung: "Erste Schritte in HTML: Struktur, Semantik, Formulare und mehr.",
+        beschreibung: "Erste Schritte in HTML: Struktur, Semantik, Formulare.",
         technologien: ["html"],
         status: "abgeschlossen",
         startdatum: "2024-09-01",
         dauer: "2 Wochen"
     },
-    {
-        id: 3,
-        name: "CSS Layouts",
-        beschreibung: "Responsive Layouts mit Flexbox und Grid. Inklusive Mobile-First-Ansatz.",
-        technologien: ["css"],
-        status: "abgeschlossen",
-        startdatum: "2024-10-01",
-        dauer: "3 Wochen"
-    },
-    {
-        id: 4,
-        name: "JavaScript DOM-Manipulation",
-        beschreibung: "Interaktive Elemente mit JavaScript: Klicks, Events, dynamische Inhalte.",
-        technologien: ["javascript"],
-        status: "in-arbeit",
-        startdatum: "2025-01-15",
-        dauer: "3 Wochen"
-    },
-    {
-        id: 5,
-        name: "To-Do App",
-        beschreibung: "Eine vollständige To-Do-Liste mit LocalStorage, Filter und Kategorien.",
-        technologien: ["html", "css", "javascript"],
-        status: "geplant",
-        startdatum: "2025-02-01",
-        dauer: "5 Wochen"
-    },
-    {
-        id: 6,
-        name: "Wetter-App",
-        beschreibung: "Wetter-Daten von einer API abrufen und anzeigen.Inklusive Standort-Erkennung.",
-        technologien: ["javascript"],
-        status: "geplant",
-        startdatum: "2025-03-01",
-        dauer: "3 Wochen"
-    },
-    {
-        id: 7,
-        name: "React-Einführung",
-        beschreibung: "Erste Schritte mit React: Komponenten, Props, State und Hooks.",
-        technologien: ["react", "javascript"],
-        status: "geplant",
-        startdatum: "2025-04-01",
-        dauer: "6 Wochen"
-    }
+    // ... mindestens 4 weitere Projekte
 ];
+```
+</details>
 
-console.log(`✅ ${projekte.length} Projekte geladen`);
+### Aufgabe 3.2: Projekte anzeigen
 
-// === PROJEKTE ANZEIGEN ===
+**Deine Aufgabe:**
+Erstelle eine Funktion `zeigeProjekte(projekteListe)`, die:
+1. Den Container leert
+2. Für jedes Projekt eine Karte erstellt mit:
+    - Projekt-Name als `<h3>`
+    - Status-Badge mit entsprechender Klasse
+    - Beschreibung als `<p>`
+    - Tech-Badges für jede Technologie
+    - Meta-Informationen (Datum, Dauer)
+3. Die Karten mit Animation einblendet
+4. Statistik aktualisiert (Anzahl sichtbar / gesamt)
 
+**Wo nachschlagen:**
+- [MDN: createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
+- [MDN: innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
+- [MDN: appendChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
+- [MDN: forEach](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [MDN: Date](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+**Hinweise:**
+- Erstelle für jedes Projekt ein `<div class="projekt-karte">`
+- Nutze Template Literals für dynamisches HTML
+- Füge Animationen mit `setTimeout()` hinzu
+- Formatiere das Datum schön (z.B. "15. Jan 2025")
+
+**Struktur einer Karte:**
+```html
+<div class="projekt-karte" data-status="..." data-technologien="...">
+    <h3>Projekt-Name</h3>
+    <span class="projekt-status status-...">Status</span>
+    <p class="projekt-beschreibung">Beschreibung</p>
+    <div class="projekt-technologien">
+        <span class="tech-badge">HTML</span>
+        ...
+    </div>
+    <div class="projekt-meta">
+        <span>📅 Start: ...</span>
+        <span>⏱️ Dauer</span>
+    </div>
+</div>
+```
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 function zeigeProjekte(projekteListe) {
     let container = document.getElementById("projekt-container");
+    let keineProjekteMeldung = document.getElementById("keine-projekte");
     
     // Container leeren
     container.innerHTML = "";
@@ -347,124 +268,173 @@ function zeigeProjekte(projekteListe) {
     document.getElementById("anzahl-sichtbar").textContent = projekteListe.length;
     document.getElementById("anzahl-gesamt").textContent = projekte.length;
     
-    // Meldung anzeigen, wenn keine Projekte
-    let meldung = document.getElementById("keine-projekte");
+    // Keine Projekte?
     if (projekteListe.length === 0) {
-        meldung.classList.remove("versteckt");
+        keineProjekteMeldung.classList.remove("versteckt");
+        return;
     } else {
-        meldung.classList.add("versteckt");
+        keineProjekteMeldung.classList.add("versteckt");
     }
     
-    // Jedes Projekt als Karte erstellen
+    // Karten erstellen
     projekteListe.forEach(function(projekt, index) {
-        // Karte erstellen
         let karte = document.createElement("div");
         karte.className = "projekt-karte";
+        karte.setAttribute("data-status", projekt.status);
+        karte.setAttribute("data-technologien", projekt.technologien.join(","));
         
         // Status-Klasse
-        let statusKlasse = "status-" + projekt.status;
+        let statusKlasse = `status-${projekt.status}`;
+        let statusText = projekt.status === "abgeschlossen" ? "✅ Abgeschlossen" :
+                        projekt.status === "in-arbeit" ? "🚧 In Arbeit" :
+                        "📅 Geplant";
         
-        // Status-Text anpassen
-        let statusText = projekt.status;
-        if (statusText === "in-arbeit") statusText = "In Arbeit";
-        if (statusText === "abgeschlossen") statusText = "Abgeschlossen";
-        if (statusText === "geplant") statusText = "Geplant";
-        
-        // Technologie-Badges erstellen
+        // Tech-Badges
         let techBadges = "";
         projekt.technologien.forEach(function(tech) {
             techBadges += `<span class="tech-badge">${tech.toUpperCase()}</span>`;
         });
+        
+        // Datum formatieren
+        let datum = new Date(projekt.startdatum);
+        let monate = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", 
+                      "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+        let formatDatum = `${datum.getDate()}. ${monate[datum.getMonth()]} ${datum.getFullYear()}`;
         
         // Karten-Inhalt
         karte.innerHTML = `
             <h3>${projekt.name}</h3>
             <span class="projekt-status ${statusKlasse}">${statusText}</span>
             <p class="projekt-beschreibung">${projekt.beschreibung}</p>
-            <div class="projekt-technologien">
-                ${techBadges}
-            </div>
+            <div class="projekt-technologien">${techBadges}</div>
             <div class="projekt-meta">
-                <span>📅 Start: ${formatiereDatum(projekt.startdatum)}</span>
+                <span>📅 Start: ${formatDatum}</span>
                 <span>⏱️ ${projekt.dauer}</span>
             </div>
         `;
         
-        // Animation mit Verzögerung
+        // Animation
         karte.style.opacity = "0";
         karte.style.transform = "scale(0.8)";
-        
         container.appendChild(karte);
         
-        // Fade-In-Animation
         setTimeout(function() {
             karte.style.transition = "all 0.3s ease";
             karte.style.opacity = "1";
             karte.style.transform = "scale(1)";
-        }, index * 50); // 50ms Verzögerung pro Karte
+        }, index * 50);
     });
     
     console.log(`📊 ${projekteListe.length} Projekte angezeigt`);
 }
 
-// Hilfsfunktion: Datum formatieren
-function formatiereDatum(datumsString) {
-    let datum = new Date(datumsString);
-    let monate = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", 
-                  "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
-    return `${datum.getDate()}. ${monate[datum.getMonth()]} ${datum.getFullYear()}`;
-}
-
-// === INITIAL ALLE PROJEKTE ANZEIGEN ===
+// Initial alle Projekte anzeigen
 zeigeProjekte(projekte);
 ```
+</details>
 
 ---
 
-### Teil 4: Filter-Funktionen (20 Min)
+## Teil 4: Filter-Funktionen (30 Min)
 
-Erweitere `projekte.js` mit Filter-Funktionen:
+### Aufgabe 4.1: Filter-State verwalten
+
+**Deine Aufgabe:**
+Erstelle ein Objekt `aktuelleFilter` das den aktuellen Filter-Zustand speichert:
+- `technologie`
+- `status`
+- `suchbegriff`
+- `sortierung`
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
 
 ```javascript
-// === FILTER-FUNKTIONEN ===
-
 let aktuelleFilter = {
     technologie: "alle",
     status: "alle",
     suchbegriff: "",
     sortierung: "datum-neu"
 };
+```
+</details>
 
-// Technologie-Filter
+### Aufgabe 4.2: Event-Listener für Filter
+
+**Deine Aufgabe:**
+Füge Event-Listener für alle Filter-Elemente hinzu:
+1. Technologie-Filter (`#tech-filter`)
+2. Status-Filter (`#status-filter`)
+3. Such-Input (`#projekt-suche`)
+4. Sortierung (`#sortierung`)
+
+Jeder Listener sollte:
+- Den `aktuelleFilter` aktualisieren
+- Eine Funktion `wendeFilterAn()` aufrufen
+
+**Wo nachschlagen:**
+- [MDN: change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event)
+- [MDN: input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event)
+- [MDN: Event.target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 document.getElementById("tech-filter").addEventListener("change", function() {
     aktuelleFilter.technologie = this.value;
     console.log("🔍 Filtern nach Technologie:", this.value);
     wendeFilterAn();
 });
 
-// Status-Filter
 document.getElementById("status-filter").addEventListener("change", function() {
     aktuelleFilter.status = this.value;
     console.log("🔍 Filtern nach Status:", this.value);
     wendeFilterAn();
 });
 
-// Suche
 document.getElementById("projekt-suche").addEventListener("input", function() {
     aktuelleFilter.suchbegriff = this.value.toLowerCase();
     console.log("🔍 Suche:", this.value);
     wendeFilterAn();
 });
 
-// Sortierung
 document.getElementById("sortierung").addEventListener("change", function() {
     aktuelleFilter.sortierung = this.value;
     console.log("↕️ Sortiere:", this.value);
     wendeFilterAn();
 });
+```
+</details>
 
-// === FILTER ANWENDEN ===
+### Aufgabe 4.3: Filter anwenden
 
+**Deine Aufgabe:**
+Erstelle die Funktion `wendeFilterAn()`, die:
+1. Eine Kopie des `projekte` Arrays erstellt
+2. Nach Technologie filtert (wenn nicht "alle")
+3. Nach Status filtert (wenn nicht "alle")
+4. Nach Suchbegriff filtert (Name ODER Beschreibung)
+5. Die gefilterten Projekte sortiert
+6. Die gefilterten Projekte anzeigt
+
+**Wo nachschlagen:**
+- [MDN: Array.filter()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+- [MDN: Array.includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+- [MDN: String.includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+- [MDN: String.toLowerCase()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
+- [MDN: Spread Syntax](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+**Hinweise:**
+- Nutze `[...projekte]` für eine Kopie (Spread-Operator)
+- `Array.filter()` gibt ein neues Array zurück
+- Verkette mehrere `.filter()` Aufrufe
+- Nutze `.includes()` um zu prüfen ob ein Element im Array ist
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 function wendeFilterAn() {
     // Kopie der Projekt-Liste
     let gefiltert = [...projekte];
@@ -499,9 +469,33 @@ function wendeFilterAn() {
     // Gefilterte Projekte anzeigen
     zeigeProjekte(gefiltert);
 }
+```
+</details>
 
-// === SORTIER-FUNKTION ===
+### Aufgabe 4.4: Sortier-Funktion
 
+**Deine Aufgabe:**
+Erstelle die Funktion `sortiereProjekte(liste, sortierung)`, die je nach Sortierung:
+- `"datum-neu"` → Neueste zuerst (Datum absteigend)
+- `"datum-alt"` → Älteste zuerst (Datum aufsteigend)
+- `"name-az"` → Alphabetisch A-Z
+- `"name-za"` → Alphabetisch Z-A
+
+**Wo nachschlagen:**
+- [MDN: Array.sort()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+- [MDN: String.localeCompare()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)
+- [MDN: switch](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/switch)
+
+**Hinweise:**
+- `Array.sort()` braucht eine Vergleichsfunktion
+- Für Datum: `new Date(a.startdatum) - new Date(b.startdatum)`
+- Für Strings: `a.name.localeCompare(b.name)`
+- Nutze `switch` für verschiedene Sortierungen
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 function sortiereProjekte(liste, sortierung) {
     let sortiert = [...liste];
     
@@ -533,19 +527,35 @@ function sortiereProjekte(liste, sortierung) {
     
     return sortiert;
 }
-
-console.log("✅ Filter-Funktionen initialisiert");
 ```
+</details>
 
 ---
 
-### Teil 5: Erweiterte Statistiken (Optional, 10 Min)
+## Teil 5: Statistiken (Optional, 15 Min)
 
-Füge eine Statistik-Übersicht hinzu:
+### Aufgabe 5.1: Statistik-Funktion
+
+**Deine Aufgabe:**
+Erstelle eine Funktion `berechneStatistiken()`, die zurückgibt:
+- Gesamtzahl Projekte
+- Anzahl abgeschlossene Projekte
+- Anzahl Projekte in Arbeit
+- Anzahl geplante Projekte
+- Anzahl Projekte pro Technologie
+
+**Wo nachschlagen:**
+- [JavaScript.info: Objects](https://javascript.info/object)
+- [MDN: for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+
+**Hinweise:**
+- Nutze ein Objekt um Technologien zu zählen
+- Iteriere über alle Projekte und zähle hoch
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
 
 ```javascript
-// === STATISTIKEN BERECHNEN ===
-
 function berechneStatistiken() {
     let stats = {
         gesamt: projekte.length,
@@ -573,7 +583,7 @@ function berechneStatistiken() {
     return stats;
 }
 
-// Statistik-Übersicht anzeigen
+// Statistik-Übersicht in Konsole anzeigen
 function zeigeStatistikUebersicht() {
     let stats = berechneStatistiken();
     
@@ -588,9 +598,9 @@ function zeigeStatistikUebersicht() {
     }
 }
 
-// Beim Laden aufrufen
 zeigeStatistikUebersicht();
 ```
+</details>
 
 ---
 
@@ -598,7 +608,7 @@ zeigeStatistikUebersicht();
 
 - [ ] Projekt-Galerie-Sektion in HTML eingefügt
 - [ ] CSS für Karten, Filter und Animationen vorhanden
-- [ ] `projekte.js` mit mindestens 5 Projekten erstellt
+- [ ] `projekte.js` mit mindestens 6 Projekten erstellt
 - [ ] Projekte werden als Karten angezeigt
 - [ ] Technologie-Filter funktioniert
 - [ ] Status-Filter funktioniert
@@ -610,16 +620,26 @@ zeigeStatistikUebersicht();
 
 ---
 
-## Tipps
+## Tipps & Troubleshooting
 
-- **Array.filter():** Filtert Elemente nach Bedingung
-- **Array.sort():** Sortiert Elemente (mit Vergleichsfunktion)
-- **includes():** Prüft, ob Element in Array vorhanden
+### Häufige Fehler:
+- **Filter funktioniert nicht?** → Prüfe ob Event-Listener korrekt sind
+- **Sortierung ändert sich nicht?** → Prüfe ob `sortiereProjekte()` aufgerufen wird
+- **Keine Projekte sichtbar?** → Prüfe die Konsole auf Fehler
+- **Suche findet nichts?** → Prüfe ob `.toLowerCase()` verwendet wird
+
+### Performance-Tipp:
+Bei sehr vielen Projekten (100+) solltest du **Debouncing** für die Suche einsetzen, damit nicht bei jedem Tastendruck gefiltert wird.
+
+**Wo nachschlagen:**
+- [CSS-Tricks: Debouncing](https://css-tricks.com/debouncing-throttling-explained-examples/)
+- [Lodash: debounce](https://lodash.com/docs/#debounce)
+
+### Wichtige Konzepte:
+- **Array.filter():** Erstellt neues Array mit gefilterten Elementen
+- **Array.sort():** Sortiert Array (verändert Original!)
 - **Spread-Operator [...]:** Erstellt Kopie eines Arrays
-- **Template Literals:** Für dynamisches HTML (`${variable}`)
-
-**Performance-Tipp:**
-Bei sehr vielen Projekten (100+) solltest du Debouncing für die Suche einsetzen, damit nicht bei jedem Tastendruck gefiltert wird.
+- **Template Literals:** Für dynamisches HTML
 
 ---
 
@@ -634,8 +654,8 @@ Bei sehr vielen Projekten (100+) solltest du Debouncing für die Suche einsetzen
 3. **Könntest du einen weiteren Filter hinzufügen, z.B. nach Dauer?**  
    *Welche Schritte wären nötig? (HTML, Event-Listener, Filter-Logik)*
 
-4. **Die Projekte sind hardcoded im JavaScript. Wie könnte man sie aus einer Datei oder API laden?**  
-   *Recherchiere: fetch() und JSON-Dateien.*
+4. **Die Projekte sind hardcoded im JavaScript. Wie könnte man sie aus einer JSON-Datei laden?**  
+   *Recherchiere: fetch() API.*
 
 5. **Bonus: Wie könnte man neue Projekte per Formular hinzufügen?**  
    *Welche Funktionen bräuchtest du? Wo würdest du die Daten speichern?*
@@ -651,13 +671,13 @@ Bei sehr vielen Projekten (100+) solltest du Debouncing für die Suche einsetzen
 
 **Fortgeschrittene Konzepte:**
 - [Debouncing & Throttling](https://css-tricks.com/debouncing-throttling-explained-examples/)
-- [Virtual Scrolling](https://web.dev/virtualize-long-lists-react-window/) (für sehr viele Elemente)
+- [MDN: Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - Für externe Daten
 
 **Best Practices:**
 - [Google: Rendering Performance](https://web.dev/rendering-performance/)
-- [JavaScript Design Patterns](https://www.patterns.dev/posts/classic-design-patterns/)
+- [MDN: Performance](https://developer.mozilla.org/en-US/docs/Learn/Performance)
 
 ---
 
-**⏱️ Geschätzte Zeit:** 65 Minuten  
-**📦 Nächster Schritt:** Auftrag 6 (Optional) – Theme-Switcher mit Animation
+**⏱️ Geschätzte Zeit:** 90 Minuten  
+**📦 Nächster Schritt:** Auftrag 4 (Optional) – Theme-Switcher mit Animation

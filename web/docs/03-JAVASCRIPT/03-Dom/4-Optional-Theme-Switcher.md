@@ -28,15 +28,34 @@ Dieser Auftrag baut auf den vorherigen Aufträgen auf. Du solltest verstehen:
 
 ---
 
-### Teil 1: CSS-Custom Properties einrichten (15 Min)
+## Teil 1: CSS-Custom Properties einrichten (20 Min)
 
-Custom Properties (CSS-Variablen) sind der Schlüssel für flexible Themes. Erstelle oder erweitere deine styles.css:
+### Aufgabe 1.1: CSS-Variablen für Hell-Theme
+
+**Deine Aufgabe:**
+Erstelle oder erweitere deine `styles.css` mit CSS Custom Properties (CSS-Variablen) für ein Hell-Theme:
+
+Definiere im `:root` mindestens:
+- Hintergrund-Farben (primär, sekundär, tertiär)
+- Text-Farben (primär, sekundär, tertiär)
+- Akzent-Farben (primär, sekundär)
+- Border- und Shadow-Farben
+- Transition-Geschwindigkeit
+
+**Wo nachschlagen:**
+- [MDN: CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+- [MDN: :root](https://developer.mozilla.org/en-US/docs/Web/CSS/:root)
+- [CSS-Tricks: A Complete Guide to Custom Properties](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+
+**Hinweise:**
+- Nutze `--variable-name` für Custom Properties
+- Definiere sie in `:root` für globale Verfügbarkeit
+- Wähle konsistente Farbschemata
+
+<details>
+<summary>💡 Beispiel-Struktur anzeigen</summary>
 
 ```css
-/* =====================================================
-   THEME SYSTEM - CSS CUSTOM PROPERTIES
-   ===================================================== */
-
 :root {
     /* === HELL-THEME (Standard) === */
     --bg-primary: #ffffff;
@@ -49,21 +68,29 @@ Custom Properties (CSS-Variablen) sind der Schlüssel für flexible Themes. Erst
     
     --accent-primary: #0066cc;
     --accent-secondary: #00b8d4;
-    --accent-tertiary: #ff6b35;
     
     --border-color: #dee2e6;
     --shadow-color: rgba(0, 0, 0, 0.1);
     
-    /* Spezifische Elemente */
-    --header-bg: linear-gradient(135deg, #0066cc 0%, #00b8d4 50%, #ff6b35 100%);
-    --card-bg: #ffffff;
-    --code-bg: #f8f9fa;
-    
-    /* Transitions */
     --transition-speed: 0.3s;
 }
+```
+</details>
 
-/* === DUNKEL-THEME === */
+### Aufgabe 1.2: CSS-Variablen für Dunkel-Theme
+
+**Deine Aufgabe:**
+Erstelle ein zweites Theme-Set mit dem Attribut-Selektor `[data-theme="dark"]`. Definiere die gleichen Variablen mit anderen Werten für ein dunkles Farbschema.
+
+**Hinweise:**
+- Dunkle Hintergründe, helle Texte
+- Reduziere Kontrast für Akzent-Farben
+- Stärkere Schatten
+
+<details>
+<summary>💡 Beispiel anzeigen</summary>
+
+```css
 [data-theme="dark"] {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2c2c2c;
@@ -75,17 +102,35 @@ Custom Properties (CSS-Variablen) sind der Schlüssel für flexible Themes. Erst
     
     --accent-primary: #4da6ff;
     --accent-secondary: #33d4ff;
-    --accent-tertiary: #ff8c5a;
     
     --border-color: #4a4a4a;
     --shadow-color: rgba(0, 0, 0, 0.5);
-    
-    --header-bg: linear-gradient(135deg, #003d7a 0%, #006b8f 50%, #cc3d1a 100%);
-    --card-bg: #2c2c2c;
-    --code-bg: #1e1e1e;
 }
+```
+</details>
 
-/* === GLOBALE STYLES MIT VARIABLEN === */
+### Aufgabe 1.3: Variablen in existierendem CSS nutzen
+
+**Deine Aufgabe:**
+Ersetze alle hardcodierten Farben in deinem CSS durch `var(--variable-name)`.
+
+Mindestens für:
+- `body` (background-color, color)
+- `section` (background, border, box-shadow)
+- Überschriften (color)
+- Links (color)
+- Buttons (background, color)
+
+**Wo nachschlagen:**
+- [MDN: var()](https://developer.mozilla.org/en-US/docs/Web/CSS/var)
+
+**Hinweise:**
+- Füge `transition` für smooth theme-changes hinzu
+
+<details>
+<summary>💡 Beispiel anzeigen</summary>
+
+```css
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
@@ -94,40 +139,27 @@ body {
 }
 
 section {
-    background-color: var(--card-bg);
+    background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 4px var(--shadow-color);
-    transition: all var(--transition-speed) ease;
 }
 
 h1, h2, h3 {
     color: var(--accent-primary);
-    transition: color var(--transition-speed) ease;
 }
 
 a {
     color: var(--accent-primary);
     transition: color var(--transition-speed) ease;
 }
-
-a:hover {
-    color: var(--accent-secondary);
-}
-
-code, pre {
-    background: var(--code-bg);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-}
 ```
-
-Wichtig: Ersetze alle hardcodierten Farben in deinem CSS durch CSS-Variablen!
+</details>
 
 ---
 
-### Teil 2: HTML für Theme-Switcher (10 Min)
+## Teil 2: HTML für Theme-Switcher (5 Min)
 
-F�ge eine Theme-Switcher-Komponente in dein HTML ein (z.B. im Header):
+Füge eine Theme-Switcher-Komponente in dein HTML ein (z.B. im Header):
 
 ```html
 <div id="theme-switcher">
@@ -140,12 +172,29 @@ F�ge eine Theme-Switcher-Komponente in dein HTML ein (z.B. im Header):
 
 ---
 
-### Teil 3: CSS für Theme-Switcher (10 Min)
+## Teil 3: CSS für Theme-Switcher (10 Min)
 
-Styles für die Theme-Switcher-Komponente:
+**Deine Aufgabe:**
+Erstelle Styles für den Theme-Switcher-Button:
+- Fixed Position (oben rechts)
+- Flexbox-Layout für Icon und Text
+- Hover- und Active-States
+- Smooth transitions
+
+**Wo nachschlagen:**
+- [MDN: position: fixed](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+- [MDN: z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+- [CSS-Tricks: Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+**Hinweise:**
+- Button sollte über anderen Elementen sein (`z-index: 1000`)
+- Nutze CSS-Variablen für Farben
+- Hover-Effekt: leicht hochschweben
+
+<details>
+<summary>💡 Beispiel anzeigen</summary>
 
 ```css
-/* === THEME SWITCHER === */
 #theme-switcher {
     position: fixed;
     top: 20px;
@@ -158,7 +207,7 @@ Styles für die Theme-Switcher-Komponente:
     align-items: center;
     gap: 10px;
     padding: 12px 20px;
-    background: var(--card-bg);
+    background: var(--bg-secondary);
     border: 2px solid var(--border-color);
     border-radius: 25px;
     cursor: pointer;
@@ -184,33 +233,69 @@ Styles für die Theme-Switcher-Komponente:
     transform: rotate(15deg) scale(1.1);
 }
 ```
+</details>
 
 ---
 
-### Teil 4: JavaScript für Theme-Switcher (25 Min)
+## Teil 4: JavaScript für Theme-Switcher (30 Min)
 
-Erstelle theme-switcher.js:
+Erstelle `theme-switcher.js`.
+
+### Aufgabe 4.1: Theme-Variablen und System-Präferenz
+
+**Deine Aufgabe:**
+1. Erstelle eine Variable `aktuellesTheme`
+2. Implementiere die Funktion `getSystemTheme()`, die die Browser-Präferenz erkennt
+
+**Wo nachschlagen:**
+- [MDN: Window.matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+- [MDN: prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
+- [Web.dev: prefers-color-scheme](https://web.dev/prefers-color-scheme/)
+
+**Hinweise:**
+- `window.matchMedia('(prefers-color-scheme: dark)')` prüft System-Theme
+- `.matches` gibt `true/false` zurück
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
 
 ```javascript
-// =====================================================
-// THEME SWITCHER
-// =====================================================
-
 console.log("🎨 Theme-Switcher geladen");
 
-// === AKTUELLES THEME ===
 let aktuellesTheme = "light";
 
-// === SYSTEM-PRÄFERENZ ERKENNEN ===
 function getSystemTheme() {
-    // Browser-API: prefers-color-scheme
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         return "dark";
     }
     return "light";
 }
+```
+</details>
 
-// === THEME ANWENDEN ===
+### Aufgabe 4.2: Theme setzen
+
+**Deine Aufgabe:**
+Erstelle die Funktion `setzeTheme(themeName)`, die:
+1. Das `data-theme` Attribut am `<html>`-Element setzt
+2. Die Variable `aktuellesTheme` aktualisiert
+3. Den Button (Icon und Text) aktualisiert
+4. Das Theme in LocalStorage speichert
+
+**Wo nachschlagen:**
+- [MDN: Element.setAttribute](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)
+- [MDN: document.documentElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement)
+- [MDN: localStorage.setItem](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem)
+
+**Hinweise:**
+- `document.documentElement` ist das `<html>`-Element
+- Button-Update: Icon ☀️ für Hell, 🌙 für Dunkel
+- Speichere mit Key `"gewaehltes-theme"`
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 function setzeTheme(themeName) {
     console.log("🎨 Setze Theme:", themeName);
     
@@ -221,21 +306,10 @@ function setzeTheme(themeName) {
     aktuellesTheme = themeName;
     
     // Button-Text und Icon aktualisieren
-    aktualisiereButton(themeName);
-    
-    // Theme in LocalStorage speichern
-    localStorage.setItem("gewaehltes-theme", themeName);
-    
-    console.log("✅ Theme aktiviert:", themeName);
-}
-
-// === BUTTON AKTUALISIEREN ===
-function aktualisiereButton(themeName) {
     let button = document.getElementById("theme-toggle");
     let icon = button.querySelector(".theme-icon");
     let text = button.querySelector(".theme-text");
     
-    // Icon und Text je nach Theme
     if (themeName === "dark") {
         icon.textContent = "☀️";
         text.textContent = "Hell";
@@ -243,9 +317,30 @@ function aktualisiereButton(themeName) {
         icon.textContent = "🌙";
         text.textContent = "Dunkel";
     }
+    
+    // Theme in LocalStorage speichern
+    localStorage.setItem("gewaehltes-theme", themeName);
+    
+    console.log("✅ Theme aktiviert:", themeName);
 }
+```
+</details>
 
-// === GESPEICHERTES THEME LADEN ===
+### Aufgabe 4.3: Gespeichertes Theme laden
+
+**Deine Aufgabe:**
+Erstelle die Funktion `ladeGespeichertesTheme()`, die:
+1. Prüft ob ein Theme in LocalStorage gespeichert ist
+2. Wenn ja: lädt dieses Theme
+3. Wenn nein: nutzt System-Präferenz
+
+**Wo nachschlagen:**
+- [MDN: localStorage.getItem](https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem)
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 function ladeGespeichertesTheme() {
     let gespeichert = localStorage.getItem("gewaehltes-theme");
     
@@ -253,21 +348,46 @@ function ladeGespeichertesTheme() {
         console.log("📂 Lade gespeichertes Theme:", gespeichert);
         setzeTheme(gespeichert);
     } else {
-        // Kein gespeichertes Theme → System-Präferenz nutzen
         let systemTheme = getSystemTheme();
         console.log("ℹ️ Nutze System-Präferenz:", systemTheme);
         setzeTheme(systemTheme);
     }
 }
+```
+</details>
 
-// === TOGGLE-BUTTON (Hell ↔ Dunkel) ===
+### Aufgabe 4.4: Toggle-Button
+
+**Deine Aufgabe:**
+Füge einen Event-Listener zum Button hinzu, der zwischen Hell und Dunkel wechselt.
+
+**Hinweise:**
+- Toggle-Logik: `aktuellesTheme === "dark" ? "light" : "dark"`
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 document.getElementById("theme-toggle").addEventListener("click", function() {
-    // Toggle zwischen hell und dunkel
     let neuesTheme = aktuellesTheme === "dark" ? "light" : "dark";
     setzeTheme(neuesTheme);
 });
+```
+</details>
 
-// === SYSTEM-THEME ÄNDERUNGEN BEOBACHTEN ===
+### Aufgabe 4.5: System-Theme Änderungen beobachten
+
+**Deine Aufgabe:**
+Füge einen Listener hinzu, der auf Änderungen der System-Präferenz reagiert (nur wenn kein Theme gespeichert ist).
+
+**Wo nachschlagen:**
+- [MDN: MediaQueryList.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addEventListener)
+- [MDN: change event (MediaQueryList)](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/change_event)
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
         // Nur reagieren, wenn kein Theme gespeichert ist
@@ -279,14 +399,24 @@ if (window.matchMedia) {
         }
     });
 }
+```
+</details>
 
-// === BEIM LADEN DER SEITE ===
+### Aufgabe 4.6: Initialisierung
+
+**Deine Aufgabe:**
+Rufe beim Laden der Seite `ladeGespeichertesTheme()` auf.
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 ladeGespeichertesTheme();
-
 console.log("✅ Theme-Switcher initialisiert");
 ```
+</details>
 
-Binde die Datei ein:
+**Binde die Datei ein:**
 
 ```html
 <script src="dom.js"></script>
@@ -297,13 +427,24 @@ Binde die Datei ein:
 
 ---
 
-### Teil 5: Erweiterte Animationen (Optional, 15 Min)
+## Teil 5: Erweiterte Animationen (Optional, 15 Min)
 
-F�ge flüssige Übergänge hinzu:
+### Aufgabe 5.1: Fade-Animation beim Wechsel
+
+**Deine Aufgabe:**
+Erweitere die `setzeTheme()` Funktion mit einer Fade-Animation:
+1. Fade-Out (opacity: 0.8)
+2. Theme wechseln (nach 150ms)
+3. Fade-In (opacity: 1)
+
+**Wo nachschlagen:**
+- [MDN: HTMLElement.style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
+- [MDN: setTimeout](https://developer.mozilla.org/de/docs/Web/API/setTimeout)
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
 
 ```javascript
-// === THEME-WECHSEL MIT ANIMATION ===
-
 function setzeThemeMitAnimation(themeName) {
     // Fade-Out Animation
     document.body.style.opacity = "0.8";
@@ -318,46 +459,98 @@ function setzeThemeMitAnimation(themeName) {
     }, 150);
 }
 
-// Toggle-Button Event ersetzen mit Animation
+// Toggle-Button Event ersetzen
 document.getElementById("theme-toggle").addEventListener("click", function() {
     let neuesTheme = aktuellesTheme === "dark" ? "light" : "dark";
     setzeThemeMitAnimation(neuesTheme);
 });
 ```
+</details>
 
 ---
 
-### Teil 6: Erweiterte Features (Optional, 20 Min)
+## Teil 6: Mehrere Themes (Optional, 25 Min)
 
-Mehrere Themes und erweiterte Optionen:
+### Aufgabe 6.1: Drittes Theme hinzufügen
 
-```javascript
-// === VERFÜGBARE THEMES ===
-const themes = {
-    light: { icon: "☀️", text: "Hell" },
-    dark: { icon: "🌙", text: "Dunkel" },
-    sepia: { icon: "📜", text: "Sepia" }
-};
+**Deine Aufgabe:**
+1. Füge ein "Sepia"-Theme in CSS hinzu (`[data-theme="sepia"]`)
+2. Erstelle ein Objekt mit allen verfügbaren Themes
+3. Erweitere die Button-Logik für Rotation durch alle Themes
 
-// Sepia-Theme in CSS definieren:
-/*
+**Wo nachschlagen:**
+- [MDN: Array.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+- [Modulo Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder)
+
+**CSS-Beispiel für Sepia:**
+```css
 [data-theme="sepia"] {
     --bg-primary: #f4ecd8;
+    --bg-secondary: #e8ddc7;
     --text-primary: #5b4636;
     --accent-primary: #8b4513;
+    /* ... */
 }
-*/
+```
 
-// === THEME-AUSWAHL MENU ===
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
+const themes = ["light", "dark", "sepia"];
+const themeIcons = {
+    light: "🌙",
+    dark: "📜",
+    sepia: "☀️"
+};
+const themeTexte = {
+    light: "Dunkel",
+    dark: "Sepia",
+    sepia: "Hell"
+};
+
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    let index = themes.indexOf(aktuellesTheme);
+    let naechsterIndex = (index + 1) % themes.length;
+    let neuesTheme = themes[naechsterIndex];
+    
+    setzeTheme(neuesTheme);
+    
+    // Button aktualisieren
+    let icon = this.querySelector(".theme-icon");
+    let text = this.querySelector(".theme-text");
+    icon.textContent = themeIcons[neuesTheme];
+    text.textContent = themeTexte[neuesTheme];
+});
+```
+</details>
+
+### Aufgabe 6.2: Theme-Auswahl-Menu (Advanced)
+
+**Deine Aufgabe:**
+Erstelle ein Dropdown-Menu mit allen verfügbaren Themes.
+
+**Hinweise:**
+- Erstelle das Menu dynamisch per JavaScript
+- Zeige/Verstecke es beim Klick auf den Button
+- Schliesse es bei Klick ausserhalb
+
+**Wo nachschlagen:**
+- [MDN: Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
+- [MDN: Event.stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
+
+<details>
+<summary>💡 Lösung anzeigen</summary>
+
+```javascript
 function erstelleThemeMenu() {
     let switcher = document.getElementById("theme-switcher");
     let menu = document.createElement("div");
     menu.className = "theme-menu versteckt";
     
-    for (let theme in themes) {
+    themes.forEach(function(theme) {
         let button = document.createElement("button");
-        button.textContent = themes[theme].icon + " " + themes[theme].text;
-        button.setAttribute("data-theme", theme);
+        button.textContent = themeIcons[theme] + " " + theme.charAt(0).toUpperCase() + theme.slice(1);
         button.className = "theme-option";
         
         button.addEventListener("click", function() {
@@ -366,7 +559,7 @@ function erstelleThemeMenu() {
         });
         
         menu.appendChild(button);
-    }
+    });
     
     switcher.appendChild(menu);
     
@@ -382,18 +575,16 @@ function erstelleThemeMenu() {
     });
 }
 
-// Beim Laden aufrufen
 erstelleThemeMenu();
 ```
 
-CSS für Theme-Menu:
-
+CSS für Menu:
 ```css
 .theme-menu {
     position: absolute;
     top: 60px;
     right: 0;
-    background: var(--card-bg);
+    background: var(--bg-secondary);
     border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 10px;
@@ -411,90 +602,103 @@ CSS für Theme-Menu:
     padding: 10px;
     background: transparent;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
     color: var(--text-primary);
     transition: background 0.2s ease;
-    text-align: left;
 }
 
 .theme-option:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
 }
 ```
+</details>
 
 ---
 
 ## Erfolgskriterien
 
 - [ ] CSS Custom Properties für mindestens 2 Themes definiert
+- [ ] Alle Farben in CSS nutzen CSS-Variablen
 - [ ] Theme-Switcher-Button im HTML eingefügt
-- [ ] theme-switcher.js erstellt und eingebunden
+- [ ] `theme-switcher.js` erstellt und eingebunden
 - [ ] Theme-Wechsel funktioniert (hell/dunkel)
-- [ ] Theme-Wechsel ist animiert
 - [ ] Gewähltes Theme wird in LocalStorage gespeichert
 - [ ] Gespeichertes Theme wird beim Laden geladen
 - [ ] System-Präferenz (prefers-color-scheme) wird erkannt
-- [ ] Alle wichtigen Farben in CSS nutzen CSS-Variablen
 - [ ] Button zeigt aktuelles Theme an
+- [ ] Smooth transitions beim Wechsel
 
 Bonus-Kriterien:
 - [ ] Mehr als 2 Themes verfügbar
 - [ ] Theme-Auswahl-Menu funktioniert
 - [ ] Fade-Animation beim Wechsel
-- [ ] Statistiken in Konsole
 
 ---
 
-## Tipps
+## Tipps & Troubleshooting
 
-- CSS Custom Properties: var(--variable-name) greift auf Werte zu
-- Data-Attribut: data-theme="dark" am <html> steuert alle Themes
-- prefers-color-scheme: Browser-API für System-Theme
-- matchMedia(): Hört auf Änderungen der System-Präferenz
-- Transitions: Sanfte Übergänge mit transition: all 0.3s ease
+### Häufige Fehler:
+- **Theme wechselt nicht?** → Prüfe ob `data-theme` am `<html>`-Element gesetzt wird
+- **Farben ändern sich nicht?** → Prüfe ob alle Styles `var(--variable)` nutzen
+- **System-Theme wird nicht erkannt?** → Prüfe Browser-Support für `matchMedia`
+- **Button zeigt falsches Theme?** → Prüfe Button-Update-Logik
 
-Häufige Fehler:
-- Vergessen, Farben in CSS-Variablen umzuwandeln
-- data-theme am falschen Element (nicht <body>, sondern <html>)
-- LocalStorage-Key falsch schreiben
-- Transitions zu langsam (>0.5s)
+### Browser-Support:
+- CSS Custom Properties: Alle modernen Browser
+- `prefers-color-scheme`: IE11 nicht unterstützt
+- `matchMedia`: Alle modernen Browser
+
+### Performance:
+- CSS-Variablen sind sehr performant
+- Transitions sollten nicht zu langsam sein (<0.5s)
+- Vermeide zu viele gleichzeitige Transitions
+
+### Wichtige Konzepte:
+- **CSS Custom Properties:** Wiederverwendbare CSS-Werte
+- **Data-Attribute:** `data-theme` steuert Theme
+- **prefers-color-scheme:** Browser-API für System-Theme
+- **LocalStorage:** Speichert Benutzer-Präferenz
 
 ---
 
 ## Reflexionsfragen
 
-1. Warum setzen wir data-theme am <html>-Element und nicht am <body>?  
-   Tipp: Was ist mit :root in CSS?
+1. **Warum setzen wir `data-theme` am `<html>`-Element und nicht am `<body>`?**  
+   *Tipp: Was ist mit `:root` in CSS?*
 
-2. CSS Custom Properties vs. Klassen – was ist besser für Themes?  
-   Vergleiche: .dark-theme vs. [data-theme="dark"]. Was sind Vor- und Nachteile?
+2. **CSS Custom Properties vs. Klassen – was ist besser für Themes?**  
+   *Vergleiche: `.dark-theme` vs. `[data-theme="dark"]`. Was sind Vor- und Nachteile?*
 
-3. Die prefers-color-scheme API erkennt System-Präferenzen. Welche anderen Präferenzen gibt es?  
-   Recherchiere: prefers-reduced-motion, prefers-contrast
+3. **Die `prefers-color-scheme` API erkennt System-Präferenzen. Welche anderen Präferenzen gibt es?**  
+   *Recherchiere: `prefers-reduced-motion`, `prefers-contrast`*
 
-4. Wie könnte man Themes für einzelne Komponenten statt der ganzen Seite anwenden?  
-   Tipp: CSS Custom Properties können auf jedem Element gesetzt werden.
+4. **Wie könnte man Themes für einzelne Komponenten statt der ganzen Seite anwenden?**  
+   *Tipp: CSS Custom Properties können auf jedem Element gesetzt werden.*
 
-5. Bonus-Challenge: Wie würdest du mehrere Themes (>3) übersichtlich anbieten?  
-   Denk an UX: Dropdown, Grid, Tabs?
+5. **Bonus-Challenge: Wie würdest du mehrere Themes (>3) übersichtlich anbieten?**  
+   *Denk an UX: Dropdown, Grid, Tabs?*
 
 ---
 
 ## Weiterführende Links
 
-CSS Custom Properties:
-- MDN: Using CSS Custom Properties
-- CSS-Tricks: A Complete Guide to Custom Properties
+**CSS Custom Properties:**
+- [MDN: Using CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+- [CSS-Tricks: A Complete Guide to Custom Properties](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+- [Web.dev: CSS Custom Properties](https://web.dev/css-variables/)
 
-System-Präferenzen:
-- MDN: prefers-color-scheme
-- Web.dev: prefers-color-scheme
+**System-Präferenzen:**
+- [MDN: prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
+- [Web.dev: prefers-color-scheme Guide](https://web.dev/prefers-color-scheme/)
+- [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
 
-Barrierefreiheit:
-- WCAG: Color Contrast
-- WebAIM: Color Contrast Checker
+**Barrierefreiheit:**
+- [WCAG: Color Contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+- [WebAIM: Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
+
+**Best Practices:**
+- [Web.dev: Building a Theme Switch](https://web.dev/building-a-theme-switch-component/)
+- [CSS-Tricks: Dark Mode](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/)
 
 ---
 
@@ -502,7 +706,7 @@ Barrierefreiheit:
 
 Dieser Auftrag geht deutlich über die Grundlagen hinaus:
 - Fortgeschrittene CSS-Konzepte: Custom Properties, Data-Attribut-Selektoren
-- Browser-APIs: matchMedia, prefers-color-scheme
+- Browser-APIs: `matchMedia`, `prefers-color-scheme`
 - Komplexere Logik: State-Management, Event-Handling, Persistenz
 - Best Practices: Barrierefreiheit, Performance, UX
 
@@ -514,6 +718,6 @@ Er ist perfekt für Lernende, die:
 
 ---
 
-Geschätzte Zeit: 60-75 Minuten  
-Schwierigkeitsgrad: Fortgeschritten  
-Nächstes Kapitel: Event Handling – Interaktionen mit Benutzern
+**⏱️ Geschätzte Zeit:** 90-110 Minuten  
+**Schwierigkeitsgrad:** Fortgeschritten  
+**📦 Nächstes Kapitel:** Event Handling – Interaktionen mit Benutzern

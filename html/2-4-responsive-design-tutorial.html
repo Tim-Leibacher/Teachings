@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Responsive Design - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>CSS – Responsive Design</h1>
+            <p>Lerne, wie du Websites für alle Bildschirmgrössen optimierst</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">6-7 Minuten</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Einführung – Warum Responsive Design? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Warum Responsive Design?</h3>
+                        </div>
+                        <p>Stell dir vor, jemand öffnet dein Portfolio auf dem Smartphone – aber die Schrift ist winzig, die Navigation funktioniert nicht, und man muss ständig zoomen. Frustrierend! Genau deshalb gibt es Responsive Design. Deine Website passt sich automatisch an die Bildschirmgrösse an – egal ob Smartphone, Tablet oder Desktop.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Das gleiche Portfolio auf verschiedenen Geräten:</strong>
+                            <ul>
+                                <li>📱 <strong>Smartphone (320px):</strong> Einspaltig, grosse Buttons</li>
+                                <li>📱 <strong>Tablet (768px):</strong> Zweispaltig möglich</li>
+                                <li>🖥️ <strong>Desktop (1200px):</strong> Mehrspaltig, komplexe Layouts</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box responsive-preview">
+                            <p class="demo-title">Vorschau – Drei Geräte, drei Ansichten:</p>
+                            <div class="device-preview-container">
+                                <div class="device-preview device-mobile">
+                                    <div class="device-screen">
+                                        <div class="preview-header">Portfolio</div>
+                                        <div class="preview-nav vertical">
+                                            <div class="nav-item">Home</div>
+                                            <div class="nav-item">Projekte</div>
+                                            <div class="nav-item">Kontakt</div>
+                                        </div>
+                                        <div class="preview-content single-col">
+                                            <div class="content-box">Projekt 1</div>
+                                            <div class="content-box">Projekt 2</div>
+                                            <div class="content-box">Projekt 3</div>
+                                        </div>
+                                    </div>
+                                    <p class="device-label">Mobile (320px)</p>
+                                </div>
+                                <div class="device-preview device-tablet">
+                                    <div class="device-screen">
+                                        <div class="preview-header">Portfolio</div>
+                                        <div class="preview-nav horizontal">
+                                            <div class="nav-item">Home</div>
+                                            <div class="nav-item">Projekte</div>
+                                            <div class="nav-item">Kontakt</div>
+                                        </div>
+                                        <div class="preview-content two-col">
+                                            <div class="content-box">Projekt 1</div>
+                                            <div class="content-box">Projekt 2</div>
+                                            <div class="content-box">Projekt 3</div>
+                                        </div>
+                                    </div>
+                                    <p class="device-label">Tablet (768px)</p>
+                                </div>
+                                <div class="device-preview device-desktop">
+                                    <div class="device-screen">
+                                        <div class="preview-header">Portfolio</div>
+                                        <div class="preview-nav horizontal">
+                                            <div class="nav-item">Home</div>
+                                            <div class="nav-item">Projekte</div>
+                                            <div class="nav-item">Kontakt</div>
+                                        </div>
+                                        <div class="preview-content three-col">
+                                            <div class="content-box">Projekt 1</div>
+                                            <div class="content-box">Projekt 2</div>
+                                            <div class="content-box">Projekt 3</div>
+                                        </div>
+                                    </div>
+                                    <p class="device-label">Desktop (1200px)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Das Problem ohne Responsive Design -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Das Problem ohne Responsive Design</h3>
+                        </div>
+                        <p>Ohne Responsive Design sieht deine Website auf dem Handy chaotisch aus. Texte sind zu klein, Elemente überlappen sich, und die Navigation ist kaum bedienbar. Das führt dazu, dass Besucher die Seite sofort wieder verlassen.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Desktop-Website auf Smartphone:</p>
+                            <div class="non-responsive-demo">
+                                <div class="problem-marker problem-1">❌ Text zu klein zum Lesen</div>
+                                <div class="problem-marker problem-2">❌ Navigation zu klein zum Klicken</div>
+                                <div class="problem-marker problem-3">❌ Inhalte laufen über den Bildschirm</div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Typische Probleme:</strong>
+                            <ul>
+                                <li>Nutzer müssen ständig zoomen und horizontal scrollen</li>
+                                <li>Buttons sind zu klein für Touch-Bedienung</li>
+                                <li>Texte sind unleserlich klein</li>
+                                <li>Hohe Absprungrate (User verlassen die Seite)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Der Viewport Meta-Tag -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Der Viewport Meta-Tag – Die Grundlage</h3>
+                        </div>
+                        <p>Der erste Schritt zu Responsive Design ist der Viewport Meta-Tag im Head-Bereich. Dieser Tag sagt dem Browser: "Nutze die echte Gerätebreite und zoome nicht automatisch." Ohne diesen Tag funktionieren Media Queries nicht richtig.</p>
+                        
+                        <div class="code-block">
+<code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" 
+          content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Portfolio&lt;/title&gt;
+&lt;/head&gt;</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Was bedeuten die Werte?</strong><br>
+                            <span class="highlight">width=device-width</span> = Nutze die echte Gerätebreite<br>
+                            <span class="highlight">initial-scale=1.0</span> = Keine automatische Zoom-Stufe
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vergleich:</p>
+                            <div class="viewport-comparison">
+                                <div class="comparison-item">
+                                    <strong>❌ Ohne Viewport-Tag:</strong>
+                                    <p>Browser nimmt eine Desktop-Breite an (meist 980px) und skaliert alles runter → alles zu klein</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <strong>✅ Mit Viewport-Tag:</strong>
+                                    <p>Browser nutzt die echte Gerätebreite → optimale Grösse für das Gerät</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Media Queries -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Media Queries – CSS für unterschiedliche Bildschirme</h3>
+                        </div>
+                        <p>Mit Media Queries kannst du CSS-Regeln definieren, die nur bei bestimmten Bildschirmgrössen gelten. Diese Query hier bedeutet: "Ab einer Mindestbreite von 768 Pixeln – also ab Tablet-Grösse – nutze diese Styles." So kannst du das Layout für jedes Gerät optimieren.</p>
+                        
+                        <div class="code-block">
+<code>/* Standard: Mobile (unter 768px) */
+.container {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Ab Tablet (768px und breiter) */
+@media (min-width: 768px) {
+    .container {
+        padding: 20px;
+        font-size: 18px;
+    }
+}
+
+/* Ab Desktop (1024px und breiter) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+}</code>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>So funktioniert's:</strong>
+                            <ul>
+                                <li>Browser prüft die Bildschirmbreite</li>
+                                <li>Wenn Bedingung erfüllt ist (z.B. min-width: 768px), werden die Styles angewendet</li>
+                                <li>Mobile Styles gelten als Basis (ohne Media Query)</li>
+                                <li>Grössere Bildschirme erhalten zusätzliche/angepasste Styles</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box breakpoint-demo">
+                            <p class="demo-title">Breakpoints visualisiert:</p>
+                            <div class="breakpoint-visual">
+                                <div class="breakpoint-range mobile">
+                                    <strong>📱 Mobile</strong>
+                                    <p>0px - 767px</p>
+                                </div>
+                                <div class="breakpoint-range tablet">
+                                    <strong>📱 Tablet</strong>
+                                    <p>768px - 1023px</p>
+                                </div>
+                                <div class="breakpoint-range desktop">
+                                    <strong>🖥️ Desktop</strong>
+                                    <p>1024px+</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Mobile-First Ansatz -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Mobile-First Ansatz – Von klein nach gross</h3>
+                        </div>
+                        <p>Profis nutzen den Mobile-First Ansatz: Du schreibst zuerst CSS für Smartphones und erweiterst dann mit Media Queries für grössere Bildschirme. Das hat einen einfachen Grund: Mobile Geräte haben weniger Leistung, und es ist effizienter, nur das zu laden, was wirklich gebraucht wird.</p>
+                        
+                        <div class="code-block">
+<code>/* Mobile First: Basis-Styles (keine Media Query) */
+.navigation {
+    display: flex;
+    flex-direction: column; /* Vertikales Menü */
+}
+
+/* Ab Tablet: Horizontales Menü */
+@media (min-width: 768px) {
+    .navigation {
+        flex-direction: row; /* Horizontales Menü */
+    }
+}</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Vorteile von Mobile-First:</strong>
+                            <ul>
+                                <li>Schnellere Ladezeiten auf mobilen Geräten</li>
+                                <li>Einfacheres CSS (von einfach zu komplex)</li>
+                                <li>Fokus auf das Wesentliche zuerst</li>
+                                <li>Bessere Performance</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Mobile-First Prinzip:</p>
+                            <div class="mobile-first-visual">
+                                <div class="mf-step">
+                                    <span class="mf-number">1</span>
+                                    <strong>📱 Mobile</strong>
+                                    <p>Basis-CSS</p>
+                                </div>
+                                <span class="mf-arrow">→</span>
+                                <div class="mf-step">
+                                    <span class="mf-number">2</span>
+                                    <strong>📱 Tablet</strong>
+                                    <p>+ Erweitert</p>
+                                </div>
+                                <span class="mf-arrow">→</span>
+                                <div class="mf-step">
+                                    <span class="mf-number">3</span>
+                                    <strong>🖥️ Desktop</strong>
+                                    <p>+ Erweitert</p>
+                                </div>
+                            </div>
+                            <p class="text-center mt-md"><strong>CSS wird schrittweise erweitert, nicht reduziert</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Typische Breakpoints -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Typische Breakpoints – Mobile, Tablet, Desktop</h3>
+                        </div>
+                        <p>Es gibt drei Standard-Breakpoints, die sich an realen Geräten orientieren: 768 Pixel für Tablets, 1024 Pixel für kleine Desktops, und 1200 Pixel für grosse Bildschirme. Diese Werte sind in der Webentwicklung Standard und decken die meisten Geräte ab.</p>
+                        
+                        <div class="demo-box">
+                            <div class="breakpoint-guide">
+                                <div class="bp-card mobile">
+                                    <div class="bp-icon">📱</div>
+                                    <h4>Mobile</h4>
+                                    <p class="bp-range">0 - 767px</p>
+                                    <ul>
+                                        <li>Einspaltig</li>
+                                        <li>Grosse Touch-Targets</li>
+                                        <li>Vertikale Navigation</li>
+                                    </ul>
+                                </div>
+                                <div class="bp-card tablet">
+                                    <div class="bp-icon">📱</div>
+                                    <h4>Tablet</h4>
+                                    <p class="bp-range">768px - 1023px</p>
+                                    <ul>
+                                        <li>Zweispaltig möglich</li>
+                                        <li>Kompaktere Navigation</li>
+                                        <li>Mehr Platz für Inhalte</li>
+                                    </ul>
+                                </div>
+                                <div class="bp-card desktop">
+                                    <div class="bp-icon">🖥️</div>
+                                    <h4>Desktop</h4>
+                                    <p class="bp-range">1024px+</p>
+                                    <ul>
+                                        <li>Mehrspaltig</li>
+                                        <li>Komplexe Layouts</li>
+                                        <li>Maximale Bildschirmnutzung</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-block">
+<code>/* Die drei Standard-Breakpoints */
+
+/* Mobile: Basis-Styles (keine Media Query nötig) */
+
+/* Tablet */
+@media (min-width: 768px) {
+    /* Styles für Tablets und grösser */
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    /* Styles für Desktops */
+}
+
+/* Grosse Bildschirme (optional) */
+@media (min-width: 1200px) {
+    /* Styles für grosse Monitore */
+}</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Responsive Navigation -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Praktisches Beispiel – Responsive Navigation</h3>
+                        </div>
+                        <p>Schauen wir uns ein konkretes Beispiel an: Auf dem Smartphone ist die Navigation vertikal und nimmt die volle Breite ein – perfekt zum Tippen. Ab Tablet-Grösse wird sie horizontal und kompakter. So nutzt du den Platz optimal.</p>
+                        
+                        <div class="code-block">
+<code>/* Mobile: Vertikale Navigation */
+nav {
+    background: #376B8C;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+nav li {
+    width: 100%;
+}
+
+nav a {
+    display: block;
+    padding: 15px;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Ab Tablet: Horizontale Navigation */
+@media (min-width: 768px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    nav li {
+        width: auto;
+    }
+    
+    nav a {
+        border-bottom: none;
+        padding: 15px 25px;
+    }
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Beispiel:</p>
+                            <div class="responsive-nav-demo">
+                                <div class="nav-example mobile-nav">
+                                    <strong>Mobile (vertikal):</strong>
+                                    <nav class="demo-nav vertical-nav">
+                                        <a href="#" class="demo-nav-link">Home</a>
+                                        <a href="#" class="demo-nav-link">Projekte</a>
+                                        <a href="#" class="demo-nav-link">Über mich</a>
+                                        <a href="#" class="demo-nav-link">Kontakt</a>
+                                    </nav>
+                                </div>
+                                <div class="nav-example tablet-nav">
+                                    <strong>Tablet/Desktop (horizontal):</strong>
+                                    <nav class="demo-nav horizontal-nav">
+                                        <a href="#" class="demo-nav-link">Home</a>
+                                        <a href="#" class="demo-nav-link">Projekte</a>
+                                        <a href="#" class="demo-nav-link">Über mich</a>
+                                        <a href="#" class="demo-nav-link">Kontakt</a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Grid-Layout -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Grid-Layout – Von 1 zu 3 Spalten</h3>
+                        </div>
+                        <p>Ein weiteres typisches Beispiel: Projekt-Karten. Auf dem Smartphone werden sie untereinander angezeigt, auf dem Tablet zweispaltig, und auf dem Desktop dreispaltig. CSS Grid macht das super einfach.</p>
+                        
+                        <div class="code-block">
+<code>/* Mobile: Eine Spalte */
+.projekte-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Tablet: Zwei Spalten */
+@media (min-width: 768px) {
+    .projekte-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Desktop: Drei Spalten */
+@media (min-width: 1024px) {
+    .projekte-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Responsive Grid-Demo:</p>
+                            
+                            <div class="grid-demo-section">
+                                <strong>Mobile (1 Spalte):</strong>
+                                <div class="grid-demo mobile-grid">
+                                    <div class="grid-item">Projekt 1</div>
+                                    <div class="grid-item">Projekt 2</div>
+                                    <div class="grid-item">Projekt 3</div>
+                                </div>
+                            </div>
+
+                            <div class="grid-demo-section">
+                                <strong>Tablet (2 Spalten):</strong>
+                                <div class="grid-demo tablet-grid">
+                                    <div class="grid-item">Projekt 1</div>
+                                    <div class="grid-item">Projekt 2</div>
+                                    <div class="grid-item">Projekt 3</div>
+                                </div>
+                            </div>
+
+                            <div class="grid-demo-section">
+                                <strong>Desktop (3 Spalten):</strong>
+                                <div class="grid-demo desktop-grid">
+                                    <div class="grid-item">Projekt 1</div>
+                                    <div class="grid-item">Projekt 2</div>
+                                    <div class="grid-item">Projekt 3</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Grid-Tipp:</strong> Mit <span class="highlight">repeat()</span> und <span class="highlight">fr</span>-Einheiten ist CSS Grid perfekt für responsive Layouts. Die Spalten passen sich automatisch an!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Responsive Schriftgrössen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Responsive Schriftgrössen & Abstände</h3>
+                        </div>
+                        <p>Nicht nur das Layout sollte sich anpassen, sondern auch Schriftgrössen und Abstände. Auf dem Smartphone sind kleinere Schriften und engere Abstände sinnvoll, auf grossen Bildschirmen darf alles etwas grosszügiger sein.</p>
+                        
+                        <div class="code-block">
+<code>/* Mobile */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+section {
+    padding: 20px 10px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    body {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    
+    h1 {
+        font-size: 36px;
+    }
+    
+    section {
+        padding: 40px 30px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 48px;
+    }
+    
+    section {
+        padding: 60px 40px;
+    }
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vergleich Schriftgrössen & Abstände:</p>
+                            <div class="typography-demo">
+                                <div class="typo-example mobile-typo">
+                                    <strong>Mobile:</strong>
+                                    <div class="typo-sample">
+                                        <h2 class="sample-h1">Überschrift</h2>
+                                        <p>Kleinere Schrift (16px) und engere Abstände für kompakte Darstellung auf kleinen Displays.</p>
+                                    </div>
+                                </div>
+                                <div class="typo-example desktop-typo">
+                                    <strong>Desktop:</strong>
+                                    <div class="typo-sample">
+                                        <h2 class="sample-h1">Überschrift</h2>
+                                        <p>Grössere Schrift (18px) und grosszügige Abstände für bessere Lesbarkeit auf grossen Bildschirmen.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Best Practice:</strong> Passe nicht nur Layouts an, sondern auch Typografie und Spacing. Das verbessert die Lesbarkeit erheblich!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Browser Developer Tools -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Browser Developer Tools – Responsive testen</h3>
+                        </div>
+                        <p>Du musst nicht ständig dein Handy rausholen, um die mobile Ansicht zu testen. Die Browser Developer Tools haben einen Responsive-Modus. Drücke F12, klicke auf das Handy-Symbol, und du kannst verschiedene Geräte simulieren.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>DevTools öffnen:</strong><br>
+                            <span class="highlight">Windows/Linux:</span> F12 oder Ctrl + Shift + I<br>
+                            <span class="highlight">Mac:</span> Cmd + Option + I
+                        </div>
+
+                        <div class="demo-box devtools-demo">
+                            <p class="demo-title">So testest du responsive:</p>
+                            <div class="devtools-steps">
+                                <div class="devtools-step">
+                                    <span class="step-number">1</span>
+                                    <div class="step-content">
+                                        <strong>DevTools öffnen</strong>
+                                        <p>Drücke <span class="highlight">F12</span></p>
+                                    </div>
+                                </div>
+                                <div class="devtools-step">
+                                    <span class="step-number">2</span>
+                                    <div class="step-content">
+                                        <strong>Device Toolbar aktivieren</strong>
+                                        <p>Klicke auf das <span class="highlight">📱 Handy-Symbol</span> oder drücke <span class="highlight">Ctrl+Shift+M</span></p>
+                                    </div>
+                                </div>
+                                <div class="devtools-step">
+                                    <span class="step-number">3</span>
+                                    <div class="step-content">
+                                        <strong>Gerät auswählen</strong>
+                                        <p>Wähle aus dem Dropdown: iPhone 14, iPad Air, etc.</p>
+                                    </div>
+                                </div>
+                                <div class="devtools-step">
+                                    <span class="step-number">4</span>
+                                    <div class="step-content">
+                                        <strong>Testen!</strong>
+                                        <p>Wechsle zwischen Geräten und prüfe dein Layout</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Profi-Tipp:</strong> Die DevTools zeigen dir auch die aktuellen Breakpoints im CSS und welche Media Queries aktiv sind. Nutze das "Responsive" Preset, um manuell die Breite zu ändern!
+                        </div>
+
+                        <div class="code-block">
+<code>/* Keyboard-Shortcuts */
+F12              → DevTools öffnen
+Ctrl+Shift+M     → Device Toolbar (Windows/Linux)
+Cmd+Shift+M      → Device Toolbar (Mac)
+Ctrl+Shift+C     → Element Inspector</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: Zusammenfassung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung – Die wichtigsten Punkte</h3>
+                        </div>
+                        <p>Fassen wir zusammen: Responsive Design bedeutet, dass deine Website auf allen Geräten funktioniert. Der Viewport Meta-Tag ist die Grundlage. Mit Media Queries passt du CSS an verschiedene Bildschirmgrössen an. Mobile-First bedeutet, von klein nach gross zu denken. Und die Browser Developer Tools helfen dir beim Testen. Jetzt bist du bereit, dein Portfolio responsive zu machen!</p>
+                        
+                        <div class="alert alert-success">
+                            <strong>✅ Checkliste für Responsive Design:</strong>
+                            <ul>
+                                <li><span class="highlight">Viewport Meta-Tag</span> im &lt;head&gt; einfügen</li>
+                                <li><span class="highlight">Mobile-First</span> CSS schreiben</li>
+                                <li><span class="highlight">Media Queries</span> für Breakpoints:
+                                    <ul>
+                                        <li>Tablet: 768px</li>
+                                        <li>Desktop: 1024px</li>
+                                    </ul>
+                                </li>
+                                <li><span class="highlight">Navigation, Grid & Text</span> anpassen</li>
+                                <li><span class="highlight">Mit DevTools</span> testen</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Komplettes Basis-Template:</p>
+                            <div class="code-block">
+<code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" 
+          content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Responsive Portfolio&lt;/title&gt;
+    &lt;style&gt;
+        /* Mobile First */
+        body {
+            font-size: 16px;
+            padding: 10px;
+        }
+        
+        /* Tablet */
+        @media (min-width: 768px) {
+            body {
+                font-size: 18px;
+                padding: 20px;
+            }
+        }
+        
+        /* Desktop */
+        @media (min-width: 1024px) {
+            body {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Dein responsiver Content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Nächste Schritte:</strong>
+                            <ol>
+                                <li>Füge den Viewport Meta-Tag zu deinem Portfolio hinzu</li>
+                                <li>Teste deine Seite mit den DevTools auf verschiedenen Grössen</li>
+                                <li>Erstelle Media Queries für 768px und 1024px</li>
+                                <li>Passe Navigation, Layout und Typografie an</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Responsive Design – Auf einen Blick</h2>
+            <div class="split-view">
+                <div>
+                    <h4>Grundlagen:</h4>
+                    <ul>
+                        <li><span class="highlight">Viewport Meta-Tag</span> – Die Basis</li>
+                        <li><span class="highlight">Media Queries</span> – Bedingtes CSS</li>
+                        <li><span class="highlight">Mobile-First</span> – Von klein nach gross</li>
+                        <li><span class="highlight">Breakpoints</span> – 768px, 1024px, 1200px</li>
+                    </ul>
+                    <h4 class="mt-md">Anpassungen:</h4>
+                    <ul>
+                        <li>Navigation (vertikal ↔ horizontal)</li>
+                        <li>Grid-Layouts (1 ↔ 2 ↔ 3 Spalten)</li>
+                        <li>Schriftgrössen & Abstände</li>
+                        <li>Touch-Targets für Mobile</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Testing:</h4>
+                    <ul>
+                        <li>Browser DevTools (F12)</li>
+                        <li>Device Toolbar (Ctrl+Shift+M)</li>
+                        <li>Verschiedene Geräte simulieren</li>
+                        <li>Responsive Preset nutzen</li>
+                    </ul>
+                    <h4 class="mt-md">Best Practices:</h4>
+                    <ul>
+                        <li>Immer Mobile-First denken</li>
+                        <li>Viewport Meta-Tag nie vergessen</li>
+                        <li>Standard-Breakpoints nutzen</li>
+                        <li>Regelmässig auf echten Geräten testen</li>
+                        <li>Performance beachten (Bilder optimieren)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>CSS Responsive Design Tutorial - BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ</p>
+    </footer>
+
+</body>
+</html>

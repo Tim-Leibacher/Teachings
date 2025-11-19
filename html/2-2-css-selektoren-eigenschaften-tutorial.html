@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS – Selektoren und Eigenschaften | Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center mb-lg">
+            <h1>CSS – Selektoren und Eigenschaften</h1>
+            <p>Lernziel: CSS-Selektoren verstehen und Eigenschaften gezielt anwenden</p>
+        </header>
+
+        <!-- Szene 1: Einführung -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">1. Was sind Selektoren?</h2>
+            </div>
+            <p><strong>Konzept:</strong> CSS-Selektoren sind wie Adressen – sie sagen dem Browser, welche HTML-Elemente du stylen möchtest.</p>
+            
+            <div class="demo-box">
+                <h3 class="demo-title">Beispiel-Elemente:</h3>
+                <h2>Eine Überschrift (h2)</h2>
+                <div class="card p-md mb-md">
+                    <p>Dies ist eine Card mit der Klasse "card"</p>
+                </div>
+                <div id="header-demo" class="bg-primary p-md">
+                    <p style="color: white;">Dies ist ein Element mit der ID "header-demo"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 2: Element-Selektoren -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">2. Element-Selektoren – Die Grundlage</h2>
+            </div>
+            <p>Element-Selektoren sprechen <strong>alle Elemente eines Typs</strong> an.</p>
+            
+            <div class="code-block">
+                <code>h1 {
+    color: #376B8C;
+    font-size: 48px;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Ergebnis im Browser:</h3>
+                <h1 style="color: #376B8C; font-size: 48px;">Alle h1 werden gestylt</h1>
+                <p style="color: #666; line-height: 1.6;">Alle Paragraphen erhalten diese Formatierung.</p>
+            </div>
+
+            <div class="alert alert-info mt-md">
+                <strong>Wichtig:</strong> Element-Selektoren sind praktisch für konsistentes Design, aber manchmal zu unspezifisch.
+            </div>
+        </section>
+
+        <!-- Szene 3: Klassen-Selektoren -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">3. Klassen-Selektoren – Wiederverwendbar</h2>
+            </div>
+            <p>Klassen-Selektoren beginnen mit einem <span class="highlight">.</span> (Punkt) und können mehrfach verwendet werden.</p>
+            
+            <div class="split-view">
+                <div>
+                    <h4>HTML:</h4>
+                    <div class="code-block">
+                        <code>&lt;article class="card"&gt;...&lt;/article&gt;
+&lt;article class="card"&gt;...&lt;/article&gt;</code>
+                    </div>
+                </div>
+                <div>
+                    <h4>CSS:</h4>
+                    <div class="code-block">
+                        <code>.card {
+    background-color: #F8F8F8;
+    padding: 20px;
+    border-radius: 8px;
+}</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Ergebnis – Beide Cards haben denselben Stil:</h3>
+                <article class="card mb-md">
+                    <h4>Card 1</h4>
+                    <p>Inhalt der ersten Card</p>
+                </article>
+                <article class="card">
+                    <h4>Card 2</h4>
+                    <p>Inhalt der zweiten Card</p>
+                </article>
+            </div>
+
+            <div class="alert alert-success mt-md">
+                <strong>Vorteil:</strong> Flexibel und wiederverwendbar – perfekt für konsistentes Design!
+            </div>
+        </section>
+
+        <!-- Szene 4: ID-Selektoren -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">4. ID-Selektoren – Einmalig</h2>
+            </div>
+            <p>ID-Selektoren beginnen mit einer <span class="highlight">#</span> (Raute) und sollten nur <strong>einmal pro Seite</strong> verwendet werden.</p>
+            
+            <div class="split-view">
+                <div>
+                    <h4>HTML:</h4>
+                    <div class="code-block">
+                        <code>&lt;header id="main-header"&gt;
+    ...
+&lt;/header&gt;</code>
+                    </div>
+                </div>
+                <div>
+                    <h4>CSS:</h4>
+                    <div class="code-block">
+                        <code>#main-header {
+    background-color: #376B8C;
+    height: 80px;
+}</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Ergebnis:</h3>
+                <div id="main-header-demo" class="bg-primary p-md">
+                    <p style="color: white; margin: 0;">Nur dieser eine Header wird gestylt</p>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-md">
+                <strong>Tipp:</strong> IDs sind sehr spezifisch und überschreiben andere Styles. Nutze sie sparsam – meistens sind Klassen die bessere Wahl!
+            </div>
+        </section>
+
+        <!-- Szene 5: Verschachtelte Selektoren -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">5. Verschachtelte Selektoren – Gezielt ansprechen</h2>
+            </div>
+            <p>Mit Leerzeichen kombinierst du Selektoren: <span class="highlight">header h1</span> bedeutet "alle h1 innerhalb eines headers".</p>
+            
+            <div class="code-block">
+                <code>header h1 {
+    color: white;
+}
+
+main h1 {
+    color: #376B8C;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Ergebnis:</h3>
+                <header class="bg-primary p-md mb-md">
+                    <h1 style="color: white; margin: 0;">h1 im Header ist weiss</h1>
+                </header>
+                <main class="bg-light p-md">
+                    <h1 style="color: #376B8C; margin: 0;">h1 im Main ist blau</h1>
+                </main>
+            </div>
+
+            <div class="alert alert-info mt-md">
+                <strong>Vorteil:</strong> Sehr gezielt formatieren, ohne überall Klassen zu vergeben.
+            </div>
+        </section>
+
+        <!-- Szene 6: Multiple Selektoren -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">6. Multiple Selektoren – Effizient stylen</h2>
+            </div>
+            <p>Wenn mehrere Elemente denselben Stil brauchen, trennst du sie mit <span class="highlight">,</span> (Komma).</p>
+            
+            <div class="code-block">
+                <code>h1, h2, h3 {
+    font-family: Arial, sans-serif;
+    color: #376B8C;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Ergebnis – Alle drei Überschriftenebenen:</h3>
+                <h1 style="color: #376B8C;">Überschrift H1</h1>
+                <h2 style="color: #376B8C;">Überschrift H2</h2>
+                <h3 style="color: #376B8C;">Überschrift H3</h3>
+            </div>
+
+            <div class="alert alert-success mt-md">
+                <strong>Vorteil:</strong> Spart Schreibarbeit und macht CSS übersichtlicher!
+            </div>
+        </section>
+
+        <!-- Szene 7: Box-Modell -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">7. Das Box-Modell – Abstände verstehen</h2>
+            </div>
+            <p>Jedes HTML-Element ist eine Box mit: <strong>Content → Padding → Border → Margin</strong></p>
+            
+            <div class="demo-box">
+                <h3 class="demo-title">Box-Modell Visualisierung:</h3>
+                <div style="background-color: #FEAF51; padding: 20px; margin: 20px 0;">
+                    <div style="background-color: #45BA98; padding: 20px;">
+                        <div style="background-color: #4EB9CC; border: 3px solid #376B8C; padding: 20px;">
+                            <div style="background-color: white; padding: 20px; text-align: center;">
+                                <strong>Content</strong>
+                            </div>
+                            <p style="text-align: center; margin-top: 10px; color: white;"><small>↑ Padding (innen)</small></p>
+                        </div>
+                        <p style="text-align: center; margin-top: 10px; color: white;"><small>↑ Border</small></p>
+                    </div>
+                    <p style="text-align: center; margin-top: 10px; color: white;"><small>↑ Margin (aussen)</small></p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <code>.card {
+    padding: 20px;      /* Abstand nach innen */
+    margin: 10px;       /* Abstand nach aussen */
+    border: 2px solid #376B8C;
+}</code>
+            </div>
+
+            <div class="alert alert-info mt-md">
+                <strong>Wichtig:</strong> Padding ist Abstand nach innen, Margin nach aussen. Das Box-Modell ist zentral für CSS-Layouts!
+            </div>
+        </section>
+
+        <!-- Szene 8: Farben -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">8. Farben – Verschiedene Formate</h2>
+            </div>
+            <p>CSS unterstützt verschiedene Farbformate. Wähle, was für dich am intuitivsten ist.</p>
+            
+            <div class="code-block">
+                <code>h1 {
+    color: #376B8C;              /* Hex */
+    color: rgb(55, 107, 140);    /* RGB */
+    color: rgba(55, 107, 140, 0.8); /* RGBA mit Transparenz */
+    color: hsl(200, 44%, 38%);   /* HSL */
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Farbformat-Vergleich (alle identisch):</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background-color: #376B8C; padding: 20px; color: white; text-align: center; border-radius: 8px;">
+                        <strong>HEX</strong><br>#376B8C
+                    </div>
+                    <div style="background-color: rgb(55, 107, 140); padding: 20px; color: white; text-align: center; border-radius: 8px;">
+                        <strong>RGB</strong><br>rgb(55, 107, 140)
+                    </div>
+                    <div style="background-color: rgba(55, 107, 140, 0.8); padding: 20px; color: white; text-align: center; border-radius: 8px;">
+                        <strong>RGBA</strong><br>rgba(55, 107, 140, 0.8)
+                    </div>
+                    <div style="background-color: hsl(200, 44%, 38%); padding: 20px; color: white; text-align: center; border-radius: 8px;">
+                        <strong>HSL</strong><br>hsl(200, 44%, 38%)
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-md">
+                <strong>Tipp:</strong> Hex ist am verbreitetsten, RGBA ermöglicht Transparenz.
+            </div>
+        </section>
+
+        <!-- Szene 9: Schrift-Eigenschaften -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">9. Schrift-Eigenschaften – Typografie gestalten</h2>
+            </div>
+            <p>Gute Typografie macht Texte lesbarer und professioneller.</p>
+            
+            <div class="code-block">
+                <code>body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Vergleich verschiedener Schrift-Eigenschaften:</h3>
+                <p style="font-size: 16px; line-height: 1.2;">Normal: font-size: 16px, line-height: 1.2</p>
+                <p style="font-size: 16px; line-height: 1.6;">Besser lesbar: font-size: 16px, line-height: 1.6</p>
+                <p style="font-size: 24px; font-weight: bold;">Gross und fett: font-size: 24px, font-weight: bold</p>
+                <p style="font-size: 18px; letter-spacing: 2px;">Mit Buchstabenabstand: letter-spacing: 2px</p>
+            </div>
+        </section>
+
+        <!-- Szene 10: Text-Ausrichtung -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">10. Text-Ausrichtung und Dekoration</h2>
+            </div>
+            
+            <div class="code-block">
+                <code>h1 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Beispiele:</h3>
+                <p style="text-align: left;">Links ausgerichtet (text-align: left)</p>
+                <p style="text-align: center;">Zentriert (text-align: center)</p>
+                <p style="text-align: right;">Rechts ausgerichtet (text-align: right)</p>
+                <p><a href="#" style="text-decoration: none;">Link ohne Unterstreichung</a></p>
+                <p><a href="#" style="text-decoration: underline;">Link mit Unterstreichung</a></p>
+                <p style="text-transform: uppercase;">uppercase text</p>
+                <p style="text-transform: lowercase;">LOWERCASE TEXT</p>
+                <p style="text-transform: capitalize;">capitalize every word</p>
+            </div>
+        </section>
+
+        <!-- Szene 11: Spezifität -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">11. Spezifität – Welcher Style gewinnt?</h2>
+            </div>
+            <p>Wenn mehrere Regeln dasselbe Element ansprechen, entscheidet die <strong>Spezifität</strong>.</p>
+            
+            <div class="code-block">
+                <code>h1 { color: blue; }              /* Spezifität: 1 */
+.title { color: green; }         /* Spezifität: 10 */
+#main-title { color: red; }      /* Spezifität: 100 */</code>
+            </div>
+
+            <div class="demo-box">
+                <h3 class="demo-title">Spezifitäts-Pyramide:</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="background-color: #CD7A15; color: white; padding: 10px; margin: 5px auto; max-width: 400px; border-radius: 8px;">
+                        <strong>Inline-Styles</strong> (höchste Priorität)
+                    </div>
+                    <div style="background-color: #376B8C; color: white; padding: 10px; margin: 5px auto; max-width: 350px; border-radius: 8px;">
+                        <strong>IDs</strong> #element { } = 100
+                    </div>
+                    <div style="background-color: #29786A; color: white; padding: 10px; margin: 5px auto; max-width: 300px; border-radius: 8px;">
+                        <strong>Klassen</strong> .element { } = 10
+                    </div>
+                    <div style="background-color: #888888; color: white; padding: 10px; margin: 5px auto; max-width: 250px; border-radius: 8px;">
+                        <strong>Elemente</strong> h1 { } = 1
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box mt-md">
+                <h3 class="demo-title">Beispiel:</h3>
+                <h1 id="specificity-demo" class="title" style="color: red;">Welche Farbe hat dieser Text?</h1>
+                <p><strong>Antwort:</strong> Rot! Die ID <span class="highlight">#specificity-demo</span> hat die höchste Spezifität.</p>
+            </div>
+
+            <div class="alert alert-warning mt-md">
+                <strong>Wichtig:</strong> Verstehe Spezifität, um CSS-Bugs zu vermeiden!
+            </div>
+        </section>
+
+        <!-- Szene 12: DevTools -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">12. DevTools – CSS live ändern</h2>
+            </div>
+            <p>Die Browser-DevTools sind dein bester Freund beim CSS-Lernen!</p>
+            
+            <div class="demo-box">
+                <h3 class="demo-title">So funktioniert's:</h3>
+                <ol style="line-height: 2;">
+                    <li>Drücke <kbd style="background-color: #F8F8F8; padding: 2px 6px; border-radius: 4px; border: 1px solid #D0D0D0;">F12</kbd> um DevTools zu öffnen</li>
+                    <li>Wähle den <strong>Elements</strong>-Tab</li>
+                    <li>Klicke auf ein Element oder nutze das <strong>Inspect</strong>-Tool</li>
+                    <li>Im <strong>Styles</strong>-Panel kannst du CSS live ändern</li>
+                    <li>Experimentiere, bis es passt</li>
+                    <li>Kopiere dann den Code in deine CSS-Datei</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-warning mt-md">
+                <strong>Achtung:</strong> Änderungen in DevTools sind temporär und gehen beim Neuladen verloren!
+            </div>
+        </section>
+
+        <!-- Szene 13: Best Practices -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">13. Best Practices – Sauberes CSS</h2>
+            </div>
+            
+            <div class="demo-box">
+                <h3 class="demo-title">Vergleichstabelle:</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #F8F8F8;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #D0D0D0;">✅ Gut</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #D0D0D0;">❌ Schlecht</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;"><code>.card { ... }</code></td>
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;"><code>#card-1 { ... }</code></td>
+                        </tr>
+                        <tr style="background-color: #F8F8F8;">
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;"><code>header nav { ... }</code></td>
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;"><code>body header nav ul li a { ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;">Kommentare nutzen</td>
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;">Keine Struktur</td>
+                        </tr>
+                        <tr style="background-color: #F8F8F8;">
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;">Klassen für Styles</td>
+                            <td style="padding: 12px; border: 1px solid #D0D0D0;">IDs für Styles</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-success mt-md">
+                <strong>Grundregel:</strong> Sauberes CSS ist wartbar und erweiterbar!
+            </div>
+        </section>
+
+        <!-- Szene 14: Zusammenfassung -->
+        <section class="card gradient-ocean p-lg mb-lg summary-card">
+            <h2>Zusammenfassung & Ausblick</h2>
+            
+            <div class="mt-md">
+                <h4>Das hast du gelernt:</h4>
+                <ul style="line-height: 2; color: white;">
+                    <li><strong>Element-Selektor:</strong> <code style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">h1 { }</code> – spricht alle Elemente eines Typs an</li>
+                    <li><strong>Klassen-Selektor:</strong> <code style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">.card { }</code> – wiederverwendbar und flexibel</li>
+                    <li><strong>ID-Selektor:</strong> <code style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">#header { }</code> – einmalig pro Seite</li>
+                    <li><strong>Box-Modell:</strong> Content → Padding → Border → Margin</li>
+                    <li><strong>Spezifität:</strong> Element (1) &lt; Klasse (10) &lt; ID (100) &lt; Inline</li>
+                    <li><strong>DevTools:</strong> Dein bester Freund für CSS-Experimente</li>
+                </ul>
+            </div>
+
+            <div class="mt-md">
+                <h4>Nächste Schritte:</h4>
+                <p>Im nächsten Tutorial lernst du fortgeschrittene Layouts mit <strong>Flexbox</strong> und <strong>Grid</strong>.</p>
+            </div>
+
+            <p class="mt-md" style="text-align: center;"><strong>Viel Erfolg beim CSS-Lernen! 🚀</strong></p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark p-lg text-center">
+            <p>Tutorial erstellt für 1. Lehrjahr Informatiker/in EFZ</p>
+            <p>BAND Corporate Design System | 2024</p>
+        </footer>
+    </div>
+</body>
+</html>

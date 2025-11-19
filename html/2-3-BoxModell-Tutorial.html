@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box-Modell & Layout - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+    <link rel="stylesheet" href="../stylesheets/box-model-demo.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="mt-lg mb-lg">
+            <h1>CSS Box-Modell & Layout</h1>
+            <p class="text-secondary">Verstehe, wie CSS jedes Element als Box behandelt</p>
+        </header>
+
+        <!-- Szene 1: Einführung -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">1. Jedes Element ist eine Box</h2>
+            </div>
+            <p>In CSS wird jedes HTML-Element als rechteckige Box dargestellt. Egal ob Text, Bild oder Container – alles ist eine Box.</p>
+            <div class="alert alert-info">
+                <strong>Tipp:</strong> Öffne die Browser DevTools (F12) und aktiviere die Box-Modell-Visualisierung, um alle Elemente als Boxen zu sehen.
+            </div>
+        </section>
+
+        <!-- Szene 2: Die vier Bereiche -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">2. Die vier Bereiche des Box-Modells</h2>
+            </div>
+            <p>Jede Box besteht aus vier Bereichen:</p>
+            <div class="box-model-diagram">
+                <div class="diagram-margin">
+                    <div class="label">MARGIN (Aussenabstand)</div>
+                    <div class="diagram-border">
+                        <div class="label">BORDER (Rahmen)</div>
+                        <div class="diagram-padding">
+                            <div class="label">PADDING (Innenabstand)</div>
+                            <div class="diagram-content">
+                                <div class="label">CONTENT (Inhalt)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 3: Content -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">3. Content – Der Inhalt</h2>
+            </div>
+            <p>Der Content-Bereich enthält den tatsächlichen Inhalt – Text, Bilder oder andere Elemente. Mit <span class="highlight">width</span> und <span class="highlight">height</span> bestimmst du die Grösse dieses Bereichs.</p>
+            
+            <div class="code-block">
+<code>.box {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-title">Live-Demo:</div>
+                <div class="demo-content-only">
+                    Ich bin eine Box mit width: 300px und height: 200px
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 4: Padding -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">4. Padding – Innenabstand</h2>
+            </div>
+            <p>Padding ist der Innenabstand zwischen Content und Border. Er vergrössert die Box und übernimmt die Hintergrundfarbe.</p>
+            
+            <div class="code-block">
+<code>.box {
+    width: 300px;
+    padding: 20px;
+    background-color: lightblue;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-title">Live-Demo:</div>
+                <div class="demo-with-padding">
+                    Ich habe padding: 20px – der Text rückt nach innen
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 5: Border -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">5. Border – Rahmen</h2>
+            </div>
+            <p>Der Border ist der Rahmen um die Box. Er hat eine Farbe, Dicke und Stil.</p>
+            
+            <div class="code-block">
+<code>.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid navy;
+    background-color: lightblue;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-title">Live-Demo:</div>
+                <div class="demo-with-border">
+                    Ich habe einen 5px breiten Border in navy
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 6: Margin -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">6. Margin – Aussenabstand</h2>
+            </div>
+            <p>Margin ist der Aussenabstand zwischen Elementen. Er schafft Platz um die Box herum, ist aber transparent.</p>
+            
+            <div class="code-block">
+<code>.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid navy;
+    margin: 30px;
+    background-color: lightblue;
+}</code>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-title">Live-Demo:</div>
+                <div class="demo-with-margin">
+                    Ich habe margin: 30px – Abstand rundherum
+                </div>
+                <div class="demo-with-margin">
+                    Zweite Box mit margin: 30px
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 7: Kurzschreibweisen -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">7. Kurzschreibweisen für Abstände</h2>
+            </div>
+            <p>Statt jede Seite einzeln zu definieren, kannst du Kurzschreibweisen nutzen:</p>
+            
+            <div class="code-block">
+<code>/* Alle Seiten gleich */
+padding: 20px;
+
+/* Oben-Unten: 20px, Links-Rechts: 40px */
+padding: 20px 40px;
+
+/* Oben: 10px, Rechts: 20px, Unten: 30px, Links: 40px */
+padding: 10px 20px 30px 40px;
+
+/* Einzelne Seiten */
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 30px;
+padding-left: 40px;</code>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-title">Live-Demo der Varianten:</div>
+                <div class="split-view">
+                    <div class="demo-padding-all">padding: 20px</div>
+                    <div class="demo-padding-two">padding: 20px 40px</div>
+                </div>
+                <div class="split-view mt-sm">
+                    <div class="demo-padding-four">padding: 10px 20px 30px 40px</div>
+                    <div class="demo-padding-individual">Individuelle Werte</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 8: Box-Sizing -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">8. Box-Sizing – Die Grössenberechnung</h2>
+            </div>
+            <p>Standardmässig addiert der Browser Padding und Border zur Width hinzu. Mit <span class="highlight">box-sizing: border-box</span> bleiben sie innerhalb der definierten Breite.</p>
+            
+            <div class="split-view">
+                <div>
+                    <h4>content-box (Standard)</h4>
+                    <div class="code-block">
+<code>.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+}
+/* Tatsächliche Breite: 350px */</code>
+                    </div>
+                    <div class="demo-content-box">
+                        width: 300px<br>
+                        + padding: 40px<br>
+                        + border: 10px<br>
+                        = 350px total
+                    </div>
+                </div>
+                <div>
+                    <h4>border-box</h4>
+                    <div class="code-block">
+<code>.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    box-sizing: border-box;
+}
+/* Tatsächliche Breite: 300px */</code>
+                    </div>
+                    <div class="demo-border-box">
+                        width: 300px<br>
+                        (inkl. padding & border)<br>
+                        = 300px total
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 9: Display -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">9. Display – Block vs. Inline vs. Inline-Block</h2>
+            </div>
+            <p>Die Display-Eigenschaft bestimmt, wie Elemente dargestellt werden.</p>
+
+            <h3 class="mt-lg">Display: Block</h3>
+            <p>Block-Elemente nehmen die volle Breite ein und erzwingen einen Zeilenumbruch.</p>
+            <div class="code-block">
+<code>div {
+    display: block;
+    background: lightblue;
+}</code>
+            </div>
+            <div class="demo-box">
+                <div class="demo-block">Block 1</div>
+                <div class="demo-block">Block 2</div>
+                <div class="demo-block">Block 3</div>
+            </div>
+
+            <h3 class="mt-lg">Display: Inline</h3>
+            <p>Inline-Elemente bleiben im Textfluss. Width und Height haben keine Wirkung.</p>
+            <div class="code-block">
+<code>span {
+    display: inline;
+    background: lightcoral;
+}</code>
+            </div>
+            <div class="demo-box">
+                <p>
+                    Text mit <span class="demo-inline">inline Element 1</span> und 
+                    <span class="demo-inline">inline Element 2</span> dazwischen.
+                </p>
+            </div>
+
+            <h3 class="mt-lg">Display: Inline-Block</h3>
+            <p>Inline-Block kombiniert beide: Elemente bleiben nebeneinander, aber Width/Height funktionieren.</p>
+            <div class="code-block">
+<code>div {
+    display: inline-block;
+    width: 150px;
+    background: lightgreen;
+}</code>
+            </div>
+            <div class="demo-box">
+                <div class="demo-inline-block">Box 1</div>
+                <div class="demo-inline-block">Box 2</div>
+                <div class="demo-inline-block">Box 3</div>
+            </div>
+        </section>
+
+        <!-- Szene 10: Margin Collapsing -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">10. Margin Collapsing</h2>
+            </div>
+            <p>Bei vertikalen Margins zwischen Block-Elementen überlappen sich die Abstände – der grössere Wert gewinnt.</p>
+            
+            <div class="code-block">
+<code>.box1 {
+    margin-bottom: 40px;
+}
+
+.box2 {
+    margin-top: 30px;
+}
+/* Abstand zwischen box1 und box2: 40px (nicht 70px!) */</code>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-title">Mit Margin Collapsing:</div>
+                <div class="demo-collapse-box1">Box 1: margin-bottom: 40px</div>
+                <div class="demo-collapse-box2">Box 2: margin-top: 30px</div>
+                <p class="mt-md"><strong>Tatsächlicher Abstand: 40px</strong> (nicht 70px)</p>
+            </div>
+        </section>
+
+        <!-- Szene 11: DevTools -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">11. DevTools – Box-Modell inspizieren</h2>
+            </div>
+            <p>Die Browser DevTools sind dein bester Freund beim Debuggen.</p>
+            
+            <div class="alert alert-info">
+                <strong>So geht's:</strong>
+                <ul class="mt-sm">
+                    <li>Öffne DevTools mit <strong>F12</strong></li>
+                    <li>Klicke auf ein Element im Elements-Tab</li>
+                    <li>Sieh dir das Box-Modell rechts unten an</li>
+                    <li><span class="badge badge-orange">Orange</span> = Margin</li>
+                    <li><span class="badge badge-turquoise">Grün</span> = Padding</li>
+                    <li><span class="badge badge-blue">Gelb</span> = Border</li>
+                    <li>Blau = Content</li>
+                </ul>
+            </div>
+
+            <div class="demo-box mt-md">
+                <div class="demo-title">Inspiziere diese Box mit DevTools:</div>
+                <div class="demo-inspect-me">
+                    Ich bin eine Box zum Inspizieren!<br>
+                    Rechtsklick → "Untersuchen" oder "Inspect"
+                </div>
+            </div>
+        </section>
+
+        <!-- Szene 12: Praktisches Beispiel -->
+        <section class="card mb-lg gradient-ocean">
+            <div class="card-header">
+                <h2 class="card-title" style="color: white;">12. Praktisches Beispiel – Card Component</h2>
+            </div>
+            <p style="color: white;">Eine typische Card nutzt das Box-Modell perfekt:</p>
+            
+            <div class="code-block">
+<code>.card {
+    /* Box-Sizing */
+    box-sizing: border-box;
+    
+    /* Content */
+    width: 300px;
+    
+    /* Padding */
+    padding: 20px;
+    
+    /* Border */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    
+    /* Margin */
+    margin: 20px;
+    
+    /* Visuals */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}</code>
+            </div>
+
+            <div class="demo-box mt-md">
+                <div class="demo-title">Live-Demo Cards:</div>
+                <div class="demo-cards-container">
+                    <div class="demo-card">
+                        <h4>Card 1</h4>
+                        <p>Beispiel einer Card mit Box-Modell</p>
+                    </div>
+                    <div class="demo-card">
+                        <h4>Card 2</h4>
+                        <p>Padding, Border und Margin arbeiten zusammen</p>
+                    </div>
+                    <div class="demo-card">
+                        <h4>Card 3</h4>
+                        <p>box-sizing: border-box macht alles einfacher</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zusammenfassung -->
+        <section class="card mb-lg">
+            <div class="card-header">
+                <h2 class="card-title">Zusammenfassung</h2>
+            </div>
+            <h3>Du hast gelernt:</h3>
+            <ul>
+                <li>✅ Jedes HTML-Element ist eine rechteckige Box</li>
+                <li>✅ Die vier Bereiche: Content, Padding, Border, Margin</li>
+                <li>✅ Kurzschreibweisen für Abstände</li>
+                <li>✅ Der Unterschied zwischen content-box und border-box</li>
+                <li>✅ Display-Eigenschaften: block, inline, inline-block</li>
+                <li>✅ Margin Collapsing verstehen</li>
+                <li>✅ DevTools für Box-Modell-Debugging nutzen</li>
+            </ul>
+
+            <div class="alert alert-success mt-md">
+                <strong>Best Practice:</strong> Verwende immer <span class="highlight">box-sizing: border-box</span> für einfachere Berechnungen!
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark p-md text-center">
+            <p>© 2024 BAND Genossenschaft | Web Development Tutorial</p>
+        </footer>
+    </div>
+</body>
+</html>

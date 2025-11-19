@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variablen, Datentypen & Kontrollstrukturen - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>JavaScript Grundlagen</h1>
+            <p>Variablen, Datentypen & Kontrollstrukturen</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">12-14 Minuten</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Intro -->
+            <div class="timeline-item">
+                <div class="timeline-marker">0</div>
+                <div class="timeline-content">
+                    <div class="card gradient-ocean">
+                        <div class="card-header">
+                            <h3 class="card-title">Intro - Was du lernen wirst</h3>
+                        </div>
+                        <p>Nachdem du JavaScript einbinden kannst, lernst du jetzt die wichtigsten Programmierbausteine kennen:</p>
+                        <ul>
+                            <li><strong>Variablen</strong> speichern Werte</li>
+                            <li><strong>Datentypen</strong> definieren, was für Werte das sind</li>
+                            <li><strong>Kontrollstrukturen</strong> lassen deinen Code Entscheidungen treffen</li>
+                        </ul>
+                        <p>Am Ende dieses Videos kannst du deine Portfolio-Seite personalisieren und sie reagiert auf verschiedene Bedingungen!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 1: Was sind Variablen? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was sind Variablen?</h3>
+                        </div>
+                        <p>Variablen sind Container für Werte – wie beschriftete Schubladen. Du gibst ihnen einen Namen und legst einen Wert hinein. In JavaScript deklarierst du Variablen mit <span class="highlight">let</span> oder <span class="highlight">const</span>.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Merke:</strong><br>
+                            <span class="highlight">let</span> = veränderbare Variable<br>
+                            <span class="highlight">const</span> = konstante Variable (unveränderbar)
+                        </div>
+
+                        <div class="code-block">
+<code>// =====================================================
+// VARIABLEN & DATENTYPEN
+// =====================================================
+
+console.log("=== VARIABLEN DEMO ===");
+
+// let = veränderbare Variable
+let vorname = "Sarah";
+console.log("Vorname:", vorname);
+
+vorname = "Max";  // Wert ändern ist erlaubt
+console.log("Neuer Vorname:", vorname);
+
+// const = konstante Variable (unveränderbar)
+const geburtsjahr = 2006;
+console.log("Geburtsjahr:", geburtsjahr);
+
+// geburtsjahr = 2007;  // ❌ Fehler! const kann nicht geändert werden</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Konsolen-Ausgabe:</p>
+                            <div class="code-block">
+<code>=== VARIABLEN DEMO ===
+Vorname: Sarah
+Neuer Vorname: Max
+Geburtsjahr: 2006</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Versucht man eine <span class="highlight">const</span>-Variable zu ändern, erhält man einen Fehler!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Datentypen in JavaScript -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Datentypen in JavaScript</h3>
+                        </div>
+                        <p>JavaScript kennt verschiedene Datentypen: <span class="highlight">String</span> für Text, <span class="highlight">Number</span> für Zahlen, <span class="highlight">Boolean</span> für Wahrheitswerte (true oder false). JavaScript erkennt den Typ automatisch – du musst ihn nicht explizit angeben wie in anderen Sprachen.</p>
+                        
+                        <div class="code-block">
+<code>// === DATENTYPEN ===
+
+// 1. STRING (Text) – mit " " oder ' ' oder ` `
+let name = "Tim Leibacher";
+let beruf = 'Informatiker EFZ';
+let nachricht = `Willkommen auf meinem Portfolio!`;
+
+console.log("Name:", name, "– Typ:", typeof name);
+
+// 2. NUMBER (Zahlen)
+let alter = 19;
+let pi = 3.14159;
+let temperatur = -5;
+
+console.log("Alter:", alter, "– Typ:", typeof alter);
+
+// 3. BOOLEAN (Wahrheitswerte)
+let istVolljährig = true;
+let istRegen = false;
+
+console.log("Volljährig:", istVolljährig, "– Typ:", typeof istVolljährig);
+
+// 4. UNDEFINED (noch kein Wert zugewiesen)
+let unbekannt;
+console.log("Unbekannt:", unbekannt, "– Typ:", typeof unbekannt);
+
+// 5. NULL (bewusst leerer Wert)
+let leer = null;
+console.log("Leer:", leer, "– Typ:", typeof leer);</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Konsolen-Ausgabe:</p>
+                            <div class="code-block">
+<code>Name: Tim Leibacher – Typ: string
+Alter: 19 – Typ: number
+Volljährig: true – Typ: boolean
+Unbekannt: undefined – Typ: undefined
+Leer: null – Typ: object</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>typeof-Operator:</strong> Mit <span class="highlight">typeof</span> kannst du den Datentyp einer Variable prüfen.<br>
+                            <strong>Bekannter JS-Bug:</strong> <span class="highlight">typeof null</span> gibt "object" zurück – das ist historisch bedingt!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Template Literals -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Template Literals - Strings mit Variablen</h3>
+                        </div>
+                        <p>Template Literals mit Backticks <span class="highlight">`</span> sind super praktisch: Du kannst Variablen direkt in Strings einfügen mit der <span class="highlight">${}</span>-Syntax. Das ist viel lesbarer als klassische String-Konkatenation mit Pluszeichen.</p>
+                        
+                        <div class="code-block">
+<code>// === TEMPLATE LITERALS ===
+
+let vorname = "Sarah";
+let nachname = "Müller";
+let alter = 19;
+
+// Alte Methode (mit +)
+console.log("Hallo, ich bin " + vorname + " " + nachname + " und bin " + alter + " Jahre alt.");
+
+// Neue Methode (Template Literal)
+console.log(`Hallo, ich bin ${vorname} ${nachname} und bin ${alter} Jahre alt.`);
+
+// Mehrzeilige Strings
+let nachricht = `
+Willkommen auf meinem Portfolio!
+Mein Name ist ${vorname} ${nachname}.
+Ich bin ${alter} Jahre alt.
+`;
+
+console.log(nachricht);</code>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Vorteile von Template Literals:</strong>
+                            <ul>
+                                <li>Viel lesbarer als String-Konkatenation mit +</li>
+                                <li>Mehrzeilige Strings möglich</li>
+                                <li>Variablen mit <span class="highlight">${variable}</span> einfügen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Operatoren -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Operatoren - Rechnen & Vergleichen</h3>
+                        </div>
+                        <p>Operatoren führen Berechnungen oder Vergleiche durch. Rechenoperatoren kennst du: Plus, Minus, Mal, Geteilt. Vergleichsoperatoren prüfen Bedingungen: Ist etwas gleich, grösser oder kleiner?</p>
+                        
+                        <div class="code-block">
+<code>// === RECHENOPERATOREN ===
+
+let a = 10;
+let b = 3;
+
+console.log("Addition:", a + b);        // 13
+console.log("Subtraktion:", a - b);     // 7
+console.log("Multiplikation:", a * b);  // 30
+console.log("Division:", a / b);        // 3.333...
+console.log("Rest (Modulo):", a % b);   // 1
+console.log("Potenz:", a ** b);         // 1000
+
+// === VERGLEICHSOPERATOREN ===
+
+let x = 5;
+let y = "5";
+
+console.log("x == y:", x == y);    // true (Wert-Vergleich)
+console.log("x === y:", x === y);  // false (Typ + Wert-Vergleich)
+console.log("x != y:", x != y);    // false
+console.log("x !== y:", x !== y);  // true
+
+console.log("10 > 5:", 10 > 5);    // true
+console.log("10 < 5:", 10 < 5);    // false
+console.log("10 >= 10:", 10 >= 10); // true</code>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Nutze immer <span class="highlight">===</span> (strikte Gleichheit) statt <span class="highlight">==</span>!<br>
+                            <span class="highlight">===</span> vergleicht Typ UND Wert, während <span class="highlight">==</span> automatische Typ-Umwandlung durchführt.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Operatoren-Übersicht:</p>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Operator</th>
+                                        <th>Bedeutung</th>
+                                        <th>Beispiel</th>
+                                        <th>Ergebnis</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>+</td>
+                                        <td>Addition</td>
+                                        <td>5 + 3</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>Subtraktion</td>
+                                        <td>5 - 3</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>*</td>
+                                        <td>Multiplikation</td>
+                                        <td>5 * 3</td>
+                                        <td>15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>/</td>
+                                        <td>Division</td>
+                                        <td>15 / 3</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>%</td>
+                                        <td>Rest (Modulo)</td>
+                                        <td>10 % 3</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>**</td>
+                                        <td>Potenz</td>
+                                        <td>2 ** 3</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>===</td>
+                                        <td>Strikte Gleichheit</td>
+                                        <td>5 === "5"</td>
+                                        <td>false</td>
+                                    </tr>
+                                    <tr>
+                                        <td>!==</td>
+                                        <td>Strikte Ungleichheit</td>
+                                        <td>5 !== "5"</td>
+                                        <td>true</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: If-Else Verzweigungen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">If-Else Verzweigungen - Entscheidungen treffen</h3>
+                        </div>
+                        <p>Mit <span class="highlight">if-else</span> trifft dein Code Entscheidungen. Wenn eine Bedingung wahr ist, wird der Code im if-Block ausgeführt, sonst der im else-Block. Mit <span class="highlight">else if</span> kannst du mehrere Bedingungen nacheinander prüfen.</p>
+                        
+                        <div class="code-block">
+<code>// === IF-ELSE VERZWEIGUNGEN ===
+
+let alter = 19;
+
+if (alter >= 18) {
+    console.log("✓ Du bist volljährig");
+} else {
+    console.log("✗ Du bist minderjährig");
+}
+
+// === MEHRFACHE BEDINGUNGEN (else if) ===
+
+let note = 5.2;
+
+if (note >= 5.5) {
+    console.log("Sehr gut!");
+} else if (note >= 5.0) {
+    console.log("Gut");
+} else if (note >= 4.5) {
+    console.log("Genügend");
+} else if (note >= 4.0) {
+    console.log("Ungenügend");
+} else {
+    console.log("Sehr schwach");
+}
+
+// === VERSCHACHTELTE BEDINGUNGEN ===
+
+let istAngemeldet = true;
+let istAdmin = false;
+
+if (istAngemeldet) {
+    console.log("Benutzer ist angemeldet");
+    
+    if (istAdmin) {
+        console.log("→ Admin-Bereich verfügbar");
+    } else {
+        console.log("→ Standard-Bereich verfügbar");
+    }
+} else {
+    console.log("Bitte anmelden");
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Konsolen-Ausgabe:</p>
+                            <div class="code-block">
+<code>✓ Du bist volljährig
+Gut
+Benutzer ist angemeldet
+→ Standard-Bereich verfügbar</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>So funktioniert's:</strong>
+                            <ul>
+                                <li><span class="highlight">if</span> - Prüft eine Bedingung</li>
+                                <li><span class="highlight">else if</span> - Prüft weitere Bedingungen</li>
+                                <li><span class="highlight">else</span> - Wird ausgeführt, wenn keine Bedingung wahr ist</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Logische Operatoren -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Logische Operatoren - Bedingungen verbinden</h3>
+                        </div>
+                        <p>Logische Operatoren verbinden mehrere Bedingungen:</p>
+                        <ul>
+                            <li><span class="highlight">&&</span> (AND) - Beide Bedingungen müssen wahr sein</li>
+                            <li><span class="highlight">||</span> (OR) - Mindestens eine Bedingung muss wahr sein</li>
+                            <li><span class="highlight">!</span> (NOT) - Kehrt den Wahrheitswert um</li>
+                        </ul>
+                        
+                        <div class="code-block">
+<code>// === LOGISCHE OPERATOREN ===
+
+let alter = 19;
+let hatFührerschein = true;
+let istMüde = false;
+
+// && (AND) – Beide Bedingungen müssen wahr sein
+if (alter >= 18 && hatFührerschein) {
+    console.log("✓ Du darfst Auto fahren");
+}
+
+// || (OR) – Mindestens eine Bedingung muss wahr sein
+let istWochenende = false;
+let istFeiertag = true;
+
+if (istWochenende || istFeiertag) {
+    console.log("✓ Frei heute!");
+}
+
+// ! (NOT) – Kehrt Wahrheitswert um
+if (!istMüde) {
+    console.log("✓ Bereit zum Arbeiten!");
+}
+
+// === KOMPLEXE BEDINGUNGEN ===
+
+let istStudent = true;
+let hatRabattcode = true;
+let bestellwert = 45;
+
+if ((istStudent || hatRabattcode) && bestellwert >= 30) {
+    console.log("✓ Rabatt gewährt!");
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Wahrheitstabellen:</p>
+                            <div class="split-view">
+                                <div>
+                                    <h4>AND (&&)</h4>
+                                    <table class="table">
+                                        <tr><th>A</th><th>B</th><th>A && B</th></tr>
+                                        <tr><td>true</td><td>true</td><td>true</td></tr>
+                                        <tr><td>true</td><td>false</td><td>false</td></tr>
+                                        <tr><td>false</td><td>true</td><td>false</td></tr>
+                                        <tr><td>false</td><td>false</td><td>false</td></tr>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h4>OR (||)</h4>
+                                    <table class="table">
+                                        <tr><th>A</th><th>B</th><th>A || B</th></tr>
+                                        <tr><td>true</td><td>true</td><td>true</td></tr>
+                                        <tr><td>true</td><td>false</td><td>true</td></tr>
+                                        <tr><td>false</td><td>true</td><td>true</td></tr>
+                                        <tr><td>false</td><td>false</td><td>false</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: For-Schleifen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">For-Schleifen - Wiederholungen automatisieren</h3>
+                        </div>
+                        <p>Schleifen wiederholen Code automatisch. Die <span class="highlight">for</span>-Schleife nutzt du, wenn du weisst, wie oft der Code wiederholt werden soll.</p>
+                        
+                        <div class="code-block">
+<code>// === FOR-SCHLEIFE ===
+
+console.log("=== ZAHLEN 1-10 ===");
+
+for (let i = 1; i <= 10; i++) {
+    console.log(i);
+}
+
+// === RÜCKWÄRTS ZÄHLEN ===
+
+console.log("\n=== COUNTDOWN ===");
+
+for (let i = 5; i >= 1; i--) {
+    console.log(i);
+}
+console.log("Start!");
+
+// === MIT SCHRITTWEITE ===
+
+console.log("\n=== GERADE ZAHLEN ===");
+
+for (let i = 0; i <= 20; i += 2) {
+    console.log(i);
+}
+
+// === ARRAY DURCHLAUFEN ===
+
+let früchte = ["Apfel", "Banane", "Orange", "Kiwi"];
+
+for (let i = 0; i < früchte.length; i++) {
+    console.log(`${i + 1}. ${früchte[i]}`);
+}</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Anatomie einer For-Schleife:</strong><br>
+                            <span class="highlight">for (Initialisierung; Bedingung; Inkrement)</span><br>
+                            <ul>
+                                <li><strong>Initialisierung:</strong> <span class="highlight">let i = 1</span> - Startwert</li>
+                                <li><strong>Bedingung:</strong> <span class="highlight">i <= 10</span> - Solange wahr, läuft die Schleife</li>
+                                <li><strong>Inkrement:</strong> <span class="highlight">i++</span> - Nach jedem Durchlauf</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Visualisierung eines Schleifendurchlaufs:</p>
+                            <div class="code-block">
+<code>for (let i = 1; i <= 3; i++) {
+    console.log(i);
+}
+
+Durchlauf 1: i = 1 → Bedingung true → Ausgabe: 1 → i++
+Durchlauf 2: i = 2 → Bedingung true → Ausgabe: 2 → i++
+Durchlauf 3: i = 3 → Bedingung true → Ausgabe: 3 → i++
+Durchlauf 4: i = 4 → Bedingung false → Schleife endet</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: While-Schleifen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">While-Schleifen - Solange wie...</h3>
+                        </div>
+                        <p>Die <span class="highlight">while</span>-Schleife läuft, solange eine Bedingung wahr ist. Sie ist praktisch, wenn du nicht weisst, wie viele Durchläufe benötigt werden.</p>
+                        
+                        <div class="code-block">
+<code>// === WHILE-SCHLEIFE ===
+
+let countdown = 5;
+
+console.log("=== COUNTDOWN ===");
+
+while (countdown > 0) {
+    console.log(countdown);
+    countdown--;
+}
+console.log("Start!");
+
+// === BENUTZEREINGABE VALIDIEREN (Beispiel) ===
+
+let zahl = 0;
+
+while (zahl < 1 || zahl > 10) {
+    // In der Praxis würde hier eine Eingabe erfolgen
+    zahl = Math.floor(Math.random() * 15) + 1;
+    console.log(`Versuch: ${zahl}`);
+}
+console.log(`✓ Gültige Zahl: ${zahl}`);
+
+// === DO-WHILE (mindestens 1x ausführen) ===
+
+let würfel;
+
+do {
+    würfel = Math.floor(Math.random() * 6) + 1;
+    console.log(`Würfelwurf: ${würfel}`);
+} while (würfel !== 6);
+
+console.log("✓ Eine 6 gewürfelt!");</code>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Achtung Endlosschleife!</strong><br>
+                            Vergiss nicht, die Bedingung irgendwann zu ändern, sonst läuft die Schleife endlos!<br>
+                            <div class="code-block mt-sm">
+<code>// ❌ FEHLER: Endlosschleife!
+let i = 0;
+while (i < 10) {
+    console.log(i);
+    // i++ fehlt! → Schleife läuft endlos
+}</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>While vs. Do-While:</strong>
+                            <ul>
+                                <li><span class="highlight">while</span> - Prüft Bedingung BEVOR der Code ausgeführt wird</li>
+                                <li><span class="highlight">do-while</span> - Führt Code MINDESTENS 1x aus, prüft Bedingung danach</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Praxisbeispiel Portfolio -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Praxisbeispiel - Intelligente Portfolio-Seite</h3>
+                        </div>
+                        <p>Jetzt kombinieren wir alles! Wir bauen eine personalisierte Begrüssung für deine Portfolio-Seite, die auf Tageszeit und Besuchszähler reagiert.</p>
+                        
+                        <div class="code-block">
+<code>// === PORTFOLIO PERSONALISIERUNG ===
+
+// Variablen für Benutzerdaten
+const benutzername = "Tim";
+let besuchsZähler = 3;
+let alter = 19;
+
+// Aktuelle Stunde ermitteln
+let stunde = new Date().getHours();
+
+// Begrüssung je nach Tageszeit
+let begrüssung;
+
+if (stunde >= 6 && stunde < 12) {
+    begrüssung = "🌅 Guten Morgen";
+} else if (stunde >= 12 && stunde < 18) {
+    begrüssung = "🌤️ Guten Tag";
+} else if (stunde >= 18 && stunde < 22) {
+    begrüssung = "🌆 Guten Abend";
+} else {
+    begrüssung = "🌙 Gute Nacht";
+}
+
+// Vollständige Nachricht zusammenstellen
+let nachricht = `
+${begrüssung}, ${benutzername}!
+Du bist ${alter} Jahre alt und besuchst diese Seite zum ${besuchsZähler}. Mal.
+`;
+
+console.log(nachricht);
+
+// Besuchszähler erhöhen
+besuchsZähler++;
+
+// Portfolio-Projekte durchlaufen
+let projekte = ["Website", "App", "Game", "Tool"];
+
+console.log("\n=== MEINE PROJEKTE ===");
+
+for (let i = 0; i < projekte.length; i++) {
+    console.log(`${i + 1}. ${projekte[i]}`);
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">HTML-Integration:</p>
+                            <div class="code-block">
+<code>&lt;div id="portfolio-begruessung"&gt;
+    &lt;!-- Wird von JavaScript gefüllt --&gt;
+&lt;/div&gt;</code>
+                            </div>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Resultat im Browser:</p>
+                            <div class="code-block">
+<code>🌤️ Guten Tag, Tim!
+Du bist 19 Jahre alt und besuchst diese Seite zum 3. Mal.</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Das hast du gelernt:</strong> Variablen + Bedingungen + Schleifen = Intelligente Website!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Häufige Fehler & Debugging -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Häufige Fehler & Debugging</h3>
+                        </div>
+                        <p>Beim Programmieren machst du Fehler – das ist normal! Die häufigsten Fehler und wie du sie findest:</p>
+                        
+                        <div class="alert alert-danger">
+                            <strong>Fehler 1: let vs. const verwechselt</strong>
+                            <div class="code-block mt-sm">
+<code>const name = "Sarah";
+name = "Tim";  // ❌ TypeError: Assignment to constant variable</code>
+                            </div>
+                            <strong>Konsole zeigt:</strong>
+                            <div class="code-block mt-sm">
+<code>Uncaught TypeError: Assignment to constant variable.
+    at script.js:2</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-danger">
+                            <strong>Fehler 2: Vergessene geschweifte Klammer</strong>
+                            <div class="code-block mt-sm">
+<code>if (alter >= 18) {
+    console.log("Volljährig");
+// ❌ Fehler: Schliessende Klammer fehlt!</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-danger">
+                            <strong>Fehler 3: Endlosschleife</strong>
+                            <div class="code-block mt-sm">
+<code>let i = 0;
+while (i < 10) {
+    console.log(i);
+    // ❌ Fehler: i++ fehlt → Endlosschleife!
+}</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Debugging-Tipp: console.log() ist dein bester Freund!</strong>
+                            <div class="code-block mt-sm">
+<code>// Variablenwerte während der Ausführung prüfen
+let summe = 0;
+for (let i = 1; i <= 5; i++) {
+    summe += i;
+    console.log(`i = ${i}, summe = ${summe}`);  // Debug-Ausgabe
+}</code>
+                            </div>
+                            <strong>Konsolen-Ausgabe:</strong>
+                            <div class="code-block mt-sm">
+<code>i = 1, summe = 1
+i = 2, summe = 3
+i = 3, summe = 6
+i = 4, summe = 10
+i = 5, summe = 15</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: Zusammenfassung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card gradient-ocean">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung & Ausblick</h3>
+                        </div>
+                        <p>Fassen wir zusammen – das hast du gelernt:</p>
+                        
+                        <div class="alert alert-success">
+                            <h4>✓ Variablen (let, const)</h4>
+                            <p>Container für Werte – let für veränderbare, const für konstante Werte</p>
+                            
+                            <h4>✓ Datentypen (String, Number, Boolean)</h4>
+                            <p>JavaScript erkennt Typen automatisch – String für Text, Number für Zahlen, Boolean für wahr/falsch</p>
+                            
+                            <h4>✓ Template Literals (`${}`)</h4>
+                            <p>Variablen elegant in Strings einfügen mit Backticks</p>
+                            
+                            <h4>✓ Operatoren (===, &&, ||)</h4>
+                            <p>Rechnen und Vergleichen – immer === statt == verwenden!</p>
+                            
+                            <h4>✓ if-else Verzweigungen</h4>
+                            <p>Dein Code kann Entscheidungen treffen</p>
+                            
+                            <h4>✓ for & while Schleifen</h4>
+                            <p>Wiederholungen automatisieren</p>
+                            
+                            <h4>✓ Debugging mit console.log()</h4>
+                            <p>Dein wichtigstes Werkzeug zum Fehler finden</p>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Projekt-Struktur:</p>
+                            <div class="code-block">
+<code>mein-portfolio/
+├── index.html
+├── styles.css
+├── script.js
+├── variables.js
+└── portfolio-logic.js</code>
+                            </div>
+                        </div>
+
+                        <p class="mt-md"><strong>Das sind die Bausteine jeder Programmlogik!</strong> In den Aufträgen baust du jetzt eine intelligente Portfolio-Seite mit personalisierten Inhalten.</p>
+                        
+                        <p><strong>Im nächsten Video:</strong> Event Handling – dann wird deine Seite richtig interaktiv!</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Vollständige Demo-Datei -->
+        <div class="card mt-lg mb-lg gradient-sunset">
+            <h2>Vollständige Demo-Datei: variables.js</h2>
+            <p>Diese Datei enthält alle Code-Beispiele aus dem Tutorial zum Ausprobieren:</p>
+            
+            <div class="code-block">
+<code>// =====================================================
+// VARIABLEN & DATENTYPEN
+// =====================================================
+
+console.log("=== VARIABLEN DEMO ===");
+
+// let = veränderbare Variable
+let vorname = "Sarah";
+console.log("Vorname:", vorname);
+
+vorname = "Max";
+console.log("Neuer Vorname:", vorname);
+
+// const = konstante Variable
+const geburtsjahr = 2006;
+console.log("Geburtsjahr:", geburtsjahr);
+
+// === DATENTYPEN ===
+
+let name = "Tim Leibacher";
+let alter = 19;
+let istVolljährig = true;
+let unbekannt;
+let leer = null;
+
+console.log("Name:", name, "– Typ:", typeof name);
+console.log("Alter:", alter, "– Typ:", typeof alter);
+console.log("Volljährig:", istVolljährig, "– Typ:", typeof istVolljährig);
+console.log("Unbekannt:", unbekannt, "– Typ:", typeof unbekannt);
+console.log("Leer:", leer, "– Typ:", typeof leer);
+
+// === TEMPLATE LITERALS ===
+
+console.log(`Hallo, ich bin ${name} und bin ${alter} Jahre alt.`);
+
+// === OPERATOREN ===
+
+let a = 10;
+let b = 3;
+
+console.log("Addition:", a + b);
+console.log("Subtraktion:", a - b);
+console.log("Multiplikation:", a * b);
+console.log("Division:", a / b);
+console.log("Rest:", a % b);
+
+let x = 5;
+let y = "5";
+
+console.log("x == y:", x == y);
+console.log("x === y:", x === y);
+
+// === IF-ELSE ===
+
+let note = 5.2;
+
+if (note >= 5.5) {
+    console.log("Sehr gut!");
+} else if (note >= 5.0) {
+    console.log("Gut");
+} else if (note >= 4.5) {
+    console.log("Genügend");
+} else {
+    console.log("Ungenügend");
+}
+
+// === LOGISCHE OPERATOREN ===
+
+let hatFührerschein = true;
+let ist18 = true;
+
+if (ist18 && hatFührerschein) {
+    console.log("Darf Auto fahren");
+}
+
+// === FOR-SCHLEIFE ===
+
+console.log("\n=== ZAHLEN 1-10 ===");
+
+for (let i = 1; i <= 10; i++) {
+    console.log(i);
+}
+
+// === WHILE-SCHLEIFE ===
+
+console.log("\n=== COUNTDOWN ===");
+
+let countdown = 5;
+
+while (countdown > 0) {
+    console.log(countdown);
+    countdown--;
+}
+console.log("Start!");</code>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>JavaScript Grundlagen Tutorial - BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ Applikationsentwicklung</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Formulare - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>HTML Formulare - Schritt für Schritt</h1>
+            <p>Lerne, wie du interaktive Formulare erstellst und validierst</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">14 Lektionen</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Einführung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was sind Formulare?</h3>
+                        </div>
+                        <p>Formulare ermöglichen die Interaktion zwischen Nutzern und Webseiten. Jedes Mal, wenn du dich irgendwo anmeldest, etwas suchst oder eine Nachricht sendest, nutzt du ein Formular.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Beispiele aus dem Alltag:</strong>
+                            <ul>
+                                <li>Google-Suche: Ein einfaches Textfeld mit Submit-Button</li>
+                                <li>Login-Seite: Benutzername und Passwort-Felder</li>
+                                <li>Kontaktformular: Name, E-Mail, Nachricht</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Das form-Element -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Das &lt;form&gt;-Element - Die Basis</h3>
+                        </div>
+                        <p>Jedes Formular beginnt mit dem <span class="highlight">&lt;form&gt;</span>-Tag. Das <span class="highlight">action</span>-Attribut bestimmt, wohin die Daten gesendet werden, und <span class="highlight">method</span> legt fest, wie sie übertragen werden - meist GET oder POST.</p>
+                        
+                        <div class="code-block">
+<code>&lt;form action="/kontakt" method="post"&gt;
+    &lt;!-- Hier kommen die Eingabefelder --&gt;
+&lt;/form&gt;</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Wichtige Attribute:</strong><br>
+                            <span class="highlight">action</span> = Ziel-URL, wohin die Daten gesendet werden<br>
+                            <span class="highlight">method</span> = Art der Übertragung (GET oder POST)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Textfelder -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Textfelder - &lt;input type="text"&gt;</h3>
+                        </div>
+                        <p>Das häufigste Eingabefeld ist das Textfeld. Mit <span class="highlight">type="text"</span> erstellst du ein einzeiliges Eingabefeld. Das <span class="highlight">name</span>-Attribut identifiziert das Feld, und <span class="highlight">placeholder</span> zeigt einen Hinweistext.</p>
+                        
+                        <div class="code-block">
+<code>&lt;label for="vorname"&gt;Vorname:&lt;/label&gt;
+&lt;input type="text" id="vorname" name="vorname" placeholder="z.B. Anna"&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="vorname" class="form-label">Vorname:</label>
+                                    <input type="text" id="vorname" name="vorname" class="form-input" placeholder="z.B. Anna">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Labels -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Labels - Beschriftung für Barrierefreiheit</h3>
+                        </div>
+                        <p>Jedes Eingabefeld braucht ein Label. Das <span class="highlight">&lt;label&gt;</span>-Tag beschreibt das Feld und verbindet sich über das <span class="highlight">for</span>-Attribut mit der ID des Inputs. Das hilft Screenreadern und macht das Feld anklickbar.</p>
+                        
+                        <div class="alert alert-success">
+                            <strong>Vorteile von Labels:</strong>
+                            <ul>
+                                <li>Klick auf Label fokussiert das Eingabefeld</li>
+                                <li>Screenreader können das Feld korrekt vorlesen</li>
+                                <li>Verbessert die Benutzerfreundlichkeit</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Probiere es aus - Klicke auf das Label:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-name" class="form-label">Name (klicke auf diesen Text):</label>
+                                    <input type="text" id="demo-name" name="demo-name" class="form-input">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Verschiedene Input-Typen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Verschiedene Input-Typen</h3>
+                        </div>
+                        <p>HTML5 bietet viele Input-Typen: <span class="highlight">email</span> validiert E-Mail-Adressen, <span class="highlight">tel</span> für Telefonnummern, <span class="highlight">date</span> öffnet einen Kalender, und <span class="highlight">number</span> erlaubt nur Zahlen.</p>
+                        
+                        <div class="code-block">
+<code>&lt;input type="email" placeholder="E-Mail"&gt;
+&lt;input type="tel" placeholder="Telefon"&gt;
+&lt;input type="date"&gt;
+&lt;input type="number" min="1" max="100"&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Teste die verschiedenen Typen:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-email" class="form-label">E-Mail:</label>
+                                    <input type="email" id="demo-email" class="form-input" placeholder="name@beispiel.ch">
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-tel" class="form-label">Telefon:</label>
+                                    <input type="tel" id="demo-tel" class="form-input" placeholder="+41 79 123 45 67">
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-date" class="form-label">Datum:</label>
+                                    <input type="date" id="demo-date" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-number" class="form-label">Alter (1-100):</label>
+                                    <input type="number" id="demo-number" class="form-input" min="1" max="100">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Textarea -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Mehrzeilige Texte - &lt;textarea&gt;</h3>
+                        </div>
+                        <p>Für längere Texte wie Nachrichten nutzt du <span class="highlight">&lt;textarea&gt;</span>. Mit <span class="highlight">rows</span> und <span class="highlight">cols</span> bestimmst du die Größe, aber das übernimmt später meist CSS.</p>
+                        
+                        <div class="code-block">
+<code>&lt;label for="nachricht"&gt;Deine Nachricht:&lt;/label&gt;
+&lt;textarea id="nachricht" name="nachricht" rows="5" cols="40"&gt;&lt;/textarea&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-nachricht" class="form-label">Deine Nachricht:</label>
+                                    <textarea id="demo-nachricht" name="nachricht" class="form-textarea" rows="5"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Checkboxen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Checkboxen - Mehrfachauswahl</h3>
+                        </div>
+                        <p>Mit Checkboxen können Nutzer mehrere Optionen gleichzeitig auswählen. Jede Checkbox braucht ein eigenes Label und einen <span class="highlight">value</span>.</p>
+                        
+                        <div class="code-block">
+<code>&lt;input type="checkbox" id="html" name="skills" value="html"&gt;
+&lt;label for="html"&gt;HTML&lt;/label&gt;
+
+&lt;input type="checkbox" id="css" name="skills" value="css"&gt;
+&lt;label for="css"&gt;CSS&lt;/label&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Wähle deine Kenntnisse (mehrere möglich):</p>
+                            <form>
+                                <div class="form-group">
+                                    <input type="checkbox" id="demo-html" name="skills" value="html">
+                                    <label for="demo-html">HTML</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="demo-css" name="skills" value="css">
+                                    <label for="demo-css">CSS</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="demo-js" name="skills" value="javascript">
+                                    <label for="demo-js">JavaScript</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Radio-Buttons -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Radio-Buttons - Einzelauswahl</h3>
+                        </div>
+                        <p>Radio-Buttons funktionieren wie Checkboxen, aber nur eine Option kann ausgewählt werden. Alle Buttons der gleichen Gruppe brauchen den gleichen <span class="highlight">name</span>.</p>
+                        
+                        <div class="code-block">
+<code>&lt;input type="radio" id="anfaenger" name="level" value="anfaenger"&gt;
+&lt;label for="anfaenger"&gt;Anfänger&lt;/label&gt;
+
+&lt;input type="radio" id="fortgeschritten" name="level" value="fortgeschritten"&gt;
+&lt;label for="fortgeschritten"&gt;Fortgeschritten&lt;/label&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Wähle dein Level (nur eine Option):</p>
+                            <form>
+                                <div class="form-group">
+                                    <input type="radio" id="demo-anfaenger" name="level" value="anfaenger">
+                                    <label for="demo-anfaenger">Anfänger</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="radio" id="demo-fortgeschritten" name="level" value="fortgeschritten">
+                                    <label for="demo-fortgeschritten">Fortgeschritten</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="radio" id="demo-experte" name="level" value="experte">
+                                    <label for="demo-experte">Experte</label>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Wichtig:</strong> Alle Radio-Buttons einer Gruppe müssen den gleichen <span class="highlight">name</span>-Wert haben, damit nur eine Auswahl möglich ist.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Dropdown-Menüs -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Dropdown-Menüs - &lt;select&gt;</h3>
+                        </div>
+                        <p>Mit <span class="highlight">&lt;select&gt;</span> und <span class="highlight">&lt;option&gt;</span> erstellst du Dropdown-Menüs. Das spart Platz bei vielen Auswahlmöglichkeiten.</p>
+                        
+                        <div class="code-block">
+<code>&lt;label for="lehrjahr"&gt;Lehrjahr:&lt;/label&gt;
+&lt;select id="lehrjahr" name="lehrjahr"&gt;
+    &lt;option value="1"&gt;1. Lehrjahr&lt;/option&gt;
+    &lt;option value="2"&gt;2. Lehrjahr&lt;/option&gt;
+    &lt;option value="3"&gt;3. Lehrjahr&lt;/option&gt;
+&lt;/select&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-lehrjahr" class="form-label">Lehrjahr:</label>
+                                    <select id="demo-lehrjahr" name="lehrjahr" class="form-select">
+                                        <option value="">Bitte wählen...</option>
+                                        <option value="1">1. Lehrjahr</option>
+                                        <option value="2">2. Lehrjahr</option>
+                                        <option value="3">3. Lehrjahr</option>
+                                        <option value="4">4. Lehrjahr</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Buttons -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Buttons - Absenden und Zurücksetzen</h3>
+                        </div>
+                        <p>Mit <span class="highlight">&lt;button type="submit"&gt;</span> sendest du das Formular ab. <span class="highlight">type="reset"</span> löscht alle Eingaben. Verwende immer aussagekräftige Button-Texte.</p>
+                        
+                        <div class="code-block">
+<code>&lt;button type="submit"&gt;Absenden&lt;/button&gt;
+&lt;button type="reset"&gt;Zurücksetzen&lt;/button&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-button-text" class="form-label">Testfeld:</label>
+                                    <input type="text" id="demo-button-text" class="form-input" placeholder="Schreibe etwas...">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Absenden</button>
+                                <button type="reset" class="btn btn-secondary">Zurücksetzen</button>
+                            </form>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Hinweis:</strong> Der Submit-Button sendet das Formular ab. Der Reset-Button löscht alle Eingaben im Formular.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: Pflichtfelder -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pflichtfelder - required</h3>
+                        </div>
+                        <p>Mit dem <span class="highlight">required</span>-Attribut machst du Felder zur Pflicht. Der Browser verhindert das Absenden, wenn Pflichtfelder leer sind.</p>
+                        
+                        <div class="code-block">
+<code>&lt;input type="text" name="name" required&gt;
+&lt;input type="email" name="email" required&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Teste die Validierung - Versuche abzusenden ohne auszufüllen:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-required-name" class="form-label">Name (Pflichtfeld):</label>
+                                    <input type="text" id="demo-required-name" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-required-email" class="form-label">E-Mail (Pflichtfeld):</label>
+                                    <input type="email" id="demo-required-email" class="form-input" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Absenden</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 12: Formular-Validierung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">12</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Formular-Validierung</h3>
+                        </div>
+                        <p>HTML validiert automatisch E-Mails, URLs und Zahlen. Mit <span class="highlight">pattern</span> kannst du eigene Validierungen definieren, zum Beispiel für Postleitzahlen oder Telefonnummern.</p>
+                        
+                        <div class="code-block">
+<code>&lt;input type="email" required&gt;
+&lt;input type="text" pattern="[0-9]{4}" placeholder="PLZ (4 Ziffern)"&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Teste die Validierung:</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-val-email" class="form-label">E-Mail (automatische Validierung):</label>
+                                    <input type="email" id="demo-val-email" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-val-plz" class="form-label">PLZ (genau 4 Ziffern):</label>
+                                    <input type="text" id="demo-val-plz" class="form-input" pattern="[0-9]{4}" placeholder="z.B. 8000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-val-url" class="form-label">Website:</label>
+                                    <input type="url" id="demo-val-url" class="form-input" placeholder="https://beispiel.ch">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Validieren und Absenden</button>
+                            </form>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Pattern-Beispiele:</strong><br>
+                            <span class="highlight">[0-9]{4}</span> = Genau 4 Ziffern (z.B. PLZ)<br>
+                            <span class="highlight">[A-Za-z]+</span> = Nur Buchstaben<br>
+                            <span class="highlight">[0-9]{3}-[0-9]{4}</span> = Format wie 123-4567
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 13: Fieldset & Legend -->
+            <div class="timeline-item">
+                <div class="timeline-marker">13</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Fieldset & Legend - Formulare gruppieren</h3>
+                        </div>
+                        <p>Mit <span class="highlight">&lt;fieldset&gt;</span> gruppierst du zusammengehörige Felder. <span class="highlight">&lt;legend&gt;</span> gibt der Gruppe einen Titel. Das ist wichtig für komplexe Formulare.</p>
+                        
+                        <div class="code-block">
+<code>&lt;fieldset&gt;
+    &lt;legend&gt;Persönliche Daten&lt;/legend&gt;
+    &lt;label&gt;Name: &lt;input type="text"&gt;&lt;/label&gt;
+    &lt;label&gt;E-Mail: &lt;input type="email"&gt;&lt;/label&gt;
+&lt;/fieldset&gt;</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <form>
+                                <fieldset>
+                                    <legend>Persönliche Daten</legend>
+                                    <div class="form-group">
+                                        <label for="demo-fs-name" class="form-label">Name:</label>
+                                        <input type="text" id="demo-fs-name" class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="demo-fs-email" class="form-label">E-Mail:</label>
+                                        <input type="email" id="demo-fs-email" class="form-input">
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="fieldset-secondary">
+                                    <legend>Adresse</legend>
+                                    <div class="form-group">
+                                        <label for="demo-fs-strasse" class="form-label">Strasse:</label>
+                                        <input type="text" id="demo-fs-strasse" class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="demo-fs-ort" class="form-label">Ort:</label>
+                                        <input type="text" id="demo-fs-ort" class="form-input">
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 14: Testing & Best Practices -->
+            <div class="timeline-item">
+                <div class="timeline-marker">14</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Testing & Best Practices</h3>
+                        </div>
+                        <p>Teste dein Formular: Funktionieren Validierungen? Sind alle Felder mit Tastatur erreichbar? Nutze die DevTools, um Formulardaten zu inspizieren.</p>
+                        
+                        <div class="alert alert-success">
+                            <strong>Checkliste für gute Formulare:</strong>
+                            <ul>
+                                <li>Alle Felder haben Labels mit <span class="highlight">for</span>-Attribut</li>
+                                <li>Pflichtfelder sind mit <span class="highlight">required</span> markiert</li>
+                                <li>Passende Input-Typen verwenden (email, tel, date, etc.)</li>
+                                <li>Aussagekräftige Placeholder-Texte</li>
+                                <li>Validierung mit <span class="highlight">pattern</span> wo nötig</li>
+                                <li>Gruppierung mit <span class="highlight">&lt;fieldset&gt;</span> bei komplexen Formularen</li>
+                                <li>Tastaturnavigation funktioniert (Tab-Taste testen)</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>DevTools-Tipp:</strong> Öffne die Browser-DevTools (F12), gehe zum Network-Tab und sende ein Formular ab. Du siehst dann alle übertragenen Daten im POST/GET-Request.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vollständiges Beispiel-Formular:</p>
+                            <form>
+                                <fieldset class="fieldset-primary">
+                                    <legend>Anmeldeformular</legend>
+                                    
+                                    <div class="form-group">
+                                        <label for="final-name" class="form-label">Name:</label>
+                                        <input type="text" id="final-name" class="form-input" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="final-email" class="form-label">E-Mail:</label>
+                                        <input type="email" id="final-email" class="form-input" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="final-lehrjahr" class="form-label">Lehrjahr:</label>
+                                        <select id="final-lehrjahr" class="form-select" required>
+                                            <option value="">Bitte wählen...</option>
+                                            <option value="1">1. Lehrjahr</option>
+                                            <option value="2">2. Lehrjahr</option>
+                                            <option value="3">3. Lehrjahr</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Kenntnisse:</label>
+                                        <div>
+                                            <input type="checkbox" id="final-html" name="skills" value="html">
+                                            <label for="final-html">HTML</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="final-css" name="skills" value="css">
+                                            <label for="final-css">CSS</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="final-js" name="skills" value="javascript">
+                                            <label for="final-js">JavaScript</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="final-nachricht" class="form-label">Nachricht:</label>
+                                        <textarea id="final-nachricht" class="form-textarea" rows="4"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Absenden</button>
+                                    <button type="reset" class="btn btn-secondary">Zurücksetzen</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Zusammenfassung - Alle Input-Typen auf einen Blick</h2>
+            <div class="split-view">
+                <div>
+                    <h4>Text-Eingaben:</h4>
+                    <ul>
+                        <li><span class="highlight">text</span> - Einzeiliger Text</li>
+                        <li><span class="highlight">email</span> - E-Mail-Adresse</li>
+                        <li><span class="highlight">tel</span> - Telefonnummer</li>
+                        <li><span class="highlight">url</span> - Website-URL</li>
+                        <li><span class="highlight">password</span> - Passwort (versteckt)</li>
+                        <li><span class="highlight">textarea</span> - Mehrzeiliger Text</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Auswahl-Elemente:</h4>
+                    <ul>
+                        <li><span class="highlight">checkbox</span> - Mehrfachauswahl</li>
+                        <li><span class="highlight">radio</span> - Einzelauswahl</li>
+                        <li><span class="highlight">select</span> - Dropdown-Menü</li>
+                    </ul>
+                    <h4 class="mt-md">Spezielle Typen:</h4>
+                    <ul>
+                        <li><span class="highlight">number</span> - Nur Zahlen</li>
+                        <li><span class="highlight">date</span> - Datumsauswahl</li>
+                        <li><span class="highlight">file</span> - Datei-Upload</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>HTML Formulare Tutorial - BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ</p>
+    </footer>
+
+</body>
+</html>

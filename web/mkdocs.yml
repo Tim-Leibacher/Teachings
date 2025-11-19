@@ -35,10 +35,6 @@ theme:
     - search.suggest
     - content.code.copy
 
-# WICHTIG: extra_css MUSS auf Root-Ebene sein, NICHT unter theme!
-extra_css:
-  - stylesheets/band-theme.css
-
 plugins:
   - search:
       lang: de

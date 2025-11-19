@@ -16,11 +16,12 @@ Inline-JavaScript (direkt im HTML) ist praktisch für kleine Tests, aber unprofe
 
 ---
 
-### Teil 1: JavaScript-Datei erstellen (10 Min)
+### Teil 1: JavaScript-Datei erstellen (15 Min)
 
-Erstelle eine neue Datei **`script.js`** im gleichen Ordner wie deine `index.html`:
+**Aufgabe:**
+Erstelle eine neue Datei **`script.js`** im gleichen Ordner wie deine `index.html`.
 
-**Projektstruktur:**
+**Projektstruktur (Ziel):**
 ```
 mein-portfolio/
 ├── index.html
@@ -28,264 +29,205 @@ mein-portfolio/
 └── script.js         ← Neue Datei!
 ```
 
-**Inhalt von `script.js`:**
+**Deine Aufgaben:**
 
+**1.1 Grundstruktur**
+- Erstelle einen Datei-Header mit Kommentaren:
+    - Titel: "PORTFOLIO JAVASCRIPT"
+    - Dein Name als Autor
+    - Aktuelles Datum
+    - Kurze Beschreibung
+
+**1.2 Erste Ausgaben**
+- Gib "JavaScript erfolgreich geladen!" aus
+- Gib "Datei: script.js" aus
+
+**1.3 Seiten-Informationen**
+Recherchiere und gib aus:
+- Den Titel der Seite (Hinweis: `document.title`)
+- Die URL der Seite (Hinweis: `window.location.href`)
+- Die Sprache der Seite (Hinweis: `document.documentElement.lang`)
+
+**1.4 Variablen nutzen**
+Erstelle Variablen für:
+- Deinen Vornamen (mit `let vorname = "..."`)
+- Deinen Nachnamen (mit `let nachname = "..."`)
+- Deinen Beruf
+- Dein Lehrjahr
+
+Gib diese Informationen formatiert aus.
+
+**Tipp:** Nutze Template Strings für schönere Ausgaben:
 ```javascript
-// =====================================================
-// PORTFOLIO JAVASCRIPT
-// =====================================================
-// Autor: Dein Name
-// Datum: November 2025
-// Beschreibung: JavaScript für meine Portfolio-Seite
-// =====================================================
-
-console.log("🚀 JavaScript erfolgreich geladen!");
-console.log("Datei: script.js");
-
-// === INFORMATIONEN ÜBER DIE SEITE ===
-console.log("\n=== SEITEN-INFORMATIONEN ===");
-console.log("Titel:", document.title);
-console.log("URL:", window.location.href);
-console.log("Sprache:", document.documentElement.lang);
-
-// === PERSÖNLICHE BEGRÜSSUNG ===
-console.log("\n=== WILLKOMMEN ===");
-let vorname = "Sarah";
-let nachname = "Müller";
-let beruf = "Informatikerin EFZ Applikationsentwicklung";
-
-console.log(`Hallo, ich bin ${vorname} ${nachname}`);
-console.log(`Beruf: ${beruf}`);
-console.log(`Lehrjahr: 1`);
-
-// === AKTUELLES DATUM UND ZEIT ===
-console.log("\n=== AKTUELLES DATUM ===");
-let jetzt = new Date();
-console.log("Datum:", jetzt.toLocaleDateString("de-CH"));
-console.log("Uhrzeit:", jetzt.toLocaleTimeString("de-CH"));
-
-// === BESUCHER-ZÄHLER (Simulation) ===
-console.log("\n=== BESUCHER-INFO ===");
-let besucherNummer = Math.floor(Math.random() * 1000) + 1;
-console.log(`Du bist Besucher #${besucherNummer} heute`);
-
-// === BROWSER-INFORMATIONEN ===
-console.log("\n=== DEIN BROWSER ===");
-console.log("Browser:", navigator.userAgent);
-console.log("Bildschirmbreite:", window.innerWidth, "px");
-console.log("Bildschirmhöhe:", window.innerHeight, "px");
-
-// === ABSCHLUSS ===
-console.log("\n" + "=".repeat(50));
-console.log("Portfolio by", vorname, nachname);
-console.log("Viel Erfolg beim Entdecken!");
-console.log("=".repeat(50));
+let name = "Max";
+console.log(`Hallo, ich bin ${name}`);
 ```
 
-**Neue Elemente erklärt:**
-- `let` erstellt Variablen – Platzhalter für Werte
-- Template Strings mit Backticks: `` `Text ${variable}` ``
-- `new Date()` gibt das aktuelle Datum/Uhrzeit zurück
-- `Math.random()` erzeugt Zufallszahlen
-- `navigator.userAgent` zeigt Browser-Informationen
+**1.5 Aktuelles Datum**
+Recherchiere `Date`-Objekt und gib aus:
+- Das aktuelle Datum (formatiert für die Schweiz: "de-CH")
+- Die aktuelle Uhrzeit (formatiert für die Schweiz: "de-CH")
+
+**Nachschlagen:**
+- [MDN: let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) - Variablen deklarieren
+- [MDN: Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) - String-Formatierung
+- [MDN: Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) - Datum und Uhrzeit
+- [MDN: toLocaleDateString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) - Datum formatieren
 
 ---
 
-### Teil 2: JavaScript-Datei im HTML einbinden (5 Min)
+### Teil 2: JavaScript-Datei im HTML einbinden (10 Min)
 
-Öffne deine `index.html` und **ersetze** das bisherige `<script>`-Tag:
+**Aufgabe:**
+Öffne deine `index.html` und binde die externe JavaScript-Datei ein.
 
-**Vorher (Inline-JavaScript):**
+**Vorgehen:**
+1. Entferne das bisherige `<script>`-Tag mit Inline-Code (falls vorhanden)
+2. Füge ein neues `<script>`-Tag **vor dem schliessenden `</body>`-Tag** ein
+3. Nutze das `src`-Attribut, um auf `script.js` zu verweisen
+
+**Struktur (als Hilfe):**
 ```html
 <body>
     <!-- Dein HTML-Inhalt -->
     
-    <script>
-        console.log("JavaScript ist aktiv!");
-    </script>
-</body>
-</html>
-```
-
-**Nachher (Externe Datei):**
-```html
-<body>
-    <!-- Dein HTML-Inhalt -->
+    <!-- Hier externe JavaScript-Datei einbinden -->
     
-    <!-- Externe JavaScript-Datei einbinden -->
-    <script src="script.js"></script>
 </body>
 </html>
 ```
 
 **Wichtig:**
 - Das `src`-Attribut zeigt auf die JavaScript-Datei
-- Kein Code zwischen `<script>` und `</script>` – die Datei wird extern geladen
-- Das `<script>`-Tag bleibt **vor dem schliessenden `</body>`-Tag**
+- Zwischen `<script>` und `</script>` steht **kein Code** mehr
+- Das Tag bleibt vor dem schliessenden `</body>`-Tag
+
+**Test:**
+- Speichere beide Dateien
+- Öffne `index.html` im Browser
+- Öffne die Konsole (F12)
+- Siehst du alle Ausgaben aus `script.js`?
+
+**Nachschlagen:**
+- [MDN: Das `<script>`-Element](https://developer.mozilla.org/de/docs/Web/HTML/Element/script) - src-Attribut
+- [W3Schools: JavaScript Where To](https://www.w3schools.com/js/js_whereto.asp) - Externe Dateien
 
 ---
 
-### Teil 3: Mehrere JavaScript-Dateien einbinden (10 Min)
+### Teil 3: Zusätzliche Funktionen implementieren (20 Min)
 
-Für grössere Projekte lohnt es sich, JavaScript in mehrere Dateien aufzuteilen:
+**Aufgabe:**
+Erweitere deine `script.js` mit folgenden Funktionen:
 
-**Erstelle eine zweite Datei: `analytics.js`**
+**3.1 Zufalls-Besucher-Nummer**
+- Erstelle eine Variable `besucherNummer`
+- Generiere eine Zufallszahl zwischen 1 und 1000
+- Gib aus: "Du bist Besucher #[Zahl] heute"
 
-```javascript
-// =====================================================
-// ANALYTICS & TRACKING
-// =====================================================
-// Simuliert Analyse-Funktionen (später mit echten Tools)
+**Hinweis:** Recherchiere `Math.random()` und `Math.floor()`
 
-console.log("\n=== ANALYTICS GELADEN ===");
+**3.2 Browser-Informationen**
+Recherchiere und gib aus:
+- Den Browser (Hinweis: `navigator.userAgent` - nur die Ausgabe, nicht interpretieren)
+- Die Bildschirmbreite in Pixeln
+- Die Bildschirmhöhe in Pixeln
 
-// Seitenaufrufe zählen (vereinfacht)
-let seitenaufrufe = localStorage.getItem("pageviews") || 0;
-seitenaufrufe++;
-localStorage.setItem("pageviews", seitenaufrufe);
-console.log("Seitenaufrufe (gesamt):", seitenaufrufe);
+**3.3 Formatierte Abschluss-Nachricht**
+Erstelle eine Abschluss-Box:
+- Trennlinie aus 50 Gleichheitszeichen
+- Text: "Portfolio by [Dein Name]"
+- Text: "Viel Erfolg beim Entdecken!"
+- Trennlinie aus 50 Gleichheitszeichen
 
-// Zeit auf der Seite messen
-let startzeit = new Date();
-console.log("Session gestartet:", startzeit.toLocaleTimeString("de-CH"));
-
-// Beim Verlassen der Seite (vereinfacht)
-window.addEventListener("beforeunload", function() {
-    let endzeit = new Date();
-    let verweildauer = Math.floor((endzeit - startzeit) / 1000);
-    console.log("Verweildauer:", verweildauer, "Sekunden");
-});
-
-console.log("Analytics aktiv ✓");
-```
-
-**Binde beide Dateien in `index.html` ein:**
-
-```html
-<body>
-    <!-- Dein HTML-Inhalt -->
-    
-    <!-- JavaScript-Dateien in der richtigen Reihenfolge -->
-    <script src="script.js"></script>
-    <script src="analytics.js"></script>
-</body>
-</html>
-```
-
-**Wichtig bei mehreren Dateien:**
-- Die **Reihenfolge** ist wichtig – Dateien werden von oben nach unten geladen
-- Wenn `analytics.js` auf Variablen aus `script.js` zugreifen soll, muss `script.js` zuerst geladen werden
+**Nachschlagen:**
+- [MDN: Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) - Zufallszahlen
+- [MDN: Math.floor()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor) - Abrunden
+- [MDN: Window](https://developer.mozilla.org/en-US/docs/Web/API/Window) - Fenster-Eigenschaften
+- [MDN: Navigator](https://developer.mozilla.org/en-US/docs/Web/API/Navigator) - Browser-Info
 
 ---
 
-### Teil 4: Projekt-Informationen dynamisch anzeigen (15 Min)
+### Teil 4: Zweite JavaScript-Datei erstellen (15 Min)
 
-Erstelle eine dritte Datei: **`projects.js`**
+**Aufgabe:**
+Für grössere Projekte ist es sinnvoll, JavaScript in mehrere Dateien aufzuteilen.
 
+**4.1 Neue Datei erstellen**
+Erstelle eine Datei **`projects.js`** im gleichen Ordner.
+
+**4.2 Projekt-Daten strukturieren**
+
+Deine Aufgabe ist es, drei Projekte mit folgender Struktur anzulegen:
+
+**Projekt-Eigenschaften:**
+- `titel`: Name des Projekts
+- `technologien`: Array mit verwendeten Technologien
+- `status`: "In Arbeit", "Abgeschlossen" oder "Geplant"
+- `startdatum`: Monat und Jahr
+
+**Beispiel-Struktur (nicht kopieren - selbst umsetzen):**
 ```javascript
-// =====================================================
-// PROJEKT-DATEN
-// =====================================================
-
-console.log("\n=== MEINE PROJEKTE ===");
-
-// Projekt-Objekte (vereinfacht)
-let projekt1 = {
-    titel: "Portfolio-Website",
-    technologien: ["HTML", "CSS", "JavaScript"],
-    status: "In Arbeit",
-    startdatum: "Oktober 2025"
+let projektX = {
+    titel: "...",
+    technologien: ["...", "..."],
+    status: "...",
+    startdatum: "..."
 };
-
-let projekt2 = {
-    titel: "HTML Grundlagen",
-    technologien: ["HTML"],
-    status: "Abgeschlossen",
-    startdatum: "September 2025"
-};
-
-let projekt3 = {
-    titel: "To-Do App",
-    technologien: ["HTML", "CSS", "JavaScript"],
-    status: "Geplant",
-    startdatum: "Dezember 2025"
-};
-
-// Projekt-Ausgabe
-function zeigeProjekt(projekt) {
-    console.log("\n---");
-    console.log("Projekt:", projekt.titel);
-    console.log("Technologien:", projekt.technologien.join(", "));
-    console.log("Status:", projekt.status);
-    console.log("Start:", projekt.startdatum);
-}
-
-// Alle Projekte anzeigen
-zeigeProjekt(projekt1);
-zeigeProjekt(projekt2);
-zeigeProjekt(projekt3);
-
-console.log("\n---");
-console.log("Gesamt:", 3, "Projekte");
 ```
 
-**Neue Konzepte:**
-- **Objekte:** Strukturierte Daten mit Eigenschaften (`titel`, `technologien`, etc.)
-- **Arrays:** Listen von Werten (z.B. `["HTML", "CSS", "JavaScript"]`)
-- **Funktionen:** Wiederverwendbare Code-Blöcke (`zeigeProjekt()`)
-- `.join(", ")` verbindet Array-Elemente mit Kommas
+**4.3 Projekte ausgeben**
+Erstelle eine Funktion `zeigeProjekt(projekt)`, die:
+- Den Titel ausgibt
+- Die Technologien ausgibt (als kommagetrennten Text)
+- Den Status ausgibt
+- Das Startdatum ausgibt
+- Zwischen Projekten eine Trennlinie einfügt
 
-**Binde die Datei ein:**
+**Tipp:** Arrays in Text umwandeln mit `.join(", ")`
 
-```html
-<script src="script.js"></script>
-<script src="analytics.js"></script>
-<script src="projects.js"></script>
-```
+**4.4 Alle Projekte anzeigen**
+- Rufe die Funktion für alle drei Projekte auf
+- Gib am Ende die Gesamtzahl der Projekte aus
+
+**Nachschlagen:**
+- [MDN: Objekte](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects) - Daten strukturieren
+- [MDN: Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) - Listen
+- [MDN: Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions) - Funktionen erstellen
+- [MDN: Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) - Arrays verbinden
+
+**4.5 Datei einbinden**
+Binde `projects.js` in deiner `index.html` ein (nach `script.js`).
 
 ---
 
 ### Teil 5: Fehler beheben – Häufige Probleme (10 Min)
 
-**Problem 1: Datei nicht gefunden**
+**Aufgabe:**
+Teste folgende Fehlerszenarien und behebe sie:
 
-Fehlermeldung in der Konsole:
-```
-GET http://localhost/script.js net::ERR_FILE_NOT_FOUND
-```
+**Fehler 1: Falsche Datei-Referenz**
+- Ändere absichtlich den Dateinamen im `src`-Attribut (z.B. `scrip.js` statt `script.js`)
+- Was zeigt die Konsole?
+- Korrigiere den Fehler
 
-**Lösung:**
-- Prüfe den Dateinamen (Gross-/Kleinschreibung beachten!)
-- Prüfe den Pfad (ist die Datei im richtigen Ordner?)
-- Richtig: `<script src="script.js"></script>`
-- Falsch: `<script src="scrip.js"></script>` (Tippfehler!)
+**Fehler 2: Falsche Reihenfolge**
+- Verschiebe das `<script>`-Tag für `projects.js` **vor** `script.js`
+- Versuche in `projects.js` auf eine Variable aus `script.js` zuzugreifen
+- Was passiert?
+- Erkläre, warum die Reihenfolge wichtig ist
+- Korrigiere die Reihenfolge
 
----
+**Fehler 3: Syntax-Fehler**
+Erstelle absichtlich einen Fehler in `script.js`:
+- Vergiss ein Semikolon
+- Vergiss eine schliessende Klammer
+- Schreibe einen falschen Variablennamen
 
-**Problem 2: JavaScript funktioniert nicht**
+Beobachte die Fehlermeldungen und korrigiere sie.
 
-**Lösung:**
-- Öffne die Konsole (F12) und schaue nach Fehlermeldungen (rot)
-- Häufige Fehler:
-  - Vergessene Anführungszeichen: `console.log(Test)` → `console.log("Test")`
-  - Vergessene Klammern: `console.log("Test"` → `console.log("Test")`
-  - Tippfehler in Variablennamen: `vorNme` → `vorname`
-
----
-
-**Problem 3: Falsche Reihenfolge der Dateien**
-
-Wenn `analytics.js` auf Variablen aus `script.js` zugreift, muss `script.js` **zuerst** geladen werden:
-
-```html
-<!-- ✅ Richtig -->
-<script src="script.js"></script>
-<script src="analytics.js"></script>
-
-<!-- ❌ Falsch – Fehler in der Konsole -->
-<script src="analytics.js"></script>
-<script src="script.js"></script>
-```
+**Nachschlagen:**
+- [Chrome DevTools: JavaScript Debugging](https://developer.chrome.com/docs/devtools/javascript/) - Fehler finden
+- [MDN: JavaScript Errors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors) - Fehlertypen
 
 ---
 
@@ -294,22 +236,50 @@ Wenn `analytics.js` auf Variablen aus `script.js` zugreift, muss `script.js` **z
 - [ ] Datei `script.js` ist erstellt und im Projektordner
 - [ ] JavaScript-Datei ist korrekt in `index.html` eingebunden (`src`-Attribut)
 - [ ] Browser-Konsole zeigt alle Ausgaben aus der externen Datei
-- [ ] Persönliche Informationen (Vorname, Nachname, Beruf) werden ausgegeben
-- [ ] Aktuelles Datum und Uhrzeit werden angezeigt
-- [ ] (Optional) Mehrere JavaScript-Dateien sind eingebunden und funktionieren
-- [ ] (Optional) Projekt-Informationen werden strukturiert ausgegeben
+- [ ] Persönliche Informationen (Vorname, Nachname, Beruf) werden mit Variablen ausgegeben
+- [ ] Aktuelles Datum und Uhrzeit werden formatiert angezeigt
+- [ ] Zufalls-Besucher-Nummer wird generiert
+- [ ] Datei `projects.js` ist erstellt und eingebunden
+- [ ] Mindestens drei Projekte sind als Objekte strukturiert
+- [ ] Funktion zur Projekt-Anzeige funktioniert
 - [ ] Keine Fehlermeldungen in der Konsole (rot)
+
+---
+
+## Zusatzaufgaben (Optional)
+
+**Für Schnelle:**
+
+**A) Analytics simulieren**
+Erstelle eine Datei `analytics.js`, die:
+- Die Anzahl der Seitenaufrufe zählt (mit `localStorage`)
+- Die Session-Startzeit speichert
+- Beim Verlassen der Seite die Verweildauer berechnet
+
+**Hinweise:**
+- `localStorage.getItem("key")` - Daten holen
+- `localStorage.setItem("key", wert)` - Daten speichern
+- Event: `window.addEventListener("beforeunload", function)`
+
+**B) Erweiterte Projekt-Funktionen**
+- Funktion `zaehleAbgeschlossene()` - zählt abgeschlossene Projekte
+- Funktion `zaehleTechnologien()` - listet alle verwendeten Technologien auf (ohne Duplikate)
+- Funktion `filtereNachStatus(status)` - zeigt nur Projekte mit bestimmtem Status
+
+**Nachschlagen:**
+- [MDN: Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) - localStorage
+- [MDN: Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) - Duplikate entfernen
 
 ---
 
 ## Tipps
 
-- **Dateinamen konsistent:** Immer Kleinschreibung, keine Leerzeichen, z.B. `script.js`, `analytics.js`
-- **Kommentare nutzen:** Erkläre, was dein Code macht (für dich selbst in 6 Monaten!)
+- **Dateinamen konsistent:** Immer Kleinschreibung, keine Leerzeichen
+- **Kommentare nutzen:** Erkläre, was dein Code macht
 - **Code formatieren:** VS Code: `Shift + Alt + F` (Windows) oder `Shift + Option + F` (Mac)
-- **Live Server Extension:** Nutze die VS Code Extension "Live Server" für automatisches Neuladen
-- **DevTools offen lassen:** Fehler werden sofort angezeigt
-- **Tipp für Profis:** Nutze `defer` im Script-Tag: `<script src="script.js" defer></script>` – lädt asynchron
+- **Live Server:** Nutze die VS Code Extension für automatisches Neuladen
+- **DevTools Network Tab:** Sieh, wie Dateien geladen werden
+- **Inkrementell testen:** Nach jeder kleinen Änderung speichern und testen
 
 ---
 
@@ -319,20 +289,16 @@ Wenn `analytics.js` auf Variablen aus `script.js` zugreift, muss `script.js` **z
    *Denk an Wartbarkeit, Wiederverwendbarkeit und Ladezeiten.*
 
 2. **Warum ist die Reihenfolge der Script-Tags wichtig?**  
-   *Experimentiere: Tausche die Reihenfolge von `script.js` und `analytics.js`. Was passiert?*
+   *Was passiert, wenn Datei B auf Code aus Datei A zugreift, aber A noch nicht geladen ist?*
 
-3. **Was ist der Unterschied zwischen diesen beiden Varianten?**
-   ```html
-   <script src="script.js"></script>
-   <script src="script.js" defer></script>
-   ```
-   *Tipp: Recherchiere das `defer`-Attribut!*
+3. **Was passiert, wenn du eine Variable in `script.js` mit `let` definierst und in `projects.js` darauf zugreifen willst?**  
+   *Teste es und erkläre das Ergebnis.*
 
-4. **Öffne die DevTools → Network Tab. Siehst du, wie `script.js` geladen wird?**  
-   *Wie gross ist die Datei? Wie lange hat das Laden gedauert?*
+4. **Öffne die DevTools → Network Tab. Wie gross sind deine JavaScript-Dateien? Wie lange dauert das Laden?**  
+   *Ab welcher Grösse wird das Laden spürbar langsamer?*
 
-5. **Was passiert, wenn du in `script.js` eine Variable definierst und in `analytics.js` darauf zugreifst?**  
-   *Teste es: Definiere `let testVariable = "Hallo"` in `script.js` und gebe sie in `analytics.js` aus.*
+5. **Recherchiere: Was macht das `defer`-Attribut im Script-Tag?**  
+   *Wann würdest du es einsetzen? Was ist der Unterschied zu `async`?*
 
 ---
 
@@ -348,14 +314,27 @@ Wenn `analytics.js` auf Variablen aus `script.js` zugreift, muss `script.js` **z
 - [JavaScript.info: Scripts: async, defer](https://javascript.info/script-async-defer)
 
 **Dateien organisieren:**
-- [MDN: Structuring JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions#splitting_your_code_into_functions)
 - [freeCodeCamp: Organize JavaScript](https://www.freecodecamp.org/news/how-to-organize-your-javascript-code/)
 
 **Debugging:**
 - [Chrome DevTools: JavaScript Debugging](https://developer.chrome.com/docs/devtools/javascript/)
-- [Firefox: JavaScript Debugger](https://firefox-source-docs.mozilla.org/devtools-user/debugger/)
 
 ---
 
-**⏱️ Geschätzte Zeit:** 50 Minuten  
+## Lernziele-Check
+
+Nach diesem Auftrag kannst du:
+- [ ] JavaScript in externe Dateien auslagern
+- [ ] Externe JavaScript-Dateien korrekt einbinden
+- [ ] Mit Variablen arbeiten
+- [ ] Template Strings nutzen
+- [ ] Einfache Objekte und Arrays erstellen
+- [ ] Funktionen definieren und aufrufen
+- [ ] Die Reihenfolge von Script-Tags verstehen
+- [ ] Fehler in mehreren Dateien debuggen
+- [ ] Dokumentation selbstständig nutzen
+
+---
+
+**⏱️ Geschätzte Zeit:** 70 Minuten  
 **📦 Nächster Schritt:** In Auftrag 3 machst du deine Seite interaktiv – mit DOM-Manipulation!

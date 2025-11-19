@@ -12,46 +12,36 @@ JavaScript ist die Programmiersprache, die deine Website interaktiv macht. In di
 
 ### Teil 1: JavaScript im HTML einbinden (10 Min)
 
-Öffne deine `index.html` und füge **vor dem schliessenden `</body>`-Tag** einen `<script>`-Bereich hinzu:
+**Aufgabe:**
+Öffne deine `index.html` und füge **vor dem schliessenden `</body>`-Tag** einen `<script>`-Bereich hinzu.
 
+**Grundstruktur (als Orientierung):**
 ```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dein Name - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Dein Head-Bereich -->
 </head>
 <body>
     <!-- Dein bisheriger HTML-Inhalt -->
-    <header>
-        <h1>Mein Portfolio</h1>
-        <nav>
-            <!-- Navigation -->
-        </nav>
-    </header>
     
-    <main>
-        <!-- Deine Sektionen -->
-    </main>
+    <!-- Hier kommt dein JavaScript -->
     
-    <footer>
-        <p>&copy; 2025 Dein Name</p>
-    </footer>
-    
-    <!-- JavaScript hier einfügen -->
-    <script>
-        console.log("JavaScript ist aktiv!");
-    </script>
 </body>
 </html>
 ```
 
+**Deine Aufgaben:**
+1. Füge ein `<script>`-Tag vor dem schliessenden `</body>`-Tag ein
+2. Schreibe **innerhalb** des Script-Tags eine Ausgabe mit `console.log()`, die den Text "JavaScript ist aktiv!" ausgibt
+
+**Nachschlagen:**
+- [MDN: Das `<script>`-Element](https://developer.mozilla.org/de/docs/Web/HTML/Element/script) - Wie bindet man JavaScript ein?
+- [MDN: console.log()](https://developer.mozilla.org/de/docs/Web/API/Console/log) - Wie funktioniert die Konsolenausgabe?
+
 **Wichtig:**
 - Das `<script>`-Tag steht **VOR** dem schliessenden `</body>`-Tag
 - So ist sichergestellt, dass die HTML-Seite bereits geladen ist
-- Inline-JavaScript schreibst du direkt zwischen `<script>` und `</script>`
 
 ---
 
@@ -59,7 +49,7 @@ JavaScript ist die Programmiersprache, die deine Website interaktiv macht. In di
 
 Die Browser-Konsole ist dein wichtigstes Werkzeug:
 
-**Konsole öffnen:**
+**Konsole Öffnen:**
 - **Windows/Linux:** Drücke `F12` oder `Strg + Shift + I`
 - **Mac:** Drücke `Cmd + Option + I`
 - **Oder:** Rechtsklick auf die Seite → "Untersuchen" → Tab "Console"
@@ -77,114 +67,118 @@ Die Konsole zeigt dir:
 
 ---
 
-### Teil 3: Verschiedene Ausgaben testen (15 Min)
+### Teil 3: Verschiedene Ausgaben testen (20 Min)
 
-Erweitere deinen `<script>`-Bereich mit verschiedenen Ausgaben:
+**Aufgabe:**
+Erweitere deinen `<script>`-Bereich. Erstelle folgende Ausgaben:
 
-```html
-<script>
-    // === EINFACHE TEXTE ===
-    console.log("Willkommen in meinem Portfolio!");
-    console.log("Mein Name ist Sarah Müller");
-    
-    // === ZAHLEN ===
-    console.log(2025);
-    console.log(42);
-    
-    // === BERECHNUNGEN ===
-    console.log("10 + 5 =", 10 + 5);
-    console.log("20 * 3 =", 20 * 3);
-    console.log("100 / 4 =", 100 / 4);
-    
-    // === MEHRERE WERTE GLEICHZEITIG ===
-    console.log("Geburtsjahr:", 2006);
-    console.log("Alter:", 2025 - 2006, "Jahre");
-    
-    // === INFORMATIONEN ÜBER DEINE SEITE ===
-    console.log("Titel der Seite:", document.title);
-    console.log("URL:", window.location.href);
-    
-    // === TRENNLINIEN FÜR ÜBERSICHT ===
-    console.log("=".repeat(50));
-    console.log("Portfolio von Sarah Müller");
-    console.log("=".repeat(50));
-</script>
+**3.1 Texte ausgeben**
+- Gib deinen Namen aus
+- Gib deinen Beruf aus ("Informatikerin EFZ Applikationsentwicklung")
+- Gib dein Lehrjahr aus
+
+**3.2 Zahlen und Berechnungen**
+- Gib das aktuelle Jahr (2025) aus
+- Berechne dein Alter: `2025 - deinGeburtsjahr`
+- Berechne: `10 + 5`
+- Berechne: `20 * 3`
+
+**3.3 Mehrere Werte kombinieren**
+- Gib "Geburtsjahr:" und dein Geburtsjahr in **einer** Zeile aus
+- Gib "Alter:" und dein berechnetes Alter in **einer** Zeile aus
+
+**Tipp:** Du kannst mehrere Werte mit Kommas trennen:
+```javascript
+console.log("Text", variable, "mehr Text");
 ```
 
-**Erklärungen:**
-- `//` sind Kommentare – sie werden nicht ausgeführt
-- `console.log()` kann Text (in Anführungszeichen) oder Zahlen (ohne Anführungszeichen) ausgeben
-- Mehrere Werte trennst du mit Kommas
-- `document.title` gibt den Titel deiner Seite aus
-- `window.location.href` gibt die URL aus
+**3.4 Seiteninfos ausgeben**
+- Gib den Titel deiner Seite aus (Hinweis: `document.title`)
+- Gib die URL deiner Seite aus (Hinweis: `window.location.href`)
+
+**3.5 Trennlinien für Übersicht**
+- Erstelle eine Trennlinie aus 50 Gleichheitszeichen
+- Tipp: Recherchiere die `.repeat()` Methode
+
+**Nachschlagen:**
+- [MDN: Expressions and operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators) - Mathematische Operationen
+- [MDN: String.prototype.repeat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat) - Zeichen wiederholen
+- [W3Schools: JavaScript Output](https://www.w3schools.com/js/js_output.asp) - Verschiedene Ausgabearten
+
+**Hinweise:**
+- `//` sind Kommentare – sie werden nicht ausgeführt (nutze sie zur Strukturierung!)
+- Text muss in Anführungszeichen ("Text" oder 'Text')
+- Zahlen stehen ohne Anführungszeichen
+- `\n` erstellt eine Leerzeile
 
 ---
 
-### Teil 4: Persönliche Ausgaben erstellen (10 Min)
+### Teil 4: Persönliche Ausgaben strukturieren (15 Min)
 
-Erstelle jetzt Ausgaben über dich selbst:
+**Aufgabe:**
+Erstelle eine strukturierte Ausgabe über dich selbst mit folgenden Abschnitten:
 
-```html
-<script>
-    console.log("=== ÜBER MICH ===");
-    
-    // Persönliche Infos
-    console.log("Name: Sarah Müller");
-    console.log("Alter:", 2025 - 2006, "Jahre");
-    console.log("Beruf: Informatikerin EFZ Applikationsentwicklung");
-    console.log("Lehrjahr: 1. Lehrjahr");
-    
-    console.log("\n=== MEINE SKILLS ===");
-    console.log("- HTML");
-    console.log("- CSS");
-    console.log("- JavaScript (lerne ich gerade!)");
-    
-    console.log("\n=== AKTUELLE ZIELE ===");
-    console.log("1. JavaScript Grundlagen verstehen");
-    console.log("2. Interaktive Portfolio-Seite erstellen");
-    console.log("3. Erste kleine Web-App programmieren");
-    
-    console.log("\n=== KONTAKT ===");
-    console.log("GitHub: github.com/sarah-mueller");
-    console.log("LinkedIn: linkedin.com/in/sarah-mueller");
-</script>
+**Struktur:**
+```
+=== ÜBER MICH ===
+Name: [Dein Name]
+Alter: [Dein Alter] Jahre
+Beruf: [Dein Beruf]
+Lehrjahr: [Dein Lehrjahr]
+
+=== MEINE SKILLS ===
+[Liste deine Skills auf]
+
+=== AKTUELLE ZIELE ===
+[Liste deine Ziele auf]
+
+=== KONTAKT ===
+[Deine Kontaktinfos]
 ```
 
-**Tipp:** `\n` erstellt eine Leerzeile für bessere Lesbarkeit.
+**Vorgehen:**
+1. Überlege dir, welche Informationen du ausgeben möchtest
+2. Strukturiere mit Überschriften (z.B. "=== ÜBER MICH ===")
+3. Nutze `\n` für Abstände zwischen Abschnitten
+4. Teste deine Ausgaben in der Konsole
 
 ---
 
-### Teil 5: Fehler erkennen und beheben (5 Min)
+### Teil 5: Fehler erkennen und beheben (10 Min)
 
-Teste absichtlich einen Fehler, um zu verstehen, wie die Konsole funktioniert:
+**Aufgabe:**
+Erstelle absichtlich folgende Fehler und beobachte die Konsolenmeldungen:
 
-```html
-<script>
-    console.log("Das funktioniert");
-    console.log(Ups, hier fehlen Anführungszeichen);  // ❌ Fehler!
-    console.log("Das wird nicht mehr ausgeführt");
-</script>
+**Fehler 1: Fehlende Anführungszeichen**
+```javascript
+console.log(Das ist ein Fehler);
 ```
+- Was zeigt die Konsole?
+- Korrigiere den Fehler
+- Speichere und aktualisiere (F5)
 
-**In der Konsole siehst du jetzt:**
+**Fehler 2: Fehlende Klammer**
+```javascript
+console.log("Test";
 ```
-Das funktioniert
-Uncaught ReferenceError: Ups is not defined
-```
+- Was zeigt die Konsole?
+- Korrigiere den Fehler
 
-**Wichtig:**
-- Rote Meldungen sind Fehler – der Code stoppt hier!
-- Alles nach einem Fehler wird nicht mehr ausgeführt
-- Korrigiere den Fehler, speichere und aktualisiere die Seite (F5)
-
-**Korrigierte Version:**
-```html
-<script>
-    console.log("Das funktioniert");
-    console.log("Ups, jetzt mit Anführungszeichen");  // ✅ Funktioniert!
-    console.log("Das wird jetzt auch ausgeführt");
-</script>
+**Fehler 3: Falsche Variable**
+```javascript
+console.log(nichtExistierendeVariable);
 ```
+- Was zeigt die Konsole?
+- Was ist der Unterschied zu den anderen Fehlern?
+
+**Beobachtung:**
+- Wo stoppt die Ausführung?
+- Werden Zeilen nach dem Fehler noch ausgeführt?
+- Wie sehen Fehlermeldungen aus?
+
+**Nachschlagen:**
+- [MDN: JavaScript Errors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors) - Fehlertypen verstehen
+- [Chrome DevTools: Console](https://developer.chrome.com/docs/devtools/console/) - Konsole effektiv nutzen
 
 ---
 
@@ -197,6 +191,31 @@ Uncaught ReferenceError: Ups is not defined
 - [ ] Berechnungen (z.B. Alter) werden korrekt angezeigt
 - [ ] Du verstehst, wie Fehlermeldungen aussehen und kannst sie beheben
 - [ ] Kommentare (`//`) werden genutzt, um Code zu strukturieren
+- [ ] Ausgaben sind sinnvoll strukturiert (mit Überschriften, Abständen)
+
+---
+
+## Zusatzaufgaben (Optional)
+
+**Für Schnelle:**
+
+**A) Erweiterte Berechnungen**
+- Berechne, wie viele Tage du bereits in der Lehre bist (ca.-Wert)
+- Berechne, wie viele Tage noch bis zum Lehrabschluss (ca.-Wert)
+
+**B) Browser-Informationen**
+Recherchiere und gib aus:
+- Die Bildschirmbreite (Hinweis: `window.innerWidth`)
+- Die Bildschirmhöhe (Hinweis: `window.innerHeight`)
+- Den Browser-Namen (Hinweis: `navigator.userAgent`)
+
+**C) Kreative Ausgaben**
+- Erstelle ein ASCII-Art Banner mit deinem Namen
+- Nutze verschiedene Zeichen (=, -, *, #) für Rahmen
+
+**Nachschlagen:**
+- [MDN: Window](https://developer.mozilla.org/en-US/docs/Web/API/Window) - Fenster-Eigenschaften
+- [MDN: Navigator](https://developer.mozilla.org/en-US/docs/Web/API/Navigator) - Browser-Informationen
 
 ---
 
@@ -206,7 +225,7 @@ Uncaught ReferenceError: Ups is not defined
 - **F5 zum Aktualisieren:** Nach Änderungen im Code immer die Seite neu laden
 - **Strg + Shift + K (Firefox) oder Strg + Shift + J (Chrome):** Direkter Sprung zur Konsole
 - **console.clear():** Löscht alle bisherigen Ausgaben – praktisch zum Aufräumen
-- **Tipp für Profis:** Mit `console.table()` kannst du Arrays und Objekte übersichtlich darstellen (kommt später!)
+- **Fehler von unten nach oben lesen:** Oft ist der erste Fehler in der Liste der wichtigste
 
 ---
 
@@ -247,11 +266,20 @@ Uncaught ReferenceError: Ups is not defined
 - [JavaScript.info: Konsole](https://javascript.info/devtools)
 - [freeCodeCamp: JavaScript Basics](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/)
 
-**Videos:**
-- [The Net Ninja: JavaScript Console](https://www.youtube.com/watch?v=Qqx_wzMmFeA)
-- [Web Dev Simplified: Console Methods](https://www.youtube.com/watch?v=L8CDt1J3DAw)
+---
+
+## Lernziele-Check
+
+Nach diesem Auftrag kannst du:
+- [ ] JavaScript in HTML einbinden
+- [ ] Die Browser-Konsole öffnen und nutzen
+- [ ] Verschiedene Datentypen ausgeben (Text, Zahlen)
+- [ ] Einfache Berechnungen durchführen
+- [ ] Fehler in der Konsole erkennen und interpretieren
+- [ ] Code mit Kommentaren strukturieren
+- [ ] Auf einfache Dokumentation zugreifen und sie anwenden
 
 ---
 
-**⏱️ Geschätzte Zeit:** 45 Minuten  
+**⏱️ Geschätzte Zeit:** 60 Minuten  
 **📦 Nächster Schritt:** In Auftrag 2 lagerst du JavaScript in eine externe Datei aus – der professionelle Weg!

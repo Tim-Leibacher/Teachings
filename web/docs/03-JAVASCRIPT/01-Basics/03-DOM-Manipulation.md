@@ -8,434 +8,357 @@ Du lernst, mit JavaScript auf HTML-Elemente zuzugreifen und deren Inhalte dynami
 
 **DOM (Document Object Model)** ist die Brücke zwischen HTML und JavaScript. JavaScript kann damit auf jedes HTML-Element zugreifen und es verändern – ohne die Seite neu zu laden. Das macht Websites interaktiv und dynamisch.
 
-In diesem Auftrag änderst du Text, Bilder und Styles direkt per JavaScript.
+In diesem Auftrag änderst du Text, zeigst dynamische Daten an und passt Styles per JavaScript an.
 
 ---
 
-### Teil 1: HTML vorbereiten – Interaktive Elemente (10 Min)
+### Teil 1: HTML vorbereiten – Interaktive Elemente (15 Min)
 
-Füge in deiner `index.html` eine neue Sektion nach deinem Portfolio-Inhalt ein:
+**Aufgabe:**
+Füge in deiner `index.html` eine neue Sektion für interaktive Demos ein.
 
-```html
-<section id="interaktiv">
-    <h2>Interaktive Demo</h2>
-    <p>Hier siehst du, wie JavaScript Inhalte dynamisch ändern kann.</p>
-    
-    <!-- Element 1: Dynamischer Text -->
-    <div class="demo-box">
-        <h3>Dynamischer Text</h3>
-        <p id="demo-text">Dieser Text wird durch JavaScript geändert...</p>
-    </div>
-    
-    <!-- Element 2: Dynamische Zeit -->
-    <div class="demo-box">
-        <h3>Aktuelle Uhrzeit</h3>
-        <p>Es ist jetzt: <span id="aktuelle-zeit">--:--:--</span> Uhr</p>
-    </div>
-    
-    <!-- Element 3: Persönliche Begrüssung -->
-    <div class="demo-box">
-        <h3>Persönliche Begrüssung</h3>
-        <p id="begruessung">Lade Begrüssung...</p>
-    </div>
-    
-    <!-- Element 4: Besucher-Zähler -->
-    <div class="demo-box">
-        <h3>Besucher-Statistik</h3>
-        <p>Du bist Besucher Nummer: <strong id="besucher-nr">0</strong></p>
-    </div>
-</section>
-```
+**1.1 Grundstruktur**
+Erstelle eine `<section>` mit der ID `interaktiv` nach deinem bestehenden Portfolio-Inhalt.
+
+**1.2 Demo-Boxen erstellen**
+Erstelle **vier** Demo-Boxen (mit `class="demo-box"`), jeweils mit:
+- Einem `<h3>` als Überschrift
+- Einem Textbereich (z.B. `<p>`) mit eindeutiger ID
+
+**Die vier Demos sollen sein:**
+
+**Demo 1: Dynamischer Text**
+- Überschrift: "Dynamischer Text"
+- Paragraph mit ID `demo-text` und Platzhalter-Text
+
+**Demo 2: Aktuelle Uhrzeit**
+- Überschrift: "Aktuelle Uhrzeit"
+- Text: "Es ist jetzt: " und ein `<span>` mit ID `aktuelle-zeit`
+- Platzhalter im Span: "--:--:--"
+
+**Demo 3: Persönliche Begrüssung**
+- Überschrift: "Persönliche Begrüssung"
+- Paragraph mit ID `begruessung` und Platzhalter "Lade Begrüssung..."
+
+**Demo 4: Besucher-Zähler**
+- Überschrift: "Besucher-Statistik"
+- Text: "Du bist Besucher Nummer: " und ein `<strong>` mit ID `besucher-nr`
+- Platzhalter: "0"
 
 **Wichtig:**
-- Jedes Element hat eine eindeutige `id` (z.B. `id="demo-text"`)
-- Über diese `id` können wir mit JavaScript darauf zugreifen
+- Jede Demo-Box bekommt die Klasse `demo-box` (für späteres Styling)
+- Jedes dynamische Element bekommt eine eindeutige ID
+- IDs verwenden Kleinbuchstaben und Bindestriche (z.B. `demo-text`)
+
+**Nachschlagen:**
+- [MDN: HTML id attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id) - IDs setzen
+- [MDN: HTML class attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class) - Klassen nutzen
 
 ---
 
-### Teil 2: Erste DOM-Manipulation (15 Min)
+### Teil 2: DOM-Grundlagen – Text ändern (20 Min)
 
-Erstelle eine neue Datei **`dom.js`** mit folgendem Inhalt:
+**Aufgabe:**
+Erstelle eine neue Datei **`dom.js`** und binde sie in deine `index.html` ein (nach `script.js`).
 
-```javascript
-// =====================================================
-// DOM-MANIPULATION
-// =====================================================
-// Zugriff auf HTML-Elemente und dynamische Änderungen
+**2.1 Auf Elemente zugreifen**
 
-console.log("DOM-Script geladen!");
+Recherchiere die Methode `document.getElementById()` und nutze sie, um:
+- Auf das Element mit ID `demo-text` zuzugreifen
+- Den Zugriff in der Konsole zu loggen (zum Testen)
 
-// === METHODE 1: getElementById() ===
-// Greift auf ein Element mit bestimmter ID zu
+**2.2 Text ändern**
 
-let demoText = document.getElementById("demo-text");
-console.log("Element gefunden:", demoText);
+Ändere den Textinhalt des Elements auf: "JavaScript hat diesen Text geändert!"
 
-// Text ändern mit .textContent
-demoText.textContent = "JavaScript hat diesen Text geändert!";
+**Hinweis:** Nutze die Eigenschaft `.textContent`
 
-// === METHODE 2: querySelector() ===
-// Flexiblere Methode – funktioniert mit CSS-Selektoren
+**2.3 Alternative Methode**
 
-let begruessung = document.querySelector("#begruessung");
-let vorname = "Sarah";
-let nachname = "Müller";
+Recherchiere `document.querySelector()` und verwende diese Methode, um:
+- Auf das Element mit ID `begruessung` zuzugreifen
+- Eine Begrüssung mit deinem Namen einzufügen
 
-begruessung.textContent = `Willkommen, ${vorname} ${nachname}!`;
+**2.4 HTML einfügen**
 
-// === METHODE 3: innerHTML ===
-// Kann auch HTML-Tags einfügen (Achtung: Sicherheitsrisiko bei Benutzereingaben!)
+Erweitere die Begrüssung so, dass dein Name **fett** dargestellt wird und darunter ein kursiver Text steht: "Schön, dass du da bist."
 
-begruessung.innerHTML = `
-    Willkommen, <strong>${vorname} ${nachname}</strong>!<br>
-    <em>Schön, dass du da bist.</em>
-`;
-```
+**Hinweis:** Nutze `.innerHTML` statt `.textContent` (recherchiere den Unterschied!)
 
-**Neue Konzepte:**
-- `document.getElementById("id")` findet ein Element mit bestimmter ID
-- `document.querySelector("#id")` findet ein Element (CSS-Selektor-Syntax)
-- `.textContent` ändert den Textinhalt (nur Text, kein HTML)
-- `.innerHTML` ändert den Inhalt inkl. HTML-Tags (Vorsicht: XSS-Gefahr!)
+**Nachschlagen:**
+- [MDN: getElementById](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) - Element per ID finden
+- [MDN: querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) - Element per CSS-Selektor finden
+- [MDN: textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) - Text ändern
+- [MDN: innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) - HTML ändern
+- [W3Schools: HTML DOM](https://www.w3schools.com/js/js_htmldom.asp) - DOM-Grundlagen
 
-**Binde die Datei ein:**
-
-```html
-<script src="script.js"></script>
-<script src="dom.js"></script>
-```
+**Sicherheitshinweis:** `.innerHTML` kann gefährlich sein, wenn du Benutzereingaben verarbeitest (XSS-Angriffe). Für statische Inhalte ist es aber ok.
 
 ---
 
-### Teil 3: Aktuelle Uhrzeit anzeigen (10 Min)
+### Teil 3: Aktuelle Uhrzeit anzeigen (25 Min)
 
-Erweitere `dom.js` mit einer Echtzeit-Uhr:
+**Aufgabe:**
+Erstelle eine Echtzeit-Uhr, die jede Sekunde aktualisiert wird.
 
+**3.1 Funktion erstellen**
+
+Erstelle eine Funktion `zeigeUhrzeit()`, die:
+1. Ein neues `Date`-Objekt erstellt
+2. Stunden, Minuten und Sekunden extrahiert
+3. Die Zeit im Format "HH:MM:SS" anzeigt
+4. Das Element mit ID `aktuelle-zeit` aktualisiert
+
+**Hinweise:**
+- Recherchiere `Date`-Objekt und dessen Methoden
+- Für `getHours()`, `getMinutes()`, `getSeconds()`
+- Zahlen unter 10 brauchen eine führende Null (z.B. "09" statt "9")
+
+**3.2 Führende Nullen**
+
+Implementiere eine Logik, die einstellige Zahlen mit "0" ergänzt.
+
+**Tipp:** Nutze einen ternären Operator oder eine if-Bedingung:
 ```javascript
-// === AKTUELLE UHRZEIT ===
-
-function zeigeUhrzeit() {
-    let jetzt = new Date();
-    let stunden = jetzt.getHours();
-    let minuten = jetzt.getMinutes();
-    let sekunden = jetzt.getSeconds();
-    
-    // Füge führende Nullen hinzu (z.B. 09:05:03 statt 9:5:3)
-    stunden = stunden < 10 ? "0" + stunden : stunden;
-    minuten = minuten < 10 ? "0" + minuten : minuten;
-    sekunden = sekunden < 10 ? "0" + sekunden : sekunden;
-    
-    let zeitString = `${stunden}:${minuten}:${sekunden}`;
-    
-    let zeitElement = document.getElementById("aktuelle-zeit");
-    zeitElement.textContent = zeitString;
-}
-
-// Uhrzeit sofort anzeigen
-zeigeUhrzeit();
-
-// Uhrzeit jede Sekunde aktualisieren
-setInterval(zeigeUhrzeit, 1000);
+// Wenn Zahl < 10, dann "0" davor, sonst Zahl selbst
+zahl < 10 ? "0" + zahl : zahl
 ```
 
-**Neue Konzepte:**
-- `new Date()` gibt das aktuelle Datum/Uhrzeit zurück
-- `.getHours()`, `.getMinutes()`, `.getSeconds()` holen einzelne Zeitwerte
-- Ternärer Operator: `bedingung ? wennWahr : wennFalsch`
-- `setInterval(funktion, millisekunden)` führt eine Funktion wiederholt aus
+**3.3 Zeit formatieren**
 
-**Ergebnis:** Die Uhrzeit aktualisiert sich jede Sekunde automatisch!
+Kombiniere Stunden, Minuten und Sekunden zu einem String im Format "HH:MM:SS".
+
+**Tipp:** Nutze Template Strings: `` `${stunden}:${minuten}:${sekunden}` ``
+
+**3.4 Automatische Aktualisierung**
+
+- Rufe die Funktion einmal sofort auf (beim Laden der Seite)
+- Recherchiere `setInterval()` um die Funktion jede Sekunde (1000ms) auszuführen
+
+**Nachschlagen:**
+- [MDN: Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) - Datum/Uhrzeit
+- [MDN: setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) - Wiederholte Ausführung
+- [JavaScript.info: Scheduling](https://javascript.info/settimeout-setinterval) - Timing-Funktionen
+
+**Test:** Die Uhrzeit sollte sich jede Sekunde automatisch aktualisieren!
 
 ---
 
-### Teil 4: Besucher-Zähler mit LocalStorage (15 Min)
+### Teil 4: Besucher-Zähler mit LocalStorage (20 Min)
 
-```javascript
-// === BESUCHER-ZÄHLER ===
+**Aufgabe:**
+Implementiere einen Besucher-Zähler, der bei jedem Seitenaufruf hochzählt.
 
-function zeigeBesucher() {
-    // Besucher-Nummer aus LocalStorage holen (oder 0 wenn nicht vorhanden)
-    let besucher = localStorage.getItem("besucherNummer") || 0;
-    
-    // Nummer erhöhen
-    besucher = parseInt(besucher) + 1;
-    
-    // Zurück in LocalStorage speichern
-    localStorage.setItem("besucherNummer", besucher);
-    
-    // Im HTML anzeigen
-    let besucherElement = document.getElementById("besucher-nr");
-    besucherElement.textContent = besucher;
-    
-    console.log("Du bist Besucher Nummer:", besucher);
-}
+**4.1 LocalStorage verstehen**
 
-// Beim Laden der Seite ausführen
-zeigeBesucher();
-```
+Recherchiere `localStorage`:
+- Wie speichert man Daten? (`setItem`)
+- Wie liest man Daten? (`getItem`)
+- Was passiert, wenn ein Schlüssel nicht existiert?
 
-**Neue Konzepte:**
-- `localStorage` speichert Daten dauerhaft im Browser
-- `.getItem("key")` holt gespeicherte Daten
-- `.setItem("key", wert)` speichert Daten
-- `parseInt()` konvertiert Text in Zahl
+**4.2 Funktion erstellen**
 
-**Test:** Lade die Seite mehrmals neu (F5) – die Zahl steigt!
+Erstelle eine Funktion `zeigeBesucher()`, die:
+1. Den aktuellen Zählerstand aus `localStorage` holt (Schlüssel: "besucherNummer")
+2. Falls kein Wert vorhanden ist, startet mit 0
+3. Den Zähler um 1 erhöht
+4. Den neuen Wert zurück in `localStorage` speichert
+5. Den Wert im Element mit ID `besucher-nr` anzeigt
 
----
+**Hinweise:**
+- Werte aus `localStorage` sind immer Strings!
+- Nutze `parseInt()` um Strings in Zahlen umzuwandeln
+- Mit `||` kannst du einen Standardwert definieren: `wert || 0`
 
-### Teil 5: Tagesabhängige Begrüssung (10 Min)
+**4.3 Funktion aufrufen**
 
-Erweitere die Begrüssung um eine zeitabhängige Nachricht:
+Rufe die Funktion beim Laden der Seite auf.
 
-```javascript
-// === TAGESABHÄNGIGE BEGRÜSSUNG ===
+**Nachschlagen:**
+- [MDN: Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) - localStorage
+- [MDN: parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) - String zu Zahl
+- [W3Schools: LocalStorage](https://www.w3schools.com/html/html5_webstorage.asp) - Beispiele
 
-function zeigeTagesbegruessung() {
-    let jetzt = new Date();
-    let stunde = jetzt.getHours();
-    let tag = jetzt.getDay(); // 0 = Sonntag, 1 = Montag, ...
-    
-    let begruessung = "";
-    let emoji = "";
-    
-    // Tageszeit
-    if (stunde >= 5 && stunde < 12) {
-        begruessung = "Guten Morgen";
-        emoji = "☀️";
-    } else if (stunde >= 12 && stunde < 18) {
-        begruessung = "Guten Tag";
-        emoji = "🌤️";
-    } else if (stunde >= 18 && stunde < 22) {
-        begruessung = "Guten Abend";
-        emoji = "🌆";
-    } else {
-        begruessung = "Gute Nacht";
-        emoji = "🌙";
-    }
-    
-    // Wochentag
-    let wochentag = "";
-    if (tag === 1) wochentag = "Montag";
-    else if (tag === 2) wochentag = "Dienstag";
-    else if (tag === 3) wochentag = "Mittwoch";
-    else if (tag === 4) wochentag = "Donnerstag";
-    else if (tag === 5) wochentag = "Freitag";
-    else if (tag === 6) wochentag = "Samstag";
-    else wochentag = "Sonntag";
-    
-    let nachricht = `${emoji} ${begruessung}! Heute ist ${wochentag}.`;
-    
-    let element = document.querySelector("#begruessung");
-    element.innerHTML = `
-        <strong>${nachricht}</strong><br>
-        <em>Willkommen auf meinem Portfolio!</em>
-    `;
-}
+**Test:** Lade die Seite mehrmals neu (F5) – der Zähler sollte steigen!
 
-zeigeTagesbegruessung();
-```
-
-**Neue Konzepte:**
-- `if...else if...else` Verzweigungen für Bedingungen
-- `getDay()` gibt Wochentag zurück (0-6)
-- Verschiedene Nachrichten je nach Uhrzeit
+**Debug:** Öffne DevTools → Application → Local Storage um gespeicherte Werte zu sehen.
 
 ---
 
-### Teil 6: Styles dynamisch ändern (10 Min)
+### Teil 5: Tagesabhängige Begrüssung (25 Min)
 
-JavaScript kann auch CSS-Styles direkt ändern:
+**Aufgabe:**
+Erweitere die Begrüssung um eine zeitabhängige Nachricht.
 
-```javascript
-// === STYLES DYNAMISCH ÄNDERN ===
+**5.1 Funktion planen**
 
-// Farbe je nach Uhrzeit
-function anpasseFarben() {
-    let jetzt = new Date();
-    let stunde = jetzt.getHours();
-    
-    let body = document.body;
-    
-    if (stunde >= 6 && stunde < 18) {
-        // Tagsüber: Heller Hintergrund
-        body.style.backgroundColor = "#f5f5f5";
-        body.style.color = "#1a1a1a";
-    } else {
-        // Nachts: Dunkler Hintergrund (Dark Mode)
-        body.style.backgroundColor = "#1a1a1a";
-        body.style.color = "#f5f5f5";
-    }
-}
+Erstelle eine Funktion `zeigeTagesbegruessung()`, die verschiedene Begrüssungen je nach:
+- Tageszeit (Morgen, Tag, Abend, Nacht)
+- Wochentag (Montag bis Sonntag)
 
-anpasseFarben();
+**5.2 Tageszeit ermitteln**
 
-// Highlight-Effekt für Demo-Boxen
-let demoBoxen = document.querySelectorAll(".demo-box");
+Erstelle Bedingungen für:
+- Morgen: 5:00 - 11:59 Uhr
+- Tag: 12:00 - 17:59 Uhr
+- Abend: 18:00 - 21:59 Uhr
+- Nacht: 22:00 - 4:59 Uhr
 
-demoBoxen.forEach(function(box, index) {
-    // Verzögertes Einblenden
-    setTimeout(function() {
-        box.style.opacity = "0";
-        box.style.transition = "opacity 0.5s";
-        box.style.opacity = "1";
-    }, index * 200); // 200ms Verzögerung pro Box
-});
+Weise jeder Tageszeit eine passende Begrüssung und ein Emoji zu.
+
+**Tipp:** Nutze `if...else if...else` Struktur oder einen ternären Operator.
+
+**5.3 Wochentag ermitteln**
+
+Recherchiere `getDay()` - diese Methode gibt Zahlen 0-6 zurück (0 = Sonntag).
+
+Erstelle eine Zuordnung von Zahlen zu Wochentagen (z.B. mit Array oder if-Kaskade).
+
+**5.4 Nachricht zusammenstellen**
+
+Kombiniere Emoji, Begrüssung und Wochentag zu einer formatierten Nachricht.
+
+**Beispiel:**
+```
+☀️ Guten Morgen! Heute ist Montag.
 ```
 
-**Neue Konzepte:**
-- `.style.eigenschaft = "wert"` ändert CSS-Eigenschaften
-- `.querySelectorAll()` findet **alle** passenden Elemente (gibt Array zurück)
-- `.forEach()` führt Funktion für jedes Element aus
-- `setTimeout()` führt Funktion nach Verzögerung aus
+**5.5 Im HTML anzeigen**
+
+- Zeige die Nachricht im Element mit ID `begruessung` an
+- Die Hauptnachricht soll **fett** sein
+- Darunter ein kursiver Text: "Willkommen auf meinem Portfolio!"
+
+**Nachschlagen:**
+- [MDN: Date.prototype.getDay](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getDay) - Wochentag
+- [MDN: if...else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) - Bedingungen
+- [JavaScript.info: Conditional operators](https://javascript.info/ifelse) - Verzweigungen
 
 ---
 
-### Teil 7: Komplette `dom.js` (Zusammenfassung)
+### Teil 6: Styles dynamisch ändern (20 Min)
 
-<details>
-<summary>Klicke hier für den kompletten Code</summary>
+**Aufgabe:**
+JavaScript kann auch CSS-Styles direkt ändern.
 
-```javascript
-// =====================================================
-// DOM-MANIPULATION
-// =====================================================
+**6.1 Dark Mode basierend auf Uhrzeit**
 
-console.log("DOM-Script geladen!");
+Erstelle eine Funktion `anpasseFarben()`, die:
+- Die aktuelle Stunde ermittelt
+- Tagsüber (6-17 Uhr): Heller Hintergrund, dunkle Schrift
+- Nachts (18-5 Uhr): Dunkler Hintergrund, helle Schrift
 
-// === EINFACHE TEXT-ÄNDERUNG ===
-let demoText = document.getElementById("demo-text");
-demoText.textContent = "JavaScript hat diesen Text geändert!";
+Ändere die Styles von `document.body`:
+- `backgroundColor`
+- `color`
 
-// === AKTUELLE UHRZEIT ===
-function zeigeUhrzeit() {
-    let jetzt = new Date();
-    let stunden = jetzt.getHours();
-    let minuten = jetzt.getMinutes();
-    let sekunden = jetzt.getSeconds();
-    
-    stunden = stunden < 10 ? "0" + stunden : stunden;
-    minuten = minuten < 10 ? "0" + minuten : minuten;
-    sekunden = sekunden < 10 ? "0" + sekunden : sekunden;
-    
-    let zeitString = `${stunden}:${minuten}:${sekunden}`;
-    
-    let zeitElement = document.getElementById("aktuelle-zeit");
-    zeitElement.textContent = zeitString;
-}
+**Hinweis:** Styles änderst du mit `element.style.eigenschaft = "wert"`
 
-zeigeUhrzeit();
-setInterval(zeigeUhrzeit, 1000);
+**6.2 Animation für Demo-Boxen**
 
-// === TAGESABHÄNGIGE BEGRÜSSUNG ===
-function zeigeTagesbegruessung() {
-    let jetzt = new Date();
-    let stunde = jetzt.getHours();
-    let tag = jetzt.getDay();
-    
-    let begruessung = "";
-    let emoji = "";
-    
-    if (stunde >= 5 && stunde < 12) {
-        begruessung = "Guten Morgen";
-        emoji = "☀️";
-    } else if (stunde >= 12 && stunde < 18) {
-        begruessung = "Guten Tag";
-        emoji = "🌤️";
-    } else if (stunde >= 18 && stunde < 22) {
-        begruessung = "Guten Abend";
-        emoji = "🌆";
-    } else {
-        begruessung = "Gute Nacht";
-        emoji = "🌙";
-    }
-    
-    let wochentag = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"][tag];
-    
-    let nachricht = `${emoji} ${begruessung}! Heute ist ${wochentag}.`;
-    
-    let element = document.querySelector("#begruessung");
-    element.innerHTML = `<strong>${nachricht}</strong><br><em>Willkommen auf meinem Portfolio!</em>`;
-}
+Erstelle einen Einblende-Effekt für alle Demo-Boxen:
 
-zeigeTagesbegruessung();
+1. Finde alle Elemente mit Klasse `demo-box`
+    - Recherchiere `querySelectorAll()`
+    - Das gibt ein Array-ähnliches Objekt zurück
 
-// === BESUCHER-ZÄHLER ===
-function zeigeBesucher() {
-    let besucher = localStorage.getItem("besucherNummer") || 0;
-    besucher = parseInt(besucher) + 1;
-    localStorage.setItem("besucherNummer", besucher);
-    
-    let besucherElement = document.getElementById("besucher-nr");
-    besucherElement.textContent = besucher;
-    
-    console.log("Du bist Besucher Nummer:", besucher);
-}
+2. Für jede Box:
+    - Setze initial `opacity: 0`
+    - Füge eine `transition` hinzu
+    - Ändere `opacity` auf `1`
+    - Nutze eine zeitliche Verzögerung pro Box (z.B. 200ms * Index)
 
-zeigeBesucher();
+**Hinweise:**
+- Nutze `.forEach()` um über alle Boxen zu iterieren
+- Nutze `setTimeout()` für die Verzögerung
+- Der Index wird als zweiter Parameter in `.forEach()` übergeben
 
-// === STYLES ANPASSEN ===
-function anpasseFarben() {
-    let jetzt = new Date();
-    let stunde = jetzt.getHours();
-    
-    let body = document.body;
-    
-    if (stunde >= 6 && stunde < 18) {
-        body.style.backgroundColor = "#f5f5f5";
-        body.style.color = "#1a1a1a";
-    } else {
-        body.style.backgroundColor = "#1a1a1a";
-        body.style.color = "#f5f5f5";
-    }
-}
-
-anpasseFarben();
-```
-
-</details>
+**Nachschlagen:**
+- [MDN: HTMLElement.style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) - Styles ändern
+- [MDN: querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) - Mehrere Elemente
+- [MDN: forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) - Iteration
+- [MDN: setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) - Verzögerung
 
 ---
 
 ## Erfolgskriterien
 
-- [ ] HTML mit interaktiven Elementen (IDs gesetzt)
-- [ ] `dom.js` erstellt und eingebunden
+- [ ] HTML mit vier interaktiven Demo-Boxen ist erstellt (mit IDs)
+- [ ] `dom.js` ist erstellt und eingebunden
 - [ ] Text wird dynamisch mit `.textContent` geändert
-- [ ] Aktuelle Uhrzeit wird jede Sekunde aktualisiert
-- [ ] Tagesabhängige Begrüssung funktioniert
+- [ ] Aktuelle Uhrzeit wird jede Sekunde aktualisiert (Format: HH:MM:SS)
+- [ ] Tagesabhängige Begrüssung funktioniert (Tageszeit + Wochentag)
 - [ ] Besucher-Zähler funktioniert (steigt bei jedem Neuladen)
 - [ ] Styles werden dynamisch angepasst (z.B. Dark Mode nachts)
+- [ ] Animation für Demo-Boxen funktioniert (gestaffeltes Einblenden)
 - [ ] Keine Fehlermeldungen in der Konsole
+
+---
+
+## Zusatzaufgaben (Optional)
+
+**Für Schnelle:**
+
+**A) Countdown bis Lehrabschluss**
+- Berechne die verbleibenden Tage bis zum Lehrabschluss
+- Zeige: "Noch X Tage bis zum Lehrabschluss"
+- Aktualisiere täglich (nicht jede Sekunde!)
+
+**B) Browser-Info-Anzeige**
+Erstelle eine fünfte Demo-Box, die anzeigt:
+- Browser-Name (vereinfacht aus `navigator.userAgent`)
+- Bildschirmauflösung
+- Verfügbare Bildschirmfläche (`screen.availWidth`)
+- Sprache (`navigator.language`)
+
+**C) LocalStorage Manager**
+Erstelle Funktionen:
+- `zeigeAlleLocalStorageKeys()` - listet alle gespeicherten Schlüssel
+- `loescheBesucher()` - setzt den Besucher-Zähler zurück
+- Zeige diese Infos in einer separaten Demo-Box
+
+**D) Progressive Farbänderung**
+Statt abruptem Wechsel: Interpoliere die Farben basierend auf der Uhrzeit.
+- Recherchiere HSL-Farben
+- Berechne Farbton basierend auf Stunde
+
+**Nachschlagen:**
+- [MDN: Screen](https://developer.mozilla.org/en-US/docs/Web/API/Screen) - Bildschirm-Info
+- [MDN: Navigator](https://developer.mozilla.org/en-US/docs/Web/API/Navigator) - Browser-Info
+- [MDN: HSL Colors](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl) - Farbmodell
 
 ---
 
 ## Tipps
 
 - **IDs müssen eindeutig sein:** Jede ID darf nur einmal pro Seite vorkommen
-- **Klassen für Mehrfachauswahl:** Nutze `.querySelectorAll(".klasse")` für mehrere Elemente
-- **DevTools nutzen:** Inspiziere Elemente (Rechtsklick → Untersuchen) um ihre IDs zu sehen
-- **LocalStorage zurücksetzen:** `localStorage.clear()` in der Konsole löscht alle gespeicherten Daten
-- **Tipp für Profis:** Nutze `dataset`-Attribute für Datenspeicherung in HTML: `<div data-info="wert">`
+- **Klassen für Mehrfachauswahl:** Nutze `.querySelectorAll()` für mehrere Elemente
+- **DevTools nutzen:** Inspiziere Elemente (Rechtsklick → Untersuchen)
+- **LocalStorage zurücksetzen:** `localStorage.clear()` in der Konsole
+- **Performance:** `setInterval` mit 1000ms ist ok, bei 100ms wird's ineffizient
+- **Debugging:** Logge Zwischenwerte mit `console.log()`
 
 ---
 
 ## Reflexionsfragen
 
 1. **Was ist der Unterschied zwischen `.textContent` und `.innerHTML`?**  
-   *Wann würdest du welche Methode nutzen? Was sind Sicherheitsrisiken bei `.innerHTML`?*
+   *Wann würdest du welche Methode nutzen? Was sind Sicherheitsrisiken?*
 
 2. **Warum steht das `<script>`-Tag vor `</body>` und nicht im `<head>`?**  
-   *Was würde passieren, wenn JavaScript versucht, auf ein Element zuzugreifen, das noch nicht existiert?*
+   *Was würde passieren, wenn JavaScript auf ein noch nicht existierendes Element zugreift?*
 
-3. **Experimentiere: Ändere die Uhrzeit-Aktualisierung von 1000ms auf 100ms. Was passiert?**  
-   *Ist das eine gute Idee? Denk an Performance.*
+3. **Experimentiere: Ändere die Uhrzeit-Aktualisierung von 1000ms auf 100ms. Was bemerkst du?**  
+   *Ist das sinnvoll? Denk an Performance und Lesbarkeit.*
 
 4. **LocalStorage vs. SessionStorage – wo ist der Unterschied?**  
    *Teste: Erstelle `sessionStorage.setItem("test", "wert")` und schliesse den Tab. Was passiert?*
 
-5. **Öffne die DevTools → Elements Tab. Ändere live Styles mit JavaScript. Siehst du die Änderungen?**  
-   *Vergleiche mit CSS-Änderungen im Styles-Panel.*
+5. **Öffne DevTools → Elements Tab. Ändere Styles live per JavaScript. Siehst du die Änderungen im Elements-Panel?**  
+   *Vergleiche mit direkten CSS-Änderungen.*
+
+6. **Recherchiere: Was passiert, wenn du `setInterval()` mehrfach aufrufst ohne `clearInterval()`?**  
+   *Teste es und erkläre das Problem (Memory Leak).*
 
 ---
 
@@ -443,16 +366,15 @@ anpasseFarben();
 
 **DOM-Manipulation:**
 - [MDN: DOM Introduction](https://developer.mozilla.org/de/docs/Web/API/Document_Object_Model/Introduction)
-- [MDN: getElementById](https://developer.mozilla.org/de/docs/Web/API/Document/getElementById)
-- [MDN: querySelector](https://developer.mozilla.org/de/docs/Web/API/Document/querySelector)
+- [MDN: Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) - Alle Methoden
+- [JavaScript.info: DOM Navigation](https://javascript.info/dom-navigation) - DOM-Baum verstehen
 
 **Timing-Funktionen:**
-- [MDN: setInterval](https://developer.mozilla.org/de/docs/Web/API/setInterval)
-- [MDN: setTimeout](https://developer.mozilla.org/de/docs/Web/API/setTimeout)
 - [JavaScript.info: Scheduling](https://javascript.info/settimeout-setinterval)
+- [MDN: setInterval best practices](https://developer.mozilla.org/en-US/docs/Web/API/setInterval#examples)
 
 **LocalStorage:**
-- [MDN: Web Storage API](https://developer.mozilla.org/de/docs/Web/API/Web_Storage_API)
+- [MDN: Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 - [W3Schools: LocalStorage](https://www.w3schools.com/html/html5_webstorage.asp)
 
 **Best Practices:**
@@ -461,5 +383,21 @@ anpasseFarben();
 
 ---
 
-**⏱️ Geschätzte Zeit:** 60 Minuten  
-**📦 Nächster Schritt:** Im optionalen Auftrag 4 erstellst du ein interaktives Skill-Rating-System!
+## Lernziele-Check
+
+Nach diesem Auftrag kannst du:
+- [ ] Auf HTML-Elemente per ID zugreifen
+- [ ] Text-Inhalte dynamisch ändern
+- [ ] Mit dem Date-Objekt arbeiten
+- [ ] Funktionen erstellen und aufrufen
+- [ ] setInterval() für wiederholte Ausführung nutzen
+- [ ] LocalStorage verwenden (lesen/schreiben)
+- [ ] CSS-Styles per JavaScript ändern
+- [ ] Mehrere Elemente mit querySelectorAll() bearbeiten
+- [ ] Bedingte Logik (if/else) anwenden
+- [ ] Dokumentation selbstständig nutzen und anwenden
+
+---
+
+**⏱️ Geschätzte Zeit:** 105 Minuten  
+**📦 Nächster Schritt:** Im optionalen Auftrag 4 erstellst du ein interaktives Skill-Rating-System mit Buttons und Events!

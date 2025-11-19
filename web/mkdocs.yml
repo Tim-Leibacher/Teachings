@@ -2,7 +2,7 @@ site_name: Web Aufträge
 site_description: Aufgaben für den Webkurs
 site_author: Tim Leibacher
 docs_dir: docs
-site_url: https://tim-leibacher.github.io/Teachings/web/
+site_url: https://tim-leibacher.github.io/Teachings/
 
 theme:
   name: material

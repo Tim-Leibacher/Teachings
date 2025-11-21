@@ -277,9 +277,17 @@ Füge in `styles.css` hinzu:
 
 ---
 
-### Teil 3: JavaScript – POST Request (20 Min)
+### Teil 3: JavaScript – POST Request (25 Min)
 
-Erstelle `api-crud.js`:
+**Aufgabe:** Erstelle `api-crud.js` und implementiere das Erstellen neuer Posts.
+
+**Anforderungen:**
+1. Verhindere Standard-Formular-Submit mit `event.preventDefault()`
+2. Hole die Formular-Werte (Titel, Body, User-ID)
+3. Sende POST-Request mit JSON-Body
+4. Zeige Erfolgs- oder Fehlermeldung an
+
+**Grundgerüst:**
 
 ```javascript
 // =====================================================
@@ -288,70 +296,51 @@ Erstelle `api-crud.js`:
 
 console.log("=== API CRUD ===");
 
-// Elemente holen
-const postFormular = document.getElementById('post-formular');
-const feedbackDiv = document.getElementById('formular-feedback');
-const ladePostsButton = document.getElementById('lade-meine-posts');
-const meinePostsContainer = document.getElementById('meine-posts');
+// TODO: Hole die notwendigen Elemente
+const postFormular = document.getElementById('...');
+const feedbackDiv = document.getElementById('...');
+const ladePostsButton = document.getElementById('...');
+const meinePostsContainer = document.getElementById('...');
 
 // === CREATE: NEUEN POST ERSTELLEN (POST-Request) ===
 
 postFormular.addEventListener('submit', function(event) {
-    event.preventDefault();  // Verhindert Seiten-Reload
-    
-    // Formular-Daten holen
-    const titel = document.getElementById('post-titel').value;
-    const body = document.getElementById('post-body').value;
-    const userId = document.getElementById('post-userid').value;
-    
+    // TODO: Verhindere Standard-Submit
+    event.preventDefault();
+
+    // TODO: Hole die Formular-Werte
+    const titel = document.getElementById('...').value;
+    const body = ...;
+    const userId = ...;
+
     console.log("Erstelle neuen Post...");
-    
-    // Feedback zurücksetzen
-    feedbackDiv.classList.add('versteckt');
-    
-    // POST-Request an API senden
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',  // HTTP-Methode
+
+    // TODO: Sende POST-Request
+    fetch('...', {  // URL: https://jsonplaceholder.typicode.com/posts
+        method: '...',  // POST
         headers: {
-            'Content-Type': 'application/json'  // JSON-Daten
+            'Content-Type': '...'  // application/json
         },
         body: JSON.stringify({
-            title: titel,
-            body: body,
-            userId: parseInt(userId)
+            // TODO: Objekt mit title, body, userId
         })
     })
-    .then(response => {
-        console.log("Status:", response.status);
-        return response.json();
-    })
+    .then(response => ...)
     .then(neuerPost => {
-        console.log("✅ Post erstellt:", neuerPost);
-        
-        // Erfolgs-Feedback anzeigen
-        feedbackDiv.textContent = `✅ Post erfolgreich erstellt! (ID: ${neuerPost.id})`;
-        feedbackDiv.className = 'erfolg';
-        feedbackDiv.classList.remove('versteckt');
-        
-        // Formular zurücksetzen
-        postFormular.reset();
-        
-        // Nach 3 Sekunden Feedback ausblenden
-        setTimeout(() => {
-            feedbackDiv.classList.add('versteckt');
-        }, 3000);
+        // TODO: Zeige Erfolgs-Feedback
+        // TODO: Setze Formular zurück (postFormular.reset())
+        // TODO: Blende Feedback nach 3 Sekunden aus (setTimeout)
     })
     .catch(error => {
-        console.error("❌ Fehler:", error);
-        
-        feedbackDiv.textContent = '❌ Fehler beim Erstellen des Posts.';
-        feedbackDiv.className = 'fehler';
-        feedbackDiv.classList.remove('versteckt');
+        // TODO: Zeige Fehler-Feedback
     });
 });
-
-console.log("✅ POST-Formular Event-Listener registriert");
 ```
+
+**Wo nachschlagen?**
+- [MDN: fetch() POST-Beispiel](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options)
+- [MDN: JSON.stringify()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
+- [MDN: FormData](https://developer.mozilla.org/de/docs/Web/API/FormData)
 
 **Was passiert beim POST-Request?**
 
@@ -407,9 +396,17 @@ ladePostsButton.addEventListener('click', function() {
 
 ---
 
-### Teil 5: UPDATE – Post bearbeiten (20 Min)
+### Teil 5: UPDATE – Post bearbeiten (25 Min)
 
-Füge die Edit-Funktion hinzu:
+**Aufgabe:** Implementiere die Bearbeitungs-Funktion für Posts.
+
+**Anforderungen:**
+1. `starteEdit()` zeigt das Edit-Formular an
+2. `abbrechenEdit()` versteckt das Edit-Formular
+3. `speichereEdit()` sendet PUT-Request und aktualisiert die UI
+4. Nach erfolgreichem Update: Karte kurz grün färben
+
+**Grundgerüst:**
 
 ```javascript
 // === FUNKTION: POST-KARTE MIT AKTIONEN ERSTELLEN ===
@@ -509,62 +506,66 @@ function speichereEdit(postId) {
 
 ---
 
-### Teil 6: DELETE – Post löschen (15 Min)
+### Teil 6: DELETE – Post löschen (20 Min)
 
-Füge die Lösch-Funktion hinzu:
+**Aufgabe:** Implementiere die Lösch-Funktion für Posts.
+
+**Anforderungen:**
+1. Frage mit `confirm()` nach Bestätigung
+2. Sende DELETE-Request an `/posts/{id}`
+3. Entferne Post mit Animation aus der UI
+4. Wenn Container leer: Zeige "Keine Posts" Nachricht
+
+**Grundgerüst:**
 
 ```javascript
 // === DELETE: POST LÖSCHEN (DELETE-Request) ===
 
 function loeschePost(postId) {
     console.log(`Lösche Post ${postId}...`);
-    
-    // Bestätigung einholen
-    const bestaetigung = confirm(`Möchtest du Post ${postId} wirklich löschen?`);
-    
+
+    // TODO: Frage mit confirm() nach Bestätigung
+    const bestaetigung = confirm('...');
+
     if (!bestaetigung) {
-        console.log("Löschen abgebrochen");
         return;
     }
-    
-    // DELETE-Request an API senden
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-        method: 'DELETE'  // HTTP-Methode für Löschen
+
+    // TODO: Sende DELETE-Request
+    fetch(`.../${postId}`, {  // URL: https://jsonplaceholder.typicode.com/posts/{id}
+        method: '...'  // DELETE
     })
     .then(response => {
-        console.log("Status:", response.status);
-        
         if (response.ok) {
             console.log("✅ Post gelöscht");
-            
-            // Post aus UI entfernen
+
+            // TODO: Hole die Karte aus dem DOM
             const karte = document.getElementById(`post-${postId}`);
-            
-            // Fade-Out Animation
-            karte.style.opacity = '0';
-            karte.style.transform = 'scale(0.8)';
-            karte.style.transition = 'all 0.3s ease';
-            
+
+            // TODO: Fade-Out Animation (opacity, transform, transition)
+            karte.style.opacity = '...';
+            karte.style.transform = '...';
+            karte.style.transition = '...';
+
+            // TODO: Nach Animation: Karte entfernen (setTimeout + karte.remove())
             setTimeout(() => {
-                karte.remove();
-                
-                // Prüfen ob Container leer ist
-                if (meinePostsContainer.children.length === 0) {
-                    meinePostsContainer.innerHTML = '<p style="color: #6c757d;">Keine Posts vorhanden.</p>';
-                }
+                // ... entfernen
+                // ... prüfen ob Container leer
             }, 300);
         } else {
             throw new Error('Fehler beim Löschen');
         }
     })
     .catch(error => {
-        console.error("❌ Fehler:", error);
-        alert('Fehler beim Löschen des Posts.');
+        // TODO: Fehlerbehandlung
     });
 }
-
-console.log("✅ CRUD-Funktionen geladen");
 ```
+
+**Wo nachschlagen?**
+- [MDN: confirm()](https://developer.mozilla.org/de/docs/Web/API/Window/confirm)
+- [MDN: Element.remove()](https://developer.mozilla.org/de/docs/Web/API/Element/remove)
+- [MDN: CSS Transitions](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
 
 ---
 

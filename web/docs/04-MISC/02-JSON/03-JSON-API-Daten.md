@@ -12,11 +12,18 @@ In diesem Auftrag arbeitest du mit echten öffentlichen APIs, verarbeitest JSON-
 
 ---
 
-### Teil 1: GitHub-Profil-Daten laden (20 Min)
+### Teil 1: GitHub-Profil-Daten laden (30 Min)
 
-GitHub bietet eine öffentliche API, um Profil-Informationen abzurufen. Wir nutzen diese Daten für dein Portfolio.
+GitHub bietet eine öffentliche API, um Profil-Informationen abzurufen.
 
-Erstelle eine neue Datei **`github-integration.html`**:
+**Aufgabe:** Erstelle eine Seite, die GitHub-Profildaten lädt und anzeigt.
+
+**API-Dokumentation:**
+- GitHub User API: `https://api.github.com/users/{username}`
+- Beispiel: `https://api.github.com/users/octocat`
+- [Offizielle Dokumentation](https://docs.github.com/en/rest/users/users#get-a-user)
+
+**Schritt 1:** Erstelle eine Datei **`github-integration.html`** mit folgendem Grundgerüst:
 
 ```html
 <!DOCTYPE html>
@@ -358,59 +365,58 @@ Erstelle eine neue Datei **`github-integration.html`**:
 </html>
 ```
 
-**Deine Aufgaben:**
+**Schritt 2:** Implementiere die JavaScript-Funktionalität
 
-1. **Öffne die Datei im Browser**
-2. **Gib deinen eigenen GitHub-Username ein** (oder einen anderen, z.B. "torvalds", "gaearon")
-3. **Öffne die Browser-Konsole (F12)** und schaue dir die geloggten Daten an
-4. **Analysiere die JSON-Struktur:**
-   - Welche Felder enthält das User-Objekt?
-   - Welche Felder enthält ein Repository-Objekt?
-   - Welche Datentypen werden verwendet?
+Erstelle im `<script>`-Bereich folgende Funktionen:
 
-5. **Erweitere die Anzeige:**
-   - Füge ein Feld für "Member since" hinzu (user.created_at)
-   - Zeige die Company an, falls vorhanden (user.company)
-   - Füge einen Link zum GitHub-Profil hinzu (user.html_url)
+1. **`ladeGitHubProfil()`**:
+   - Hole den Username aus dem Input-Feld
+   - Rufe die GitHub API auf: `https://api.github.com/users/${username}`
+   - Parse die JSON-Response
+   - Rufe `zeigeProfil()` auf
+
+2. **`zeigeProfil(userData)`**:
+   - Zeige Profilbild, Name, Bio an
+   - Zeige Statistiken (Repos, Followers, Following)
+   - Nutze `innerHTML` um das HTML zu generieren
+
+**Wo findest du Hilfe?**
+- [MDN: Fetch API](https://developer.mozilla.org/de/docs/Web/API/Fetch_API/Using_Fetch)
+- [MDN: async/await](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/async_function)
+- Schaue dir die API-Response im Browser an: `https://api.github.com/users/octocat`
+
+**Zusatzaufgaben:**
+1. Lade auch die Repositories: `https://api.github.com/users/${username}/repos?sort=updated&per_page=5`
+2. Zeige "Member since" an (Tipp: `user.created_at` - nutze `new Date()`)
+3. Füge Error Handling hinzu: Was passiert bei ungültigem Username?
+4. Zeige einen Loading-Indikator während des Ladens
 
 ---
 
-### Teil 2: Portfolio-Projekt-Daten dynamisch laden (25 Min)
+### Teil 2: Portfolio-Projekt-Daten dynamisch laden (30 Min)
 
-Jetzt erstellst du eine dynamische Projekt-Galerie, die Daten aus einer JSON-Datei lädt.
+**Aufgabe:** Erstelle eine dynamische Projekt-Galerie, die Daten aus einer JSON-Datei lädt.
 
-**Schritt 1: JSON-Datei erstellen**
+**Schritt 1: JSON-Datei vorbereiten**
 
-Erstelle `meine-projekte.json`:
+Erstelle `meine-projekte.json` mit folgender Struktur. Füge **mindestens 3 Projekte** hinzu:
 
 ```json
 {
   "meta": {
     "version": "1.0",
-    "letzteAktualisierung": "2025-11-18",
-    "autor": "Sarah Müller"
+    "letzteAktualisierung": "...",
+    "autor": "..."
   },
   "projekte": [
     {
       "id": 1,
-      "titel": "Portfolio-Website",
-      "slug": "portfolio-website",
-      "kurzbeschreibung": "Meine persönliche Portfolio-Seite",
-      "langbeschreibung": "Eine vollständige Portfolio-Website mit Projekten, Skills und Kontaktformular. Responsive Design und moderne Web-Technologien.",
+      "titel": "...",
+      "kurzbeschreibung": "...",
       "kategorie": "Webentwicklung",
       "technologien": [
-        {
-          "name": "HTML",
-          "farbe": "#E34F26"
-        },
-        {
-          "name": "CSS",
-          "farbe": "#1572B6"
-        },
-        {
-          "name": "JavaScript",
-          "farbe": "#F7DF1E"
-        }
+        {"name": "HTML", "farbe": "#E34F26"},
+        {"name": "CSS", "farbe": "#1572B6"}
       ],
       "status": "in-arbeit",
       "fortschritt": 75,
@@ -419,65 +425,20 @@ Erstelle `meine-projekte.json`:
         "ende": "2025-12-31"
       },
       "bild": {
-        "url": "https://via.placeholder.com/600x400/005A9C/ffffff?text=Portfolio",
-        "alt": "Portfolio Screenshot"
+        "url": "https://via.placeholder.com/600x400/005A9C/ffffff?text=Projekt1",
+        "alt": "..."
       },
-      "links": {
-        "github": "https://github.com/username/portfolio",
-        "live": null
-      },
-      "highlights": [
-        "Responsive Design",
-        "JSON-basierte Datenverwaltung",
-        "GitHub-Integration"
-      ],
       "istFeatured": true
-    },
-    {
-      "id": 2,
-      "titel": "To-Do App",
-      "slug": "todo-app",
-      "kurzbeschreibung": "Aufgabenverwaltung mit LocalStorage",
-      "langbeschreibung": "Eine vollständige To-Do-App mit Kategorien, Filter und Prioritäten. Daten werden im Browser gespeichert.",
-      "kategorie": "JavaScript",
-      "technologien": [
-        {
-          "name": "HTML",
-          "farbe": "#E34F26"
-        },
-        {
-          "name": "CSS",
-          "farbe": "#1572B6"
-        },
-        {
-          "name": "JavaScript",
-          "farbe": "#F7DF1E"
-        }
-      ],
-      "status": "geplant",
-      "fortschritt": 0,
-      "datum": {
-        "start": "2026-01-15",
-        "ende": "2026-03-01"
-      },
-      "bild": {
-        "url": "https://via.placeholder.com/600x400/008C95/ffffff?text=ToDo+App",
-        "alt": "To-Do App Screenshot"
-      },
-      "links": {
-        "github": null,
-        "live": null
-      },
-      "highlights": [
-        "LocalStorage-Integration",
-        "Filter und Kategorien",
-        "Drag & Drop"
-      ],
-      "istFeatured": false
     }
   ]
 }
 ```
+
+**Deine Aufgabe:**
+- Fülle die `...` mit deinen Daten
+- Füge **mindestens 2 weitere Projekte** hinzu
+- Verwende verschiedene Kategorien und Status-Werte
+- Nutze Placeholder-Bilder: `https://via.placeholder.com/600x400/FARBE/ffffff?text=TITEL`
 
 **Schritt 2: HTML-Seite erstellen**
 
@@ -692,168 +653,59 @@ Erstelle `projekt-galerie.html`:
 </html>
 ```
 
-**Schritt 3: JavaScript erstellen**
+**Schritt 3: JavaScript implementieren**
 
-Erstelle `projekt-galerie.js`:
+Erstelle `projekt-galerie.js` und implementiere folgende Funktionen:
+
+**Erforderliche Funktionen:**
+
+1. **`ladeProjekte()`** - Beim Laden ausführen
+   - Lade `meine-projekte.json` mit `fetch()`
+   - Parse JSON mit `.json()`
+   - Rufe `zeigeProjekte()` auf
+
+2. **`zeigeProjekte(projekte)`** - Projekte anzeigen
+   - Durchlaufe das `projekte`-Array
+   - Erstelle HTML für jedes Projekt
+   - Füge es in `#projekt-grid` ein
+
+3. **`erstelleFilter()`** - Filter-Buttons generieren
+   - Sammle alle Kategorien aus den Projekten
+   - Erstelle Button für jede Kategorie
+   - Füge Event Listener hinzu
+
+**Hilfestellung:**
 
 ```javascript
-// =====================================================
-// PROJEKT-GALERIE MIT JSON-DATEN
-// =====================================================
+// Grundstruktur - Implementiere die fehlenden Teile!
 
 let alleProjekte = [];
-let aktiverFilter = 'alle';
 
-// Beim Laden: Daten laden
 document.addEventListener('DOMContentLoaded', async function() {
     await ladeProjekte();
 });
 
 async function ladeProjekte() {
     try {
-        console.log('Lade meine-projekte.json...');
-        
-        const response = await fetch('meine-projekte.json');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP-Fehler: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('Geladene Daten:', data);
-        
-        alleProjekte = data.projekte;
-        
-        // Header-Info aktualisieren
-        aktualisiereHeader(data.meta);
-        
-        // Filter erstellen
-        erstelleFilter(alleProjekte);
-        
-        // Projekte anzeigen
-        zeigeProjekte(alleProjekte);
-        
-        // Loading ausblenden
-        document.getElementById('loading').style.display = 'none';
-        
+        // TODO: Lade meine-projekte.json mit fetch()
+        // TODO: Parse die Response zu JSON
+        // TODO: Speichere Projekte in alleProjekte
+        // TODO: Rufe zeigeProjekte() auf
+
     } catch (error) {
-        console.error('Fehler beim Laden:', error);
-        document.getElementById('loading').innerHTML = `
-            <p style="color: #721c24;">
-                Fehler beim Laden der Projekt-Daten: ${error.message}
-            </p>
-        `;
+        console.error('Fehler:', error);
+        // TODO: Zeige Fehlermeldung an
     }
-}
-
-function aktualisiereHeader(meta) {
-    const headerDiv = document.getElementById('header-info');
-    headerDiv.innerHTML = `
-        ${alleProjekte.length} Projekte 
-        | Zuletzt aktualisiert: ${formatDatum(meta.letzteAktualisierung)}
-    `;
-}
-
-function erstelleFilter(projekte) {
-    // Alle Kategorien sammeln
-    const kategorien = new Set(['alle']);
-    projekte.forEach(p => kategorien.add(p.kategorie));
-    
-    const filterDiv = document.getElementById('filter-leiste');
-    filterDiv.innerHTML = '';
-    
-    kategorien.forEach(kat => {
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn';
-        btn.textContent = kat.charAt(0).toUpperCase() + kat.slice(1);
-        btn.onclick = () => filtereNach(kat);
-        
-        if (kat === 'alle') {
-            btn.classList.add('aktiv');
-        }
-        
-        filterDiv.appendChild(btn);
-    });
-}
-
-function filtereNach(kategorie) {
-    aktiverFilter = kategorie;
-    
-    // Filter-Buttons aktualisieren
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('aktiv');
-        if (btn.textContent.toLowerCase() === kategorie) {
-            btn.classList.add('aktiv');
-        }
-    });
-    
-    // Projekte filtern
-    const gefiltert = kategorie === 'alle' 
-        ? alleProjekte 
-        : alleProjekte.filter(p => p.kategorie === kategorie);
-    
-    zeigeProjekte(gefiltert);
 }
 
 function zeigeProjekte(projekte) {
     const grid = document.getElementById('projekt-grid');
     grid.innerHTML = '';
-    
+
     projekte.forEach(projekt => {
-        const karte = document.createElement('div');
-        karte.className = 'projekt-karte';
-        if (projekt.istFeatured) karte.classList.add('featured');
-        
-        // Status-Text
-        const statusText = {
-            'in-arbeit': 'In Arbeit',
-            'abgeschlossen': 'Abgeschlossen',
-            'geplant': 'Geplant'
-        }[projekt.status];
-        
-        // Technologie-Badges
-        const techBadges = projekt.technologien.map(tech => 
-            `<span class="tech-badge" style="background-color: ${tech.farbe}">
-                ${tech.name}
-            </span>`
-        ).join('');
-        
-        karte.innerHTML = `
-            ${projekt.istFeatured ? '<div class="projekt-inhalt"><span class="featured-badge">FEATURED</span></div>' : ''}
-            <img 
-                src="${projekt.bild.url}" 
-                alt="${projekt.bild.alt}"
-                class="projekt-bild"
-            >
-            <div class="projekt-inhalt">
-                <div class="projekt-header">
-                    <h3 class="projekt-titel">${projekt.titel}</h3>
-                    <span class="projekt-status status-${projekt.status}">
-                        ${statusText}
-                    </span>
-                </div>
-                
-                <p class="projekt-beschreibung">${projekt.kurzbeschreibung}</p>
-                
-                <div class="technologien">
-                    ${techBadges}
-                </div>
-                
-                <div class="fortschritt-bar">
-                    <div 
-                        class="fortschritt-fill" 
-                        style="width: ${projekt.fortschritt}%"
-                    ></div>
-                </div>
-                
-                <div class="projekt-meta">
-                    <span>Fortschritt: ${projekt.fortschritt}%</span>
-                    <span>${formatDatum(projekt.datum.start)}</span>
-                </div>
-            </div>
-        `;
-        
-        grid.appendChild(karte);
+        // TODO: Erstelle div mit class="projekt-karte"
+        // TODO: Fülle mit Projekt-Daten (Titel, Bild, Technologien, Status)
+        // TODO: Füge zu grid hinzu
     });
 }
 
@@ -865,6 +717,22 @@ function formatDatum(isoString) {
         day: 'numeric'
     });
 }
+```
+
+**Wo nachschlagen?**
+- [MDN: Fetch API](https://developer.mozilla.org/de/docs/Web/API/Fetch_API/Using_Fetch) - Wie lädt man Daten?
+- [MDN: Array.forEach()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) - Wie iteriert man über Arrays?
+- [MDN: Template Strings](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals) - Wie erstellt man dynamisches HTML?
+
+**Tipp für HTML-Generierung:**
+```javascript
+const html = `
+    <div class="projekt-karte">
+        <h3>${projekt.titel}</h3>
+        <p>${projekt.kurzbeschreibung}</p>
+    </div>
+`;
+grid.innerHTML += html;
 ```
 
 **Teste deine Galerie:**

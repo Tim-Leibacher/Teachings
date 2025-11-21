@@ -83,48 +83,16 @@ Erstelle eine Datei `fehler-analyse.md` und dokumentiere jeden Fehler:
 (Fahre mit allen weiteren Fehlern fort...)
 ```
 
-**Korrigierte Version zum Vergleich:**
+**Tipps zur Fehlersuche:**
+- Nutze [jsonlint.com](https://jsonlint.com) - es zeigt dir die **erste** Fehlerzeile an
+- Korrigiere **immer nur einen Fehler** und validiere erneut
+- VS Code zeigt JSON-Fehler mit roten Wellenlinien
+- Die Browser-Console zeigt bei `JSON.parse()` genau an, wo der Fehler ist
 
-Nachdem du alle Fehler selbst gefunden hast, vergleiche mit dieser korrekten Version:
-
-<details>
-<summary>Lösung anzeigen (erst nach deinem Versuch!)</summary>
-
-```json
-{
-  "name": "Sarah Müller",
-  "alter": 18,
-  "beruf": "Informatikerin EFZ",
-  "skills": ["HTML", "CSS", "JavaScript"],
-  "hobbies": ["Programmieren", "Fotografie"],
-  "adresse": {
-    "ort": "Bern",
-    "plz": 3000
-  },
-  "projekt": {
-    "titel": "Portfolio",
-    "status": "in Arbeit",
-    "fortschritt": 75
-  },
-  "email": null,
-  "telefon": null,
-  "istAktiv": true,
-  "notiz": "Das ist ein Test"
-}
-```
-
-**Fehler-Zusammenfassung:**
-1. Einfache Anführungszeichen → doppelte
-2. Trailing Comma nach "JavaScript"
-3. Schlüssel `hobbies` ohne Anführungszeichen
-4. Einfache Anführungszeichen in Array-Werten
-5. Trailing Comma nach `"plz": 3000`
-6. Fehlendes Komma nach `"status": "in Arbeit"`
-7. `undefined` ist ungültig → `null` verwenden
-8. Kommentar ist nicht erlaubt → entfernen
-9. Trailing Comma am Ende des Objekts
-
-</details>
+**Fragen zum Selbstlernen:**
+- Welche Anführungszeichen sind in JSON erlaubt? → [JSON.org](https://www.json.org/json-de.html)
+- Was ist ein "Trailing Comma"? → Google: "JSON trailing comma"
+- Was ist der Unterschied zwischen `undefined` und `null`? → [MDN: null vs undefined](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/null)
 
 ---
 
@@ -347,9 +315,11 @@ Erstelle eine Datei `json-validator.html`:
 
 ---
 
-### Teil 3: Systematisches JSON-Debugging (20 Min)
+### Teil 3: Systematisches JSON-Debugging (25 Min)
 
-Erstelle eine Datei **`portfolio-data.json`** mit komplexen Daten, die mehrere versteckte Fehler enthält:
+**Aufgabe:** Erstelle eine Datei **`portfolio-data.json`** und füge folgenden Code ein.
+
+**ACHTUNG:** Dieser Code enthält **mindestens 8 Fehler**! Finde und korrigiere sie alle.
 
 ```json
 {
@@ -392,6 +362,8 @@ Erstelle eine Datei **`portfolio-data.json`** mit komplexen Daten, die mehrere v
 }
 ```
 
+**Hinweis:** Nutze systematisches Vorgehen! Korrigiere einen Fehler nach dem anderen.
+
 **Debugging-Strategie:**
 
 1. **Erste Validierung**
@@ -433,25 +405,34 @@ Erstelle `debugging-log.md`:
 - **Gelernt:** ...
 ```
 
-3. **Kategorisiere Fehler nach Typ:**
+3. **Selbstreflexion nach dem Debugging:**
+
+Erstelle eine Datei `meine-fehleranalyse.md` und beantworte:
 
 ```markdown
-## Fehler-Kategorien
+# Meine JSON-Fehleranalyse
 
-### Syntax-Fehler
+## Welche Fehlertypen habe ich gefunden?
 - [ ] Einfache statt doppelte Anführungszeichen
 - [ ] Fehlende Anführungszeichen bei Schlüsseln
 - [ ] Trailing Commas
-
-### Struktur-Fehler
 - [ ] Fehlende Kommas zwischen Elementen
-- [ ] Falsche Klammer-Typen
-- [ ] Nicht geschlossene Klammern
-
-### Datentyp-Fehler
 - [ ] undefined statt null
-- [ ] Zahlen in Anführungszeichen (wenn Number erwartet)
+- [ ] Andere: ...
+
+## Welcher Fehler war am schwierigsten zu finden?
+...
+
+## Was habe ich gelernt?
+...
+
+## Wie kann ich solche Fehler in Zukunft vermeiden?
+...
 ```
+
+**Hilfreiche Ressourcen:**
+- [JSONLint](https://jsonlint.com) - Zeigt Fehlerzeile und -position
+- [Common JSON Errors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/JSON_bad_parse) - Häufige Fehlermeldungen erklärt
 
 ---
 

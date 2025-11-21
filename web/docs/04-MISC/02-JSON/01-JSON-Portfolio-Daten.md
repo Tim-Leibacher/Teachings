@@ -24,49 +24,48 @@ mein-portfolio/
 └── person.json    ← Neue Datei!
 ```
 
-**Inhalt von `person.json`:**
+**Struktur von `person.json`:**
+
+Erstelle eine JSON-Datei mit folgender Struktur. **Fülle sie mit deinen eigenen Daten:**
 
 ```json
 {
-  "vorname": "Sarah",
-  "nachname": "Müller",
-  "alter": 18,
-  "email": "sarah.mueller@example.com",
-  "telefon": "+41 79 123 45 67",
+  "vorname": "...",
+  "nachname": "...",
+  "alter": ...,
+  "email": "...",
+  "telefon": "...",
   "adresse": {
-    "strasse": "Bahnhofstrasse 1",
-    "plz": "3000",
-    "ort": "Bern",
-    "land": "Schweiz"
+    "strasse": "...",
+    "plz": "...",
+    "ort": "...",
+    "land": "..."
   },
-  "beruf": "Informatikerin EFZ Applikationsentwicklung",
-  "lehrjahr": 1,
-  "lehrbeginn": "2025-08-01",
-  "firma": "ABC Tech AG",
-  "hobbies": ["Programmieren", "Fotografie", "Wandern"],
+  "beruf": "...",
+  "lehrjahr": ...,
+  "lehrbeginn": "...",
+  "firma": "...",
+  "hobbies": ["...", "...", "..."],
   "sprachen": [
     {
-      "sprache": "Deutsch",
-      "niveau": "Muttersprache"
-    },
-    {
-      "sprache": "Englisch",
-      "niveau": "B2"
-    },
-    {
-      "sprache": "Französisch",
-      "niveau": "A2"
+      "sprache": "...",
+      "niveau": "..."
     }
   ],
   "portfolio": {
-    "website": "https://sarahmueller.dev",
-    "github": "https://github.com/sarahmueller",
-    "linkedin": "https://linkedin.com/in/sarah-mueller"
+    "website": "...",
+    "github": "...",
+    "linkedin": "..."
   },
-  "istAktiv": true,
-  "profilBild": null
+  "istAktiv": ...,
+  "profilBild": ...
 }
 ```
+
+**Wo findest du Hilfe zur JSON-Syntax?**
+- [JSON Datentypen auf MDN](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON)
+- [JSON.org - Syntax-Übersicht](https://www.json.org/json-de.html)
+- Schaue in die **JSON-Syntax-Regeln** weiter unten
 
 **Wichtige JSON-Regeln:**
 
@@ -76,10 +75,15 @@ mein-portfolio/
 4. **Eckige Klammern** für Arrays: `[ ]`
 5. **Kein Komma nach letztem Element** in Objekten/Arrays
 
-**Ersetze die Beispieldaten mit deinen eigenen:**
-- Füge deine persönlichen Informationen ein
-- Passe Hobbies, Sprachen und Portfolio-Links an
-- Behalte die Struktur bei (Datentypen nicht ändern!)
+**Deine Aufgabe:**
+1. Ersetze **alle `...`** mit deinen eigenen Daten
+2. Beachte die **Datentypen**:
+   - Text → in `"Anführungszeichen"`
+   - Zahlen → ohne Anführungszeichen: `18`
+   - Boolean → `true` oder `false` (ohne Anführungszeichen)
+   - null → `null` (ohne Anführungszeichen, für leere Werte)
+3. Füge **mindestens 3 Sprachen** hinzu
+4. Füge **mindestens 3 Hobbies** hinzu
 
 **Validiere deine JSON-Datei:**
 1. Öffne [jsonlint.com](https://jsonlint.com)
@@ -87,11 +91,16 @@ mein-portfolio/
 3. Klicke "Validate JSON"
 4. Korrigiere Fehler, falls vorhanden
 
+**Häufige Fragen?**
+- Welche Datentypen gibt es in JSON? → Siehe [JSON Datentypen](https://www.json.org/json-de.html)
+- Wie schreibt man Arrays? → Mit eckigen Klammern `["wert1", "wert2"]`
+- Wie schreibt man verschachtelte Objekte? → Mit geschweiften Klammern `{"key": "value"}`
+
 ---
 
-### Teil 2: Skills-Liste als JSON (15 Min)
+### Teil 2: Skills-Liste als JSON (20 Min)
 
-Erstelle eine neue Datei **`skills.json`**:
+Erstelle eine neue Datei **`skills.json`** mit folgender Struktur:
 
 ```json
 {
@@ -106,75 +115,38 @@ Erstelle eine neue Datei **`skills.json`**:
       "gelerntAm": "2025-09-01",
       "projekte": ["Portfolio-Website", "Kontaktformular"],
       "istHauptskill": true
-    },
-    {
-      "id": 2,
-      "name": "CSS",
-      "kategorie": "Frontend",
-      "level": 3,
-      "maxLevel": 5,
-      "beschreibung": "Flexbox, Grid, Responsive Design",
-      "gelerntAm": "2025-09-15",
-      "projekte": ["Portfolio-Website"],
-      "istHauptskill": true
-    },
-    {
-      "id": 3,
-      "name": "JavaScript",
-      "kategorie": "Frontend",
-      "level": 2,
-      "maxLevel": 5,
-      "beschreibung": "Basics, DOM-Manipulation, Events",
-      "gelerntAm": "2025-10-01",
-      "projekte": ["Portfolio-Website", "Rechner-App"],
-      "istHauptskill": true
-    },
-    {
-      "id": 4,
-      "name": "Git",
-      "kategorie": "Tools",
-      "level": 2,
-      "maxLevel": 5,
-      "beschreibung": "Versionskontrolle, Commits, Branches",
-      "gelerntAm": "2025-09-01",
-      "projekte": ["Alle Projekte"],
-      "istHauptskill": false
-    },
-    {
-      "id": 5,
-      "name": "VS Code",
-      "kategorie": "Tools",
-      "level": 3,
-      "maxLevel": 5,
-      "beschreibung": "Editor, Extensions, Debugging",
-      "gelerntAm": "2025-08-15",
-      "projekte": ["Alle Projekte"],
-      "istHauptskill": false
     }
   ],
   "statistik": {
-    "gesamtSkills": 5,
-    "hauptskills": 3,
-    "kategorien": ["Frontend", "Tools"],
-    "durchschnittLevel": 2.8,
-    "letzteAktualisierung": "2025-11-18"
+    "gesamtSkills": ...,
+    "hauptskills": ...,
+    "kategorien": [],
+    "durchschnittLevel": ...,
+    "letzteAktualisierung": "..."
   }
 }
 ```
 
 **Deine Aufgabe:**
-1. Füge mindestens **3 weitere Skills** hinzu (z.B. JSON, Debugging, Markdown, Photoshop)
-2. Passe die Level-Werte an deine Fähigkeiten an (1 = Anfänger, 5 = Experte)
-3. Aktualisiere die Statistik:
-   - `gesamtSkills`: Anzahl Skills im Array
-   - `hauptskills`: Anzahl mit `"istHauptskill": true`
-   - `durchschnittLevel`: Durchschnitt aller Level-Werte
+1. Füge **mindestens 7 weitere Skills** hinzu (z.B. CSS, JavaScript, JSON, Git, VS Code, etc.)
+2. Nutze verschiedene Kategorien: "Frontend", "Backend", "Tools", "Design"
+3. Passe die Level-Werte an deine Fähigkeiten an (1 = Anfänger, 5 = Experte)
+4. Berechne und fülle die Statistik:
+   - `gesamtSkills`: Wie viele Skills hast du insgesamt?
+   - `hauptskills`: Zähle Skills mit `"istHauptskill": true`
+   - `kategorien`: Liste alle verwendeten Kategorien auf
+   - `durchschnittLevel`: Berechne den Durchschnitt aller Level
    - `letzteAktualisierung`: Heutiges Datum (Format: YYYY-MM-DD)
 
-**Berechnung Durchschnitt:**
+**Hilfe zur Berechnung des Durchschnitts:**
 ```
-(4 + 3 + 2 + 2 + 3) / 5 = 2.8
+Durchschnitt = (Summe aller Level) ÷ (Anzahl Skills)
 ```
+Beispiel: Skills mit Level 4, 3, 2, 2, 3 → (4+3+2+2+3) ÷ 5 = 2.8
+
+**Wo nachschlagen?**
+- [Arrays in JSON](https://www.json.org/json-de.html) - Wie erstellt man Listen?
+- [MDN: Working with Objects](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Working_with_Objects)
 
 **Neue Konzepte:**
 - **Arrays von Objekten**: Jeder Skill ist ein Objekt in einem Array
@@ -183,9 +155,11 @@ Erstelle eine neue Datei **`skills.json`**:
 
 ---
 
-### Teil 3: Projekt-Liste als JSON (15 Min)
+### Teil 3: Projekt-Liste als JSON (20 Min)
 
-Erstelle eine neue Datei **`projekte.json`**:
+Erstelle eine neue Datei **`projekte.json`**.
+
+**Orientiere dich an dieser Beispielstruktur für EIN Projekt:**
 
 ```json
 {
@@ -193,9 +167,9 @@ Erstelle eine neue Datei **`projekte.json`**:
     {
       "id": 1,
       "titel": "Portfolio-Website",
-      "beschreibung": "Meine persönliche Portfolio-Seite mit Projekten, Skills und Kontaktformular",
+      "beschreibung": "Meine persönliche Portfolio-Seite",
       "kategorie": "Webentwicklung",
-      "technologien": ["HTML", "CSS", "JavaScript", "JSON"],
+      "technologien": ["HTML", "CSS", "JavaScript"],
       "status": "in Arbeit",
       "fortschritt": 75,
       "startDatum": "2025-09-01",
@@ -204,77 +178,55 @@ Erstelle eine neue Datei **`projekte.json`**:
       "zeitGeplant": 60,
       "schwierigkeitsgrad": "mittel",
       "prioritaet": "hoch",
-      "repository": "https://github.com/sarahmueller/portfolio",
+      "repository": "https://github.com/...",
       "liveUrl": null,
-      "screenshots": [],
-      "gelernteSkills": ["HTML", "CSS", "JavaScript", "Git"],
-      "herausforderungen": [
-        "Responsive Design für verschiedene Geräte",
-        "JavaScript DOM-Manipulation",
-        "JSON-Datenverwaltung"
-      ],
-      "naechsteSchritte": [
-        "Kontaktformular fertigstellen",
-        "Projekt-Galerie erweitern",
-        "SEO optimieren"
-      ],
+      "gelernteSkills": ["HTML", "CSS", "JavaScript"],
+      "herausforderungen": ["...", "..."],
+      "naechsteSchritte": ["...", "..."],
       "istSichtbar": true,
       "istAbgeschlossen": false
-    },
-    {
-      "id": 2,
-      "titel": "HTML Grundlagen",
-      "beschreibung": "Erste Schritte mit HTML: Struktur, Semantik, Formulare",
-      "kategorie": "Lernen",
-      "technologien": ["HTML"],
-      "status": "abgeschlossen",
-      "fortschritt": 100,
-      "startDatum": "2025-08-15",
-      "geplantesEnde": "2025-09-01",
-      "zeitInvestiert": 20,
-      "zeitGeplant": 20,
-      "schwierigkeitsgrad": "einfach",
-      "prioritaet": "mittel",
-      "repository": null,
-      "liveUrl": null,
-      "screenshots": [],
-      "gelernteSkills": ["HTML"],
-      "herausforderungen": [
-        "Semantische Tags verstehen",
-        "Formular-Validierung"
-      ],
-      "naechsteSchritte": [],
-      "istSichtbar": true,
-      "istAbgeschlossen": true
     }
   ],
   "statistik": {
-    "gesamtProjekte": 2,
-    "aktiv": 1,
-    "abgeschlossen": 1,
-    "geplant": 0,
-    "gesamtZeit": 65,
-    "durchschnittFortschritt": 87.5
+    "gesamtProjekte": ...,
+    "aktiv": ...,
+    "abgeschlossen": ...,
+    "geplant": ...,
+    "gesamtZeit": ...,
+    "durchschnittFortschritt": ...
   }
 }
 ```
 
 **Deine Aufgabe:**
-1. Füge mindestens **2 weitere Projekte** hinzu:
-   - Ein abgeschlossenes Projekt (z.B. "CSS Layouts lernen")
-   - Ein geplantes Projekt (z.B. "To-Do App", "Rechner-App", "Wetter-Dashboard")
-   
-2. Für geplante Projekte:
-   - `status`: "geplant"
-   - `fortschritt`: 0
-   - `zeitInvestiert`: 0
-   - `istAbgeschlossen`: false
-   - `startDatum`: Zukünftiges Datum
+1. Füge **mindestens 3 weitere Projekte** hinzu:
+   - Ein abgeschlossenes Projekt: `"status": "abgeschlossen"`, `"fortschritt": 100`, `"istAbgeschlossen": true`
+   - Ein aktives Projekt: `"status": "in Arbeit"`, `"fortschritt": 30-90`
+   - Ein geplantes Projekt: `"status": "geplant"`, `"fortschritt": 0`, `"zeitInvestiert": 0`
 
-3. Aktualisiere die Statistik:
-   - Zähle Projekte nach Status
-   - Berechne Gesamtzeit
-   - Berechne Durchschnittsfortschritt
+2. Beachte bei geplanten Projekten:
+   - Setze `startDatum` in die Zukunft
+   - Setze `zeitInvestiert: 0`
+   - Setze `naechsteSchritte` mit mindestens 2 Einträgen
+   - Setze `istAbgeschlossen: false`
+
+3. Fülle die Statistik aus (berechne selbst!):
+   - `gesamtProjekte`: Anzahl aller Projekte
+   - `aktiv`: Anzahl Projekte mit Status "in Arbeit"
+   - `abgeschlossen`: Anzahl Projekte mit Status "abgeschlossen"
+   - `geplant`: Anzahl Projekte mit Status "geplant"
+   - `gesamtZeit`: Summe aller `zeitInvestiert`-Werte
+   - `durchschnittFortschritt`: Durchschnitt aller `fortschritt`-Werte
+
+**Berechnungshilfe Durchschnittsfortschritt:**
+```
+(Projekt1.fortschritt + Projekt2.fortschritt + ...) ÷ Anzahl Projekte
+```
+
+**Wo nachschlagen?**
+- Welche Werte kann `status` haben? → Schaue in den Beispielen oben
+- Wie formatiert man Datumsangaben? → Format: `"YYYY-MM-DD"` (z.B. `"2025-11-18"`)
+- Was ist der Unterschied zwischen `null` und `[]`? → [JSON.org Datentypen](https://www.json.org/json-de.html)
 
 ---
 

@@ -143,9 +143,17 @@ Füge in `styles.css` hinzu:
 
 ---
 
-### Teil 3: JavaScript – Users laden und anzeigen (25 Min)
+### Teil 3: JavaScript – Users laden und anzeigen (30 Min)
 
-Erstelle `api-display.js`:
+**Aufgabe:** Erstelle `api-display.js` und implementiere die Logik zum Laden und Anzeigen von Users.
+
+**Anforderungen:**
+1. Button-Click lädt Users von der API
+2. Zeige während des Ladens einen Loading-Indikator
+3. Erstelle für jeden User eine Karte mit `erstelleUserKarte()`
+4. Fehlerbehandlung bei API-Fehlern
+
+**Grundgerüst:**
 
 ```javascript
 // =====================================================
@@ -154,88 +162,71 @@ Erstelle `api-display.js`:
 
 console.log("=== API DISPLAY ===");
 
-// Elemente holen
-const ladeButton = document.getElementById('lade-users');
-const loadingDiv = document.getElementById('loading');
-const userContainer = document.getElementById('user-container');
+// TODO: Hole die notwendigen Elemente aus dem DOM
+const ladeButton = document.getElementById('...');
+const loadingDiv = document.getElementById('...');
+const userContainer = document.getElementById('...');
 
-// Event-Listener für Button
+// TODO: Event-Listener für Button hinzufügen
 ladeButton.addEventListener('click', function() {
     console.log("Lade Users von API...");
-    
-    // Lade-Indikator anzeigen
-    loadingDiv.classList.remove('versteckt');
-    
-    // Container leeren (falls schon Daten geladen wurden)
-    userContainer.innerHTML = '';
-    
-    // Button deaktivieren während des Ladens
-    ladeButton.disabled = true;
-    ladeButton.textContent = 'Wird geladen...';
-    
-    // API-Anfrage senden
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => {
-            console.log("Status:", response.status);
-            return response.json();
-        })
+
+    // TODO: Loading-Indikator anzeigen
+    // Tipp: loadingDiv.classList.remove('versteckt')
+
+    // TODO: Container leeren
+    // Tipp: userContainer.innerHTML = ''
+
+    // TODO: Button während des Ladens deaktivieren
+    // Tipp: ladeButton.disabled = true
+
+    // TODO: API-Anfrage senden
+    fetch('...')  // URL: https://jsonplaceholder.typicode.com/users
+        .then(response => ...)
         .then(users => {
             console.log(`✅ ${users.length} Users geladen`);
-            
-            // Lade-Indikator verstecken
-            loadingDiv.classList.add('versteckt');
-            
-            // Button wieder aktivieren
-            ladeButton.disabled = false;
-            ladeButton.textContent = 'Users neu laden';
-            
-            // Jeden User als Karte anzeigen
-            users.forEach(user => {
-                erstelleUserKarte(user);
-            });
+
+            // TODO: Loading verstecken
+            // TODO: Button wieder aktivieren
+            // TODO: Für jeden User eine Karte erstellen
+            // Tipp: users.forEach(user => erstelleUserKarte(user))
         })
         .catch(error => {
-            console.error("❌ Fehler:", error);
-            
-            // Lade-Indikator verstecken
-            loadingDiv.classList.add('versteckt');
-            
-            // Button wieder aktivieren
-            ladeButton.disabled = false;
-            ladeButton.textContent = 'Erneut versuchen';
-            
-            // Fehlermeldung anzeigen
-            userContainer.innerHTML = '<p style="color: red;">Fehler beim Laden der Daten. Bitte versuche es erneut.</p>';
+            // TODO: Fehlerbehandlung
+            // - Loading verstecken
+            // - Button aktivieren
+            // - Fehlermeldung im userContainer anzeigen
         });
 });
 
 // === FUNKTION: USER-KARTE ERSTELLEN ===
 
 function erstelleUserKarte(user) {
-    // Karte erstellen
-    const karte = document.createElement('div');
-    karte.className = 'user-karte';
-    
-    // Karten-Inhalt
+    // TODO: Erstelle ein div-Element
+    const karte = document.createElement('...');
+    karte.className = '...';
+
+    // TODO: Fülle die Karte mit User-Daten
+    // Nutze Template Literals und innerHTML
     karte.innerHTML = `
-        <h3>${user.name}</h3>
+        <h3>${...}</h3>
         <div class="user-info">
-            <p><strong>Username:</strong> ${user.username}</p>
-            <p><strong>Email:</strong> <a href="mailto:${user.email}" class="user-email">${user.email}</a></p>
-            <p><strong>Telefon:</strong> ${user.phone}</p>
-            <p><strong>Website:</strong> <a href="http://${user.website}" target="_blank">${user.website}</a></p>
-            <p><strong>Stadt:</strong> ${user.address.city}</p>
-        </div>
-        <div class="user-firma">
-            <strong>Firma:</strong> ${user.company.name}<br>
-            <em>${user.company.catchPhrase}</em>
+            <p><strong>Username:</strong> ${...}</p>
+            <p><strong>Email:</strong> ${...}</p>
+            <p><strong>Stadt:</strong> ${...}</p>
         </div>
     `;
-    
-    // Karte zum Container hinzufügen
-    userContainer.appendChild(karte);
+
+    // TODO: Füge die Karte zum Container hinzu
+    userContainer.appendChild(...);
 }
 ```
+
+**Wo nachschlagen?**
+- [MDN: createElement()](https://developer.mozilla.org/de/docs/Web/API/Document/createElement)
+- [MDN: innerHTML](https://developer.mozilla.org/de/docs/Web/API/Element/innerHTML)
+- [MDN: classList](https://developer.mozilla.org/de/docs/Web/API/Element/classList)
+- [MDN: Template Literals](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals)
 
 **Binde die Datei ein:**
 
@@ -245,9 +236,11 @@ function erstelleUserKarte(user) {
 
 ---
 
-### Teil 4: Post-Liste mit Details anzeigen (25 Min)
+### Teil 4: Post-Liste mit Details anzeigen (30 Min)
 
-Erweitere dein HTML um eine Post-Liste:
+**Aufgabe:** Erweitere deine Seite um eine Post-Liste, die Kommentare nachladen kann.
+
+**Schritt 1:** Erweitere dein HTML um eine Post-Liste:
 
 ```html
 <section id="posts-demo">
@@ -358,115 +351,72 @@ Erweitere dein HTML um eine Post-Liste:
 }
 ```
 
-**JavaScript für Posts erweitern:**
+**Schritt 2: JavaScript implementieren**
+
+**Anforderungen:**
+1. Lade die ersten 10 Posts: `https://jsonplaceholder.typicode.com/posts?_limit=10`
+2. Erstelle für jeden Post eine Karte mit `erstellePostKarte()`
+3. Implementiere `ladeKommentare()` zum Nachladen von Kommentaren
+4. Kommentare-Button soll zwischen "Anzeigen" und "Verbergen" togglen
+
+**Grundgerüst:**
 
 ```javascript
 // === POSTS LADEN UND ANZEIGEN ===
 
-const ladePostsButton = document.getElementById('lade-posts');
-const postContainer = document.getElementById('post-container');
+const ladePostsButton = document.getElementById('...');
+const postContainer = document.getElementById('...');
 
 ladePostsButton.addEventListener('click', function() {
-    console.log("Lade Posts...");
-    
-    postContainer.innerHTML = '<p style="color: #6c757d;">Lade Posts...</p>';
-    
-    ladePostsButton.disabled = true;
-    ladePostsButton.textContent = 'Wird geladen...';
-    
-    // Nur die ersten 10 Posts laden
-    fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
-        .then(response => response.json())
+    // TODO: Lade die ersten 10 Posts
+    // URL: https://jsonplaceholder.typicode.com/posts?_limit=10
+
+    // TODO: Zeige Loading-Nachricht
+    // TODO: Deaktiviere Button
+
+    fetch('...')
+        .then(...)
         .then(posts => {
-            console.log(`✅ ${posts.length} Posts geladen`);
-            
-            postContainer.innerHTML = '';
-            
-            ladePostsButton.disabled = false;
-            ladePostsButton.textContent = 'Posts neu laden';
-            
-            posts.forEach(post => {
-                erstellePostKarte(post);
-            });
+            // TODO: Leere Container
+            // TODO: Für jeden Post eine Karte erstellen
+            // TODO: Button wieder aktivieren
         })
         .catch(error => {
-            console.error("❌ Fehler:", error);
-            postContainer.innerHTML = '<p style="color: red;">Fehler beim Laden der Posts.</p>';
-            ladePostsButton.disabled = false;
+            // TODO: Fehlerbehandlung
         });
 });
 
 // === FUNKTION: POST-KARTE ERSTELLEN ===
 
 function erstellePostKarte(post) {
-    const karte = document.createElement('div');
-    karte.className = 'post-karte';
-    
-    karte.innerHTML = `
-        <h3>${post.title}</h3>
-        <p class="post-meta">Post ID: ${post.id} | User ID: ${post.userId}</p>
-        <p class="post-body">${post.body}</p>
-        <div class="post-details">
-            <button onclick="ladeKommentare(${post.id}, this)">Kommentare anzeigen</button>
-            <div class="kommentare versteckt" id="kommentare-${post.id}"></div>
-        </div>
-    `;
-    
-    postContainer.appendChild(karte);
+    // TODO: Erstelle Post-Karte mit Titel, Body und Button
+    // Button soll ladeKommentare() aufrufen mit Post-ID
+    // Tipp: onclick="ladeKommentare(${post.id}, this)"
 }
 
 // === FUNKTION: KOMMENTARE LADEN ===
 
 function ladeKommentare(postId, button) {
-    console.log(`Lade Kommentare für Post ${postId}...`);
-    
+    // TODO: Hole das Kommentare-Div
     const kommentareDiv = document.getElementById(`kommentare-${postId}`);
-    
-    // Toggle: Wenn bereits geladen, ein-/ausblenden
+
+    // TODO: Toggle - wenn sichtbar, verstecke es
     if (!kommentareDiv.classList.contains('versteckt')) {
-        kommentareDiv.classList.add('versteckt');
-        button.textContent = 'Kommentare anzeigen';
+        // ... verstecken und Button-Text ändern
         return;
     }
-    
-    // Button-Text ändern
-    button.textContent = 'Lädt...';
-    button.disabled = true;
-    
-    // Kommentare von API laden
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-        .then(response => response.json())
-        .then(kommentare => {
-            console.log(`✅ ${kommentare.length} Kommentare geladen`);
-            
-            kommentareDiv.innerHTML = `<h4>Kommentare (${kommentare.length}):</h4>`;
-            
-            kommentare.forEach(kommentar => {
-                const kommentarDiv = document.createElement('div');
-                kommentarDiv.className = 'kommentar';
-                
-                kommentarDiv.innerHTML = `
-                    <div class="kommentar-autor">${kommentar.name}</div>
-                    <div class="kommentar-email">${kommentar.email}</div>
-                    <div class="kommentar-text">${kommentar.body}</div>
-                `;
-                
-                kommentareDiv.appendChild(kommentarDiv);
-            });
-            
-            kommentareDiv.classList.remove('versteckt');
-            
-            button.textContent = 'Kommentare verbergen';
-            button.disabled = false;
-        })
-        .catch(error => {
-            console.error("❌ Fehler:", error);
-            kommentareDiv.innerHTML = '<p style="color: red;">Fehler beim Laden der Kommentare.</p>';
-            button.textContent = 'Erneut versuchen';
-            button.disabled = false;
-        });
+
+    // TODO: Lade Kommentare von API
+    // URL: https://jsonplaceholder.typicode.com/posts/${postId}/comments
+
+    // TODO: Erstelle für jeden Kommentar ein div
+    // Zeige: Name, Email, Text
 }
 ```
+
+**Wo nachschlagen?**
+- [Query-Parameter in URLs](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
+- [onclick Event-Handler](https://developer.mozilla.org/de/docs/Web/API/GlobalEventHandlers/onclick)
 
 ---
 

@@ -12,15 +12,16 @@ Wir nutzen die **JSONPlaceholder API** – eine kostenlose Test-API mit Posts, U
 
 ---
 
-### Teil 1: Erste API-Anfrage mit fetch() (15 Min)
+### Teil 1: Erste API-Anfrage mit fetch() (20 Min)
 
-Erstelle eine neue Datei **`api-basics.js`** und binde sie ein:
+**API-Endpunkt:** JSONPlaceholder bietet eine kostenlose Test-API:
+- Einzelner Post: `https://jsonplaceholder.typicode.com/posts/1`
+- Alle Posts: `https://jsonplaceholder.typicode.com/posts`
+- [API-Dokumentation](https://jsonplaceholder.typicode.com/)
 
-```html
-<script src="api-basics.js"></script>
-```
+**Aufgabe:** Erstelle eine Datei **`api-basics.js`** und implementiere einen API-Call.
 
-**In `api-basics.js`:**
+**Grundgerüst:**
 
 ```javascript
 // =====================================================
@@ -29,32 +30,38 @@ Erstelle eine neue Datei **`api-basics.js`** und binde sie ein:
 
 console.log("=== API BASICS ===");
 
-// === EINEN EINZELNEN POST ABRUFEN ===
+// === AUFGABE 1: EINZELNEN POST ABRUFEN ===
 
 console.log("\n1. Einzelnen Post laden...");
 
-// fetch() sendet eine HTTP-Anfrage an die API
-fetch('https://jsonplaceholder.typicode.com/posts/1')
+// TODO: Verwende fetch() um Post mit ID 1 zu laden
+// URL: 'https://jsonplaceholder.typicode.com/posts/1'
+
+fetch('...')
   .then(response => {
-    // response ist die Antwort vom Server
-    console.log("Status-Code:", response.status);
-    console.log("Status OK:", response.ok);
-    
-    // JSON-Daten aus der Response extrahieren
-    return response.json();
+    // TODO: Logge den Status-Code
+    console.log("Status-Code:", ...);
+
+    // TODO: Wandle Response zu JSON um (return response.json())
+    return ...;
   })
   .then(data => {
-    // data enthält jetzt die JSON-Daten
-    console.log("\nPost-Daten:");
-    console.log("ID:", data.id);
-    console.log("Titel:", data.title);
-    console.log("Text:", data.body);
-    console.log("User-ID:", data.userId);
+    // TODO: Gib die Post-Daten in der Konsole aus
+    // Zeige: ID, Titel, Text, User-ID
+    console.log("Post-Daten:");
+    console.log("ID:", ...);
+    console.log("Titel:", ...);
+    // ... weitere Felder
   })
   .catch(error => {
-    // Falls ein Fehler auftritt
-    console.error("❌ Fehler:", error);
+    // TODO: Fehlerbehandlung
+    console.error("❌ Fehler:", ...);
   });
+```
+
+**Binde die Datei in dein HTML ein:**
+```html
+<script src="api-basics.js"></script>
 ```
 
 **Was passiert hier?**
@@ -83,104 +90,102 @@ User-ID: 1
 
 ---
 
-### Teil 2: Liste von Posts abrufen (15 Min)
+### Teil 2: Liste von Posts abrufen (20 Min)
 
-Erweitere `api-basics.js`:
+**Aufgabe:** Erweitere `api-basics.js` um eine Funktion, die ALLE Posts lädt.
+
+**Anforderungen:**
+1. Lade alle Posts von `https://jsonplaceholder.typicode.com/posts`
+2. Logge die Anzahl der geladenen Posts
+3. Zeige die ersten 5 Posts mit Titel und User-ID an
+4. Nutze eine Schleife (`for` oder `.forEach()`)
+
+**Grundgerüst:**
 
 ```javascript
-// === LISTE VON POSTS ABRUFEN ===
+// === AUFGABE 2: LISTE VON POSTS ABRUFEN ===
 
 console.log("\n2. Liste von Posts laden...");
 
-fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(response => response.json())
+fetch('...')  // TODO: URL einfügen
+  .then(response => ...)  // TODO: Zu JSON umwandeln
   .then(posts => {
-    // posts ist ein Array mit allen Posts
-    console.log("Anzahl Posts:", posts.length);
-    
+    // TODO: Logge die Anzahl der Posts
+    console.log("Anzahl Posts:", ...);
+
     console.log("\nErste 5 Posts:");
-    
-    // Schleife durch die ersten 5 Posts
-    for (let i = 0; i < 5; i++) {
-      const post = posts[i];
-      console.log(`\nPost ${post.id}:`);
-      console.log(`Titel: ${post.title}`);
-      console.log(`User-ID: ${post.userId}`);
-    }
+
+    // TODO: Schleife durch die ersten 5 Posts
+    // Tipp: for (let i = 0; i < 5; i++) { ... }
+    // Oder: posts.slice(0, 5).forEach(post => { ... })
+
   })
   .catch(error => {
-    console.error("❌ Fehler:", error);
+    console.error("❌ Fehler:", ...);
   });
 ```
 
-**Output:**
-
-```
-2. Liste von Posts laden...
-Anzahl Posts: 100
-
-Erste 5 Posts:
-
-Post 1:
-Titel: sunt aut facere repellat provident occaecati excepturi optio reprehenderit
-User-ID: 1
-
-Post 2:
-Titel: qui est esse
-User-ID: 1
-
-Post 3:
-Titel: ea molestias quasi exercitationem repellat provident
-User-ID: 1
-
-...
-```
+**Wo nachschlagen?**
+- [MDN: fetch() API](https://developer.mozilla.org/de/docs/Web/API/Fetch_API)
+- [MDN: Array.forEach()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [JSONPlaceholder Guide](https://jsonplaceholder.typicode.com/guide/)
 
 ---
 
-### Teil 3: User-Daten abrufen und kombinieren (20 Min)
+### Teil 3: User-Daten abrufen und kombinieren (25 Min)
 
-Jetzt kombinieren wir Posts mit User-Informationen:
+**Aufgabe:** Lade User-Daten und deren Posts in **verketteten Requests**.
+
+**Anforderungen:**
+1. Lade User mit ID 1: `https://jsonplaceholder.typicode.com/users/1`
+2. Zeige Name, Email, Stadt und Firma an
+3. Lade dann alle Posts dieses Users: `https://jsonplaceholder.typicode.com/posts?userId=1`
+4. Zeige die Anzahl und die ersten 3 Post-Titel an
+
+**Grundgerüst:**
 
 ```javascript
-// === USER-DATEN ABRUFEN ===
+// === AUFGABE 3: USER-DATEN UND POSTS KOMBINIEREN ===
 
 console.log("\n3. User-Daten laden...");
 
-// Zuerst User laden
-fetch('https://jsonplaceholder.typicode.com/users/1')
-  .then(response => response.json())
+// TODO: Lade User mit ID 1
+fetch('...')
+  .then(response => ...)
   .then(user => {
+    // TODO: Zeige User-Informationen an
     console.log("\nUser-Informationen:");
-    console.log("Name:", user.name);
-    console.log("Username:", user.username);
-    console.log("Email:", user.email);
-    console.log("Stadt:", user.address.city);
-    console.log("Firma:", user.company.name);
-    
-    // Jetzt Posts von diesem User laden
-    return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+    console.log("Name:", ...);
+    console.log("Email:", ...);
+    console.log("Stadt:", ...);  // Tipp: user.address.city
+    console.log("Firma:", ...);  // Tipp: user.company.name
+
+    // TODO: Lade Posts von diesem User
+    // Tipp: return fetch(`...?userId=${user.id}`)
+    return ...;
   })
-  .then(response => response.json())
+  .then(response => ...)
   .then(userPosts => {
-    console.log("\nAnzahl Posts von diesem User:", userPosts.length);
-    
+    // TODO: Zeige Anzahl Posts an
+    console.log("\nAnzahl Posts:", ...);
+
+    // TODO: Zeige erste 3 Post-Titel an
     console.log("\nErste 3 Posts:");
-    userPosts.slice(0, 3).forEach(post => {
-      console.log(`- ${post.title}`);
-    });
+    // Tipp: userPosts.slice(0, 3).forEach(...)
   })
   .catch(error => {
-    console.error("❌ Fehler:", error);
+    console.error("❌ Fehler:", ...);
   });
 ```
 
 **Neue Konzepte:**
+- **Verkettete Requests:** Erst User laden, dann Posts basierend auf User-ID
+- **Query-Parameter:** `?userId=1` filtert die API-Ergebnisse
+- **Verschachtelte Objekte:** `user.address.city` oder `user.company.name`
 
-- **Verkettete Requests:** Erst User laden, dann dessen Posts
-- **Query-Parameter:** `?userId=1` filtert Posts nach User
-- `.slice(0, 3)` nimmt die ersten 3 Elemente aus dem Array
-- `.forEach()` durchläuft alle Elemente
+**Wo nachschlagen?**
+- [MDN: Promise Chaining](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises#chaining)
+- [Array.slice()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
 
 **Output:**
 
@@ -204,33 +209,42 @@ Erste 3 Posts:
 
 ---
 
-### Teil 4: Fehlerbehandlung verstehen (10 Min)
+### Teil 4: Fehlerbehandlung verstehen (15 Min)
 
-Füge Fehlerbehandlung hinzu:
+**Aufgabe:** Implementiere robuste Fehlerbehandlung für API-Calls.
+
+**Anforderungen:**
+1. Teste mit einer **ungültigen** Post-ID: `posts/999999`
+2. Prüfe den Status-Code
+3. Wenn Status nicht OK (200-299), werfe einen Fehler
+4. Fange den Fehler mit `.catch()` ab
+
+**Grundgerüst:**
 
 ```javascript
-// === FEHLERBEHANDLUNG ===
+// === AUFGABE 4: FEHLERBEHANDLUNG ===
 
 console.log("\n4. Fehlerbehandlung testen...");
 
-// Absichtlich falscher Endpunkt
-fetch('https://jsonplaceholder.typicode.com/posts/999999')
+// TODO: Versuche eine ungültige Post-ID zu laden
+fetch('...')  // /posts/999999
   .then(response => {
-    console.log("Status:", response.status);
-    
-    // Prüfen ob Request erfolgreich war
-    if (!response.ok) {
-      throw new Error(`HTTP-Fehler: ${response.status}`);
+    // TODO: Logge den Status-Code
+    console.log("Status:", ...);
+
+    // TODO: Prüfe ob Request erfolgreich war (!response.ok)
+    if (...) {
+      // TODO: Werfe einen Fehler mit throw new Error(...)
     }
-    
+
     return response.json();
   })
   .then(data => {
     console.log("Daten:", data);
   })
   .catch(error => {
-    console.error("❌ Fehler aufgetreten:", error.message);
-    console.log("Tipp: Prüfe die URL und versuche es erneut.");
+    // TODO: Fange den Fehler ab und zeige hilfreiche Meldung
+    console.error("❌ Fehler:", ...);
   });
 ```
 

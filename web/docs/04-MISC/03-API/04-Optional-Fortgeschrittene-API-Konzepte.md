@@ -12,7 +12,9 @@ Dieser Auftrag ist anspruchsvoller und zeigt dir, wie echte Web-Apps gebaut werd
 
 ---
 
-### Teil 1: async/await statt .then() (20 Min)
+### Teil 1: async/await statt .then() (25 Min)
+
+**Aufgabe:** Konvertiere deine bisherigen fetch()-Calls zu async/await.
 
 **Vergleich: .then() vs. async/await**
 
@@ -52,7 +54,15 @@ async function ladePosts() {
 
 ---
 
-Erstelle `api-advanced.js`:
+**Deine Aufgabe:** Erstelle `api-advanced.js` und implementiere async/await.
+
+**Anforderungen:**
+1. Erstelle `async function ladePostAsync(postId)`
+2. Nutze `await` statt `.then()`
+3. Nutze `try-catch` statt `.catch()`
+4. Prüfe `response.ok` und werfe Fehler bei Problemen
+
+**Grundgerüst:**
 
 ```javascript
 // =====================================================
@@ -63,103 +73,90 @@ console.log("=== API ADVANCED ===");
 
 // === ASYNC/AWAIT BASICS ===
 
+// TODO: Erstelle async function
 async function ladePostAsync(postId) {
     console.log(`Lade Post ${postId} mit async/await...`);
-    
+
     try {
-        // await pausiert die Funktion, bis fetch() fertig ist
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-        
-        // Prüfen ob Request erfolgreich war
-        if (!response.ok) {
+        // TODO: Nutze await statt .then()
+        const response = await fetch(`.../${postId}`);
+
+        // TODO: Prüfe response.ok
+        if (...) {
             throw new Error(`HTTP-Fehler: ${response.status}`);
         }
-        
-        const post = await response.json();
-        
+
+        // TODO: Parse JSON mit await
+        const post = await ...;
+
         console.log("✅ Post geladen:", post.title);
         return post;
-        
+
     } catch (error) {
+        // TODO: Fehlerbehandlung
         console.error("❌ Fehler:", error.message);
-        throw error;  // Fehler weitergeben
+        throw error;
     }
 }
 
-// === MEHRERE REQUESTS NACHEINANDER ===
+// TODO: Rufe die Funktion auf
+ladePostAsync(1);
+```
+
+**Wo nachschlagen?**
+- [MDN: async function](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/async_function)
+- [MDN: await](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/await)
+- [JavaScript.info: Async/await](https://javascript.info/async-await)
+
+// === AUFGABE: MEHRERE REQUESTS NACHEINANDER ===
 
 async function ladePostMitUser() {
     console.log("\n=== Post mit User-Info laden ===");
-    
-    try {
-        // 1. Post laden
-        const postResponse = await fetch('https://jsonplaceholder.typicode.com/posts/1');
-        const post = await postResponse.json();
-        console.log("Post:", post.title);
-        
-        // 2. User des Posts laden
-        const userResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`);
-        const user = await userResponse.json();
-        console.log("Autor:", user.name);
-        
-        // 3. Kommentare des Posts laden
-        const commentsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`);
-        const comments = await commentsResponse.json();
-        console.log("Kommentare:", comments.length);
-        
-        return { post, user, comments };
-        
-    } catch (error) {
-        console.error("❌ Fehler beim Laden:", error.message);
-    }
-}
 
-// === MEHRERE REQUESTS PARALLEL (schneller!) ===
-
-async function ladePostsMitUsersParallel() {
-    console.log("\n=== Parallele Requests ===");
-    
     try {
-        // Alle Requests gleichzeitig starten
-        const postsPromise = fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
-        const usersPromise = fetch('https://jsonplaceholder.typicode.com/users');
-        
-        // Warten bis ALLE fertig sind
-        const [postsResponse, usersResponse] = await Promise.all([
-            postsPromise,
-            usersPromise
-        ]);
-        
-        const posts = await postsResponse.json();
-        const users = await usersResponse.json();
-        
-        console.log("✅ Posts geladen:", posts.length);
-        console.log("✅ Users geladen:", users.length);
-        
-        // Posts mit User-Namen anreichern
-        const postsWithAuthors = posts.map(post => {
-            const author = users.find(user => user.id === post.userId);
-            return {
-                ...post,
-                authorName: author ? author.name : 'Unbekannt'
-            };
-        });
-        
-        console.log("\nErste 3 Posts mit Autor:");
-        postsWithAuthors.slice(0, 3).forEach(post => {
-            console.log(`- "${post.title}" von ${post.authorName}`);
-        });
-        
+        // TODO: 1. Lade Post mit ID 1
+
+        // TODO: 2. Lade User basierend auf post.userId
+
+        // TODO: 3. Lade Kommentare basierend auf post.id
+
+        // TODO: Gib Objekt mit { post, user, comments } zurück
+
     } catch (error) {
         console.error("❌ Fehler:", error.message);
     }
 }
 
-// Funktionen aufrufen
-ladePostAsync(1);
-setTimeout(() => ladePostMitUser(), 1000);
-setTimeout(() => ladePostsMitUsersParallel(), 2000);
+// TODO: Rufe Funktion auf
+
+// === AUFGABE: PARALLELE REQUESTS (BONUS) ===
+
+async function ladePostsMitUsersParallel() {
+    console.log("\n=== Parallele Requests ===");
+
+    try {
+        // TODO: Starte beide Requests gleichzeitig (OHNE await!)
+        const postsPromise = fetch('...');
+        const usersPromise = fetch('...');
+
+        // TODO: Warte mit Promise.all() bis BEIDE fertig sind
+        const [postsResponse, usersResponse] = await Promise.all([...]);
+
+        // TODO: Parse beide Responses zu JSON
+
+        // TODO: Reichere Posts mit Autor-Namen an
+        // Tipp: posts.map() + users.find()
+
+    } catch (error) {
+        console.error("❌ Fehler:", error.message);
+    }
+}
 ```
+
+**Wo nachschlagen?**
+- [MDN: Promise.all()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+- [Array.map()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- [Array.find()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
 
 **Neue Konzepte:**
 
@@ -171,9 +168,9 @@ setTimeout(() => ladePostsMitUsersParallel(), 2000);
 
 ---
 
-### Teil 2: Robustes Error Handling (20 Min)
+### Teil 2: Robustes Error Handling (25 Min)
 
-Erweitere `api-advanced.js`:
+**Aufgabe:** Implementiere professionelles Error Handling mit spezifischen Fehlermeldungen.
 
 ```javascript
 // === ROBUSTES ERROR HANDLING ===

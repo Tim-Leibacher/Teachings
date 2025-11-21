@@ -15,93 +15,47 @@ In diesem Vertiefungsauftrag baust du ein vollständiges Konfigurationssystem: M
 
 ---
 
-### Teil 1: Portfolio-Konfiguration (25 Min)
+### Teil 1: Portfolio-Konfiguration erstellen (30 Min)
 
-Erstelle eine zentrale Konfigurationsdatei **`config.json`**:
+**Aufgabe:** Erstelle eine zentrale Konfigurationsdatei für dein Portfolio.
+
+**Schritt 1:** Erstelle **`config.json`** mit folgender Grundstruktur:
 
 ```json
 {
   "$schema": "./config-schema.json",
   "version": "1.0.0",
-  "lastUpdated": "2025-11-18T10:30:00Z",
+  "lastUpdated": "...",
   "portfolio": {
     "owner": {
-      "name": "Sarah Müller",
-      "role": "Informatikerin EFZ Applikationsentwicklung",
-      "email": "sarah.mueller@example.com",
-      "location": "Bern, Schweiz",
-      "tagline": "Leidenschaftliche Entwicklerin mit Fokus auf moderne Webtechnologien",
+      "name": "...",
+      "role": "...",
+      "email": "...",
+      "location": "...",
+      "tagline": "...",
       "social": {
-        "github": "https://github.com/sarahmueller",
-        "linkedin": "https://linkedin.com/in/sarah-mueller",
-        "twitter": null,
-        "website": "https://sarahmueller.dev"
+        "github": "...",
+        "linkedin": "...",
+        "website": "..."
       }
     },
     "seo": {
-      "title": "Sarah Müller - Portfolio",
-      "description": "Portfolio einer Informatikerin EFZ Applikationsentwicklung aus Bern",
-      "keywords": ["Webentwicklung", "HTML", "CSS", "JavaScript", "Portfolio"],
-      "ogImage": "https://sarahmueller.dev/og-image.jpg",
-      "twitterCard": "summary_large_image"
+      "title": "...",
+      "description": "...",
+      "keywords": ["..."]
     },
     "features": {
       "darkMode": true,
-      "languageSwitcher": true,
+      "languageSwitcher": false,
       "contactForm": true,
-      "blog": false,
-      "analytics": false,
-      "cookieConsent": false
+      "blog": false
     },
     "navigation": [
       {
         "id": "home",
-        "label": {
-          "de": "Home",
-          "en": "Home"
-        },
+        "label": {"de": "Home", "en": "Home"},
         "url": "#home",
         "icon": "🏠",
-        "isActive": true
-      },
-      {
-        "id": "about",
-        "label": {
-          "de": "Über mich",
-          "en": "About"
-        },
-        "url": "#about",
-        "icon": "👤",
-        "isActive": true
-      },
-      {
-        "id": "projekte",
-        "label": {
-          "de": "Projekte",
-          "en": "Projects"
-        },
-        "url": "#projekte",
-        "icon": "💼",
-        "isActive": true
-      },
-      {
-        "id": "skills",
-        "label": {
-          "de": "Skills",
-          "en": "Skills"
-        },
-        "url": "#skills",
-        "icon": "🎯",
-        "isActive": true
-      },
-      {
-        "id": "kontakt",
-        "label": {
-          "de": "Kontakt",
-          "en": "Contact"
-        },
-        "url": "#kontakt",
-        "icon": "📧",
         "isActive": true
       }
     ],
@@ -139,26 +93,20 @@ Erstelle eine zentrale Konfigurationsdatei **`config.json`**:
         "border": "#FFFFFF"
       }
     },
-    "api": {
-      "github": {
-        "username": "sarahmueller",
-        "baseUrl": "https://api.github.com",
-        "cacheTimeout": 3600
-      }
-    },
-    "content": {
-      "aboutText": {
-        "de": "Ich bin Informatikerin EFZ in Ausbildung mit Leidenschaft für Webentwicklung. Aktuell im 1. Lehrjahr bei ABC Tech AG.",
-        "en": "I'm an apprentice software developer with a passion for web development. Currently in my first year at ABC Tech AG."
-      },
-      "contactText": {
-        "de": "Interesse an einer Zusammenarbeit? Kontaktiere mich gerne!",
-        "en": "Interested in working together? Feel free to reach out!"
-      }
-    }
   }
 }
 ```
+
+**Deine Aufgabe:**
+1. Fülle alle `...` mit deinen eigenen Daten
+2. Füge **mindestens 4 Navigation-Einträge** hinzu (About, Projekte, Skills, Kontakt)
+3. Aktiviere oder deaktiviere Features nach Bedarf
+4. Passe die Theme-Farben an (optional)
+
+**Wo nachschlagen?**
+- Wie formatiert man ISO-Datumsangaben? → Format: `"2025-11-18T10:30:00Z"`
+- Was sind gültige Hex-Farbcodes? → Format: `"#RRGGBB"` (z.B. `"#005A9C"`)
+- [JSON Schema Dokumentation](https://json-schema.org/understanding-json-schema/reference/string.html#format)
 
 **Erstelle jetzt die HTML-Seite `config-demo.html`:**
 
@@ -413,225 +361,72 @@ Erstelle eine zentrale Konfigurationsdatei **`config.json`**:
 </html>
 ```
 
-**Erstelle `config-system.js`:**
+**Schritt 2:** Erstelle `config-system.js` und implementiere die Funktionen:
+
+**Erforderliche Funktionen:**
+
+1. **`ladeKonfiguration()`**
+   - Lade `config.json` mit `fetch()`
+   - Validiere die Konfiguration
+   - Initialisiere die UI
+
+2. **`changeTheme(themeName)`**
+   - Hole Theme-Farben aus Config
+   - Setze CSS Custom Properties mit `document.documentElement.style.setProperty()`
+   - Speichere Theme in LocalStorage
+
+3. **`generiereNavigation()`**
+   - Durchlaufe `config.portfolio.navigation`
+   - Erstelle `<a>`-Tags für jeden Eintrag
+   - Nutze die richtige Sprache für Labels
+
+**Grundgerüst:**
 
 ```javascript
-// =====================================================
-// JSON-KONFIGURATIONSSYSTEM
-// =====================================================
-
 let config = null;
 let currentTheme = 'light';
 let currentLanguage = 'de';
 
-// Beim Laden: Konfiguration laden
 document.addEventListener('DOMContentLoaded', async function() {
     await ladeKonfiguration();
 });
 
 async function ladeKonfiguration() {
     try {
-        console.log('Lade config.json...');
-        
-        const response = await fetch('config.json');
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-        
-        config = await response.json();
-        console.log('Konfiguration geladen:', config);
-        
-        // Validierung
-        validateConfig(config);
-        
-        // UI initialisieren
-        initializeUI();
-        
-        // Theme anwenden
-        const gespeichertesTheme = localStorage.getItem('portfolio-theme');
-        currentTheme = gespeichertesTheme || config.portfolio.themes.default;
-        changeTheme(currentTheme);
-        
-        // Sprache anwenden
-        const gespeicherteSprache = localStorage.getItem('portfolio-language');
-        currentLanguage = gespeicherteSprache || 'de';
-        document.getElementById('lang-select').value = currentLanguage;
-        updateLanguage();
-        
+        // TODO: Lade config.json
+        // TODO: Parse zu JSON
+        // TODO: Rufe initializeUI() auf
+
     } catch (error) {
-        console.error('Fehler beim Laden der Konfiguration:', error);
-        alert('Fehler beim Laden der Konfiguration: ' + error.message);
+        console.error('Fehler:', error);
+        alert('Fehler beim Laden: ' + error.message);
     }
-}
-
-function validateConfig(cfg) {
-    // Basis-Validierung
-    if (!cfg.portfolio) {
-        throw new Error('Konfiguration: "portfolio" fehlt');
-    }
-    
-    if (!cfg.portfolio.owner || !cfg.portfolio.owner.name) {
-        throw new Error('Konfiguration: "owner.name" fehlt');
-    }
-    
-    if (!cfg.portfolio.themes || !cfg.portfolio.themes.available) {
-        throw new Error('Konfiguration: "themes.available" fehlt');
-    }
-    
-    console.log('✓ Konfiguration ist valide');
-}
-
-function initializeUI() {
-    // Seitentitel setzen
-    document.getElementById('page-title').textContent = config.portfolio.seo.title;
-    document.getElementById('page-description').setAttribute('content', config.portfolio.seo.description);
-    document.getElementById('site-title').textContent = config.portfolio.owner.name;
-    
-    // Navigation generieren
-    generiereNavigation();
-    
-    // Theme-Select füllen
-    const themeSelect = document.getElementById('theme-select');
-    config.portfolio.themes.available.forEach(theme => {
-        const option = document.createElement('option');
-        option.value = theme;
-        option.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
-        themeSelect.appendChild(option);
-    });
-    themeSelect.value = currentTheme;
-    
-    // Owner-Informationen anzeigen
-    zeigeOwnerInfo();
-    
-    // Features anzeigen
-    zeigeFeatures();
-    
-    // Konfiguration anzeigen
-    zeigeKonfiguration();
-}
-
-function generiereNavigation() {
-    const nav = document.getElementById('main-nav');
-    const ul = document.createElement('ul');
-    
-    config.portfolio.navigation
-        .filter(item => item.isActive)
-        .forEach(item => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = item.url;
-            a.textContent = `${item.icon} ${item.label[currentLanguage]}`;
-            li.appendChild(a);
-            ul.appendChild(li);
-        });
-    
-    nav.innerHTML = '';
-    nav.appendChild(ul);
-}
-
-function zeigeOwnerInfo() {
-    const infoDiv = document.getElementById('owner-info');
-    const owner = config.portfolio.owner;
-    
-    infoDiv.innerHTML = `
-        <div class="info-item">
-            <strong>Name</strong>
-            ${owner.name}
-        </div>
-        <div class="info-item">
-            <strong>Rolle</strong>
-            ${owner.role}
-        </div>
-        <div class="info-item">
-            <strong>Email</strong>
-            <a href="mailto:${owner.email}">${owner.email}</a>
-        </div>
-        <div class="info-item">
-            <strong>Standort</strong>
-            ${owner.location}
-        </div>
-        <div class="info-item">
-            <strong>GitHub</strong>
-            <a href="${owner.social.github}" target="_blank">Profil ansehen</a>
-        </div>
-    `;
-}
-
-function zeigeFeatures() {
-    const featuresDiv = document.getElementById('features-list');
-    const features = config.portfolio.features;
-    
-    featuresDiv.innerHTML = '';
-    
-    Object.keys(features).forEach(feature => {
-        const isActive = features[feature];
-        const span = document.createElement('span');
-        span.className = `feature-toggle ${isActive ? 'active' : 'inactive'}`;
-        span.textContent = `${isActive ? '✓' : '✗'} ${feature}`;
-        featuresDiv.appendChild(span);
-    });
-}
-
-function zeigeKonfiguration() {
-    const configDisplay = document.getElementById('config-display');
-    configDisplay.textContent = JSON.stringify(config, null, 2);
 }
 
 function changeTheme(themeName) {
-    if (!config.portfolio.themes[themeName]) {
-        console.error('Theme nicht gefunden:', themeName);
-        return;
-    }
-    
-    const theme = config.portfolio.themes[themeName];
-    const root = document.documentElement;
-    
-    // CSS-Variablen setzen
-    Object.keys(theme).forEach(key => {
-        root.style.setProperty(`--${key}`, theme[key]);
-    });
-    
-    currentTheme = themeName;
-    localStorage.setItem('portfolio-theme', themeName);
-    
-    console.log('Theme gewechselt:', themeName);
+    // TODO: Hole Theme aus config.portfolio.themes[themeName]
+    // TODO: Setze CSS Custom Properties
+    // Beispiel: document.documentElement.style.setProperty('--primary', theme.primary);
+    // TODO: Speichere in localStorage
 }
 
-function changeLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem('portfolio-language', lang);
-    updateLanguage();
-}
-
-function updateLanguage() {
-    // Navigation aktualisieren
-    generiereNavigation();
-    
-    // Weitere sprachabhängige Elemente hier aktualisieren
-    console.log('Sprache gewechselt:', currentLanguage);
-}
-
-function exportConfig() {
-    const json = JSON.stringify(config, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `portfolio-config-${new Date().toISOString().split('T')[0]}.json`;
-    link.click();
-    
-    console.log('✓ Konfiguration exportiert');
-}
-
-function resetConfig() {
-    if (confirm('Möchtest du die Konfiguration wirklich zurücksetzen?')) {
-        localStorage.removeItem('portfolio-theme');
-        localStorage.removeItem('portfolio-language');
-        location.reload();
-    }
+function generiereNavigation() {
+    // TODO: Hole Navigation aus config.portfolio.navigation
+    // TODO: Erstelle <ul> und <li> Elemente
+    // TODO: Filtere nur aktive Items (isActive === true)
+    // TODO: Nutze die Sprache aus currentLanguage
 }
 ```
+
+**Hilfestellung:**
+- [MDN: CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+- [MDN: LocalStorage](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage)
+- [MDN: Array.filter()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+**Zusatzaufgaben:**
+1. Implementiere `zeigeFeatures()` - zeige alle Features mit ✓/✗ an
+2. Implementiere `changeLanguage()` - wechsle zwischen de/en
+3. Implementiere `exportConfig()` - exportiere Config als JSON-Datei
 
 ---
 

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWASP Top 3 Sicherheitsrisiken - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>OWASP Top 3 Sicherheitsrisiken</h1>
+            <p>Lerne die häufigsten Sicherheitsprobleme kennen und wie du sie vermeidest</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">8-10 Minuten</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Einstieg -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Einführung: Warum Web-Sicherheit?</h3>
+                        </div>
+                        <p>Stell dir vor, du entwickelst eine Webanwendung – eine Portfolio-Seite mit Login-Bereich. Aber was, wenn jemand ohne Berechtigung auf deine Admin-Seite zugreifen kann? Oder Passwörter unverschlüsselt gespeichert werden?</p>
+                        
+                        <div class="alert alert-warning">
+                            <strong>🔒 Genau hier kommt OWASP ins Spiel!</strong><br>
+                            In diesem Tutorial lernst du die drei häufigsten Sicherheitsrisiken kennen und wie du sie vermeidest.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Beispiel: Simple Login-Seite</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="demo-username" class="form-label">Benutzername:</label>
+                                    <input type="text" id="demo-username" class="form-input" placeholder="user123">
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-password" class="form-label">Passwort:</label>
+                                    <input type="password" id="demo-password" class="form-input" placeholder="••••••••">
+                                </div>
+                                <button type="button" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Was ist OWASP? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist OWASP?</h3>
+                        </div>
+                        <p>OWASP steht für <span class="highlight">Open Web Application Security Project</span> – eine gemeinnützige Organisation, die sich für sichere Softwareentwicklung einsetzt.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>OWASP Top 10:</strong><br>
+                            Die OWASP Top 10 ist eine Liste der kritischsten Sicherheitsrisiken für Webanwendungen. Diese Liste basiert auf echten Daten aus der ganzen Welt und hilft Entwicklern, die häufigsten Fehler zu vermeiden.
+                        </div>
+
+                        <p class="mt-md">🔗 Mehr Infos: <a href="https://owasp.org/www-project-top-ten/" target="_blank">owasp.org/www-project-top-ten/</a></p>
+
+                        <p class="mt-md"><strong>Wir konzentrieren uns heute auf die Top 3:</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Die Top 3 im Überblick -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Die Top 3 Risiken im Überblick</h3>
+                        </div>
+                        
+                        <div class="split-view">
+                            <div class="card" style="background: linear-gradient(135deg, var(--band-orange-700), var(--band-orange-900)); color: white; padding: var(--spacing-lg); border-radius: var(--radius-lg);">
+                                <h4 style="color: white;">1️⃣ Broken Access Control</h4>
+                                <p style="margin-bottom: 0;">Fehlerhafte Zugriffskontrolle – Nutzer können auf Bereiche zugreifen, für die sie keine Berechtigung haben.</p>
+                            </div>
+                            
+                            <div class="card" style="background: linear-gradient(135deg, var(--band-turquoise-700), var(--band-turquoise-900)); color: white; padding: var(--spacing-lg); border-radius: var(--radius-lg);">
+                                <h4 style="color: white;">2️⃣ Cryptographic Failures</h4>
+                                <p style="margin-bottom: 0;">Kryptographische Fehler – Sensible Daten werden nicht oder falsch verschlüsselt.</p>
+                            </div>
+                            
+                            <div class="card" style="background: linear-gradient(135deg, var(--band-blue-700), var(--band-blue-900)); color: white; padding: var(--spacing-lg); border-radius: var(--radius-lg);">
+                                <h4 style="color: white;">3️⃣ Injection</h4>
+                                <p style="margin-bottom: 0;">Einschleusung von Schadcode – Angreifer können eigenen Code in die Anwendung einschleusen.</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>⚠️ Wichtig:</strong> Diese drei Risiken sind für die meisten Sicherheitsvorfälle verantwortlich!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Broken Access Control - Was ist das? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">1️⃣ Broken Access Control – Was ist das?</h3>
+                        </div>
+                        <p>Broken Access Control bedeutet, dass Nutzer auf Bereiche zugreifen können, für die sie keine Berechtigung haben. Das ist das <strong>häufigste Sicherheitsproblem</strong>!</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Beispiel: URL-Manipulation</p>
+                            <div class="code-block">
+<code>// Normale URL zu deinem Profil:
+https://portfolio.ch/profil?user=123
+
+// Ein Angreifer ändert die URL einfach:
+https://portfolio.ch/profil?user=124
+
+// Ohne Prüfung kann er jetzt fremde Profile sehen! ⚠️</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Das Problem:</strong> Wenn deine Anwendung nicht prüft, ob der eingeloggte Nutzer auch wirklich Nutzer 124 ist, kann er fremde Profile sehen und bearbeiten.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Broken Access Control - Admin-Beispiel -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Realbeispiel: Admin-Zugang</h3>
+                        </div>
+                        
+                        <p>Ein noch kritischeres Beispiel: Deine Website hat einen Admin-Bereich unter <span class="highlight">/admin</span>.</p>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Demo: Unsicherer Admin-Bereich</p>
+                            <div style="background: var(--band-gray-100); padding: var(--spacing-md); border-radius: var(--radius-md); border: 2px solid var(--band-orange-700);">
+                                <p style="margin: 0; color: var(--band-gray-800);"><strong>URL:</strong> https://portfolio.ch/admin</p>
+                                <p style="margin: var(--spacing-xs) 0 0 0; font-size: 0.875rem; color: var(--band-gray-500);">Ohne Login-Prüfung zugänglich! 🔓</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>⚠️ GEFAHR!</strong><br>
+                            Wenn du nicht prüfst, ob der Besucher auch wirklich Administrator ist, kann jeder einfach <span class="highlight">/admin</span> in die URL eingeben und vollen Zugriff erhalten:
+                            <ul>
+                                <li>Daten löschen</li>
+                                <li>Nutzer verwalten</li>
+                                <li>Die gesamte Website manipulieren</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Broken Access Control - Lösung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Wie verhindere ich Broken Access Control?</h3>
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>Best Practices:</strong>
+                            <ul>
+                                <li><strong>Prüfe bei jeder Anfrage</strong> die Berechtigung des Nutzers – nicht nur beim Login</li>
+                                <li><strong>Verwende eine Whitelist</strong> – erlaube nur bestimmte Zugriffe, blockiere alles andere standardmässig</li>
+                                <li><strong>Verlasse dich nie auf die URL</strong> oder Client-seitige Prüfungen</li>
+                                <li><strong>Die Prüfung muss immer auf dem Server</strong> passieren</li>
+                                <li><strong>Teste regelmässig</strong> mit verschiedenen Nutzerrollen</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-block">
+<code>// ❌ SCHLECHT - Keine Prüfung
+function zeigeProfil(userId) {
+    return datenbank.getProfil(userId);
+}
+
+// ✅ GUT - Mit Berechtigungsprüfung
+function zeigeProfil(userId, aktuellerNutzer) {
+    if (aktuellerNutzer.id !== userId && !aktuellerNutzer.istAdmin) {
+        return "Zugriff verweigert!";
+    }
+    return datenbank.getProfil(userId);
+}</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Cryptographic Failures - Was ist das? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">2️⃣ Cryptographic Failures – Was ist das?</h3>
+                        </div>
+                        <p>Cryptographic Failures bedeutet, dass sensible Daten nicht oder falsch verschlüsselt werden.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Beispiel: Unverschlüsselte Passwörter</p>
+                            <div class="alert alert-warning">
+                                <strong>Szenario:</strong> Du gibst dein Passwort in einem Login-Formular ein. Wenn die Website nur HTTP statt HTTPS nutzt, wird das Passwort im Klartext übertragen – jeder im gleichen Netzwerk kann es mitlesen!
+                            </div>
+                        </div>
+
+                        <div class="split-view mt-md">
+                            <div>
+                                <div style="background: rgba(211, 47, 47, 0.1); padding: var(--spacing-md); border-radius: var(--radius-md); border-left: 4px solid #d32f2f;">
+                                    <strong style="color: #d32f2f;">❌ HTTP (unsicher)</strong>
+                                    <div class="code-block mt-sm">
+<code>http://example.com/login
+→ Passwort: "geheim123" (sichtbar!)</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="background: rgba(69, 186, 152, 0.1); padding: var(--spacing-md); border-radius: var(--radius-md); border-left: 4px solid var(--band-turquoise-700);">
+                                    <strong style="color: var(--band-turquoise-900);">✅ HTTPS (sicher)</strong>
+                                    <div class="code-block mt-sm">
+<code>https://example.com/login
+→ Passwort: verschlüsselt! 🔒</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Cryptographic Failures - Weitere Beispiele -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Weitere Beispiele für Cryptographic Failures</h3>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Häufige Probleme:</strong>
+                            <ul>
+                                <li><strong>Passwörter im Klartext</strong> in der Datenbank gespeichert</li>
+                                <li><strong>Sensible Daten</strong> wie Kreditkartennummern oder Gesundheitsdaten unverschlüsselt</li>
+                                <li><strong>Veraltete Verschlüsselungsmethoden</strong> wie MD5 (heute unsicher!)</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Beispiel: Datenbank-Tabelle mit Passwörtern</p>
+                            <div class="split-view">
+                                <div>
+                                    <strong style="color: #d32f2f;">❌ SCHLECHT: Klartext</strong>
+                                    <div class="code-block mt-sm">
+<code>| Nutzer | Passwort    |
+|--------|-------------|
+| user1  | password123 |
+| user2  | mypassword  |</code>
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--band-turquoise-900);">✅ GUT: Gehasht (bcrypt)</strong>
+                                    <div class="code-block mt-sm">
+<code>| Nutzer | Passwort              |
+|--------|-----------------------|
+| user1  | $2b$10$N9qo8uL...  |
+| user2  | $2b$10$kF3s7hL...  |</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Cryptographic Failures - Lösung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Wie verhindere ich Cryptographic Failures?</h3>
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>Best Practices:</strong>
+                            <ul>
+                                <li><strong>Immer HTTPS verwenden</strong> – nie HTTP für sensible Daten!</li>
+                                <li><strong>Passwörter hashen</strong> mit modernen Algorithmen (z.B. bcrypt, Argon2)</li>
+                                <li><strong>Sensible Daten verschlüsseln</strong> in der Datenbank</li>
+                                <li><strong>Veraltete Methoden meiden</strong> (MD5, SHA-1 sind unsicher!)</li>
+                                <li><strong>TLS/SSL-Zertifikate</strong> aktuell halten</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-block">
+<code>// ❌ SCHLECHT - Klartext-Passwort
+let passwort = "geheim123";
+datenbank.speichern(passwort);
+
+// ✅ GUT - Mit bcrypt hashen
+const bcrypt = require('bcrypt');
+const passwort = "geheim123";
+const hash = await bcrypt.hash(passwort, 10);
+datenbank.speichern(hash);
+
+// Beim Login: Vergleich mit bcrypt
+const istKorrekt = await bcrypt.compare(eingabe, hash);</code>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Tipp:</strong> HTTPS erkennst du am Schloss-Symbol 🔒 in der Browser-Adresszeile!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Injection - Was ist das? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">3️⃣ Injection – Was ist das?</h3>
+                        </div>
+                        <p>Injection bedeutet, dass Angreifer eigenen Code in deine Anwendung einschleusen können. Die häufigste Form ist <span class="highlight">SQL Injection</span>.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Beispiel: SQL Injection</p>
+                            <div class="alert alert-warning">
+                                <strong>Szenario:</strong> Du hast ein Suchfeld, wo Nutzer nach Namen suchen können. Ein Angreifer gibt aber keinen normalen Namen ein, sondern SQL-Code!
+                            </div>
+                            
+                            <div class="code-block">
+<code>// Normale Eingabe:
+Name: "Robert"
+→ SQL: SELECT * FROM users WHERE name = 'Robert'
+
+// Injection-Angriff:
+Name: "Robert'; DROP TABLE users;--"
+→ SQL: SELECT * FROM users WHERE name = 'Robert'; DROP TABLE users;--'
+
+// Resultat: Die gesamte Tabelle wird gelöscht! 💀</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>⚠️ GEFAHR!</strong> Durch SQL Injection können Angreifer:
+                            <ul>
+                                <li>Daten löschen oder verändern</li>
+                                <li>Auf fremde Daten zugreifen</li>
+                                <li>Die gesamte Datenbank kompromittieren</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: Injection - Weitere Beispiele -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Weitere Injection-Arten</h3>
+                        </div>
+                        
+                        <div class="split-view">
+                            <div class="card" style="background: var(--band-gray-100);">
+                                <h4>Cross-Site Scripting (XSS)</h4>
+                                <p>Angreifer schleusen JavaScript-Code ein, der im Browser anderer Nutzer ausgeführt wird.</p>
+                                <div class="code-block">
+<code>&lt;script&gt;
+  alert('Gehackt!');
+&lt;/script&gt;</code>
+                                </div>
+                            </div>
+                            
+                            <div class="card" style="background: var(--band-gray-100);">
+                                <h4>Command Injection</h4>
+                                <p>Angreifer führen System-Befehle auf dem Server aus.</p>
+                                <div class="code-block">
+<code>; rm -rf /
+// Löscht alle Dateien!</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>Gemeinsam:</strong> Alle Injection-Angriffe nutzen fehlende oder fehlerhafte Eingabevalidierung aus.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 12: Injection - Lösung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">12</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Wie verhindere ich Injection?</h3>
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>Best Practices:</strong>
+                            <ul>
+                                <li><strong>Prepared Statements verwenden</strong> (nie SQL-Queries mit String-Konkatenation!)</li>
+                                <li><strong>Input Validation</strong> – prüfe alle Eingaben</li>
+                                <li><strong>Output Encoding</strong> – escape HTML/JavaScript-Sonderzeichen</li>
+                                <li><strong>Whitelist statt Blacklist</strong> – erlaube nur bekannte, sichere Zeichen</li>
+                                <li><strong>Principle of Least Privilege</strong> – minimale Datenbankrechte</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-block">
+<code>// ❌ SCHLECHT - String-Konkatenation (anfällig für SQL Injection)
+let query = "SELECT * FROM users WHERE name = '" + userInput + "'";
+
+// ✅ GUT - Prepared Statements (sicher!)
+let query = "SELECT * FROM users WHERE name = ?";
+db.execute(query, [userInput]);
+
+// Oder mit Node.js/PostgreSQL:
+const result = await pool.query(
+    'SELECT * FROM users WHERE name = $1',
+    [userInput]
+);</code>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Tipp:</strong> Moderne Frameworks und ORMs verwenden automatisch Prepared Statements. Nutze sie!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Zusammenfassung – OWASP Top 3</h2>
+            
+            <div class="split-view mt-md">
+                <div>
+                    <h4 style="color: white;">1️⃣ Broken Access Control</h4>
+                    <ul style="color: white;">
+                        <li>Prüfe Berechtigungen bei <strong>jeder</strong> Anfrage</li>
+                        <li>Whitelist-Prinzip anwenden</li>
+                        <li>Server-seitige Prüfung</li>
+                        <li>Teste mit verschiedenen Rollen</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: white;">2️⃣ Cryptographic Failures</h4>
+                    <ul style="color: white;">
+                        <li>Immer <strong>HTTPS</strong> verwenden</li>
+                        <li>Passwörter hashen (bcrypt, Argon2)</li>
+                        <li>Sensible Daten verschlüsseln</li>
+                        <li>Veraltete Methoden meiden</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: white;">3️⃣ Injection</h4>
+                    <ul style="color: white;">
+                        <li><strong>Prepared Statements</strong> verwenden</li>
+                        <li>Input Validation durchführen</li>
+                        <li>Output Encoding nutzen</li>
+                        <li>Whitelist-Ansatz bevorzugen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-lg" style="background: rgba(255, 255, 255, 0.2); border-color: white; color: white;">
+                <strong>🎯 Wichtigste Regel:</strong> Vertraue <strong>nie</strong> den Eingaben der Nutzer – validiere und prüfe immer alles!
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p style="color: white;">OWASP Top 3 Tutorial - BAND Genossenschaft</p>
+        <p style="color: var(--band-gray-300);">1. Lehrjahr Informatiker/in EFZ - Webmodul</p>
+    </footer>
+
+</body>
+</html>

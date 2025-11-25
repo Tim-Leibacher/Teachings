@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling & Fetch API - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>Event Handling, Fetch API & Asynchrone Programmierung</h1>
+            <p>Von Klick-Events bis zu externen APIs - Mache deine Website interaktiv</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">14-16 Minuten</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Intro & Motivation -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Intro & Motivation</h3>
+                        </div>
+                        <p>Bisher haben wir statische Inhalte mit JavaScript geändert. Jetzt wird es richtig interaktiv! Du lernst, wie deine Website auf Benutzeraktionen reagiert – Klicks, Tastatureingaben, Formulare.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Was erwartet dich:</strong>
+                            <ul>
+                                <li>Button-Klicks mit Reaktionen</li>
+                                <li>Live-Suche während dem Tippen</li>
+                                <li>API-Daten laden (Wetter, Zitate)</li>
+                                <li>Formulare verarbeiten und validieren</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Von statisch zu interaktiv:</p>
+                            <div class="split-view">
+                                <div>
+                                    <h4>Statisch:</h4>
+                                    <p>Seite zeigt nur Inhalte an</p>
+                                </div>
+                                <div>
+                                    <h4>Interaktiv:</h4>
+                                    <p>Seite reagiert auf Benutzer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Was sind Events? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was sind Events?</h3>
+                        </div>
+                        <p>Ein Event ist eine Benutzeraktion oder ein Browser-Ereignis. Klicks, Tastatureingaben, Mausbewegungen – alles sind Events. Der Browser erkennt diese automatisch. Mit JavaScript können wir auf diese Events reagieren.</p>
+                        
+                        <div class="code-block">
+<code>Benutzer klickt Button
+        ↓
+Browser erkennt Event
+        ↓
+Event Listener reagiert
+        ↓
+JavaScript-Funktion wird ausgeführt</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Die wichtigsten Events:</p>
+                            <ul>
+                                <li><span class="highlight">click</span> – Mausklick auf Element</li>
+                                <li><span class="highlight">input</span> – Eingabe in Textfeld</li>
+                                <li><span class="highlight">submit</span> – Formular absenden</li>
+                                <li><span class="highlight">keydown</span> – Taste drücken</li>
+                                <li><span class="highlight">load</span> – Seite fertig geladen</li>
+                                <li><span class="highlight">scroll</span> – Seite scrollen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Erster Event Listener - Click -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Erster Event Listener – Click-Event</h3>
+                        </div>
+                        <p>Der häufigste Event-Typ: der <span class="highlight">click</span>. Mit <span class="highlight">addEventListener</span> registrieren wir einen Event Listener. Die Methode braucht zwei Parameter: den Event-Typ und eine Callback-Funktion.</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>HTML:</h4>
+                                <div class="code-block">
+<code>&lt;button id="klick-button"&gt;
+    Klick mich!
+&lt;/button&gt;
+&lt;p id="klick-ausgabe"&gt;
+    Noch nicht geklickt...
+&lt;/p&gt;</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>JavaScript:</h4>
+                                <div class="code-block">
+<code>let button = document.getElementById("klick-button");
+let ausgabe = document.getElementById("klick-ausgabe");
+
+button.addEventListener("click", function() {
+    ausgabe.textContent = "Button wurde geklickt!";
+    console.log("Click-Event ausgelöst");
+});</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Wir schreiben <span class="highlight">"click"</span> ohne "on" – nicht "onclick", sondern nur "click"!
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Demo:</p>
+                            <button id="demo-button-1" class="btn btn-primary">Klick mich!</button>
+                            <p id="demo-output-1">Noch nicht geklickt...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Event-Objekt nutzen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Event-Objekt nutzen</h3>
+                        </div>
+                        <p>Jede Event-Funktion bekommt automatisch ein Event-Objekt übergeben. Dieses Objekt enthält Informationen über das Event: Welches Element? Wo war die Maus? Welche Taste?</p>
+                        
+                        <div class="code-block">
+<code>button.addEventListener("click", function(event) {
+    // Event-Objekt nutzen
+    console.log("Event-Typ:", event.type);
+    console.log("Geklicktes Element:", event.target);
+    console.log("Mausposition X:", event.clientX);
+    console.log("Mausposition Y:", event.clientY);
+    
+    // Element ändern
+    event.target.textContent = "Schon geklickt!";
+    event.target.style.backgroundColor = "#0066cc";
+});</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Wichtige Event-Eigenschaften:</strong>
+                            <ul>
+                                <li><span class="highlight">event.type</span> – Art des Events (z.B. "click")</li>
+                                <li><span class="highlight">event.target</span> – Element, das Event ausgelöst hat</li>
+                                <li><span class="highlight">event.clientX / clientY</span> – Mausposition</li>
+                                <li><span class="highlight">event.key</span> – Gedrückte Taste</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Demo - Öffne die Konsole (F12):</p>
+                            <button id="demo-button-2" class="btn btn-secondary">Klick für Event-Info</button>
+                            <p id="demo-output-2"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Input-Events - Live-Suche -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Input-Events – Live-Suche</h3>
+                        </div>
+                        <p>Input-Events reagieren auf Texteingaben. Perfekt für Live-Suche oder Validierung. Mit dem <span class="highlight">input</span>-Event wird bei jeder Änderung im Textfeld eine Funktion ausgelöst.</p>
+                        
+                        <div class="code-block">
+<code>// Skills-Liste als Beispiel
+let skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "Python"];
+
+let suchfeld = document.getElementById("suche");
+let ergebnis = document.getElementById("such-ergebnis");
+
+suchfeld.addEventListener("input", function(event) {
+    let suchbegriff = event.target.value.toLowerCase();
+    
+    // Filtern
+    let gefunden = skills.filter(function(skill) {
+        return skill.toLowerCase().includes(suchbegriff);
+    });
+    
+    // Ergebnis anzeigen
+    if (suchbegriff === "") {
+        ergebnis.textContent = "Gib etwas ein...";
+    } else if (gefunden.length > 0) {
+        ergebnis.textContent = "Gefunden: " + gefunden.join(", ");
+    } else {
+        ergebnis.textContent = "Keine Ergebnisse";
+    }
+});</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Live-Suche Demo:</p>
+                            <div class="form-group">
+                                <label for="demo-search" class="form-label">Nach Skills suchen:</label>
+                                <input type="text" id="demo-search" class="form-input" placeholder="z.B. Java...">
+                            </div>
+                            <p id="demo-search-result">Gib etwas ein...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Formular-Events & Validierung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Formular-Events & Validierung</h3>
+                        </div>
+                        <p>Mit dem <span class="highlight">submit</span>-Event fangen wir das Absenden ab. Wichtig: <span class="highlight">event.preventDefault()</span> verhindert, dass die Seite neu lädt. Das ist die Standard-Aktion bei Formularen.</p>
+                        
+                        <div class="code-block">
+<code>let form = document.getElementById("kontakt-form");
+let feedback = document.getElementById("form-feedback");
+
+form.addEventListener("submit", function(event) {
+    // Verhindert Seiten-Reload
+    event.preventDefault();
+    
+    // Werte auslesen
+    let name = document.getElementById("name-input").value;
+    let email = document.getElementById("email-input").value;
+    let nachricht = document.getElementById("nachricht-input").value;
+    
+    // Einfache Validierung
+    if (name === "" || email === "" || nachricht === "") {
+        feedback.textContent = "Bitte alle Felder ausfüllen!";
+        feedback.style.color = "red";
+        return;
+    }
+    
+    // Erfolg
+    feedback.textContent = `Danke, ${name}! Nachricht erhalten.`;
+    feedback.style.color = "green";
+    form.reset();
+});</code>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Ohne preventDefault():</strong> Die Seite würde neu laden und alle JavaScript-Daten gehen verloren!
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Kontaktformular Demo:</p>
+                            <form id="demo-form">
+                                <div class="form-group">
+                                    <label for="demo-name" class="form-label">Name:</label>
+                                    <input type="text" id="demo-name" class="form-input" placeholder="Dein Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-email" class="form-label">E-Mail:</label>
+                                    <input type="email" id="demo-email" class="form-input" placeholder="deine@email.ch">
+                                </div>
+                                <div class="form-group">
+                                    <label for="demo-message" class="form-label">Nachricht:</label>
+                                    <textarea id="demo-message" class="form-textarea" placeholder="Deine Nachricht..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Absenden</button>
+                            </form>
+                            <p id="demo-form-feedback"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Asynchrone Programmierung - Das Problem -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Asynchrone Programmierung – Das Problem</h3>
+                        </div>
+                        <p>JavaScript läuft normalerweise synchron – Zeile für Zeile. Aber manche Operationen dauern lange: Server-Requests, Datei-Uploads, Timer. Die Seite soll nicht einfrieren, während wir auf Antworten warten.</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>Synchron (blockiert):</h4>
+                                <div class="code-block">
+<code>console.log("Start");
+// Warte 5 Sekunden...
+console.log("Fertig");</code>
+                                </div>
+                                <p>❌ Seite friert ein</p>
+                            </div>
+                            <div>
+                                <h4>Asynchron (nicht blockiert):</h4>
+                                <div class="code-block">
+<code>console.log("Start");
+setTimeout(() => {
+    console.log("Nach 5 Sek");
+}, 5000);
+console.log("Läuft weiter");</code>
+                                </div>
+                                <p>✅ Seite bleibt reaktiv</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Asynchrone Operationen:</strong>
+                            <ul>
+                                <li>HTTP-Requests (Fetch API)</li>
+                                <li>setTimeout / setInterval</li>
+                                <li>Datei-Uploads</li>
+                                <li>Datenbank-Abfragen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Promises verstehen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Promises verstehen</h3>
+                        </div>
+                        <p>Ein Promise ist ein Versprechen für ein zukünftiges Ergebnis. Es gibt drei Zustände: <span class="highlight">pending</span> (läuft), <span class="highlight">fulfilled</span> (erfolgreich), <span class="highlight">rejected</span> (fehlgeschlagen).</p>
+                        
+                        <div class="code-block">
+<code>// Promise erstellen
+let promise = new Promise(function(resolve, reject) {
+    // Asynchrone Operation
+    setTimeout(function() {
+        let erfolg = true;
+        
+        if (erfolg) {
+            resolve("Daten erfolgreich geladen!");
+        } else {
+            reject("Fehler beim Laden");
+        }
+    }, 2000);
+});
+
+// Promise verwenden
+promise
+    .then(function(ergebnis) {
+        console.log("Erfolg:", ergebnis);
+    })
+    .catch(function(fehler) {
+        console.log("Fehler:", fehler);
+    });</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Promise-Zustände:</p>
+                            <div class="split-view">
+                                <div>
+                                    <h4>pending ⏳</h4>
+                                    <p>Operation läuft noch</p>
+                                </div>
+                                <div>
+                                    <h4>fulfilled ✅</h4>
+                                    <p>Erfolgreich abgeschlossen</p>
+                                </div>
+                                <div>
+                                    <h4>rejected ❌</h4>
+                                    <p>Fehler aufgetreten</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Fetch API - Einführung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Fetch API – Einführung</h3>
+                        </div>
+                        <p>Die Fetch API ist die moderne Methode für HTTP-Requests. Mit <span class="highlight">fetch()</span> holen wir Daten von Servern. Fetch gibt immer ein Promise zurück.</p>
+                        
+                        <div class="code-block">
+<code>// Einfacher GET-Request
+fetch("https://api.quotable.io/random")
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(daten) {
+        console.log("Zitat:", daten.content);
+        console.log("Autor:", daten.author);
+    })
+    .catch(function(fehler) {
+        console.log("Fehler:", fehler);
+    });</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Fetch-Ablauf:</strong>
+                            <ol>
+                                <li><span class="highlight">fetch(url)</span> – Request starten</li>
+                                <li><span class="highlight">.then(response)</span> – Response erhalten</li>
+                                <li><span class="highlight">response.json()</span> – JSON parsen</li>
+                                <li><span class="highlight">.then(daten)</span> – Daten verwenden</li>
+                                <li><span class="highlight">.catch(fehler)</span> – Fehler abfangen</li>
+                            </ol>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Zufallszitat laden:</p>
+                            <button id="demo-fetch-quote" class="btn btn-accent">Neues Zitat laden</button>
+                            <div id="demo-quote-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: async/await Syntax -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">async/await Syntax</h3>
+                        </div>
+                        <p>Mit <span class="highlight">async/await</span> wird asynchroner Code wie synchroner Code lesbar. Das Keyword <span class="highlight">await</span> wartet auf ein Promise. Funktionen mit <span class="highlight">await</span> müssen <span class="highlight">async</span> sein.</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>Mit .then():</h4>
+                                <div class="code-block">
+<code>fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.log(err);
+    });</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Mit async/await:</h4>
+                                <div class="code-block">
+<code>async function getData() {
+    try {
+        let res = await fetch(url);
+        let data = await res.json();
+        console.log(data);
+    } catch (err) {
+        console.log(err);
+    }
+}</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Vorteile von async/await:</strong>
+                            <ul>
+                                <li>Besser lesbar und wartbar</li>
+                                <li>Fehlerbehandlung mit try/catch</li>
+                                <li>Sieht aus wie synchroner Code</li>
+                                <li>Einfacher zu debuggen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: Komplettes Fetch-Beispiel -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Komplettes Fetch-Beispiel – Wetter-App</h3>
+                        </div>
+                        <p>Eine vollständige Wetter-App mit Fetch, async/await und Error Handling. Wir holen Daten von der OpenMeteo API.</p>
+                        
+                        <div class="code-block">
+<code>async function getWetter(stadt) {
+    try {
+        // 1. Loading State zeigen
+        document.getElementById("wetter").textContent = "Lädt...";
+        
+        // 2. Geocoding - Stadt zu Koordinaten
+        let geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${stadt}`;
+        let geoResponse = await fetch(geoUrl);
+        let geoData = await geoResponse.json();
+        
+        if (!geoData.results || geoData.results.length === 0) {
+            throw new Error("Stadt nicht gefunden");
+        }
+        
+        let lat = geoData.results[0].latitude;
+        let lon = geoData.results[0].longitude;
+        
+        // 3. Wetter-Daten holen
+        let wetterUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+        let wetterResponse = await fetch(wetterUrl);
+        let wetterData = await wetterResponse.json();
+        
+        // 4. Ergebnis anzeigen
+        let temp = wetterData.current_weather.temperature;
+        let windspeed = wetterData.current_weather.windspeed;
+        
+        document.getElementById("wetter").innerHTML = `
+            <strong>${stadt}</strong><br>
+            🌡️ Temperatur: ${temp}°C<br>
+            💨 Wind: ${windspeed} km/h
+        `;
+        
+    } catch (fehler) {
+        document.getElementById("wetter").textContent = "Fehler: " + fehler.message;
+    }
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Wetter-Demo:</p>
+                            <div class="form-group">
+                                <label for="demo-city" class="form-label">Stadt eingeben:</label>
+                                <input type="text" id="demo-city" class="form-input" placeholder="z.B. Zürich" value="Zürich">
+                            </div>
+                            <button id="demo-weather-btn" class="btn btn-primary">Wetter abrufen</button>
+                            <div id="demo-weather-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 12: Error Handling -->
+            <div class="timeline-item">
+                <div class="timeline-marker">12</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Error Handling – Robuste Fehlerbehandlung</h3>
+                        </div>
+                        <p>Nicht jeder Request funktioniert. Fetch wirft nur bei Netzwerkfehlern einen Error – nicht bei HTTP-Statuscodes wie 404 oder 500. Du musst <span class="highlight">response.ok</span> prüfen.</p>
+                        
+                        <div class="code-block">
+<code>async function robusterRequest(url) {
+    try {
+        let response = await fetch(url);
+        
+        // HTTP-Status prüfen
+        if (!response.ok) {
+            throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+        }
+        
+        let daten = await response.json();
+        return daten;
+        
+    } catch (fehler) {
+        // Unterschiedliche Fehlertypen behandeln
+        if (fehler.name === "TypeError") {
+            console.error("Netzwerkfehler:", fehler.message);
+            return { fehler: "Keine Verbindung zum Server" };
+        } else {
+            console.error("API-Fehler:", fehler.message);
+            return { fehler: "Daten konnten nicht geladen werden" };
+        }
+    }
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">HTTP-Statuscodes:</p>
+                            <ul>
+                                <li><span class="highlight">200-299</span> – Erfolg (OK)</li>
+                                <li><span class="highlight">400-499</span> – Client-Fehler (z.B. 404 Not Found)</li>
+                                <li><span class="highlight">500-599</span> – Server-Fehler (z.B. 500 Internal Server Error)</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Fetch wirft nur bei Netzwerkfehlern einen Error. Bei HTTP 404 oder 500 musst du <span class="highlight">response.ok</span> selbst prüfen!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 13: DevTools - Network Tab -->
+            <div class="timeline-item">
+                <div class="timeline-marker">13</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">DevTools – Network Tab</h3>
+                        </div>
+                        <p>Die DevTools helfen beim Debugging. Im Network Tab siehst du alle HTTP-Requests mit Details: URL, Methode, Status Code, Response.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>DevTools öffnen:</strong>
+                            <ul>
+                                <li>Windows/Linux: <span class="highlight">F12</span> oder <span class="highlight">Ctrl + Shift + I</span></li>
+                                <li>Mac: <span class="highlight">Cmd + Option + I</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Was du im Network Tab siehst:</p>
+                            <ul>
+                                <li><strong>Name:</strong> URL des Requests</li>
+                                <li><strong>Status:</strong> HTTP-Statuscode (200 OK, 404, etc.)</li>
+                                <li><strong>Type:</strong> fetch, xhr, script, etc.</li>
+                                <li><strong>Size:</strong> Größe der Response</li>
+                                <li><strong>Time:</strong> Dauer des Requests</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Request-Details (nach Klick auf Request):</p>
+                            <ul>
+                                <li><strong>Headers:</strong> Request- und Response-Headers</li>
+                                <li><strong>Preview:</strong> Formatierte JSON-Vorschau</li>
+                                <li><strong>Response:</strong> Roh-JSON-Daten</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 14: Best Practices & Performance -->
+            <div class="timeline-item">
+                <div class="timeline-marker">14</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Best Practices & Performance</h3>
+                        </div>
+                        <p>Wichtige Best Practices für professionelle Web-Apps:</p>
+                        
+                        <div class="alert alert-success">
+                            <strong>Checkliste:</strong>
+                            <ul>
+                                <li>✓ async/await nutzen statt .then()</li>
+                                <li>✓ Immer try-catch für Fehlerbehandlung</li>
+                                <li>✓ Loading States zeigen</li>
+                                <li>✓ Debouncing bei häufigen Events</li>
+                                <li>✓ API-Keys im Backend halten</li>
+                                <li>✓ Rate Limits beachten</li>
+                                <li>✓ Response-Daten validieren</li>
+                                <li>✓ Timeouts setzen</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-block">
+<code>// Debouncing bei Live-Suche
+let timeout;
+suchfeld.addEventListener("input", function(e) {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+        // Request erst nach 300ms Pause
+        sucheAPI(e.target.value);
+    }, 300);
+});</code>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Sicherheit:</strong> API-Keys NIEMALS im Frontend-Code! Nutze einen Backend-Proxy für sensitive Daten.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 15: Öffentliche APIs -->
+            <div class="timeline-item">
+                <div class="timeline-marker">15</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Öffentliche APIs – Ressourcen</h3>
+                        </div>
+                        <p>Es gibt Tausende kostenlose, öffentliche APIs zum Üben. Hier sind die besten Ressourcen:</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Kostenlose APIs zum Üben:</p>
+                            <ul>
+                                <li><strong>Public APIs (GitHub)</strong><br>
+                                    <a href="https://github.com/public-apis/public-apis" target="_blank">github.com/public-apis/public-apis</a><br>
+                                    Kategorisierte Liste mit 1000+ APIs
+                                </li>
+                                <li><strong>JSONPlaceholder</strong><br>
+                                    <a href="https://jsonplaceholder.typicode.com" target="_blank">jsonplaceholder.typicode.com</a><br>
+                                    Fake REST API für Testing
+                                </li>
+                                <li><strong>OpenMeteo</strong><br>
+                                    <a href="https://open-meteo.com" target="_blank">open-meteo.com</a><br>
+                                    Wetter-Daten ohne API-Key
+                                </li>
+                                <li><strong>The Cat API</strong><br>
+                                    <a href="https://thecatapi.com" target="_blank">thecatapi.com</a><br>
+                                    Zufällige Katzenbilder
+                                </li>
+                                <li><strong>PokeAPI</strong><br>
+                                    <a href="https://pokeapi.co" target="_blank">pokeapi.co</a><br>
+                                    Pokemon-Daten
+                                </li>
+                                <li><strong>Quotable</strong><br>
+                                    <a href="https://github.com/lukePeavey/quotable" target="_blank">github.com/lukePeavey/quotable</a><br>
+                                    Zufällige Zitate
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Tipp:</strong> Experimentiere mit verschiedenen APIs – das ist der beste Weg zu lernen! Achte immer auf Rate Limits und Nutzungsbedingungen.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 16: Zusammenfassung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">16</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung & Ausblick</h3>
+                        </div>
+                        <p>Du hast die Grundlagen moderner Webentwicklung gelernt! Fassen wir zusammen:</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>Event Handling:</h4>
+                                <ul>
+                                    <li>addEventListener()</li>
+                                    <li>Event-Objekt nutzen</li>
+                                    <li>Click, Input, Submit</li>
+                                    <li>Formular-Validierung</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Fetch API:</h4>
+                                <ul>
+                                    <li>HTTP-Requests</li>
+                                    <li>Promises</li>
+                                    <li>.then() / .catch()</li>
+                                    <li>async/await</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Best Practices:</h4>
+                                <ul>
+                                    <li>Fehlerbehandlung</li>
+                                    <li>Loading States</li>
+                                    <li>Debouncing</li>
+                                    <li>Rate Limits</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Nächste Schritte:</strong> In den Aufträgen baust du jetzt eine echte Portfolio-Seite mit API-Integration. Viel Erfolg!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Zusammenfassung - Event Handling & Fetch API</h2>
+            <div class="split-view">
+                <div>
+                    <h4>Events:</h4>
+                    <ul>
+                        <li><span class="highlight">click</span> – Button-Klicks</li>
+                        <li><span class="highlight">input</span> – Texteingaben</li>
+                        <li><span class="highlight">submit</span> – Formulare</li>
+                        <li><span class="highlight">event.preventDefault()</span> – Standard-Aktion verhindern</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Asynchron:</h4>
+                    <ul>
+                        <li><span class="highlight">Promise</span> – Zukünftiges Ergebnis</li>
+                        <li><span class="highlight">fetch()</span> – HTTP-Requests</li>
+                        <li><span class="highlight">async/await</span> – Lesbare Syntax</li>
+                        <li><span class="highlight">try/catch</span> – Fehlerbehandlung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>Event Handling & Fetch API Tutorial - BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ</p>
+    </footer>
+
+    <script>
+        // Demo 1: Einfacher Button Click
+        document.getElementById("demo-button-1").addEventListener("click", function() {
+            document.getElementById("demo-output-1").textContent = "Button wurde geklickt! 🎉";
+        });
+
+        // Demo 2: Event-Objekt
+        document.getElementById("demo-button-2").addEventListener("click", function(event) {
+            console.log("Event-Typ:", event.type);
+            console.log("Target:", event.target);
+            console.log("Position:", event.clientX, event.clientY);
+            document.getElementById("demo-output-2").textContent = 
+                `Event: ${event.type} | Position: X=${event.clientX}, Y=${event.clientY}`;
+        });
+
+        // Demo 3: Live-Suche
+        let skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "Python", "TypeScript", "Vue.js"];
+        document.getElementById("demo-search").addEventListener("input", function(event) {
+            let suchbegriff = event.target.value.toLowerCase();
+            let gefunden = skills.filter(skill => skill.toLowerCase().includes(suchbegriff));
+            
+            let resultElement = document.getElementById("demo-search-result");
+            if (suchbegriff === "") {
+                resultElement.textContent = "Gib etwas ein...";
+            } else if (gefunden.length > 0) {
+                resultElement.textContent = "Gefunden: " + gefunden.join(", ");
+            } else {
+                resultElement.textContent = "Keine Ergebnisse";
+            }
+        });
+
+        // Demo 4: Formular
+        document.getElementById("demo-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById("demo-name").value;
+            let email = document.getElementById("demo-email").value;
+            let nachricht = document.getElementById("demo-message").value;
+            let feedback = document.getElementById("demo-form-feedback");
+            
+            if (name === "" || email === "" || nachricht === "") {
+                feedback.textContent = "❌ Bitte alle Felder ausfüllen!";
+                feedback.style.color = "red";
+                return;
+            }
+            
+            feedback.textContent = `✅ Danke, ${name}! Nachricht erhalten.`;
+            feedback.style.color = "green";
+            
+            setTimeout(() => {
+                this.reset();
+                feedback.textContent = "";
+            }, 3000);
+        });
+
+        // Demo 5: Fetch Quote
+        document.getElementById("demo-fetch-quote").addEventListener("click", async function() {
+            let output = document.getElementById("demo-quote-output");
+            output.innerHTML = "<p>Lädt...</p>";
+            
+            try {
+                let response = await fetch("https://api.quotable.io/random");
+                let data = await response.json();
+                
+                output.innerHTML = `
+                    <div class="alert alert-info mt-md">
+                        <p><strong>"${data.content}"</strong></p>
+                        <p>— ${data.author}</p>
+                    </div>
+                `;
+            } catch (error) {
+                output.innerHTML = `<p style="color: red;">Fehler: ${error.message}</p>`;
+            }
+        });
+
+        // Demo 6: Wetter
+        document.getElementById("demo-weather-btn").addEventListener("click", async function() {
+            let stadt = document.getElementById("demo-city").value;
+            let output = document.getElementById("demo-weather-output");
+            
+            if (!stadt) {
+                output.innerHTML = "<p style='color: red;'>Bitte Stadt eingeben!</p>";
+                return;
+            }
+            
+            output.innerHTML = "<p>Lädt Wetter-Daten...</p>";
+            
+            try {
+                // Geocoding
+                let geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${stadt}&count=1&language=de&format=json`;
+                let geoResponse = await fetch(geoUrl);
+                let geoData = await geoResponse.json();
+                
+                if (!geoData.results || geoData.results.length === 0) {
+                    throw new Error("Stadt nicht gefunden");
+                }
+                
+                let lat = geoData.results[0].latitude;
+                let lon = geoData.results[0].longitude;
+                
+                // Wetter
+                let wetterUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+                let wetterResponse = await fetch(wetterUrl);
+                let wetterData = await wetterResponse.json();
+                
+                let temp = wetterData.current_weather.temperature;
+                let windspeed = wetterData.current_weather.windspeed;
+                
+                output.innerHTML = `
+                    <div class="alert alert-success mt-md">
+                        <h4>${stadt}</h4>
+                        <p>🌡️ Temperatur: ${temp}°C</p>
+                        <p>💨 Wind: ${windspeed} km/h</p>
+                    </div>
+                `;
+                
+            } catch (fehler) {
+                output.innerHTML = `<p style="color: red;">Fehler: ${fehler.message}</p>`;
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Grundlagen - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>JSON Grundlagen</h1>
+            <p>Lerne JSON als Datenformat verstehen und in JavaScript verwenden</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">9-11 Minuten</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Was ist JSON? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist JSON?</h3>
+                        </div>
+                        <p>JSON steht für <span class="highlight">JavaScript Object Notation</span> und ist der Standard für den Datenaustausch im Web.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Wofür braucht man JSON?</strong><br>
+                            Stell dir vor, dein Browser kommuniziert mit einem Server und fragt nach deinen Portfolio-Projekten. Der Server antwortet nicht mit HTML, sondern mit strukturierten Daten im JSON-Format. Dein JavaScript liest diese Daten und baut daraus die Webseite.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Kommunikation Browser ↔ Server:</p>
+                            <div style="background: var(--band-gray-100); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-md); flex-wrap: wrap;">
+                                    <div style="flex: 1; min-width: 150px; text-align: center; padding: var(--spacing-md); background: var(--band-primary-light); border-radius: var(--radius-md); color: white; font-weight: bold;">
+                                        Browser
+                                    </div>
+                                    <div style="font-size: 2rem; color: var(--band-primary);">→</div>
+                                    <div style="flex: 1; min-width: 150px; text-align: center; padding: var(--spacing-md); background: var(--band-secondary); border-radius: var(--radius-md); color: white;">
+                                        GET /projekte
+                                    </div>
+                                    <div style="font-size: 2rem; color: var(--band-primary);">→</div>
+                                    <div style="flex: 1; min-width: 150px; text-align: center; padding: var(--spacing-md); background: var(--band-turquoise-700); border-radius: var(--radius-md); color: white; font-weight: bold;">
+                                        Server
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: var(--spacing-md); flex-wrap: wrap; margin-top: var(--spacing-md);">
+                                    <div style="flex: 1; min-width: 150px; text-align: center; padding: var(--spacing-md); background: var(--band-primary-light); border-radius: var(--radius-md); color: white; font-weight: bold;">
+                                        Browser
+                                    </div>
+                                    <div style="font-size: 2rem; color: var(--band-primary);">←</div>
+                                    <div style="flex: 1; min-width: 150px; text-align: center; padding: var(--spacing-md); background: var(--band-accent); border-radius: var(--radius-md); color: white;">
+                                        JSON-Daten
+                                    </div>
+                                    <div style="font-size: 2rem; color: var(--band-primary);">←</div>
+                                    <div style="flex: 1; min-width: 150px; text-align: center; padding: var(--spacing-md); background: var(--band-turquoise-700); border-radius: var(--radius-md); color: white; font-weight: bold;">
+                                        Server
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-md"><strong>JSON ist wie die Sprache, in der Maschinen miteinander sprechen</strong> – kompakt, strukturiert und universell verständlich.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: JSON-Grundstruktur - Objekte -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">JSON-Grundstruktur: Objekte</h3>
+                        </div>
+                        <p>JSON besteht hauptsächlich aus zwei Strukturen: <span class="highlight">Objekte</span> und <span class="highlight">Arrays</span>. Beginnen wir mit Objekten.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Was ist ein JSON-Objekt?</strong><br>
+                            Ein JSON-Objekt sieht fast wie ein JavaScript-Objekt aus – mit geschwungenen Klammern und Schlüssel-Wert-Paaren. Der Unterschied: In JSON müssen Schlüssel <strong>immer in doppelten Anführungszeichen</strong> stehen.
+                        </div>
+
+                        <div class="code-block">
+<code>{
+  "id": 1,
+  "titel": "Portfolio-Website",
+  "beschreibung": "Meine persönliche Portfolio-Seite",
+  "technologien": ["HTML", "CSS", "JavaScript"],
+  "status": "in Arbeit",
+  "fortschritt": 75,
+  "istSichtbar": true,
+  "startDatum": "2025-01-15"
+}</code>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">Struktur eines Objekts:</p>
+                            <div style="background: var(--band-gray-100); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                                <p style="margin: 0;"><strong>Objekt</strong> = { } (geschwungene Klammern)</p>
+                                <p style="margin: var(--spacing-xs) 0 0 var(--spacing-md);">↓</p>
+                                <p style="margin: 0; margin-left: var(--spacing-md);"><strong>Schlüssel-Wert-Paare</strong></p>
+                                <p style="margin: var(--spacing-xs) 0 0 var(--spacing-xl);">↓</p>
+                                <p style="margin: 0; margin-left: var(--spacing-xl);"><span class="highlight">"schlüssel": wert</span></p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>⚠️ Wichtig:</strong>
+                            <ul>
+                                <li>Schlüssel <strong>immer in doppelten Anführungszeichen</strong></li>
+                                <li>Doppelpunkt als Trenner zwischen Schlüssel und Wert</li>
+                                <li>Kommas zwischen den Paaren</li>
+                                <li><strong>Nach dem letzten Paar kommt kein Komma!</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: JSON-Datentypen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">JSON-Datentypen</h3>
+                        </div>
+                        <p>JSON unterstützt sechs Datentypen:</p>
+                        
+                        <div class="code-block">
+<code>{
+  "string": "Das ist Text",
+  "zahl": 42,
+  "dezimalzahl": 3.14,
+  "boolean": true,
+  "array": [1, 2, 3],
+  "objekt": { "nested": "value" },
+  "leerWert": null
+}</code>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">Übersicht Datentypen:</p>
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--band-primary); color: white;">
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Datentyp</th>
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Beispiel</th>
+                                        <th style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300);">Gültig</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">String</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>"Text"</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: green; font-weight: bold;">✓</td>
+                                    </tr>
+                                    <tr style="background: var(--band-gray-100);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Number</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>42, 3.14</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: green; font-weight: bold;">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Boolean</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>true, false</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: green; font-weight: bold;">✓</td>
+                                    </tr>
+                                    <tr style="background: var(--band-gray-100);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Array</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>[1, 2, 3]</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: green; font-weight: bold;">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Object</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>{"key": "val"}</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: green; font-weight: bold;">✓</td>
+                                    </tr>
+                                    <tr style="background: var(--band-gray-100);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">null</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>null</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: green; font-weight: bold;">✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">undefined</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>undefined</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: red; font-weight: bold;">✗</td>
+                                    </tr>
+                                    <tr style="background: var(--band-gray-100);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Function</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>function() {}</code></td>
+                                        <td style="padding: var(--spacing-sm); text-align: center; border: 1px solid var(--band-gray-300); color: red; font-weight: bold;">✗</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>⚠️ Wichtig:</strong> <span class="highlight">undefined</span>, Funktionen und Kommentare sind in JSON <strong>nicht erlaubt</strong>!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Arrays in JSON -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Arrays in JSON</h3>
+                        </div>
+                        <p>Arrays sind Listen von Werten in eckigen Klammern. Die Werte können unterschiedliche Typen haben oder auch verschachtelte Objekte sein.</p>
+                        
+                        <div class="code-block">
+<code>{
+  "skills": [
+    {
+      "name": "HTML",
+      "level": 4,
+      "kategorie": "Frontend"
+    },
+    {
+      "name": "CSS",
+      "level": 3,
+      "kategorie": "Frontend"
+    },
+    {
+      "name": "JavaScript",
+      "level": 2,
+      "kategorie": "Frontend"
+    }
+  ]
+}</code>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">Struktur eines Arrays:</p>
+                            <div style="background: var(--band-gray-100); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                                <p style="margin: 0;"><strong>skills Array</strong></p>
+                                <p style="margin: var(--spacing-xs) 0 0 var(--spacing-md);">↓</p>
+                                <p style="margin: 0; margin-left: var(--spacing-md);">[Objekt 0, Objekt 1, Objekt 2]</p>
+                                <p style="margin: var(--spacing-xs) 0 0 var(--spacing-xl);">↓</p>
+                                <p style="margin: 0; margin-left: var(--spacing-xl);">Jedes Objekt hat:</p>
+                                <ul style="margin-left: var(--spacing-2xl);">
+                                    <li>name</li>
+                                    <li>level</li>
+                                    <li>kategorie</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Arrays eignen sich perfekt für:</strong>
+                            <ul>
+                                <li>Projekt-Listen</li>
+                                <li>Skill-Listen</li>
+                                <li>Navigation-Menüs</li>
+                                <li>Alle Listen von gleichartigen Daten</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Wichtig:</strong> Kommas zwischen Array-Elementen, aber <strong>kein Komma nach dem letzten Element</strong>!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Verschachtelte Strukturen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Verschachtelte Strukturen</h3>
+                        </div>
+                        <p>JSON kann beliebig verschachtelt werden – Objekte in Objekten, Arrays in Objekten, Objekte in Arrays. Das macht JSON so mächtig!</p>
+                        
+                        <div class="code-block">
+<code>{
+  "person": {
+    "vorname": "Sarah",
+    "nachname": "Müller",
+    "email": "sarah@example.com"
+  },
+  "skills": ["HTML", "CSS", "JavaScript"],
+  "projekte": [
+    {
+      "titel": "Portfolio-Website",
+      "technologien": ["HTML", "CSS"],
+      "status": "abgeschlossen"
+    },
+    {
+      "titel": "To-Do App",
+      "technologien": ["JavaScript"],
+      "status": "in Arbeit"
+    }
+  ]
+}</code>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">Baumstruktur:</p>
+                            <div class="code-block">
+<code>portfolio
+├── person (Objekt)
+│   ├── vorname
+│   ├── nachname
+│   └── email
+├── skills (Array)
+└── projekte (Array)
+    ├── [0] (Objekt)
+    │   ├── titel
+    │   ├── technologien (Array)
+    │   └── status
+    └── [1] (Objekt)
+        ├── titel
+        ├── technologien (Array)
+        └── status</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Tipp:</strong> Einrückung hilft beim Lesen – sie ist aber nicht zwingend. JSON funktioniert auch ohne Leerzeichen und Zeilenumbrüche.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: JSON in JavaScript - parse() und stringify() -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">JSON in JavaScript verwenden</h3>
+                        </div>
+                        <p>In JavaScript arbeitest du mit zwei wichtigen Funktionen:</p>
+                        
+                        <div class="split-view">
+                            <div class="card" style="background: var(--band-gray-100);">
+                                <h4>JSON.parse()</h4>
+                                <p>Wandelt einen JSON-String in ein JavaScript-Objekt um.</p>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--band-gray-500);">Verwendung: Daten von API oder Datei lesen</p>
+                            </div>
+                            <div class="card" style="background: var(--band-gray-100);">
+                                <h4>JSON.stringify()</h4>
+                                <p>Wandelt ein JavaScript-Objekt in einen JSON-String um.</p>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--band-gray-500);">Verwendung: Daten speichern oder versenden</p>
+                            </div>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code>// JSON-String (von API oder Datei)
+let jsonString = '{"name": "Sarah", "age": 18}';
+console.log(typeof jsonString);  // "string"
+
+// JSON parsen → JavaScript-Objekt
+let person = JSON.parse(jsonString);
+console.log(typeof person);      // "object"
+console.log(person.name);        // "Sarah"
+
+// JavaScript-Objekt → JSON-String
+let projekt = {
+  titel: "Portfolio",
+  status: "in Arbeit"
+};
+let json = JSON.stringify(projekt);
+console.log(json);  // '{"titel":"Portfolio","status":"in Arbeit"}'
+
+// Mit Formatierung (lesbar)
+let jsonFormatiert = JSON.stringify(projekt, null, 2);
+console.log(jsonFormatiert);
+/*
+{
+  "titel": "Portfolio",
+  "status": "in Arbeit"
+}
+*/</code>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Merke:</strong>
+                            <ul>
+                                <li><span class="highlight">JSON.parse()</span> = Lesen (String → Objekt)</li>
+                                <li><span class="highlight">JSON.stringify()</span> = Schreiben (Objekt → String)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Häufige Fehler in JSON -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Häufige Fehler in JSON</h3>
+                        </div>
+                        <p>JSON ist strikt – kleine Fehler machen die ganze Datei ungültig. Hier sind die häufigsten Fehler:</p>
+                        
+                        <div class="split-view mt-md">
+                            <div>
+                                <div style="background: rgba(211, 47, 47, 0.1); padding: var(--spacing-md); border-radius: var(--radius-md); border-left: 4px solid #d32f2f;">
+                                    <strong style="color: #d32f2f;">❌ FALSCH</strong>
+                                    <div class="code-block mt-sm">
+<code>{
+  'name': 'Sarah',        // ✗ Einfache Anführungszeichen
+  alter: 18,              // ✗ Schlüssel ohne ""
+  skills: ["HTML", "CSS",], // ✗ Komma nach letztem Element
+  beruf: undefined        // ✗ undefined nicht erlaubt
+}</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="background: rgba(69, 186, 152, 0.1); padding: var(--spacing-md); border-radius: var(--radius-md); border-left: 4px solid var(--band-turquoise-700);">
+                                    <strong style="color: var(--band-turquoise-900);">✅ RICHTIG</strong>
+                                    <div class="code-block mt-sm">
+<code>{
+  "name": "Sarah",
+  "alter": 18,
+  "skills": ["HTML", "CSS"],
+  "beruf": null
+}</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Parse-Error Beispiel:</strong>
+                            <div class="code-block mt-sm">
+<code>JSON.parse('{name: "Test"}');
+// ❌ Uncaught SyntaxError: Unexpected token n in JSON at position 1</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Tipp:</strong> Nutze einen JSON-Validator (z.B. <a href="https://jsonlint.com" target="_blank">jsonlint.com</a>) oder VS Code mit JSON-Extension zum Testen!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Praktisches Beispiel -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Praktisches Beispiel: Portfolio-Daten laden</h3>
+                        </div>
+                        <p>Schauen wir uns ein praxisnahes Beispiel an: Du hast eine JSON-Datei mit deinen Portfolio-Projekten und möchtest diese auf deiner Website anzeigen.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Ablauf:</strong>
+                            <ul>
+                                <li>JSON-Datei mit <span class="highlight">fetch()</span> laden</li>
+                                <li>Daten automatisch mit <span class="highlight">.json()</span> parsen</li>
+                                <li>Durch Projekte iterieren und HTML generieren</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-block">
+<code>// projekte.json
+{
+  "projekte": [
+    {
+      "id": 1,
+      "titel": "Portfolio-Website",
+      "beschreibung": "Meine persönliche Seite",
+      "technologien": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "id": 2,
+      "titel": "To-Do App",
+      "beschreibung": "Aufgabenverwaltung",
+      "technologien": ["JavaScript"]
+    }
+  ]
+}</code>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code>// script.js
+// JSON-Datei laden
+fetch('projekte.json')
+  .then(response => response.json())  // Automatisches Parsen
+  .then(data => {
+    console.log('Geladene Daten:', data);
+    
+    // Durch Projekte iterieren
+    data.projekte.forEach(projekt => {
+      console.log(`Projekt: ${projekt.titel}`);
+      console.log(`Tech: ${projekt.technologien.join(', ')}`);
+    });
+  });</code>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">Browser-Konsole Ausgabe:</p>
+                            <div class="code-block">
+<code>Geladene Daten: {projekte: Array(2)}
+Projekt: Portfolio-Website
+Tech: HTML, CSS, JavaScript
+Projekt: To-Do App
+Tech: JavaScript</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Hinweis:</strong> <span class="highlight">response.json()</span> macht automatisch <span class="highlight">JSON.parse()</span> – du musst es nicht manuell machen!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: JSON vs. JavaScript-Objekt -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">JSON vs. JavaScript-Objekt</h3>
+                        </div>
+                        <p>Wichtig zu verstehen: JSON ist ein <strong>Textformat</strong> – ein String. JavaScript-Objekte sind Datenstrukturen im Speicher.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Vergleichstabelle:</p>
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--band-primary); color: white;">
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Eigenschaft</th>
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">JavaScript-Objekt</th>
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">JSON</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Format</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Datenstruktur</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Text (String)</td>
+                                    </tr>
+                                    <tr style="background: var(--band-gray-100);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Schlüssel</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Mit/ohne ""</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Immer mit ""</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Funktionen</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Erlaubt</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Verboten</td>
+                                    </tr>
+                                    <tr style="background: var(--band-gray-100);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">undefined</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Erlaubt</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Verboten</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Kommentare</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Erlaubt</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Verboten</td>
+                                    </tr>
+                                    <tr style="background: var(--band-gray-100);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Verwendung</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Im Code arbeiten</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Speichern/Senden</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code>// JavaScript-Objekt
+let obj = {
+  name: "Sarah",        // Ohne "" erlaubt
+  greet: function() {   // Funktion erlaubt
+    console.log("Hi");
+  }
+};
+
+// JSON (String)
+let json = '{"name": "Sarah"}';  // Nur Daten, keine Funktionen</code>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Merke:</strong> JSON = Datenaustauschformat, nicht Programmiersprache!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Zusammenfassung – JSON Grundlagen</h2>
+            
+            <div style="color: white; margin-top: var(--spacing-md);">
+                <p style="font-size: 1.125rem; margin-bottom: var(--spacing-lg);">Hier sind die wichtigsten Punkte auf einen Blick:</p>
+                
+                <div class="split-view">
+                    <div>
+                        <h4 style="color: white;">Grundlagen</h4>
+                        <ul style="color: white;">
+                            <li>JSON = JavaScript Object Notation</li>
+                            <li>Standard für Datenaustausch im Web</li>
+                            <li>Zwei Hauptstrukturen: Objekte { } und Arrays [ ]</li>
+                            <li>Sechs Datentypen: String, Number, Boolean, Array, Object, null</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: white;">JavaScript-Funktionen</h4>
+                        <ul style="color: white;">
+                            <li><span class="highlight">JSON.parse()</span> → String zu Objekt</li>
+                            <li><span class="highlight">JSON.stringify()</span> → Objekt zu String</li>
+                            <li><span class="highlight">response.json()</span> → Automatisches Parsen bei fetch</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: white;">Wichtige Regeln</h4>
+                        <ul style="color: white;">
+                            <li>Schlüssel immer in doppelten Anführungszeichen</li>
+                            <li>Kein Komma nach letztem Element</li>
+                            <li>undefined und Funktionen verboten</li>
+                            <li>Strikte Syntax beachten!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p style="color: white;">JSON Grundlagen Tutorial - BAND Genossenschaft</p>
+        <p style="color: var(--band-gray-300);">1. Lehrjahr Informatiker/in EFZ - Webmodul</p>
+    </footer>
+
+</body>
+</html>

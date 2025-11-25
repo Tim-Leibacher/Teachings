@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Grundlagen - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>API Grundlagen</h1>
+            <p>Verstehe, wie APIs funktionieren und wie du sie sicher nutzt</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">10-12 Minuten</span>
+                <span class="badge badge-turquoise">JSON-Grundlagen erforderlich</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Was ist eine API? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist eine API?</h3>
+                        </div>
+                        <p>API steht für <span class="highlight">Application Programming Interface</span> – auf Deutsch: Programmierschnittstelle.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>🍽️ Die Restaurant-Metapher:</strong><br>
+                            Eine API ist wie ein Kellner im Restaurant. Du als Gast sitzt am Tisch und möchtest etwas bestellen. Der Kellner nimmt deine Bestellung entgegen, bringt sie in die Küche, und kommt mit dem Essen zurück. Die Küche musst du nicht betreten – der Kellner ist die Schnittstelle zwischen dir und der Küche.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">API als Vermittler:</p>
+                            <div style="background: var(--band-gray-100); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-md); flex-wrap: wrap; justify-content: center;">
+                                    <div style="text-align: center; padding: var(--spacing-md); background: var(--band-primary-light); border-radius: var(--radius-md); color: white; font-weight: bold; min-width: 150px;">
+                                        Du<br><small>(Client)</small>
+                                    </div>
+                                    <div style="font-size: 2rem; color: var(--band-primary);">→</div>
+                                    <div style="text-align: center; padding: var(--spacing-md); background: var(--band-secondary); border-radius: var(--radius-md); color: white; font-weight: bold; min-width: 150px;">
+                                        Kellner<br><small>(API)</small>
+                                    </div>
+                                    <div style="font-size: 2rem; color: var(--band-primary);">→</div>
+                                    <div style="text-align: center; padding: var(--spacing-md); background: var(--band-turquoise-700); border-radius: var(--radius-md); color: white; font-weight: bold; min-width: 150px;">
+                                        Küche<br><small>(Server)</small>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: var(--spacing-md); flex-wrap: wrap; justify-content: center; margin-top: var(--spacing-md);">
+                                    <div style="text-align: center; padding: var(--spacing-xs); color: var(--band-gray-800); min-width: 150px;">
+                                        Anfrage
+                                    </div>
+                                    <div style="min-width: 50px;"></div>
+                                    <div style="text-align: center; padding: var(--spacing-xs); color: var(--band-gray-800); min-width: 150px;">
+                                        Vermittlung
+                                    </div>
+                                    <div style="min-width: 50px;"></div>
+                                    <div style="text-align: center; padding: var(--spacing-xs); color: var(--band-gray-800); min-width: 150px;">
+                                        Datenbank
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-md">Genauso funktioniert eine API: Deine App schickt eine Anfrage, die API leitet sie an einen Server weiter, und der Server schickt die Antwort zurück.</p>
+
+                        <div class="code-block">
+<code>// Beispiel: Wetter-API anfragen
+fetch('https://api.wetter.com/heute')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// Antwort (JSON):
+{
+  "temperatur": 18,
+  "wetter": "sonnig",
+  "stadt": "Bern"
+}</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Wie funktioniert eine API? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Wie funktioniert eine API?</h3>
+                        </div>
+                        <p>Eine API funktioniert nach dem <span class="highlight">Client-Server-Prinzip</span>:</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Ablauf einer API-Anfrage:</p>
+                            <div style="background: var(--band-gray-100); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                                <div style="padding: var(--spacing-md); background: rgba(78, 185, 204, 0.2); border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                                    <strong style="color: var(--band-primary);">Schritt 1: Client sendet Anfrage</strong>
+                                    <div class="code-block mt-sm">
+<code>GET /wetter
+Stadt: Bern</code>
+                                    </div>
+                                </div>
+                                <div style="padding: var(--spacing-md); background: rgba(69, 186, 152, 0.2); border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                                    <strong style="color: var(--band-secondary);">Schritt 2: Server verarbeitet Anfrage</strong>
+                                    <p style="margin: var(--spacing-sm) 0 0 0; font-size: 0.875rem;">Server fragt Datenbank ab und bereitet Antwort vor</p>
+                                </div>
+                                <div style="padding: var(--spacing-md); background: rgba(254, 175, 81, 0.2); border-radius: var(--radius-md);">
+                                    <strong style="color: var(--band-accent);">Schritt 3: Server sendet Antwort</strong>
+                                    <div class="code-block mt-sm">
+<code>{
+  "temperatur": 18,
+  "wetter": "sonnig"
+}</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Wichtig:</strong> Die Daten kommen meist im <strong>JSON-Format</strong> an – das haben wir bereits kennengelernt!
+                        </div>
+
+                        <div class="code-block mt-md">
+<code>// Beispiel: Wetter-API (Open-Meteo)
+const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=46.95&longitude=7.45&current_weather=true";
+
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log("Temperatur:", data.current_weather.temperature, "°C");
+    console.log("Windgeschwindigkeit:", data.current_weather.windspeed, "km/h");
+  });</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: REST vs. SOAP -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">REST vs. SOAP</h3>
+                        </div>
+                        <p>Es gibt verschiedene Arten von APIs. Die zwei wichtigsten sind REST und SOAP:</p>
+                        
+                        <div class="split-view mt-md">
+                            <div class="card" style="background: linear-gradient(135deg, var(--band-turquoise-700), var(--band-turquoise-900)); color: white; padding: var(--spacing-lg);">
+                                <h4 style="color: white;">✅ REST (modern)</h4>
+                                <p style="color: white; margin-bottom: var(--spacing-sm);"><strong>Representational State Transfer</strong></p>
+                                <ul style="color: white; margin: 0;">
+                                    <li>Nutzt HTTP-Methoden</li>
+                                    <li>Arbeitet mit JSON</li>
+                                    <li>Einfach zu nutzen</li>
+                                    <li>Schnell und effizient</li>
+                                    <li>Sehr verbreitet</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="card" style="background: linear-gradient(135deg, var(--band-gray-500), var(--band-gray-800)); color: white; padding: var(--spacing-lg);">
+                                <h4 style="color: white;">⚠️ SOAP (veraltet)</h4>
+                                <p style="color: white; margin-bottom: var(--spacing-sm);"><strong>Simple Object Access Protocol</strong></p>
+                                <ul style="color: white; margin: 0;">
+                                    <li>Nutzt XML (komplexer)</li>
+                                    <li>Strikte Regeln</li>
+                                    <li>Langsamer</li>
+                                    <li>Weniger verbreitet</li>
+                                    <li>Legacy-Systeme</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success mt-md">
+                            <strong>💡 In der Webentwicklung nutzen wir heute fast ausschliesslich REST-APIs!</strong>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">REST-API Beispiel (einfach & modern):</p>
+                            <div class="code-block">
+<code>// REST API – Einfach und modern
+fetch('https://api.github.com/users/github')
+  .then(response => response.json())
+  .then(data => {
+    console.log("Name:", data.name);
+    console.log("Repos:", data.public_repos);
+  });</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: HTTP-Methoden in REST -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">HTTP-Methoden in REST (CRUD)</h3>
+                        </div>
+                        <p>REST-APIs nutzen vier Hauptmethoden, die den vier Grundoperationen entsprechen:</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">CRUD = Create, Read, Update, Delete</p>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: var(--spacing-md);">
+                                <thead>
+                                    <tr style="background: var(--band-primary); color: white;">
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Methode</th>
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Aktion</th>
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Beispiel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background: rgba(69, 186, 152, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">GET</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Daten abrufen (Read)</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>/users/123</code></td>
+                                    </tr>
+                                    <tr style="background: rgba(78, 185, 204, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">POST</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Daten erstellen (Create)</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>/users</code> (mit Body)</td>
+                                    </tr>
+                                    <tr style="background: rgba(254, 175, 81, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">PUT</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Daten ändern (Update)</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>/users/123</code> (mit Body)</td>
+                                    </tr>
+                                    <tr style="background: rgba(211, 47, 47, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">DELETE</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">Daten löschen (Delete)</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);"><code>/users/123</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code>// GET – Daten abrufen
+fetch('https://api.beispiel.com/users/123')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// POST – Neuen User erstellen
+fetch('https://api.beispiel.com/users', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    name: "Sarah Müller",
+    email: "sarah@beispiel.com"
+  })
+});
+
+// PUT – User aktualisieren
+fetch('https://api.beispiel.com/users/123', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    name: "Sarah Schmidt"
+  })
+});
+
+// DELETE – User löschen
+fetch('https://api.beispiel.com/users/123', {
+  method: 'DELETE'
+});</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Sicherheitsaspekte -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sicherheitsaspekte bei APIs</h3>
+                        </div>
+                        <p>Sicherheit ist bei APIs extrem wichtig. Drei zentrale Konzepte:</p>
+                        
+                        <div class="split-view mt-md">
+                            <div class="card" style="background: var(--band-gray-100);">
+                                <h4>🔐 Authentifizierung</h4>
+                                <p><strong>Wer bist du?</strong></p>
+                                <p style="font-size: 0.875rem; margin: 0;">Prüft die Identität des Nutzers. Meist mit API-Keys oder OAuth.</p>
+                            </div>
+                            
+                            <div class="card" style="background: var(--band-gray-100);">
+                                <h4>🔑 Autorisierung</h4>
+                                <p><strong>Was darfst du?</strong></p>
+                                <p style="font-size: 0.875rem; margin: 0;">Prüft die Berechtigungen. Welche Daten darf der Nutzer sehen/ändern?</p>
+                            </div>
+                            
+                            <div class="card" style="background: var(--band-gray-100);">
+                                <h4>🔒 Verschlüsselung</h4>
+                                <p><strong>Sind die Daten sicher?</strong></p>
+                                <p style="font-size: 0.875rem; margin: 0;">HTTPS verschlüsselt die Verbindung. Immer verwenden!</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>⚠️ Wichtig:</strong>
+                            <ul>
+                                <li>Niemals API-Keys im Frontend-Code speichern!</li>
+                                <li>Immer HTTPS verwenden (nie HTTP!)</li>
+                                <li>API-Keys geheim halten (nicht ins Git committen!)</li>
+                                <li>Rate Limiting beachten (nicht zu viele Anfragen)</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">API-Key Beispiel:</p>
+                            <div class="code-block">
+<code>// API mit API-Key nutzen
+const apiKey = "dein-geheimer-api-key";  // ⚠️ Nicht im Frontend!
+
+fetch('https://api.beispiel.com/daten', {
+  headers: {
+    'Authorization': `Bearer ${apiKey}`
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data));</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Best Practice:</strong> API-Keys sollten auf dem Server (Backend) gespeichert und genutzt werden, nicht im Browser (Frontend)!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Praktisches Beispiel -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Praktisches Beispiel: Posts laden</h3>
+                        </div>
+                        <p>Schauen wir uns ein vollständiges Beispiel an: Wir laden Posts von einer öffentlichen Test-API (JSONPlaceholder).</p>
+                        
+                        <div class="code-block">
+<code>// Button-Element holen
+const button = document.getElementById('lade-posts');
+const ausgabe = document.getElementById('ausgabe');
+
+// Event-Listener für Button
+button.addEventListener('click', function() {
+    console.log("Lade Posts von API...");
+    
+    // API-Anfrage senden
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => {
+            console.log("Status:", response.status);
+            return response.json();
+        })
+        .then(posts => {
+            console.log("Anzahl Posts:", posts.length);
+            
+            // Erste 5 Posts anzeigen
+            posts.slice(0, 5).forEach(post => {
+                console.log(`Post ${post.id}: ${post.title}`);
+            });
+            
+            // Im HTML anzeigen
+            ausgabe.innerHTML = `<p>${posts.length} Posts geladen!</p>`;
+        })
+        .catch(error => {
+            console.error("Fehler:", error);
+        });
+});</code>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">Live-Demo:</p>
+                            <button type="button" class="btn btn-primary" id="demo-api-button">Posts von API laden</button>
+                            <div id="demo-api-ausgabe" style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: var(--band-gray-100); border-radius: var(--radius-md); min-height: 50px;">
+                                <p style="margin: 0; color: var(--band-gray-500);">Klicke auf den Button, um Posts zu laden...</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 JSONPlaceholder:</strong> Eine kostenlose Test-API für Entwickler: <a href="https://jsonplaceholder.typicode.com" target="_blank">jsonplaceholder.typicode.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Häufige Fehler -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Häufige Fehler bei APIs</h3>
+                        </div>
+                        <p>Fehler bei APIs sind normal. Hier sind die häufigsten Probleme und ihre Bedeutung:</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">HTTP Status-Codes:</p>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: var(--spacing-md);">
+                                <thead>
+                                    <tr style="background: var(--band-primary); color: white;">
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Code</th>
+                                        <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--band-gray-300);">Bedeutung</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background: rgba(69, 186, 152, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">200</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">✅ Erfolg – Alles OK</td>
+                                    </tr>
+                                    <tr style="background: rgba(69, 186, 152, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">201</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">✅ Erstellt – Neuer Eintrag erfolgreich</td>
+                                    </tr>
+                                    <tr style="background: rgba(211, 47, 47, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">400</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">❌ Bad Request – Falsche Anfrage</td>
+                                    </tr>
+                                    <tr style="background: rgba(211, 47, 47, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">401</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">❌ Unauthorized – Nicht autorisiert</td>
+                                    </tr>
+                                    <tr style="background: rgba(211, 47, 47, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">404</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">❌ Not Found – Nicht gefunden</td>
+                                    </tr>
+                                    <tr style="background: rgba(211, 47, 47, 0.1);">
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300); font-weight: bold;">500</td>
+                                        <td style="padding: var(--spacing-sm); border: 1px solid var(--band-gray-300);">❌ Server Error – Server-Fehler</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Häufige Probleme:</strong>
+                            <ul>
+                                <li><strong>URL falsch geschrieben</strong> → 404 Not Found</li>
+                                <li><strong>API antwortet nicht</strong> → Timeout oder Network Error</li>
+                                <li><strong>Fehlender/falscher API-Key</strong> → 401 Unauthorized</li>
+                                <li><strong>Rate Limit überschritten</strong> → 429 Too Many Requests</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code>// Fehlerbehandlung mit Status-Codes
+fetch('https://api.beispiel.com/daten')
+  .then(response => {
+    console.log("Status:", response.status);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP-Fehler: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Daten:", data);
+  })
+  .catch(error => {
+    console.error("❌ Fehler aufgetreten:", error.message);
+  });</code>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>💡 Tipp:</strong> Die Browser-Konsole (F12) zeigt dir Status-Codes und Fehler im Network-Tab!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Zusammenfassung – API Grundlagen</h2>
+            
+            <div style="color: white; margin-top: var(--spacing-md);">
+                <div class="split-view">
+                    <div>
+                        <h4 style="color: white;">Was ist eine API?</h4>
+                        <ul style="color: white;">
+                            <li>Schnittstelle zwischen Client & Server</li>
+                            <li>Vermittler wie ein Kellner im Restaurant</li>
+                            <li>Daten kommen meist als JSON</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: white;">REST APIs</h4>
+                        <ul style="color: white;">
+                            <li>Moderner Standard (JSON, HTTP)</li>
+                            <li>GET, POST, PUT, DELETE (CRUD)</li>
+                            <li>Einfach und schnell</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: white;">Sicherheit</h4>
+                        <ul style="color: white;">
+                            <li>HTTPS verwenden (immer!)</li>
+                            <li>API-Keys schützen</li>
+                            <li>Authentifizierung & Autorisierung</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: white;">JavaScript</h4>
+                        <ul style="color: white;">
+                            <li><span class="highlight">fetch()</span> für API-Calls</li>
+                            <li>Status-Codes beachten (200 = OK)</li>
+                            <li>Fehlerbehandlung mit .catch()</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p style="color: white;">API Grundlagen Tutorial - BAND Genossenschaft</p>
+        <p style="color: var(--band-gray-300);">1. Lehrjahr Informatiker/in EFZ - Webmodul</p>
+    </footer>
+
+    <script>
+        // Demo für API-Button
+        document.getElementById('demo-api-button').addEventListener('click', function() {
+            const ausgabe = document.getElementById('demo-api-ausgabe');
+            ausgabe.innerHTML = '<p style="margin: 0; color: var(--band-primary);">Lade Daten von API...</p>';
+            
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('HTTP-Fehler: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(posts => {
+                    let html = '<p style="margin-bottom: var(--spacing-sm);"><strong style="color: var(--band-secondary);">✅ ' + posts.length + ' Posts erfolgreich geladen!</strong></p>';
+                    html += '<p style="margin: 0; font-size: 0.875rem; color: var(--band-gray-800);">Erste 3 Posts:</p>';
+                    html += '<ul style="margin-top: var(--spacing-xs); font-size: 0.875rem;">';
+                    posts.slice(0, 3).forEach(post => {
+                        html += '<li>' + post.id + ': ' + post.title.substring(0, 50) + '...</li>';
+                    });
+                    html += '</ul>';
+                    ausgabe.innerHTML = html;
+                })
+                .catch(error => {
+                    ausgabe.innerHTML = '<p style="margin: 0; color: #d32f2f;"><strong>❌ Fehler:</strong> ' + error.message + '</p>';
+                });
+        });
+    </script>
+
+</body>
+</html>

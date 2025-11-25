@@ -120,7 +120,7 @@ nav:
           - Auftrag 1 - OWASP Einführun: 04-MISC/01-OWASP/01-OWASP-Kennenlernen.md
           - Auftrag 2 - Sicherheitslücken: 04-MISC/01-OWASP/02-Sicherheitsluecken-Beheben.md
           - Auftrag 3 - Portfolio: 04-MISC/01-OWASP/03-Portfolio-Sicherheits-Checkliste.md
-          - Auftrag 4 - Optional: 04-MISC/01-OWASP/04-Optionale-Security-Headers.md
+          - Auftrag 4 - Optional: 04-MISC/01-OWASP/04-Optional-Security-Headers.md
       - JSON:
           - Auftrag 1 - Portfolio Daten: 04-MISC/02-JSON/01-JSON-Portfolio-Daten.md
           - Auftrag 2 - Validierung: 04-MISC/02-JSON/02-JSON-Validieren-Debuggen.md

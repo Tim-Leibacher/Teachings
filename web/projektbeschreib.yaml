@@ -35,7 +35,6 @@ projekt:
       Top 3 der OWASP : Erkläre was OWASP ist und die Top 3 Sicherheitsrisiken für Webanwendungen.
       JSON-Grundlagen: Syntax Objekte , Arrays , Paare Schlüssel: Wert.
       API Grundlagen: Was ist eine API? Unterschied REST vs. SOAP.. Sicherheitsaspekte
-      HTTPS-Grundlagen: SSL/TLS, Zertifikate, Verschlüsselung.
     GIT:
       Grundlagen (Init, Add, Commit): git init, git add ., git commit -m "Nachricht"
       Branching & Merging und sonstiges: git branch, git checkout, git merge

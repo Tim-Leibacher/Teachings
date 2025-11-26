@@ -39,8 +39,7 @@ projekt:
       Grundlagen (Init, Add, Commit): git init, git add ., git commit -m "Nachricht"
       Branching & Merging und sonstiges: git branch, git checkout, git merge
     Node JS:
-      Einführung in Node.js: Was ist Node.js? Vorteile und Anwendungsgebiete.
-      NPM (Paketmanager): npm init, npm install, package.json
+      Einführung in Node.js, NPM (Paketmanager): Was ist Node.js? Vorteile und Anwendungsgebiete. npm init, npm install, package.json
       Einfache Server-Anwendung: Erstelle einen einfachen HTTP-Server mit dem http-Modul.
       Node mit Express (Überleitung): Einführung in Express.js, einfache Routen erstellen.
     ExpressJS:

@@ -33,7 +33,7 @@ projekt:
       Event Handling / Ajax/Fetch / asynchrone Calls: addEventListener für Klick- oder Eingabe-Events. Zeige einen fetch()-Aufruf (z.B. gegen eine öffentliche API).
     Diverses:
       Top 3 der OWASP : Erkläre was OWASP ist und die Top 3 Sicherheitsrisiken für Webanwendungen.
-      JSON-Grundlagen: Syntax Objekte , Arrays , Paare Schlüssel: Wert.
+      JSON-Grundlagen: Syntax Objekte , Arrays , Paare Schlüssel Wert.
       API Grundlagen: Was ist eine API? Unterschied REST vs. SOAP.. Sicherheitsaspekte
     GIT:
       Grundlagen (Init, Add, Commit): git init, git add ., git commit -m "Nachricht"
@@ -51,7 +51,7 @@ projekt:
     REACT:
       Einführung in React: Was ist React? Komponentenbasierte Architektur.
       JSX  Komponenten: Erkläre JSX-Syntax, erstelle funktionale Komponenten.
-      State und Props: Unbterschied zwischen State und Props State Management.
+      State und Props: Unterschied zwischen State und Props State Management.
       Event Handling  Lifecycle: Ereignisbehandlung in React, Lifecycle-Methoden z.B. useEffect.
       Routing mit React Router: Einführung in React Router, einfache Navigation zwischen Seiten.
     Database:
@@ -63,7 +63,7 @@ projekt:
 
   struktur:
     - Pro Hauptthema gibt es Unterthemen
-    - Pro Unterhema: 1 Video + 3  Aufgaben mit unterschiedlicher Schwierigkeit und eine optionale Vertiefungsaufgabe
+    - Pro Unterthema: 1 Video + 3  Aufgaben mit unterschiedlicher Schwierigkeit und eine optionale Vertiefungsaufgabe
     - Aufgaben enthalten alle notwendigen Ressourcen um eine neue Aufgabe oder Quiz oder Lernbeschleuniger zu erstellen
 
   bewertung:

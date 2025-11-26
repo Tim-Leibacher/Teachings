@@ -38,12 +38,10 @@ projekt:
     GIT:
       Grundlagen (Init, Add, Commit): git init, git add ., git commit -m "Nachricht"
       Branching & Merging und sonstiges: git branch, git checkout, git merge
-    Node JS:
+    Node JS & ExpressJS:
       Einführung in Node.js, NPM (Paketmanager): Was ist Node.js? Vorteile und Anwendungsgebiete. npm init, npm install, package.json
       Einfache Server-Anwendung: Erstelle einen einfachen HTTP-Server mit dem http-Modul.
-      Node mit Express (Überleitung): Einführung in Express.js, einfache Routen erstellen.
-    ExpressJS:
-      Einführung in Express.js: Was ist Express? Vorteile gegenüber reinem Node.js.
+      Node mit Express (Überleitung) & Einführung in Express.js: Einführung in Express.js, einfache Routen erstellen. Was ist Express? Vorteile gegenüber reinem Node.js.
       Routen & Middleware: Erstelle einfache Routen, erkläre Middleware-Konzepte.
       RESTful APIs mit Express: Baue eine einfache REST-API (GET, POST, PUT, DELETE).
       Fehlerbehandlung & Sicherheit: Grundlegende Fehlerbehandlung und Sicherheitsaspekte (z.B. Helmet).

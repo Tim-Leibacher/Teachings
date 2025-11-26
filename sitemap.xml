@@ -284,4 +284,20 @@
          <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/01-Grundlagen/04-NODEJS-Optional-NPM-Paket-Veroeffentlichen/</loc>
          <lastmod>2025-11-26</lastmod>
     </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/02-Server/01-HTTP-Server-Erstellen/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/02-Server/02-Routing-und-JSON-API/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/02-Server/03-Statische-Dateien-Ausliefern/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/02-Server/04-Optionaler-Vertiefungsauftrag/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
 </urlset>

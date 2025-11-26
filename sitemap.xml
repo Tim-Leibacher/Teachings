@@ -252,4 +252,36 @@
          <loc>https://tim-leibacher.github.io/Teachings/05-GIT/01-Grundlagen/04-GIT-Optional-Gitignore-GitHub/</loc>
          <lastmod>2025-11-26</lastmod>
     </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/05-GIT/02-Branching/01-Feature-Branch-Navigation/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/05-GIT/02-Branching/02-Parallele-Branches/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/05-GIT/02-Branching/03-Merge-Konflikte-Loesen/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/05-GIT/02-Branching/04-Optional-Rebase-Branching-Strategien/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/01-Grundlagen/01-NODEJS-Installation-Erste-Programme/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/01-Grundlagen/02-NODEJS-NPM-Projekt-Pakete-Installieren/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/01-Grundlagen/03-NODEJS-Portfolio-Statistik-Tool/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/01-Grundlagen/04-NODEJS-Optional-NPM-Paket-Veroeffentlichen/</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
 </urlset>

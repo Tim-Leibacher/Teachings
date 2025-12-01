@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIT Grundlagen - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>GIT – Grundlagen (Init, Add, Commit)</h1>
+            <p>Lerne, wie du dein Projekt mit Git versionierst</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-turquoise">8-10 Minuten</span>
+                <span class="badge badge-orange">Portfolio-Projekt</span>
+            </div>
+        </header>
+
+        <!-- Lernziele -->
+        <div class="card mb-lg">
+            <div class="card-header">
+                <h3 class="card-title">🎯 Lernziele</h3>
+            </div>
+            <ul>
+                <li>Verstehen, warum Versionskontrolle wichtig ist</li>
+                <li>Ein Git-Repository mit <span class="highlight">git init</span> initialisieren</li>
+                <li>Dateien mit <span class="highlight">git add</span> zur Staging Area hinzufügen</li>
+                <li>Änderungen mit <span class="highlight">git commit</span> festhalten</li>
+                <li>Den Status mit <span class="highlight">git status</span> und die Historie mit <span class="highlight">git log</span> überprüfen</li>
+            </ul>
+        </div>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Intro & Problem ohne Versionskontrolle -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Warum Versionskontrolle?</h3>
+                        </div>
+                        <p>Stell dir vor, du arbeitest an deinem Portfolio. Du änderst Code, etwas funktioniert nicht mehr, und du möchtest zur vorherigen Version zurück – aber du hast keine Kopie gespeichert. Oder du arbeitest im Team, und zwei Personen ändern dieselbe Datei gleichzeitig. Chaos!</p>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Typische Probleme ohne Versionskontrolle:</strong>
+                            <ul>
+                                <li>Keine Möglichkeit, zu einer funktionierenden Version zurückzukehren</li>
+                                <li>Konflikte bei Teamarbeit</li>
+                                <li>Keine Dokumentation, wer wann was geändert hat</li>
+                                <li>Datenverlust durch versehentliches Überschreiben</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Git = Zeitmaschine für deinen Code</strong><br>
+                            Git dokumentiert jede Änderung, erlaubt dir zurückzugehen und ermöglicht professionelle Zusammenarbeit. Fast alle Entwickler nutzen Git täglich.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Was ist Git? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist Git?</h3>
+                        </div>
+                        <p>Git ist ein <strong>dezentrales Versionskontrollsystem</strong>. Das bedeutet: Jeder Entwickler hat die komplette Projekt-Historie lokal auf seinem Computer. Du kannst offline arbeiten und später deine Änderungen mit anderen synchronisieren.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Git-Konzept visualisiert:</p>
+                            <div class="git-flow-visual">
+                                <div class="git-flow-item">
+                                    <div class="git-flow-icon">💻</div>
+                                    <strong>Lokales Repository</strong>
+                                    <p>Dein Computer</p>
+                                </div>
+                                <div class="git-flow-arrow">⟷</div>
+                                <div class="git-flow-item">
+                                    <div class="git-flow-icon">☁️</div>
+                                    <strong>Remote Repository</strong>
+                                    <p>GitHub / GitLab</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Fun Fact:</strong> Git wurde von Linus Torvalds entwickelt – dem gleichen Mann, der Linux erschuf. Heute ist Git Standard in der Softwareentwicklung.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Git installieren & überprüfen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Git installieren & überprüfen</h3>
+                        </div>
+                        <p>Bevor wir starten: Überprüfe, ob Git installiert ist. Öffne das Terminal und gib <span class="highlight">git --version</span> ein. Wenn eine Versionsnummer erscheint, ist Git installiert.</p>
+                        
+                        <div class="code-block">
+<code># Git-Version überprüfen
+git --version</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe:</p>
+                            <div class="terminal-output">
+                                <code>git version 2.41.0</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Git nicht installiert?</strong><br>
+                            Lade Git von <a href="https://git-scm.com" target="_blank">git-scm.com</a> herunter und installiere es. Auf dem Mac ist Git oft schon vorinstalliert.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Portfolio-Projekt vorbereiten -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Portfolio-Projekt vorbereiten</h3>
+                        </div>
+                        <p>Wir nutzen dein Portfolio-Projekt für dieses Tutorial. Öffne das Terminal und navigiere in deinen Portfolio-Ordner. Nutze dafür den Befehl <span class="highlight">cd</span> (Change Directory).</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <strong>Windows:</strong>
+                                <div class="code-block">
+<code>cd Desktop\mein-portfolio</code>
+                                </div>
+                            </div>
+                            <div>
+                                <strong>Mac / Linux:</strong>
+                                <div class="code-block">
+<code>cd Desktop/mein-portfolio</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-block">
+<code># Inhalt des Ordners anzeigen
+ls</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe:</p>
+                            <div class="terminal-output">
+<code>index.html
+styles.css
+script.js
+images/</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: git init -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Git-Repository initialisieren – <span class="highlight">git init</span></h3>
+                        </div>
+                        <p>Jetzt initialisieren wir Git mit dem Befehl <span class="highlight">git init</span>. Dieser Befehl erstellt einen versteckten Ordner namens <span class="highlight">.git</span> in deinem Projekt. Hier speichert Git alle Versionsinformationen.</p>
+                        
+                        <div class="code-block">
+<code># Git-Repository initialisieren
+git init</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe:</p>
+                            <div class="terminal-output">
+<code>Initialized empty Git repository in /Users/username/Desktop/mein-portfolio/.git/</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Warum .git versteckt ist:</strong><br>
+                            Der Punkt am Anfang (<span class="highlight">.git</span>) bedeutet, dass es ein versteckter Ordner ist. Das ist Standard bei System- und Konfigurationsordnern.
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Wichtig:</strong>
+                            <ul>
+                                <li>Führe <span class="highlight">git init</span> nur <strong>einmal</strong> pro Projekt aus</li>
+                                <li>Nur im <strong>Hauptordner</strong> deines Projekts ausführen, nicht in Unterordnern</li>
+                                <li><strong>Niemals</strong> den <span class="highlight">.git/</span> Ordner löschen – sonst ist die komplette Historie weg!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: git status -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Status überprüfen – <span class="highlight">git status</span></h3>
+                        </div>
+                        <p>Mit <span class="highlight">git status</span> siehst du den aktuellen Zustand deines Repositories. Dieser Befehl zeigt dir, welche Dateien geändert wurden, welche bereit zum Committen sind und welche noch nicht von Git verfolgt werden.</p>
+                        
+                        <div class="code-block">
+<code># Status anzeigen
+git status</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe (nach git init):</p>
+                            <div class="terminal-output">
+<code>On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        index.html
+        styles.css
+        script.js
+        images/
+
+nothing added to commit but untracked files present (use "git add" to track)</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Was bedeutet das?</strong>
+                            <ul>
+                                <li><strong>Untracked files</strong> = Git kennt diese Dateien noch nicht</li>
+                                <li><strong>"use git add"</strong> = Git sagt uns, was wir als nächstes tun sollen</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>💡 Tipp:</strong> <span class="highlight">git status</span> ist dein wichtigstes Werkzeug – nutze es oft!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: git add -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Dateien zur Staging Area hinzufügen – <span class="highlight">git add</span></h3>
+                        </div>
+                        <p>Mit <span class="highlight">git add</span> fügst du Dateien zur sogenannten "Staging Area" hinzu. Das ist wie eine Vorbereitungszone – du sagst Git, welche Änderungen du im nächsten Commit festhalten möchtest.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Git-Workflow visualisiert:</p>
+                            <div class="git-staging-visual">
+                                <div class="staging-step">
+                                    <div class="staging-box working">
+                                        <strong>Arbeitsbereich</strong>
+                                        <p>Deine Dateien</p>
+                                    </div>
+                                </div>
+                                <div class="staging-arrow">→<br><small>git add</small></div>
+                                <div class="staging-step">
+                                    <div class="staging-box staging">
+                                        <strong>Staging Area</strong>
+                                        <p>Vorbereitung</p>
+                                    </div>
+                                </div>
+                                <div class="staging-arrow">→<br><small>git commit</small></div>
+                                <div class="staging-step">
+                                    <div class="staging-box repo">
+                                        <strong>Repository</strong>
+                                        <p>Gespeichert</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-md">Variante 1: Einzelne Datei</h4>
+                        <div class="code-block">
+<code># Eine einzelne Datei hinzufügen
+git add index.html
+
+# Status checken
+git status</code>
+                        </div>
+
+                        <h4 class="mt-md">Variante 2: Mehrere Dateien</h4>
+                        <div class="code-block">
+<code># Mehrere Dateien gleichzeitig
+git add styles.css script.js</code>
+                        </div>
+
+                        <h4 class="mt-md">Variante 3: Alle Dateien (am häufigsten)</h4>
+                        <div class="code-block">
+<code># Alle geänderten und neuen Dateien hinzufügen
+git add .
+
+# Status checken
+git status</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe nach <span class="highlight">git add .</span>:</p>
+                            <div class="terminal-output">
+<code>Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+        new file:   index.html
+        new file:   styles.css
+        new file:   script.js
+        new file:   images/logo.png</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Merke:</strong> Der Punkt <span class="highlight">.</span> bedeutet: alle Dateien im aktuellen Ordner
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: git commit -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Änderungen festhalten – <span class="highlight">git commit</span></h3>
+                        </div>
+                        <p>Mit <span class="highlight">git commit</span> speicherst du die Änderungen aus der Staging Area dauerhaft in der Git-Historie. Jeder Commit braucht eine aussagekräftige Nachricht, die beschreibt, was du geändert hast.</p>
+                        
+                        <div class="code-block">
+<code># Erster Commit mit Nachricht
+git commit -m "Initiales Portfolio mit HTML, CSS und JavaScript"</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe:</p>
+                            <div class="terminal-output">
+<code>[main (root-commit) a3f5e21] Initiales Portfolio mit HTML, CSS und JavaScript
+ 4 files changed, 156 insertions(+)
+ create mode 100644 index.html
+ create mode 100644 styles.css
+ create mode 100644 script.js
+ create mode 100644 images/logo.png</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Anatomie des Befehls:</strong>
+                            <ul>
+                                <li><span class="highlight">git commit</span> = Commit erstellen</li>
+                                <li><span class="highlight">-m</span> = Message (Nachricht) folgt</li>
+                                <li><span class="highlight">"..."</span> = Die Commit-Nachricht in Anführungszeichen</li>
+                            </ul>
+                        </div>
+
+                        <h4 class="mt-md">Gute vs. Schlechte Commit-Nachrichten</h4>
+                        <div class="split-view">
+                            <div>
+                                <div class="alert alert-success">
+                                    <strong>✅ Gute Nachrichten:</strong>
+                                    <ul>
+                                        <li>"Initiales Portfolio mit HTML, CSS und JavaScript"</li>
+                                        <li>"Navigation mit Links hinzugefügt"</li>
+                                        <li>"Responsive Design für mobile Geräte implementiert"</li>
+                                        <li>"Kontaktformular erstellt"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="alert alert-warning">
+                                    <strong>❌ Schlechte Nachrichten:</strong>
+                                    <ul>
+                                        <li>"Update"</li>
+                                        <li>"Fix"</li>
+                                        <li>"asdfgh"</li>
+                                        <li>"Stuff"</li>
+                                        <li>"Änderungen gemacht"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>💡 Best Practice:</strong> Committe oft, in kleinen logischen Einheiten. Nutze Verben wie "Füge hinzu", "Ändere", "Entferne", "Korrigiere".
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: git log -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Historie anzeigen – <span class="highlight">git log</span></h3>
+                        </div>
+                        <p>Mit <span class="highlight">git log</span> siehst du die komplette Commit-Historie. Jeder Commit hat einen eindeutigen Hash, einen Autor, ein Datum und die Commit-Nachricht.</p>
+                        
+                        <div class="code-block">
+<code># Vollständige Historie
+git log</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe:</p>
+                            <div class="terminal-output">
+<code>commit a3f5e21b8c9d4f6e3a2b1c0d9e8f7a6b5c4d3e2f
+Author: Tim Leibacher &lt;tim.leibacher@band.ch&gt;
+Date:   Mon Nov 25 14:23:10 2025 +0100
+
+    Initiales Portfolio mit HTML, CSS und JavaScript</code>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-md">Kompakte Ansicht</h4>
+                        <div class="code-block">
+<code># Kompakte Ansicht (eine Zeile pro Commit)
+git log --oneline</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Erwartete Ausgabe:</p>
+                            <div class="terminal-output">
+<code>a3f5e21 Initiales Portfolio mit HTML, CSS und JavaScript</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Tipps:</strong>
+                            <ul>
+                                <li>Der <strong>Commit-Hash</strong> (z.B. a3f5e21) ist eine eindeutige ID für jeden Commit</li>
+                                <li>Mit <span class="highlight">q</span> kommst du aus dem Log-Modus raus</li>
+                                <li><span class="highlight">git log --graph --all</span> zeigt später Branches grafisch an</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Workflow-Zusammenfassung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Workflow-Zusammenfassung</h3>
+                        </div>
+                        <p>Fassen wir den Git-Workflow zusammen. Diese fünf Befehle sind die wichtigsten für den täglichen Gebrauch:</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Der Git-Workflow:</p>
+                            <div class="workflow-steps">
+                                <div class="workflow-step">
+                                    <div class="workflow-number">1</div>
+                                    <div class="workflow-content">
+                                        <code>git init</code>
+                                        <span>Repository erstellen</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">2</div>
+                                    <div class="workflow-content">
+                                        <span class="workflow-action">Dateien ändern</span>
+                                        <span>Code schreiben</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">3</div>
+                                    <div class="workflow-content">
+                                        <code>git status</code>
+                                        <span>Status checken</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">4</div>
+                                    <div class="workflow-content">
+                                        <code>git add .</code>
+                                        <span>Zur Staging Area</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">5</div>
+                                    <div class="workflow-content">
+                                        <code>git commit -m "..."</code>
+                                        <span>Änderungen speichern</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">6</div>
+                                    <div class="workflow-content">
+                                        <code>git log</code>
+                                        <span>Historie anzeigen</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-md text-center"><strong>↻ Wiederhole Schritte 2-5 bei jeder Änderung</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Zusammenfassung – Die 5 wichtigsten Git-Befehle</h2>
+            <div class="split-view">
+                <div>
+                    <h4>Einmalig pro Projekt:</h4>
+                    <ul>
+                        <li><span class="highlight">git init</span> – Repository erstellen</li>
+                    </ul>
+                    
+                    <h4 class="mt-md">Bei jeder Änderung:</h4>
+                    <ul>
+                        <li><span class="highlight">git status</span> – Status checken</li>
+                        <li><span class="highlight">git add .</span> – Alle Änderungen zur Staging Area</li>
+                        <li><span class="highlight">git commit -m "..."</span> – Änderungen speichern</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Zur Übersicht:</h4>
+                    <ul>
+                        <li><span class="highlight">git log</span> – Commit-Historie anzeigen</li>
+                        <li><span class="highlight">git log --oneline</span> – Kompakte Ansicht</li>
+                    </ul>
+                    
+                    <h4 class="mt-md">Checkliste:</h4>
+                    <ul>
+                        <li>✅ git init einmal pro Projekt</li>
+                        <li>✅ git status oft nutzen</li>
+                        <li>✅ Committe oft, in kleinen Schritten</li>
+                        <li>✅ Schreibe aussagekräftige Commit-Nachrichten</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Häufige Fehler -->
+        <div class="card mb-lg">
+            <div class="card-header">
+                <h3 class="card-title">⚠️ Häufige Fehler & Lösungen</h3>
+            </div>
+            <div class="error-table">
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <code>git: command not found</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <span>Git ist nicht installiert → <a href="https://git-scm.com" target="_blank">git-scm.com</a></span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <span>.git Ordner versehentlich gelöscht</span>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <span>Keine Rettung möglich – <code>git init</code> neu starten</span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <span>Commit ohne Nachricht (Vi-Editor öffnet)</span>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <span><code>:q!</code> zum Beenden, dann <code>git commit -m "..."</code></span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <span>Falsche Commit-Nachricht geschrieben</span>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <code>git commit --amend -m "Neue Nachricht"</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weiterführende Ressourcen -->
+        <div class="card mb-lg">
+            <div class="card-header">
+                <h3 class="card-title">📚 Weiterführende Ressourcen</h3>
+            </div>
+            <ul>
+                <li><a href="https://git-scm.com/doc" target="_blank">Git Dokumentation</a> – Offizielle Referenz</li>
+                <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank">GitHub Git Cheat Sheet</a> – Alle Befehle auf einen Blick</li>
+                <li><a href="https://learngitbranching.js.org/" target="_blank">Learn Git Branching</a> – Interaktives Tutorial</li>
+                <li><a href="https://ohmygit.org/" target="_blank">Oh My Git!</a> – Git als Spiel lernen</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>GIT Grundlagen Tutorial – BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ</p>
+    </footer>
+
+</body>
+</html>

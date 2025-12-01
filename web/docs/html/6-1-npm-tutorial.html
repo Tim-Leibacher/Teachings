@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js und NPM - Einführung</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>Node.js und NPM – Einführung</h1>
+            <p>JavaScript überall ausführen – Server, Tools, APIs</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-orange">8-10 Min.</span>
+                <span class="badge badge-turquoise">Von Netflix bis NASA</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Intro -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist Node.js?</h3>
+                        </div>
+                        <p>Bisher haben wir JavaScript nur im Browser genutzt. Mit <span class="highlight">Node.js</span> kannst du JavaScript aber auch auf dem Server ausführen. Das bedeutet: Du kannst mit JavaScript Backend-Anwendungen, APIs, Automatisierungs-Tools und vieles mehr entwickeln.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Node.js ermöglicht:</strong>
+                            <ul>
+                                <li>JavaScript überall ausführen – nicht nur im Browser</li>
+                                <li>Server, Tools und APIs entwickeln</li>
+                                <li>Millionen Entwickler weltweit nutzen Node.js</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Wer nutzt Node.js?</strong><br>
+                            Netflix, PayPal, LinkedIn, NASA, Uber und viele mehr setzen auf Node.js für ihre Backend-Systeme.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Browser vs. Node.js -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">JavaScript im Browser vs. Node.js</h3>
+                        </div>
+                        <p>Im Browser läuft JavaScript in einer Sandbox mit Zugriff auf das <span class="highlight">DOM</span> und Browser-APIs. In Node.js fehlt das DOM, dafür hast du Zugriff auf das <span class="highlight">Dateisystem</span>, Netzwerk-Funktionen und kannst Server erstellen.</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>🌐 Browser JavaScript</h4>
+                                <div class="code-block">
+<code>// Browser – DOM-Manipulation
+document.getElementById('button')
+  .addEventListener('click', () => {
+    console.log('Button geklickt!');
+});
+
+// Browser – LocalStorage
+localStorage.setItem('name', 'Max');</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>🖥️ Node.js JavaScript</h4>
+                                <div class="code-block">
+<code>// Node.js – Dateisystem
+const fs = require('fs');
+fs.readFileSync('datei.txt', 'utf-8');
+
+// Node.js – HTTP-Server
+const http = require('http');
+http.createServer((req, res) => {
+    res.end('Hello World!');
+}).listen(3000);</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Merke:</strong> Browser = DOM + Browser-APIs | Node.js = Dateisystem + Server
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Installation -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Node.js installieren</h3>
+                        </div>
+                        <p>Gehe auf <a href="https://nodejs.org" target="_blank">nodejs.org</a> und lade die <span class="highlight">LTS-Version</span> herunter. LTS steht für "Long Term Support" und ist die stabile Version.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">📥 Installation prüfen:</p>
+                            <div class="code-block">
+<code># Node.js Version überprüfen
+node --version
+# Ausgabe: v20.10.0
+
+# NPM Version überprüfen
+npm --version
+# Ausgabe: 10.2.3</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Tipp:</strong> NPM (Node Package Manager) wird automatisch mit Node.js installiert!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Erstes Programm -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Erstes Node.js-Programm</h3>
+                        </div>
+                        <p>Erstelle eine neue Datei namens <span class="highlight">hello.js</span> und führe sie mit dem Befehl <span class="highlight">node hello.js</span> aus.</p>
+                        
+                        <div class="code-block">
+<code>// hello.js - Erstes Node.js-Programm
+
+console.log('Hallo von Node.js!');
+console.log('JavaScript läuft auf dem Server!');
+
+// Einfache Berechnung
+const summe = 5 + 10;
+console.log(`5 + 10 = ${summe}`);
+
+// Aktuelle Zeit ausgeben
+const jetzt = new Date();
+console.log(`Aktuelles Datum: ${jetzt.toLocaleString('de-CH')}`);</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">▶️ Ausführen im Terminal:</p>
+                            <div class="terminal-output">
+<code>$ node hello.js
+Hallo von Node.js!
+JavaScript läuft auf dem Server!
+5 + 10 = 15
+Aktuelles Datum: 26.11.2025, 14:32:15</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Merke:</strong> <span class="highlight">node dateiname.js</span> führt JavaScript aus!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: fs-Modul -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Node.js Module nutzen – fs (Dateisystem)</h3>
+                        </div>
+                        <p>Node.js hat eingebaute Module wie <span class="highlight">fs</span> für das Dateisystem. Mit <span class="highlight">require</span> importieren wir Module. Das wäre im Browser nicht möglich!</p>
+                        
+                        <div class="code-block">
+<code>// dateien.js - Dateisystem nutzen
+
+// fs-Modul importieren
+const fs = require('fs');
+
+// Datei erstellen und Text schreiben
+const inhalt = 'Das ist mein erstes Node.js-Programm!\nNode.js ist cool!';
+fs.writeFileSync('test.txt', inhalt, 'utf-8');
+console.log('✅ Datei test.txt erstellt!');
+
+// Datei auslesen
+const gelesen = fs.readFileSync('test.txt', 'utf-8');
+console.log('📄 Inhalt der Datei:');
+console.log(gelesen);</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">▶️ Ausgabe:</p>
+                            <div class="terminal-output">
+<code>$ node dateien.js
+✅ Datei test.txt erstellt!
+📄 Inhalt der Datei:
+Das ist mein erstes Node.js-Programm!
+Node.js ist cool!</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>require()</strong> importiert Module. Das <span class="highlight">fs-Modul</span> ermöglicht Dateisystem-Zugriff.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Was ist NPM? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist NPM?</h3>
+                        </div>
+                        <p><span class="highlight">NPM</span> steht für Node Package Manager. Es ist der grösste Software-Registry der Welt mit über einer Million Paketen!</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>📦 Beliebte Pakete</h4>
+                                <ul>
+                                    <li><strong>chalk</strong> – Farbige Terminal-Ausgaben</li>
+                                    <li><strong>axios</strong> – HTTP-Client für Anfragen</li>
+                                    <li><strong>express</strong> – Web-Framework für Server</li>
+                                    <li><strong>lodash</strong> – Utility-Funktionen</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>📊 NPM in Zahlen</h4>
+                                <ul>
+                                    <li>Über <strong>1 Million</strong> Pakete</li>
+                                    <li><strong>Milliarden</strong> Downloads pro Woche</li>
+                                    <li>Von der Community für die Community</li>
+                                    <li>Alle Pakete sind <strong>Open Source</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            Statt alles selbst zu programmieren, nutzt du Pakete, die andere Entwickler erstellt haben. Das spart extrem viel Zeit!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: npm init -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">NPM-Projekt initialisieren – npm init</h3>
+                        </div>
+                        <p>Mit <span class="highlight">npm init</span> erstellst du ein NPM-Projekt. Das erstellt eine <span class="highlight">package.json</span>, die alle Informationen über dein Projekt enthält.</p>
+                        
+                        <div class="code-block">
+<code># Neuen Ordner erstellen
+mkdir mein-node-projekt
+cd mein-node-projekt
+
+# NPM initialisieren (interaktiv)
+npm init
+
+# Oder direkt mit Standard-Einstellungen:
+npm init -y</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">📄 Generierte package.json:</p>
+                            <div class="code-block">
+<code>{
+  "name": "mein-node-projekt",
+  "version": "1.0.0",
+  "description": "Mein erstes Node.js-Projekt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dein Name",
+  "license": "ISC"
+}</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>package.json</strong> = Projektbeschreibung mit allen Abhängigkeiten und Scripts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: npm install -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">NPM-Paket installieren – chalk</h3>
+                        </div>
+                        <p>Mit <span class="highlight">npm install paketname</span> installierst du ein Paket. NPM erstellt automatisch einen <span class="highlight">node_modules</span>-Ordner.</p>
+                        
+                        <div class="code-block">
+<code># Chalk installieren
+npm install chalk</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">📁 Projektstruktur nach Installation:</p>
+                            <div class="code-block">
+<code>mein-node-projekt/
+├── node_modules/     ← Hier sind alle Pakete
+│   └── chalk/
+├── package.json      ← Projektbeschreibung
+└── package-lock.json ← Exakte Versionen</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> <span class="highlight">node_modules/</span> kann sehr gross werden (100+ MB) – niemals ins Git pushen!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Paket nutzen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Installiertes Paket nutzen – chalk</h3>
+                        </div>
+                        <p>Um <span class="highlight">chalk</span> zu nutzen, müssen wir ES6-Module aktivieren. Füge <span class="highlight">"type": "module"</span> in die package.json ein.</p>
+                        
+                        <div class="code-block">
+<code>// package.json anpassen:
+{
+  "name": "mein-node-projekt",
+  "version": "1.0.0",
+  "type": "module",   ← Diese Zeile hinzufügen!
+  // ... rest
+}</code>
+                        </div>
+
+                        <div class="code-block">
+<code>// farben.js - Farbige Terminal-Ausgaben
+
+// Chalk importieren (ES6 Syntax)
+import chalk from 'chalk';
+
+// Farbige Ausgaben
+console.log(chalk.blue('Hallo in Blau!'));
+console.log(chalk.green('Erfolg: Paket installiert ✅'));
+console.log(chalk.red('Fehler: Etwas ging schief ❌'));
+console.log(chalk.yellow.bold('Warnung: Vorsicht!'));
+
+// Kombinationen
+console.log(chalk.bgBlue.white(' INFO ') + ' Das ist eine Info-Nachricht');
+console.log(chalk.bgGreen.black(' SUCCESS ') + ' Alles funktioniert!');</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">▶️ Farbige Ausgabe im Terminal:</p>
+                            <div class="terminal-output">
+<code>$ node farben.js
+<span style="color: #4eb9cc;">Hallo in Blau!</span>
+<span style="color: #45ba98;">Erfolg: Paket installiert ✅</span>
+<span style="color: #cd5c5c;">Fehler: Etwas ging schief ❌</span>
+<span style="color: #feaf51; font-weight: bold;">Warnung: Vorsicht!</span>
+<span style="background: #376b8c; color: white;"> INFO </span> Das ist eine Info-Nachricht
+<span style="background: #29786a; color: black;"> SUCCESS </span> Alles funktioniert!</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>ES6 Modules:</strong> <span class="highlight">import</span> statt <span class="highlight">require</span> – moderner Standard!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Globale vs. lokale Pakete -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Globale vs. lokale Pakete</h3>
+                        </div>
+                        <p>Es gibt zwei Arten von Paketen: <span class="highlight">Lokal</span> (nur im Projekt) und <span class="highlight">Global</span> (systemweit als Befehl verfügbar).</p>
+                        
+                        <div class="split-view">
+                            <div>
+                                <h4>📂 Lokale Installation</h4>
+                                <div class="code-block">
+<code># Nur für dieses Projekt
+npm install chalk
+
+# Gespeichert in:
+# ./node_modules/</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>🌍 Globale Installation</h4>
+                                <div class="code-block">
+<code># Systemweit verfügbar
+npm install -g nodemon
+
+# Als Terminal-Befehl nutzbar:
+nodemon farben.js</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>nodemon</strong> startet dein Programm automatisch neu, wenn sich Dateien ändern – super für Entwicklung!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: NPM Scripts -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">NPM Scripts – Shortcuts definieren</h3>
+                        </div>
+                        <p>In der package.json kannst du eigene <span class="highlight">Scripts</span> definieren. Das sind Shortcuts für häufig genutzte Befehle.</p>
+                        
+                        <div class="code-block">
+<code>// package.json
+{
+  "name": "mein-node-projekt",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node farben.js",
+    "dev": "nodemon farben.js",
+    "hello": "node hello.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
+}</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">▶️ Scripts ausführen:</p>
+                            <div class="code-block">
+<code># Scripts starten
+npm run start    # → node farben.js
+npm run dev      # → nodemon farben.js
+npm run hello    # → node hello.js
+
+# Spezialfall: "start" braucht kein "run"
+npm start        # → node farben.js</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Tipp:</strong> <span class="highlight">npm start</span> funktioniert ohne "run" – ein Spezialfall!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 12: Semver -->
+            <div class="timeline-item">
+                <div class="timeline-marker">12</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Dependencies verwalten – Semantic Versioning</h3>
+                        </div>
+                        <p>Versionsnummern folgen dem Schema <span class="highlight">^Major.Minor.Patch</span>. Das Caret <span class="highlight">^</span> erlaubt automatische Updates für Minor und Patch.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">📊 Versionsnummern erklärt:</p>
+                            <div class="code-block">
+<code>"dependencies": {
+  "chalk": "^5.3.0"
+}         │  │  │
+          │  │  └─ Patch (Bugfixes)
+          │  └──── Minor (neue Features)
+          └─────── Major (Breaking Changes)
+          
+^ = Updates erlaubt für Minor + Patch</code>
+                            </div>
+                        </div>
+
+                        <div class="code-block">
+<code># Alle Pakete aktualisieren
+npm update
+
+# Veraltete Pakete anzeigen
+npm outdated
+
+# Spezifisches Paket aktualisieren
+npm install chalk@latest</code>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Achtung:</strong> Major-Updates können Breaking Changes enthalten – immer Changelog lesen!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 13: .gitignore -->
+            <div class="timeline-item">
+                <div class="timeline-marker">13</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">node_modules und .gitignore</h3>
+                        </div>
+                        <p>Der <span class="highlight">node_modules</span>-Ordner gehört <strong>NIEMALS</strong> ins Git-Repository! Andere Entwickler installieren die Pakete einfach mit <span class="highlight">npm install</span>.</p>
+                        
+                        <div class="code-block">
+<code># .gitignore - Diese Datei im Projektordner erstellen
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+
+# Environment Variables
+.env
+
+# OS Files
+.DS_Store</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">🔄 Projekt klonen und Pakete installieren:</p>
+                            <div class="code-block">
+<code># Projekt klonen
+git clone https://github.com/username/mein-node-projekt
+cd mein-node-projekt
+
+# Alle Pakete werden automatisch installiert!
+npm install</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Goldene Regel:</strong> <span class="highlight">node_modules/</span> NIEMALS ins Git! Die package.json reicht.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 14: Zusammenfassung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">14</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung – Die wichtigsten Befehle</h3>
+                        </div>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">📋 Checkliste:</p>
+                            <div class="workflow-steps">
+                                <div class="workflow-step">
+                                    <div class="workflow-number">✓</div>
+                                    <div class="workflow-content">
+                                        <span class="workflow-action">Node.js</span>
+                                        <span>JavaScript überall</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">✓</div>
+                                    <div class="workflow-content">
+                                        <span class="workflow-action">NPM</span>
+                                        <span>1 Million+ Pakete</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">✓</div>
+                                    <div class="workflow-content">
+                                        <code>npm init</code>
+                                        <span>Projekt erstellen</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">✓</div>
+                                    <div class="workflow-content">
+                                        <code>npm install</code>
+                                        <span>Pakete installieren</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">✓</div>
+                                    <div class="workflow-content">
+                                        <span class="workflow-action">package.json</span>
+                                        <span>Projekt-Konfiguration</span>
+                                    </div>
+                                </div>
+                                <div class="workflow-step">
+                                    <div class="workflow-number">✓</div>
+                                    <div class="workflow-content">
+                                        <span class="workflow-action">node_modules/</span>
+                                        <span>Nie ins Git!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung Card -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Alle wichtigen Befehle auf einen Blick</h2>
+            <div class="split-view">
+                <div>
+                    <h4>🚀 Projekt starten:</h4>
+                    <ul>
+                        <li><span class="highlight">node datei.js</span> – Programm ausführen</li>
+                        <li><span class="highlight">npm init -y</span> – Projekt erstellen</li>
+                        <li><span class="highlight">npm install paket</span> – Paket installieren</li>
+                        <li><span class="highlight">npm install -g paket</span> – Global installieren</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>🔧 Projekt verwalten:</h4>
+                    <ul>
+                        <li><span class="highlight">npm run scriptname</span> – Script ausführen</li>
+                        <li><span class="highlight">npm update</span> – Pakete aktualisieren</li>
+                        <li><span class="highlight">npm outdated</span> – Veraltete Pakete zeigen</li>
+                        <li><span class="highlight">npm install</span> – Dependencies installieren</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Häufige Fehler -->
+        <div class="card mt-lg mb-lg">
+            <div class="card-header">
+                <h3 class="card-title">⚠️ Häufige Fehler & Lösungen</h3>
+            </div>
+            
+            <div class="error-table">
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>❌ Problem:</strong>
+                        <code>node: command not found</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>✅ Lösung:</strong>
+                        <span>Node.js nicht installiert → <a href="https://nodejs.org" target="_blank">nodejs.org</a></span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>❌ Problem:</strong>
+                        <code>Cannot find module 'chalk'</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>✅ Lösung:</strong>
+                        <code>npm install</code> <span>ausführen</span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>❌ Problem:</strong>
+                        <code>ERR! code ENOENT</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>✅ Lösung:</strong>
+                        <span>package.json fehlt → </span><code>npm init</code>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>❌ Problem:</strong>
+                        <span>ES6 Import funktioniert nicht</span>
+                    </div>
+                    <div class="error-solution">
+                        <strong>✅ Lösung:</strong>
+                        <code>"type": "module"</code> <span>in package.json</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projektstruktur -->
+        <div class="card mt-lg mb-lg">
+            <div class="card-header">
+                <h3 class="card-title">📁 Fertige Projektstruktur</h3>
+            </div>
+            <div class="code-block">
+<code>mein-node-projekt/
+├── .gitignore          ← node_modules/ ausschliessen
+├── package.json        ← Projektbeschreibung
+├── package-lock.json   ← Exakte Paketversionen
+├── node_modules/       ← Installierte Pakete
+│   └── chalk/
+├── hello.js            ← Erstes Programm
+├── dateien.js          ← Dateisystem-Beispiel
+├── farben.js           ← Chalk-Beispiel
+└── test.txt            ← Generierte Datei</code>
+            </div>
+        </div>
+
+        <!-- Weiterführende Ressourcen -->
+        <div class="card mt-lg mb-lg">
+            <div class="card-header">
+                <h3 class="card-title">📚 Weiterführende Ressourcen</h3>
+            </div>
+            <ul>
+                <li><a href="https://nodejs.org/docs/" target="_blank">Node.js Dokumentation</a></li>
+                <li><a href="https://docs.npmjs.com/" target="_blank">NPM Dokumentation</a></li>
+                <li><a href="https://github.com/goldbergyoni/nodebestpractices" target="_blank">Node.js Best Practices</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">MDN: JavaScript Modules</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>Node.js und NPM Tutorial – BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ Applikationsentwicklung</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js HTTP-Server - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>Node.js HTTP-Server – Dein Portfolio im Web</h1>
+            <p>Erstelle deinen ersten Webserver mit Node.js und dem eingebauten HTTP-Modul</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-turquoise">Node.js</span>
+                <span class="badge badge-orange">10-12 Min.</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Intro -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Was ist ein HTTP-Server?</h3>
+                        </div>
+                        <p>Bisher haben wir JavaScript-Dateien im Terminal ausgeführt. Aber wie bringst du deine Website ins Internet? Wie antwortet ein Server auf Browser-Anfragen?</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>HTTP = HyperText Transfer Protocol</strong><br>
+                            Das Protokoll, das Browser und Server nutzen, um zu kommunizieren.
+                        </div>
+
+                        <!-- Request/Response Visual -->
+                        <div class="request-response-visual">
+                            <div class="http-flow-item">
+                                <div class="http-flow-icon">🌐</div>
+                                <strong>Browser</strong>
+                                <p>Sendet Anfrage</p>
+                            </div>
+                            <div class="http-flow-arrow">→ Request →</div>
+                            <div class="http-flow-item">
+                                <div class="http-flow-icon">🖥️</div>
+                                <strong>Server</strong>
+                                <p>Verarbeitet</p>
+                            </div>
+                            <div class="http-flow-arrow">← Response ←</div>
+                            <div class="http-flow-item">
+                                <div class="http-flow-icon">📄</div>
+                                <strong>Antwort</strong>
+                                <p>HTML, JSON, etc.</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success mt-md">
+                            <strong>Lernziele dieses Tutorials:</strong>
+                            <ul>
+                                <li>HTTP-Modul von Node.js verstehen und importieren</li>
+                                <li>Einfachen HTTP-Server erstellen und starten</li>
+                                <li>Auf Browser-Anfragen reagieren (Request/Response)</li>
+                                <li>Verschiedene URLs unterschiedlich behandeln (Routing)</li>
+                                <li>HTML-Inhalte und JSON-Daten ausliefern</li>
+                                <li>Statische Dateien aus dem Dateisystem laden</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: HTTP-Modul importieren -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">HTTP-Modul importieren</h3>
+                        </div>
+                        <p>Das <span class="highlight">http</span>-Modul ist direkt in Node.js integriert – du musst es nicht installieren. Mit <span class="highlight">require('http')</span> importierst du es.</p>
+                        
+                        <div class="code-block">
+<code>// server.js - Mein erster HTTP-Server
+
+// HTTP-Modul importieren (eingebaut in Node.js)
+const http = require('http');
+
+console.log('HTTP-Modul erfolgreich importiert!');
+console.log('Node.js Version:', process.version);</code>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>require()</strong> ist die CommonJS-Syntax zum Importieren von Modulen in Node.js.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Terminal-Ausgabe:</p>
+                            <div class="terminal-output">
+<code>$ node server.js
+HTTP-Modul erfolgreich importiert!
+Node.js Version: v20.10.0</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success mt-md">
+                            <strong>Merke:</strong> Das http-Modul ist eingebaut – kein <span class="highlight">npm install</span> nötig!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Server erstellen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Server erstellen mit createServer()</h3>
+                        </div>
+                        <p>Mit <span class="highlight">http.createServer()</span> erstellst du einen Server. Diese Funktion nimmt eine Callback-Funktion entgegen, die bei <strong>jeder Anfrage</strong> ausgeführt wird.</p>
+                        
+                        <div class="code-block">
+<code>// server.js - HTTP-Server erstellen
+
+const http = require('http');
+
+// Server erstellen
+const server = http.createServer((request, response) => {
+    console.log('Neue Anfrage erhalten!');
+    console.log('URL:', request.url);
+    console.log('Methode:', request.method);
+    
+    // Antwort senden
+    response.statusCode = 200;  // HTTP-Status: 200 = OK
+    response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    response.end('Hallo vom Node.js-Server!');
+});
+
+console.log('Server-Objekt erstellt!');</code>
+                        </div>
+
+                        <div class="split-view mt-md">
+                            <div class="info-box info-box-request">
+                                <h4>📥 request</h4>
+                                <p>Die Anfrage vom Browser:</p>
+                                <ul>
+                                    <li><span class="highlight">request.url</span> – z.B. "/about"</li>
+                                    <li><span class="highlight">request.method</span> – z.B. "GET"</li>
+                                </ul>
+                            </div>
+                            <div class="info-box info-box-response">
+                                <h4>📤 response</h4>
+                                <p>Die Antwort an den Browser:</p>
+                                <ul>
+                                    <li><span class="highlight">response.statusCode</span> – z.B. 200</li>
+                                    <li><span class="highlight">response.setHeader()</span> – Content-Type</li>
+                                    <li><span class="highlight">response.end()</span> – Inhalt senden</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Wichtig:</strong> Der Callback wird bei JEDER Anfrage ausgeführt – auch für favicon.ico!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Server starten -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Server starten mit listen()</h3>
+                        </div>
+                        <p>Der Server ist erstellt, aber er läuft noch nicht. Mit <span class="highlight">server.listen()</span> startest du ihn auf einem bestimmten <strong>Port</strong>.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Was ist ein Port?</strong><br>
+                            Ein Port ist wie eine "Tür" auf deinem Computer. Der Server wartet dort auf Anfragen. Port 3000 ist ein beliebter Standard für Entwicklungsserver.
+                        </div>
+
+                        <div class="code-block">
+<code>// server.js - Kompletter HTTP-Server
+
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    console.log(`${request.method} ${request.url}`);
+    
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    response.end('Hallo vom Node.js-Server!');
+});
+
+// Server auf Port 3000 starten
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server läuft auf http://localhost:${PORT}`);
+    console.log('Drücke Ctrl+C zum Beenden');
+});</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Terminal-Ausgabe:</p>
+                            <div class="terminal-output">
+<code>$ node server.js
+Server läuft auf http://localhost:3000</code>
+                            </div>
+                            <p class="demo-title mt-md">Browser aufrufen: <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></p>
+                            <div class="browser-preview">
+                                <div class="browser-bar">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-url">localhost:3000</span>
+                                </div>
+                                <div class="browser-content">
+                                    Hallo vom Node.js-Server!
+                                </div>
+                            </div>
+                            <p class="demo-title mt-md">Terminal bei Browser-Reload:</p>
+                            <div class="terminal-output">
+<code>GET /
+GET /favicon.ico</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Hinweis:</strong> Der Server läuft DAUERHAFT (bis du Ctrl+C drückst). Bei jeder Browser-Anfrage siehst du einen Eintrag im Terminal.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: HTML ausliefern -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">HTML ausliefern statt Text</h3>
+                        </div>
+                        <p>Einfacher Text ist langweilig – liefern wir HTML aus! Ändere den Content-Type zu <span class="highlight">text/html</span> und schreibe HTML-Code in <span class="highlight">response.end()</span>.</p>
+                        
+                        <div class="code-block">
+<code>const http = require('http');
+
+const server = http.createServer((request, response) => {
+    console.log(`${request.method} ${request.url}`);
+    
+    // HTML ausliefern
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/html; charset=utf-8');
+    
+    const html = `
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="de"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;title&gt;Mein Portfolio&lt;/title&gt;
+            &lt;style&gt;
+                body { font-family: Arial; max-width: 800px; margin: 50px auto; }
+                h1 { color: #376B8C; }
+                .info { background: #f5f5f5; padding: 20px; border-radius: 8px; }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class="info"&gt;
+                &lt;h1&gt;Willkommen auf meinem Portfolio-Server!&lt;/h1&gt;
+                &lt;p&gt;Dieser Server läuft mit Node.js.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;Aktuelle Zeit:&lt;/strong&gt; ${new Date().toLocaleString('de-CH')}&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+    `;
+    
+    response.end(html);
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server läuft auf http://localhost:${PORT}`);
+});</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vorschau im Browser:</p>
+                            <div class="browser-preview">
+                                <div class="browser-bar">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-url">localhost:3000</span>
+                                </div>
+                                <div class="browser-content html-preview">
+                                    <h2>Willkommen auf meinem Portfolio-Server!</h2>
+                                    <p>Dieser Server läuft mit Node.js.</p>
+                                    <p><strong>Aktuelle Zeit:</strong> <span id="live-time"></span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>Template Literals:</strong> Mit Backticks (`) kannst du mehrzeiligen HTML-Code schreiben und Variablen mit ${...} einfügen.
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Wichtig:</strong> Der Server muss nach Änderungen am Code neu gestartet werden!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Routing -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Routing – Verschiedene URLs behandeln</h3>
+                        </div>
+                        <p>Bisher antwortet der Server auf alle URLs gleich. Professionelle Server reagieren auf verschiedene URLs unterschiedlich. Das nennt man <strong>Routing</strong>.</p>
+                        
+                        <div class="code-block">
+<code>// server-routing.js - Server mit Routing
+
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    console.log(`${request.method} ${request.url}`);
+    
+    response.setHeader('Content-Type', 'text/html; charset=utf-8');
+    
+    // Routing: Verschiedene URLs behandeln
+    if (request.url === '/' || request.url === '/home') {
+        response.statusCode = 200;
+        response.end(`
+            &lt;h1&gt;Startseite&lt;/h1&gt;
+            &lt;nav&gt;
+                &lt;a href="/"&gt;Home&lt;/a&gt; |
+                &lt;a href="/about"&gt;Über mich&lt;/a&gt; |
+                &lt;a href="/skills"&gt;Skills&lt;/a&gt;
+            &lt;/nav&gt;
+            &lt;p&gt;Willkommen auf meinem Portfolio!&lt;/p&gt;
+        `);
+        
+    } else if (request.url === '/about') {
+        response.statusCode = 200;
+        response.end(`
+            &lt;h1&gt;Über mich&lt;/h1&gt;
+            &lt;nav&gt;
+                &lt;a href="/"&gt;Home&lt;/a&gt; |
+                &lt;a href="/about"&gt;Über mich&lt;/a&gt; |
+                &lt;a href="/skills"&gt;Skills&lt;/a&gt;
+            &lt;/nav&gt;
+            &lt;p&gt;Ich bin Lernende/r im 1. Lehrjahr.&lt;/p&gt;
+        `);
+        
+    } else if (request.url === '/skills') {
+        response.statusCode = 200;
+        response.end(`
+            &lt;h1&gt;Meine Skills&lt;/h1&gt;
+            &lt;nav&gt;
+                &lt;a href="/"&gt;Home&lt;/a&gt; |
+                &lt;a href="/about"&gt;Über mich&lt;/a&gt; |
+                &lt;a href="/skills"&gt;Skills&lt;/a&gt;
+            &lt;/nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;HTML &amp; CSS&lt;/li&gt;
+                &lt;li&gt;JavaScript&lt;/li&gt;
+                &lt;li&gt;Node.js&lt;/li&gt;
+            &lt;/ul&gt;
+        `);
+        
+    } else {
+        // 404 - Seite nicht gefunden
+        response.statusCode = 404;
+        response.end(`
+            &lt;h1&gt;404 - Nicht gefunden&lt;/h1&gt;
+            &lt;p&gt;Die Seite "${request.url}" existiert nicht.&lt;/p&gt;
+            &lt;a href="/"&gt;Zurück zur Startseite&lt;/a&gt;
+        `);
+    }
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server mit Routing läuft auf http://localhost:${PORT}`);
+});</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Teste verschiedene URLs:</p>
+                            <div class="routing-demo">
+                                <div class="route-item">
+                                    <span class="route-url">/</span>
+                                    <span class="route-arrow">→</span>
+                                    <span class="route-result route-success">Startseite</span>
+                                </div>
+                                <div class="route-item">
+                                    <span class="route-url">/about</span>
+                                    <span class="route-arrow">→</span>
+                                    <span class="route-result route-success">Über mich</span>
+                                </div>
+                                <div class="route-item">
+                                    <span class="route-url">/skills</span>
+                                    <span class="route-arrow">→</span>
+                                    <span class="route-result route-success">Skills</span>
+                                </div>
+                                <div class="route-item">
+                                    <span class="route-url">/irgendwas</span>
+                                    <span class="route-arrow">→</span>
+                                    <span class="route-result route-error">404 Fehler</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>Routing =</strong> URL → passende Antwort
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: JSON-Daten -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">JSON-Daten ausliefern (API)</h3>
+                        </div>
+                        <p>Server liefern nicht nur HTML aus – oft werden Daten als <span class="highlight">JSON</span> geschickt. Das ist wichtig für APIs. Ändere den Content-Type zu <span class="highlight">application/json</span>.</p>
+                        
+                        <div class="code-block">
+<code>// server-json.js - Server mit JSON-API
+
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    console.log(`${request.method} ${request.url}`);
+    
+    if (request.url === '/api/skills') {
+        // JSON-Daten zurückgeben
+        response.statusCode = 200;
+        response.setHeader('Content-Type', 'application/json; charset=utf-8');
+        
+        const skills = {
+            status: 'success',
+            data: [
+                { name: 'HTML', level: 4, kategorie: 'Frontend' },
+                { name: 'CSS', level: 4, kategorie: 'Frontend' },
+                { name: 'JavaScript', level: 3, kategorie: 'Frontend' },
+                { name: 'Node.js', level: 2, kategorie: 'Backend' },
+                { name: 'Git', level: 3, kategorie: 'Tools' }
+            ],
+            timestamp: new Date().toISOString()
+        };
+        
+        response.end(JSON.stringify(skills, null, 2));
+        
+    } else if (request.url === '/api/info') {
+        response.statusCode = 200;
+        response.setHeader('Content-Type', 'application/json; charset=utf-8');
+        
+        const info = {
+            name: 'Dein Name',
+            beruf: 'Lernende/r Applikationsentwicklung',
+            lehrjahr: 1,
+            skills: ['HTML', 'CSS', 'JavaScript', 'Node.js']
+        };
+        
+        response.end(JSON.stringify(info, null, 2));
+        
+    } else {
+        // API-Übersicht
+        response.statusCode = 200;
+        response.setHeader('Content-Type', 'application/json; charset=utf-8');
+        
+        const api = {
+            message: 'Willkommen zur Portfolio-API',
+            endpoints: [
+                { url: '/api/info', beschreibung: 'Persönliche Informationen' },
+                { url: '/api/skills', beschreibung: 'Liste aller Skills' }
+            ]
+        };
+        
+        response.end(JSON.stringify(api, null, 2));
+    }
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`JSON-API läuft auf http://localhost:${PORT}`);
+});</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">JSON-Ausgabe für /api/skills:</p>
+                            <div class="code-block json-output">
+<code>{
+  "status": "success",
+  "data": [
+    { "name": "HTML", "level": 4, "kategorie": "Frontend" },
+    { "name": "CSS", "level": 4, "kategorie": "Frontend" },
+    { "name": "JavaScript", "level": 3, "kategorie": "Frontend" },
+    { "name": "Node.js", "level": 2, "kategorie": "Backend" },
+    { "name": "Git", "level": 3, "kategorie": "Tools" }
+  ],
+  "timestamp": "2024-01-15T10:30:00.000Z"
+}</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>JSON.stringify(obj, null, 2)</strong><br>
+                            Der Parameter <span class="highlight">null, 2</span> sorgt für schöne Formatierung mit 2 Leerzeichen Einrückung.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Statische Dateien -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Statische Dateien ausliefern</h3>
+                        </div>
+                        <p>Professionelle Server liefern auch Dateien aus – HTML, CSS, JavaScript, Bilder. Mit dem <span class="highlight">fs</span>-Modul liest du Dateien aus dem Dateisystem.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Projektstruktur:</strong>
+                            <div class="folder-structure">
+                                <div class="folder">📁 portfolio-server/</div>
+                                <div class="folder-content">
+                                    <div class="folder">📁 public/</div>
+                                    <div class="folder-content">
+                                        <div class="file">📄 index.html</div>
+                                        <div class="file">📄 style.css</div>
+                                        <div class="file">📄 script.js</div>
+                                    </div>
+                                    <div class="file">📄 server-static.js</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-block">
+<code>// server-static.js - Statische Dateien ausliefern
+
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+
+const server = http.createServer((request, response) => {
+    console.log(`${request.method} ${request.url}`);
+    
+    // Dateiname aus URL extrahieren
+    let filePath = request.url === '/' ? '/index.html' : request.url;
+    filePath = path.join(__dirname, 'public', filePath);
+    
+    // Dateiendung ermitteln
+    const extname = path.extname(filePath);
+    
+    // Content-Type basierend auf Dateiendung
+    const contentTypes = {
+        '.html': 'text/html; charset=utf-8',
+        '.css': 'text/css',
+        '.js': 'application/javascript',
+        '.json': 'application/json',
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.gif': 'image/gif',
+        '.svg': 'image/svg+xml'
+    };
+    
+    const contentType = contentTypes[extname] || 'text/plain';
+    
+    // Datei lesen und ausliefern
+    fs.readFile(filePath, (error, content) => {
+        if (error) {
+            if (error.code === 'ENOENT') {
+                // Datei nicht gefunden
+                response.statusCode = 404;
+                response.setHeader('Content-Type', 'text/html; charset=utf-8');
+                response.end('&lt;h1&gt;404 - Datei nicht gefunden&lt;/h1&gt;');
+            } else {
+                // Server-Fehler
+                response.statusCode = 500;
+                response.end(`Server-Fehler: ${error.code}`);
+            }
+        } else {
+            // Datei erfolgreich gelesen
+            response.statusCode = 200;
+            response.setHeader('Content-Type', contentType);
+            response.end(content);
+        }
+    });
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Static File Server läuft auf http://localhost:${PORT}`);
+});</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Was passiert bei einem Request?</p>
+                            <div class="terminal-output">
+<code>$ node server-static.js
+Static File Server läuft auf http://localhost:3000
+
+GET /
+GET /style.css
+GET /script.js</code>
+                            </div>
+                            <p class="mt-sm">Der Browser lädt automatisch CSS und JS nach, wenn sie im HTML verlinkt sind!</p>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Wichtig:</strong> Der <span class="highlight">Content-Type</span> muss zur Dateiendung passen, sonst interpretiert der Browser die Datei falsch!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: HTTP-Statuscodes -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">HTTP-Statuscodes verstehen</h3>
+                        </div>
+                        <p>HTTP-Statuscodes sagen dem Browser, ob die Anfrage erfolgreich war. Als Entwickler solltest du die wichtigsten kennen und richtig einsetzen.</p>
+                        
+                        <div class="status-codes-table">
+                            <div class="status-category status-2xx">
+                                <h4>2xx = Erfolg ✓</h4>
+                                <div class="status-item">
+                                    <span class="status-code">200</span>
+                                    <span class="status-name">OK</span>
+                                    <span class="status-desc">Anfrage erfolgreich</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-code">201</span>
+                                    <span class="status-name">Created</span>
+                                    <span class="status-desc">Ressource erstellt</span>
+                                </div>
+                            </div>
+                            
+                            <div class="status-category status-3xx">
+                                <h4>3xx = Weiterleitung →</h4>
+                                <div class="status-item">
+                                    <span class="status-code">301</span>
+                                    <span class="status-name">Moved Permanently</span>
+                                    <span class="status-desc">Dauerhafte URL-Änderung</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-code">302</span>
+                                    <span class="status-name">Found</span>
+                                    <span class="status-desc">Temporäre Weiterleitung</span>
+                                </div>
+                            </div>
+                            
+                            <div class="status-category status-4xx">
+                                <h4>4xx = Client-Fehler ✗</h4>
+                                <div class="status-item">
+                                    <span class="status-code">400</span>
+                                    <span class="status-name">Bad Request</span>
+                                    <span class="status-desc">Fehlerhafte Anfrage</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-code">404</span>
+                                    <span class="status-name">Not Found</span>
+                                    <span class="status-desc">Seite nicht gefunden</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-code">403</span>
+                                    <span class="status-name">Forbidden</span>
+                                    <span class="status-desc">Keine Berechtigung</span>
+                                </div>
+                            </div>
+                            
+                            <div class="status-category status-5xx">
+                                <h4>5xx = Server-Fehler ⚠</h4>
+                                <div class="status-item">
+                                    <span class="status-code">500</span>
+                                    <span class="status-name">Internal Server Error</span>
+                                    <span class="status-desc">Allgemeiner Fehler</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-code">503</span>
+                                    <span class="status-name">Service Unavailable</span>
+                                    <span class="status-desc">Server überlastet</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>DevTools-Tipp:</strong> Öffne die Browser-DevTools (F12) und gehe zum <strong>Network-Tab</strong>. Dort siehst du alle HTTP-Requests mit ihren Statuscodes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Zusammenfassung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung & Ausblick</h3>
+                        </div>
+                        <p>Du hast gelernt, wie du mit dem http-Modul einen vollständigen Webserver erstellst. Das http-Modul ist mächtig, aber auch umständlich. Deshalb gibt es <strong>Express.js</strong> – ein Framework, das alles vereinfacht.</p>
+                        
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>HTTP-Modul importieren (<span class="highlight">require('http')</span>)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>Server erstellen (<span class="highlight">http.createServer()</span>)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>Request & Response verstehen</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>Server starten (<span class="highlight">server.listen()</span>)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>HTML und JSON ausliefern</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>Routing (verschiedene URLs)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>Statische Dateien laden (mit <span class="highlight">fs</span>)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check">✓</span>
+                                <span>HTTP-Statuscodes richtig nutzen</span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success mt-lg">
+                            <strong>Nächster Schritt: Express.js</strong><br>
+                            Express ist ein Framework, das Server-Entwicklung stark vereinfacht. Du wirst sehen, wie viel einfacher Routing und Middleware damit werden!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Zusammenfassung Card -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Wichtige Befehle auf einen Blick</h2>
+            <div class="split-view">
+                <div>
+                    <h4>Server erstellen:</h4>
+                    <ul>
+                        <li><span class="highlight">require('http')</span> – Modul importieren</li>
+                        <li><span class="highlight">http.createServer()</span> – Server erstellen</li>
+                        <li><span class="highlight">server.listen(port)</span> – Server starten</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Response senden:</h4>
+                    <ul>
+                        <li><span class="highlight">response.statusCode</span> – Status setzen</li>
+                        <li><span class="highlight">response.setHeader()</span> – Header setzen</li>
+                        <li><span class="highlight">response.end()</span> – Antwort senden</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="split-view mt-md">
+                <div>
+                    <h4>Content-Types:</h4>
+                    <ul>
+                        <li><span class="highlight">text/html</span> – HTML-Seiten</li>
+                        <li><span class="highlight">text/plain</span> – Einfacher Text</li>
+                        <li><span class="highlight">application/json</span> – JSON-Daten</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Module:</h4>
+                    <ul>
+                        <li><span class="highlight">http</span> – Server-Funktionen</li>
+                        <li><span class="highlight">fs</span> – Dateisystem</li>
+                        <li><span class="highlight">path</span> – Pfad-Operationen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>Node.js HTTP-Server Tutorial - BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ Applikationsentwicklung</p>
+    </footer>
+
+    <script>
+        // Live-Zeit anzeigen
+        function updateTime() {
+            const timeElement = document.getElementById('live-time');
+            if (timeElement) {
+                timeElement.textContent = new Date().toLocaleString('de-CH');
+            }
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+
+</body>
+</html>

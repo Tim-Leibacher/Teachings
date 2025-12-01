@@ -142,3 +142,14 @@ nav:
           - Auftrag 2 - Parallele Branches: 05-GIT/02-Branching/02-Parallele-Branches.md
           - Auftrag 3 - Merge-Konflikte: 05-GIT/02-Branching/03-Merge-Konflikte-Loesen.md
           - Auftrag 4 - Rebase & Strategien: 05-GIT/02-Branching/04-Optional-Rebase-Branching-Strategien.md
+  - Node.js:
+      - Grundlagen:
+          - Auftrag 1 - Installation: 06-NODEJS/01-Grundlagen/01-NODEJS-Installation-Erste-Programme.md
+          - Auftrag 2 - NPM-Projekt: 06-NODEJS/01-Grundlagen/02-NODEJS-NPM-Projekt-Pakete-Installieren.md
+          - Auftrag 3 - Statistik-Tool: 06-NODEJS/01-Grundlagen/03-NODEJS-Portfolio-Statistik-Tool.md
+          - Auftrag 4 - NPM-Paket veröffentlichen: 06-NODEJS/01-Grundlagen/04-NODEJS-Optional-NPM-Paket-Veroeffentlichen.md
+      - Server:
+          - Auftrag 1 - HTTP-Server: 06-NODEJS/02-Server/01-HTTP-Server-Erstellen.md
+          - Auftrag 2 - Routing & JSON-API: 06-NODEJS/02-Server/02-Routing-und-JSON-API.md
+          - Auftrag 3 - Statische Dateien: 06-NODEJS/02-Server/03-Statische-Dateien-Ausliefern.md
+          - Auftrag 4 - Erweiterte Features: 06-NODEJS/02-Server/04-Optionaler-Vertiefungsauftrag.md

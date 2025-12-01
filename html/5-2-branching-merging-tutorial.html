@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Branching & Merging - Tutorial</title>
+    <link rel="stylesheet" href="../stylesheets/band-theme.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center mt-lg mb-lg">
+            <h1>Git Branching & Merging</h1>
+            <p>Lerne, wie du parallel an Features arbeitest und Änderungen zusammenführst</p>
+            <div class="mt-md">
+                <span class="badge badge-blue">1. Lehrjahr</span>
+                <span class="badge badge-turquoise">Git</span>
+                <span class="badge badge-orange">10-12 Min.</span>
+            </div>
+        </header>
+
+        <div class="timeline">
+            
+            <!-- Szene 1: Intro & Warum Branching? -->
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Warum Branching?</h3>
+                        </div>
+                        <p>Was passiert, wenn du an einem neuen Feature arbeiten möchtest, ohne den funktionierenden Code zu gefährden? Oder wenn mehrere Personen parallel am gleichen Projekt arbeiten? Hier kommen <strong>Branches</strong> ins Spiel.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Branches = Parallele Universen</strong><br>
+                            Du kannst in einem Branch experimentieren, während der Hauptzweig stabil bleibt. Am Ende führst du erfolgreiche Experimente zurück in den Hauptzweig.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Visualisierung: Git Branch-Baum</p>
+                            <div class="branch-visualization">
+                                <pre class="branch-diagram">
+main:     ●───●───●───●
+               \       \
+feature:        ●───●───● (merge)
+                </pre>
+                            </div>
+                            <div class="split-view mt-md">
+                                <div>
+                                    <span class="highlight">main</span> = Stabiler Hauptzweig (produktionsreif)
+                                </div>
+                                <div>
+                                    <span class="highlight">feature</span> = Experimenteller Zweig für neue Funktionen
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 2: Branches anzeigen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Branches anzeigen – git branch</h3>
+                        </div>
+                        <p>Bevor wir neue Branches erstellen, schauen wir uns an, auf welchem Branch wir gerade sind. Mit <span class="highlight">git branch</span> zeigst du alle lokalen Branches an.</p>
+                        
+                        <div class="code-block">
+<code># Aktuellen Status anzeigen
+git status</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>On branch main
+nothing to commit, working tree clean</code>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code># Alle Branches anzeigen
+git branch</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>* main</code>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>Erklärung:</strong><br>
+                            <span class="highlight">*</span> = Aktueller Branch<br>
+                            <span class="highlight">main</span> = Hauptzweig (Standard-Name seit Git 2.28)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 3: Neuen Branch erstellen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Neuen Branch erstellen – git branch &lt;name&gt;</h3>
+                        </div>
+                        <p>Jetzt erstellen wir einen neuen Branch für ein Feature. Angenommen, wir wollen eine Kontaktformular-Sektion hinzufügen.</p>
+                        
+                        <div class="code-block">
+<code># Neuen Branch erstellen
+git branch feature/kontaktformular
+
+# Branches anzeigen
+git branch</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>  feature/kontaktformular
+* main</code>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Wichtig:</strong> Branch erstellt, aber noch nicht gewechselt! Beide Branches zeigen momentan auf denselben Commit.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Namenskonventionen (Best Practice)</p>
+                            <ul>
+                                <li><span class="highlight">feature/...</span> – Neue Funktionen</li>
+                                <li><span class="highlight">bugfix/...</span> – Fehlerbehebungen</li>
+                                <li><span class="highlight">hotfix/...</span> – Dringende Fixes für Produktion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 4: Branch wechseln -->
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Branch wechseln – git checkout</h3>
+                        </div>
+                        <p>Um in unserem neuen Branch zu arbeiten, müssen wir zu ihm wechseln. Das machst du mit <span class="highlight">git checkout</span>.</p>
+                        
+                        <div class="code-block">
+<code># Zu neuem Branch wechseln
+git checkout feature/kontaktformular</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>Switched to branch 'feature/kontaktformular'</code>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code># Status checken
+git branch</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>* feature/kontaktformular
+  main</code>
+                        </div>
+
+                        <div class="alert alert-success mt-md">
+                            <strong>Shortcut:</strong> <span class="highlight">git checkout -b &lt;name&gt;</span> erstellt UND wechselt in einem Schritt!
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">VS Code Tipp</p>
+                            <p>VS Code zeigt den aktuellen Branch unten links in der Statusleiste an.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 5: Im Feature-Branch arbeiten -->
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Im Feature-Branch arbeiten</h3>
+                        </div>
+                        <p>Jetzt arbeiten wir im Feature-Branch. Wir fügen eine Kontaktformular-Sektion zu unserem Portfolio hinzu.</p>
+                        
+                        <div class="code-block">
+<code>&lt;!-- In index.html vor &lt;/body&gt; einfügen --&gt;
+&lt;section id="kontakt"&gt;
+    &lt;h2&gt;Kontakt&lt;/h2&gt;
+    &lt;form&gt;
+        &lt;label for="name"&gt;Name:&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" required&gt;
+        
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+        
+        &lt;label for="nachricht"&gt;Nachricht:&lt;/label&gt;
+        &lt;textarea id="nachricht" name="nachricht" rows="5" required&gt;&lt;/textarea&gt;
+        
+        &lt;button type="submit"&gt;Senden&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/section&gt;</code>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code># Änderungen committen
+git add index.html
+git commit -m "Kontaktformular-Sektion hinzugefügt"</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>[feature/kontaktformular a7f3e21] Kontaktformular-Sektion hinzugefügt
+ 1 file changed, 15 insertions(+)</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Visualisierung nach dem Commit</p>
+                            <pre class="branch-diagram">
+main:     ●───●───●
+               \
+feature:        ● (Kontaktformular hinzugefügt)
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 6: Zwischen Branches wechseln -->
+            <div class="timeline-item">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Zwischen Branches wechseln & Vergleichen</h3>
+                        </div>
+                        <p>Der spannende Teil: Wir wechseln zurück zum <span class="highlight">main</span>-Branch und schauen uns die Dateien an.</p>
+                        
+                        <div class="code-block">
+<code># Zurück zu main wechseln
+git checkout main</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>Switched to branch 'main'</code>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Beobachte:</strong> Das Kontaktformular ist in der index.html NICHT vorhanden! Es existiert nur im Feature-Branch.
+                        </div>
+
+                        <div class="code-block mt-md">
+<code># Zurück zum Feature-Branch
+git checkout feature/kontaktformular</code>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>Magie!</strong> Das Kontaktformular ist wieder da. Git ändert die Dateien automatisch beim Branch-Wechsel.
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Vergleich: main vs. feature</p>
+                            <div class="split-view">
+                                <div>
+                                    <strong>main-Branch:</strong><br>
+                                    Ohne Kontaktformular
+                                </div>
+                                <div>
+                                    <strong>feature-Branch:</strong><br>
+                                    Mit Kontaktformular
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 7: Merge – Branches zusammenführen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">7</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Merge – Branches zusammenführen</h3>
+                        </div>
+                        <p>Unser Feature ist fertig! Jetzt führen wir den Feature-Branch zurück in <span class="highlight">main</span>.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Wichtig:</strong> Du musst im Ziel-Branch sein (main), um den anderen Branch hinein zu mergen!
+                        </div>
+
+                        <div class="code-block">
+<code># Zuerst: Zu main wechseln
+git checkout main
+
+# Feature-Branch mergen
+git merge feature/kontaktformular</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>Updating 3c7a5f2..a7f3e21
+Fast-forward
+ index.html | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)</code>
+                        </div>
+
+                        <div class="demo-box">
+                            <p class="demo-title">Visualisierung nach dem Merge</p>
+                            <pre class="branch-diagram">
+main:     ●───●───●───● (mit Kontaktformular!)
+               \     /
+feature:        ●───●
+                            </pre>
+                        </div>
+
+                        <div class="alert alert-success mt-md">
+                            <strong>Erfolg!</strong> Das Kontaktformular ist jetzt auch im main-Branch verfügbar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 8: Fast-Forward vs. 3-Way-Merge -->
+            <div class="timeline-item">
+                <div class="timeline-marker">8</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Merge-Arten: Fast-Forward vs. 3-Way-Merge</h3>
+                        </div>
+                        
+                        <div class="split-view">
+                            <div class="demo-box">
+                                <p class="demo-title">Fast-Forward Merge</p>
+                                <p>Wenn main keine neuen Commits hat, "springt" der Zeiger einfach vor.</p>
+                                <pre class="branch-diagram">
+Vorher:
+main:    ●───●
+              \
+feature:       ●───●
+
+Nachher:
+main:    ●───●───●───●
+                                </pre>
+                            </div>
+                            <div class="demo-box">
+                                <p class="demo-title">3-Way-Merge</p>
+                                <p>Wenn beide Branches neue Commits haben, erstellt Git einen Merge-Commit.</p>
+                                <pre class="branch-diagram">
+Vorher:
+main:    ●───●───●
+              \
+feature:       ●───●
+
+Nachher:
+main:    ●───●───●───●
+              \     /
+feature:       ●───●
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 9: Branch löschen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">9</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Branch löschen nach Merge</h3>
+                        </div>
+                        <p>Nach einem erfolgreichen Merge kannst du den Feature-Branch löschen – er wird nicht mehr benötigt.</p>
+                        
+                        <div class="code-block">
+<code># Branch löschen (nach Merge)
+git branch -d feature/kontaktformular</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>Deleted branch feature/kontaktformular (was a7f3e21).</code>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code># Überprüfen: Nur noch main vorhanden
+git branch</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>* main</code>
+                        </div>
+
+                        <div class="alert alert-warning mt-md">
+                            <strong>Hinweis:</strong> Mit <span class="highlight">-d</span> löscht Git nur gemergete Branches. Mit <span class="highlight">-D</span> (Grossbuchstabe) kannst du auch ungemergete Branches löschen – aber Vorsicht, Änderungen gehen verloren!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 10: Merge-Konflikt Setup -->
+            <div class="timeline-item">
+                <div class="timeline-marker">10</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Merge-Konflikte – Wenn Git Hilfe braucht</h3>
+                        </div>
+                        <p>Was passiert, wenn dieselbe Stelle in beiden Branches geändert wurde? Git kann nicht automatisch entscheiden – das ist ein <strong>Merge-Konflikt</strong>.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">Szenario: Beide Branches ändern den Titel</p>
+                            <div class="split-view">
+                                <div>
+                                    <strong>main-Branch:</strong>
+                                    <div class="code-block">
+<code>&lt;h1&gt;Mein Webentwickler-Portfolio&lt;/h1&gt;</code>
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong>feature-Branch:</strong>
+                                    <div class="code-block">
+<code>&lt;h1&gt;Tim Leibacher – Portfolio&lt;/h1&gt;</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code># Setup für Konflikt-Demo
+git checkout -b feature/titel-aendern
+# Titel ändern auf "Tim Leibacher – Portfolio"
+git add index.html
+git commit -m "Portfolio-Titel personalisiert"
+
+git checkout main
+# Titel ändern auf "Mein Webentwickler-Portfolio"
+git add index.html
+git commit -m "Portfolio-Titel mit Berufsbezeichnung"
+
+# Jetzt mergen → Konflikt!
+git merge feature/titel-aendern</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 11: Merge-Konflikte lösen -->
+            <div class="timeline-item">
+                <div class="timeline-marker">11</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Merge-Konflikte lösen</h3>
+                        </div>
+                        <p>Git markiert Konfliktstellen im Code mit speziellen Markern. Du musst entscheiden, welche Version korrekt ist.</p>
+                        
+                        <div class="demo-box">
+                            <p class="demo-title">So sieht ein Konflikt aus:</p>
+                            <div class="code-block conflict-markers">
+<code>&lt;body&gt;
+    &lt;header&gt;
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+        &lt;h1&gt;Mein Webentwickler-Portfolio&lt;/h1&gt;
+=======
+        &lt;h1&gt;Tim Leibacher – Portfolio&lt;/h1&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/titel-aendern
+        &lt;p&gt;Willkommen auf meiner Seite!&lt;/p&gt;
+    &lt;/header&gt;</code>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-md">
+                            <strong>Konflikt-Marker erklärt:</strong><br>
+                            <span class="highlight">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span> = Deine Version (aktueller Branch)<br>
+                            <span class="highlight">=======</span> = Trennung zwischen den Versionen<br>
+                            <span class="highlight">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/...</span> = Version aus dem anderen Branch
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">VS Code Merge-Tools</p>
+                            <p>VS Code bietet praktische Buttons:</p>
+                            <ul>
+                                <li><strong>Accept Current Change</strong> – Deine Version behalten</li>
+                                <li><strong>Accept Incoming Change</strong> – Andere Version übernehmen</li>
+                                <li><strong>Accept Both Changes</strong> – Beide Versionen kombinieren</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-block mt-md">
+<code># Nach manueller Lösung:
+git add index.html
+git commit -m "Merge feature/titel-aendern - Titel-Konflikt gelöst"</code>
+                        </div>
+
+                        <div class="terminal-output">
+<code>[main b8f4e32] Merge feature/titel-aendern - Titel-Konflikt gelöst</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 12: Best Practices -->
+            <div class="timeline-item">
+                <div class="timeline-marker">12</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Best Practices für Git Branching</h3>
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>✅ Goldene Regeln:</strong>
+                            <ul>
+                                <li><strong>main</strong> = Stabiler, funktionierender Code</li>
+                                <li><strong>Feature-Branches</strong> für neue Funktionen</li>
+                                <li><strong>Aussagekräftige Namen:</strong> feature/..., bugfix/..., hotfix/...</li>
+                                <li><strong>Oft committen</strong>, selten mergen</li>
+                                <li><strong>Branches nach Merge löschen</strong></li>
+                                <li><strong>Merge-Konflikte</strong> ruhig und strukturiert lösen</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-box mt-md">
+                            <p class="demo-title">Professioneller Workflow</p>
+                            <pre class="branch-diagram">
+main:     ●───●───────●───────●
+               \       /       /
+feature1:       ●───●        /
+                 \          /
+feature2:         ●───●───●
+                            </pre>
+                            <p class="mt-md">In Teams arbeiten oft mehrere Personen parallel an verschiedenen Features.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Szene 13: Zusammenfassung -->
+            <div class="timeline-item">
+                <div class="timeline-marker">13</div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Zusammenfassung & Befehlsübersicht</h3>
+                        </div>
+                        
+                        <div class="workflow-steps">
+                            <div class="workflow-step">
+                                <div class="workflow-number">1</div>
+                                <div class="workflow-content">
+                                    <code>git branch</code>
+                                    <span>Branches anzeigen</span>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="workflow-number">2</div>
+                                <div class="workflow-content">
+                                    <code>git branch &lt;name&gt;</code>
+                                    <span>Neuen Branch erstellen</span>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="workflow-number">3</div>
+                                <div class="workflow-content">
+                                    <code>git checkout &lt;name&gt;</code>
+                                    <span>Zu Branch wechseln</span>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="workflow-number">4</div>
+                                <div class="workflow-content">
+                                    <code>git checkout -b &lt;name&gt;</code>
+                                    <span>Erstellen UND wechseln</span>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="workflow-number">5</div>
+                                <div class="workflow-content">
+                                    <code>git merge &lt;branch&gt;</code>
+                                    <span>Branch mergen</span>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="workflow-number">6</div>
+                                <div class="workflow-content">
+                                    <code>git branch -d &lt;name&gt;</code>
+                                    <span>Branch löschen</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-lg">
+                            <strong>Konflikt-Lösung in 5 Schritten:</strong>
+                            <ol>
+                                <li>Konfliktmarker im Code finden</li>
+                                <li>Manuelle Entscheidung treffen</li>
+                                <li>Marker entfernen</li>
+                                <li><span class="highlight">git add &lt;datei&gt;</span></li>
+                                <li><span class="highlight">git commit</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Häufige Fehler -->
+        <div class="card mt-lg mb-lg">
+            <h2>Häufige Fehler & Lösungen</h2>
+            <div class="error-table">
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <code>error: pathspec 'branch-name' did not match</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <span>Branch existiert nicht – Tippfehler prüfen!</span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <code>error: Your local changes would be overwritten</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <span>Committe oder stashe Änderungen vor dem Wechsel</span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <code>CONFLICT (content): Merge conflict</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <span>Normal! Konflikt manuell lösen, dann committen</span>
+                    </div>
+                </div>
+                <div class="error-row">
+                    <div class="error-problem">
+                        <strong>Problem:</strong>
+                        <code>error: cannot delete branch</code>
+                    </div>
+                    <div class="error-solution">
+                        <strong>Lösung:</strong>
+                        <span>Branch ist nicht gemergt – nutze <span class="highlight">-D</span> (vorsichtig!)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zusammenfassung -->
+        <div class="card mt-lg mb-lg gradient-ocean summary-card">
+            <h2>Wichtigste Befehle auf einen Blick</h2>
+            <div class="split-view">
+                <div>
+                    <h4>Branch-Verwaltung:</h4>
+                    <ul>
+                        <li><span class="highlight">git branch</span> – Alle Branches anzeigen</li>
+                        <li><span class="highlight">git branch &lt;name&gt;</span> – Neuen Branch erstellen</li>
+                        <li><span class="highlight">git checkout &lt;name&gt;</span> – Branch wechseln</li>
+                        <li><span class="highlight">git checkout -b &lt;name&gt;</span> – Erstellen + Wechseln</li>
+                        <li><span class="highlight">git branch -d &lt;name&gt;</span> – Branch löschen</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Merging:</h4>
+                    <ul>
+                        <li><span class="highlight">git merge &lt;branch&gt;</span> – Branch zusammenführen</li>
+                        <li><span class="highlight">git log --graph</span> – Branch-Verlauf visualisieren</li>
+                    </ul>
+                    <h4 class="mt-md">Nützliche Ressourcen:</h4>
+                    <ul>
+                        <li><a href="https://learngitbranching.js.org/" target="_blank">Learn Git Branching (Interaktiv)</a></li>
+                        <li><a href="https://git-school.github.io/visualizing-git/" target="_blank">Visualizing Git</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-center p-lg">
+        <p>Git Branching & Merging Tutorial – BAND Genossenschaft</p>
+        <p>1. Lehrjahr Informatiker/in EFZ Applikationsentwicklung</p>
+    </footer>
+
+</body>
+</html>

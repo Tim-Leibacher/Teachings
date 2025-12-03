@@ -316,4 +316,20 @@
          <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/03-Express/04-Optionaler-Vertiefungsauftrag-Middleware-Error-Handling/</loc>
          <lastmod>2025-12-03</lastmod>
     </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/04-RoutesNMiddleware/01-HTTP-Methoden-Route-Parameter/</loc>
+         <lastmod>2025-12-03</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/04-RoutesNMiddleware/02-Eigene-Middleware-Entwickeln/</loc>
+         <lastmod>2025-12-03</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/04-RoutesNMiddleware/03-Externe-Middleware-Error-Handling/</loc>
+         <lastmod>2025-12-03</lastmod>
+    </url>
+    <url>
+         <loc>https://tim-leibacher.github.io/Teachings/06-NODEJS/04-RoutesNMiddleware/04-Optional-Router-Module-API-Strukturierung/</loc>
+         <lastmod>2025-12-03</lastmod>
+    </url>
 </urlset>
